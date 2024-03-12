@@ -1,0 +1,10 @@
+:root {
+    /* Letra */
+    --letra-fuente: "Sora", sans-serif;
+
+    /* Colores */
+    --blanco: #ffffff;
+    --negro: #000000;
+    --verde-principal: #00B532;
+}
+
