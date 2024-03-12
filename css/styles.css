@@ -4,7 +4,157 @@
 
     /* Colores */
     --blanco: #ffffff;
+    --gris: #606A60;
     --negro: #000000;
     --verde-principal: #00B532;
+    --sombra: #333333;
 }
 
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 16px; /* 1rem = 10px */
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );
+}
+
+/* Esto es por placer mío, que es simplemente quitar la scrollbar - si la queréis devolver, por mi vale: solamente hay que borrarlo */
+::-webkit-scrollbar {display: none;}
+
+* {
+    font-family: var(--letra-fuente);
+}
+
+h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--blanco);
+    text-shadow: var(--sombra) 0 5px 9px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--verde-principal);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--blanco);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+
+/* Lineas de separación */
+.contenedor-principal hr {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pie-pagina hr {
+ width: 80%;
+}
+
+/* Botones */
+
+.boton {
+    border: none;
+    width: 24rem;
+    height: 5.7rem;
+    border-radius: .6rem;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--blanco);
+}
+
+.boton-verde {
+    background-color: var(--verde-principal);
+}
+
+.boton-gris {
+    background-color: var(--gris);
+}
+
+/* Header */
+/* nav */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+}
+
+nav .menu {
+    display: flex;
+    justify-content: space-around;
+    gap: 15rem;
+}
+
+/* Main */
+.contenedor-principal {
+     /* esto tal vez haya que cambiarlo */
+     margin-bottom: 30rem;
+     width: 100%;
+}
+.contenedor-principal .boton{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenedor-pueblos {
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pueblo {
+    margin: 0;
+    padding: 0;
+}
+
+/* footer */
+.contenido-footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.texto-footer {
+    display: flex;
+    gap: 2rem;
+}
