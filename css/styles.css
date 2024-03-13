@@ -198,3 +198,17 @@ section .boton {
     display: flex;
     gap: 2rem;
 }
+
+/* Estilos para alinear a la izquierda */
+.back-arrow {
+    display: inline-block;
+    text-align: left;
+  }
+
+
+/* Estilos para el enlace */
+.back-arrow a {
+    font-size: 3rem; /* Tamaño de la fuente */
+    text-decoration: none; /* Quita el subrayado */
+    color: black; /* Color del texto */
+  }
