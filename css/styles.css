@@ -58,6 +58,13 @@ h3 {
     text-align: center;
 }
 
+h5 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--negro);
+    margin-bottom: 1rem;
+}
+
 a {
     color: black;
     text-decoration: none;
@@ -105,6 +112,12 @@ img {
 
 .boton-gris {
     background-color: var(--gris);
+}
+
+.boton-comp-entrada {
+    width: 28rem;
+    display: flex;
+    align-items: center;
 }
 
 /* Overlay */
@@ -221,3 +234,5 @@ section {
     text-decoration: none; /* Quita el subrayado */
     color: black; /* Color del texto */
   }
+
+  /*-------------------------Pantalla-museo1------------------------------*/
