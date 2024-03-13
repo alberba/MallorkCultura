@@ -51,7 +51,7 @@ h2 {
 
 h3 {
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 600;
     color: var(--blanco);
     margin-left: auto;
     margin-right: auto;
@@ -101,6 +101,30 @@ img {
     background-color: var(--gris);
 }
 
+/* Overlay */
+.overlay {
+    position: relative;
+    width: 100%;
+}
+
+.imagen-overlay {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.texto-overlay {
+    display: grid;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
 /* Header */
 /* nav */
 
@@ -143,6 +167,11 @@ nav .menu {
 .pueblo {
     margin: 0;
     padding: 0;
+}
+
+.pueblo img {
+    border-radius: 1rem;
+    filter: brightness(.7);
 }
 
 /* footer */
