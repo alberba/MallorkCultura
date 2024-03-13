@@ -59,8 +59,14 @@ h3 {
 }
 
 a {
+    color: black;
     text-decoration: none;
-}
+  }
+  
+  /* Estilo para los enlaces visitados */
+  a:visited {
+    color: inherit; /* Hereda el color del enlace no visitado */
+  }
 
 img {
     margin: 0;
