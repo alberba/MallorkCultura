@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
 
     <!-- Css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
+    ">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Habra que meter internamente el bootstrap-->
+    
 
     <title>MallorkCultura</title>
 </head>
@@ -43,65 +47,53 @@
         </div>
     </header>
     <main class="contenedor-principal">
-        <h2>¿Dónde visitar?</h2>
+        <h2 class="mt-5">¿Dónde visitar?</h2>
         <hr>
         <section>
-            <div class="contenedor-pueblos">
+            <div class="contenedor-pueblos container-md ">
                 <!------------ pueblos ------------>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
+                <div class="row fila-pueblos">
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/palma.webp" alt="Foto de la Catedral de Palma" class="imagen-overlay">
                         <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>
-                <a href="pantalla-museos.html">
-                    <div class="pueblo overlay">
-                        <img src="img/palma.webp" alt="Foto de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </div>
-                </a>               
+                    </a>
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/manacor.webp" alt="Foto de la ciudad de Manacor" class="imagen-overlay">
+                        <h3 class="texto-overlay">Manacor</h3>
+                    </a>
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/soller.webp" alt="Foto de Soller con su tren" class="imagen-overlay">
+                        <h3 class="texto-overlay">Sóller</h3>
+                    </a>
+                </div>
+                <div class="row fila-pueblos">
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/valldemossa.webp" alt="Foto de Valldemossa" class="imagen-overlay">
+                        <h3 class="texto-overlay">Valldemossa</h3>
+                    </a>
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/inca.webp" alt="Foto de las calles de Inca" class="imagen-overlay">
+                        <h3 class="texto-overlay">Inca</h3>
+                    </a>
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/calvia.webp" alt="Foto de Calvia" class="imagen-overlay">
+                        <h3 class="texto-overlay">Calvia</h3>
+                    </a>
+                </div>
+                <div class="row fila-pueblos">
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/alcudia.webp" alt="Foto de una calle de Alcúdia" class="imagen-overlay">
+                        <h3 class="texto-overlay">Alcúdia</h3>
+                    </a>
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/santanyi.webp" alt="Foto de las costas de Santanyí" class="imagen-overlay">
+                        <h3 class="texto-overlay">Santanyí</h3>
+                    </a>
+                    <a href="pantalla-museos.html" class="pueblo overlay col-lg-4">
+                        <img src="img/porreres.webp" alt="Foto de la iglesia de Porreres" class="imagen-overlay">
+                        <h3 class="texto-overlay">Porreres</h3>
+                    </a>
+                </div>     
                 <!------------ fin pueblos ----------------->
             </div>
             <button class="boton boton-verde">Ver más</button>
@@ -110,7 +102,7 @@
     </main>
     <footer class="pie-pagina">
         <hr>
-        <div class="contenido-footer">
+        <div class="contenido-footer mb-4">
             <div class="texto-footer">
                 <!-- Hay que meter script para actualizar el año actual -->
                 <p>CopyRight &copy; 2024</p>
