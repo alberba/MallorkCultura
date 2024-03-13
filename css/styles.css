@@ -31,17 +31,17 @@ body {
 }
 
 h1 {
-    font-size: 4.5rem;
-    font-weight: 800;
+    font-size: 6rem;
+    font-weight: 700;
     color: var(--blanco);
-    text-shadow: var(--sombra) 0 5px 9px;
+    text-shadow: var(--sombra) 0 5px 10px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
 h2 {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 600;
     color: var(--verde-principal);
     margin-left: auto;
@@ -153,11 +153,11 @@ nav .menu {
 }
 
 .contenedor-pueblos {
-    width: 60%;
+    width: 50%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 6rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
     margin-left: auto;
@@ -172,6 +172,11 @@ nav .menu {
 .pueblo img {
     border-radius: 1rem;
     filter: brightness(.7);
+}
+
+section .boton {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* footer */
