@@ -107,6 +107,15 @@ img {
     background-color: var(--gris);
 }
 
+.boton-carta {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin: 0 20px;
+    width: 18rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
 /* Overlay */
 .overlay {
     position: relative;
@@ -221,3 +230,18 @@ section {
     text-decoration: none; /* Quita el subrayado */
     color: black; /* Color del texto */
   }
+.museo{
+  background-color: #fff;
+  text-align: left;
+  padding: 20px;
+  border: 2px solid #ccc;
+  width: 40rem; /* Ajusta el ancho según tu diseño */
+  margin: 2rem auto; /* Centra el contenedor */
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+.botones-museo{
+  display: flex;
+  justify-content: space-around;
+
+}
