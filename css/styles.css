@@ -21,6 +21,9 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
 }
+* {
+    font-family: var(--letra-fuente);
+}
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -33,9 +36,7 @@ body {
 /* Esto es por placer mío, que es simplemente quitar la scrollbar - si la queréis devolver, por mi vale: solamente hay que borrarlo */
 ::-webkit-scrollbar {display: none;}
 
-* {
-    font-family: var(--letra-fuente);
-}
+
 
 h1 {
     font-size: 6rem;
