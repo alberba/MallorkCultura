@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
-
 :root {
     /* Tamaños de pantalla */
     --tablet: 768px;
@@ -21,9 +19,6 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
 }
-* {
-    font-family: var(--letra-fuente);
-}
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -36,7 +31,9 @@ body {
 /* Esto es por placer mío, que es simplemente quitar la scrollbar - si la queréis devolver, por mi vale: solamente hay que borrarlo */
 ::-webkit-scrollbar {display: none;}
 
-
+* {
+    font-family: var(--letra-fuente);
+}
 
 h1 {
     font-size: 6rem;
