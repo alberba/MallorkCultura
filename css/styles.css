@@ -11,6 +11,7 @@
     --gris: #606A60;
     --negro: #000000;
     --verde-principal: #00B532;
+    --verde-hover: #01a12e;
     --sombra: #333333;
 }
 
@@ -105,10 +106,19 @@ img {
     font-size: 2rem;
     text-transform: uppercase;
     color: var(--blanco);
+    transition: transform 0.5s;
+}
+
+.boton:hover {
+    transform: scale(1.05);
 }
 
 .boton-verde {
     background-color: var(--verde-principal);
+}
+
+.boton-verde:hover {
+    background-color: var(--verde-hover);
 }
 
 .boton-gris {
@@ -219,6 +229,12 @@ nav .menu {
     padding: 0;
     max-width: 250px;
     aspect-ratio: 269/166;
+    transition: transform 0.5s;
+}
+
+.pueblo:hover{
+    transform: scale(1.07);
+    
 }
 
 .pueblo img {
@@ -259,7 +275,7 @@ section {
 .back-arrow {
     display: inline-block;
     text-align: left;
-  }
+}
 
 
 /* Estilos para el enlace */
