@@ -195,16 +195,17 @@ nav .menu {
     width: 100%;
 }
 .contenedor-principal .boton{
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    display: block;
 }
 
 .contenedor-pueblos {
-    display:grid;
+    display:flex;
+    flex-wrap: wrap;
     justify-content: center;
+    margin:auto;
+    max-width: 850px;
     gap: 5rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
 }
 
 .fila-pueblos {
@@ -236,14 +237,11 @@ section {
 /* footer */
 .pie-pagina {
     width: 50%;
-    
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .contenido-footer {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
