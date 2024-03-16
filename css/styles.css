@@ -9,6 +9,7 @@
     /* Colores */
     --blanco: #ffffff;
     --gris: #606A60;
+    --gris-hover: #4f5a4f;
     --negro: #000000;
     --verde-principal: #00B532;
     --verde-hover: #01a12e;
@@ -78,10 +79,6 @@ a {
     text-decoration: none;
   }
   
-  /* Estilo para los enlaces visitados */
-  a:visited {
-    color: inherit; /* Hereda el color del enlace no visitado */
-  }
 
 img {
     margin: 0;
@@ -101,7 +98,7 @@ img {
 /* Botones */
 
 .boton {
-    border: none;
+    border:none;
     width: 24rem;
     height: 5.7rem;
     border-radius: .6rem;
@@ -109,10 +106,11 @@ img {
     font-size: 2rem;
     text-transform: uppercase;
     color: var(--blanco);
-    transition: transform 0.5s;
+    transition: all .1s ease;
 }
 
 .boton:hover {
+    color:var(--blanco);
     transform: scale(1.05);
 }
 
@@ -126,6 +124,10 @@ img {
 
 .boton-gris {
     background-color: var(--gris);
+}
+
+.boton-gris:hover {
+    background-color: var(--gris-hover);
 }
 
 .boton-carta {
