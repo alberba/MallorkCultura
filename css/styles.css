@@ -99,6 +99,9 @@ img {
 
 .boton {
     border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 24rem;
     height: 5.7rem;
     border-radius: .6rem;
@@ -139,11 +142,7 @@ img {
     cursor: pointer;
 }
 
-.boton-comp-entrada {
-    width: 28rem;
-    display: flex;
-    align-items: center;
-}
+
 
 /* Overlay */
 .overlay {
@@ -223,9 +222,9 @@ nav .menu {
     margin-bottom: 30rem;
     width: 100%;
 }
-.contenedor-principal .boton{
+
+.boton-vermas-index{
     margin: 0 auto;
-    display: block;
 }
 
 .contenedor-pueblos {
@@ -357,6 +356,90 @@ section {
 
   /*-------------------------Pantalla-museo1------------------------------*/
 
+.section-museo{
+    display: flex;
+    flex-direction: row;
+    gap:25px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.section-museo h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--negro);
+    margin: 0;
+    text-align: left;
+}
+
+.main-museo {
+    max-width: 780px;
+    padding-left: 25px;
+    gap: 2rem;
+}
+
+.main-museo h3{
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: left;
+    color: var(--negro);
+}
+
+.desc-museum {
+    text-align: justify;
+}
+
+.exposiciones {
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+}
+
+.exposicion {
+    display: flex;
+    flex-direction: column;
+}
+
+.exposicion img {
+    width: 216px;
+    aspect-ratio: 36/23;
+    border-radius: 10px;
+    filter: brightness(.7);
+    object-fit: cover;
+}
+
+.exposicion p{
+    font-weight: 500;
+    margin:.5rem 0 0 0;
+}
+
+.vl {
+    border-left: 1px solid black;
+}
+
+.fecha-verde{
+    color:#00B532;
+}
+
+.contenedor-botones-museo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contenedor-botones-museo a{
+    margin: 0;
+}
+
+.boton-comp-entrada {
+    width: 28rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.15rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
   
 
   /* Media Queries */
