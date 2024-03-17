@@ -367,6 +367,26 @@ section {
 }
 
 
+.paginas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.paginas p {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.paginas img {
+    scale: 1.2;
+}
+
+.paginas .pagina-actual {
+    color: var(--verde-principal);
+}
+
   /*-------------------------Pantalla-museo1------------------------------*/
 
 .section-museo{
@@ -453,6 +473,8 @@ section {
     gap: .5rem;
     align-items: center;
 }
+
+
   
 
   /* Media Queries */
