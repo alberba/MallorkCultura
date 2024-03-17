@@ -475,7 +475,35 @@ section {
 }
 
 /* ---------------------------Pagina usuario----------------------------- */  
+.nombre-user {
+    text-align: center;
+}
 
+.calendario {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: .5rem .5rem .8rem var(--sombra);
+}
+
+.formulario-usuario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formulario-usuario div {
+    display: block;
+}
+
+.formulario-usuario div:first-child, .formulario-usuario .boton {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 
   /* Media Queries */
 @media (max-width: 768px) {
