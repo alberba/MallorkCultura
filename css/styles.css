@@ -623,7 +623,7 @@ section {
 }
 
 .formulario-acomp select {
-    background-color: var(--gris-claro);
+    background-color: var(--gris-desplegable);
     border: none;
     font-size: 2rem;
     padding: 1.2rem;
