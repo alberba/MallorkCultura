@@ -350,6 +350,8 @@ section {
     flex-direction: row;
     align-items: center;
     gap: .8rem;
+    font-weight: 700;
+    font-size: 1.75rem;
 }
 
 .boton-filtros img {
