@@ -17,7 +17,7 @@
 
     /* Colores */
     --blanco: #ffffff;
-    --gris-claro: #ededed;
+    --gris-desplegable: #ededed;
     --gris: #606A60;
     --gris-hover: #4f5a4f;
     --negro: #000000;
@@ -101,6 +101,11 @@ img {
 }
 
 /* Lineas de separación */
+
+.contenedor-inicial-index {
+    max-width: 850px;
+    margin: auto
+}
 .contenedor-principal hr {
     width: 30%;
     margin-left: auto;
@@ -251,7 +256,6 @@ nav .menu {
     flex-wrap: wrap;
     justify-content: center;
     margin:auto;
-    max-width: 850px;
     gap: 5rem;
 }
 
@@ -284,7 +288,6 @@ section {
 
 /* footer */
 .pie-pagina {
-    width: 50%;
     margin: 0 auto;
 }
 
@@ -321,14 +324,106 @@ section {
     font-weight: bold;
 }
 
+.contenedor-inicial-museos {
+    max-width: 1150px;
+    margin: auto;
+}
+
 .contenedor-museos {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 3rem auto;
-    max-width: 1200px;
     gap: 5rem;
 }
+
+.contenedor-filtros {
+    background-color: var(--gris-desplegable);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+}
+
+.boton-filtros {
+    display: flex;
+    padding: 0;
+    background-color: inherit;
+    flex-direction: row;
+    align-items: center;
+    gap: .8rem;
+}
+
+.boton-filtros img {
+    width: 25px;
+}
+
+.elemento-filtro-museo {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    max-width: 330px;
+}
+
+.elemento-filtro-museo input {
+    border: 0;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.elemento-filtro-museo select {
+    border: 0;
+    padding: .8rem;
+    border-radius: 5px;
+    appearance: none;
+    background-image: url('../img/svg/flecha-menu-down.svg');
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: 1em auto, 100%;
+}    
+
+.select:focus{
+    background-image: url('../img/svg/flecha-menu-up.svg');
+}
+
+.contenedor-filtros button{
+    border:0;
+}
+
+.contenedor-range {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .3rem;
+}
+
+.contenedor-range input {
+    width:60%
+}
+
+.contenedor-range p{
+    margin: 0;
+}
+
+.opciones-check {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+}
+
+.opciones-check label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+}
+
+.form-filtro-museos {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 3fr);
+    gap:2rem;
+}
+
 
 .museo{
     background-color: #fff;
@@ -367,7 +462,7 @@ section {
     display: flex;
     width: auto;
     align-items: center;
-    margin: 30px 0 0 100px;
+    margin: 1rem 0;
     font-size: 2.5rem;
     font-weight: 500;
     gap:1rem;
@@ -501,7 +596,21 @@ section {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
 }
+
+.columnas-formulario {
+    display: flex;
+    flex-direction: row;
+  }
+  
+
+.formulario-usuario label {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 150px;
+  }
 
 .formulario-usuario div {
     display: block;
