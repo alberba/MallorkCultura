@@ -17,6 +17,7 @@
 
     /* Colores */
     --blanco: #ffffff;
+    --gris-claro: #ededed;
     --gris: #606A60;
     --gris-hover: #4f5a4f;
     --negro: #000000;
@@ -99,7 +100,6 @@ img {
     max-width: 100%;
 }
 
-
 /* Lineas de separación */
 .contenedor-principal hr {
     width: 30%;
@@ -153,6 +153,12 @@ img {
     width: 18rem;
     height: 4rem;
     cursor: pointer;
+}
+
+.boton-form {
+    text-transform: none;
+    width: 22rem;
+    height: 4.8rem;
 }
 
 
@@ -271,6 +277,7 @@ nav .menu {
 section {
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 1.5rem;
     margin-bottom: 3.5rem;
 }
@@ -500,9 +507,19 @@ section {
     display: block;
 }
 
-.formulario-usuario div:first-child, .formulario-usuario .boton {
-    grid-column-start: 1;
-    grid-column-end: 3;
+.formulario-acomp {
+    width: 35%;
+    display: grid;
+    gap: 3rem;
+}
+
+.formulario-acomp select {
+    background-color: var(--gris-claro);
+    border: none;
+    font-size: 2rem;
+    padding: 1.2rem;
+    width: 100%;
+    box-shadow: .1rem .2rem 1rem var(--sombra);
 }
 
   /* Media Queries */

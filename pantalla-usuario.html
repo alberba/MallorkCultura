@@ -35,10 +35,9 @@
         </nav>
     </header>
     <main class="contenedor-principal">
+        <h2 class="mt-5">Tu perfil</h2>
+        <p class="mt-5 nombre-user">Nombre de usuario</p>
         <section>
-            <h2 class="mt-5">Tu perfil</h2>
-            <p class="mt-5 nombre-user">Nombre de usuario</p>
-            <img src="img/calendario.webp" alt="Calendario" class="calendario">
             <form class="formulario-usuario">
                 <div>
                     <label for="nombre-usuario">Nombre de usuario</label>
@@ -68,8 +67,31 @@
                     <label for="poblacion">Poblacion</label>
                     <input type="text" name="poblacion" id="poblacion">
                 </div>
-                <button class="boton boton-verde">Guardar cambios</button>
+                <div>
+                    <p>¿Eres estudiante?</p>
+                    <div>
+                        <label for="ch-si">Si</label>
+                        <input type="checkbox" name="ch-si" id="ch-si">
+                        <label for="ch-no">No</label>
+                        <input type="checkbox" name="ch-no" id="ch-no">
+                    </div>
+                </div>
             </form>
+            <button class="boton boton-form boton-verde">Guardar cambios</button>
+        </section>
+        <hr>
+        <section>
+            <h2 class="mt-5">Acompañantes</h2>
+            <form class="formulario-acomp">
+                <select>
+                    <option>Nombre Apellido1 Apellido2</option>
+                </select>
+                <select>
+                    <option>Nombre Apellido1 Apellido2</option>
+                </select>
+            </form>
+            <button class="boton boton-form boton-verde">Crear acompañante</button>
+            <img src="img/calendario.webp" alt="Calendario" class="calendario">
         </section>
     </main>
     <footer class="pie-pagina">
