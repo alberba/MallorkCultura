@@ -622,21 +622,11 @@ input[type="radio"] {
     margin-right: auto;
 }
 
-.formulario-usuario div {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Esto es para intentar colocar los radiobuttons, pero podéis cambiarlo si queréis */
-/* .formulario-usuario div div {
+.group-radio-buttons {
     display: flex;
     flex-direction: row;
     gap: 1rem;
 }
-
-.radio-buttons {
-
-} */
 
 .columnas-formulario {
     display: flex;
