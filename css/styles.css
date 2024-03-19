@@ -512,6 +512,7 @@ section {
 .main-museo {
     max-width: 780px;
     padding-left: 25px;
+    align-items: normal;
     gap: 2rem;
 }
 
