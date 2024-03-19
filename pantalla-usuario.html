@@ -34,79 +34,81 @@
             </a>
         </nav>
     </header>
-    <main class="contenedor-principal">
-        <h2 class="mt-5">Tu perfil</h2>
-        <section>
-            <form class="formulario-usuario">
-                <div>
-                    <label for="nombre-usuario">Nombre de usuario</label>
-                    <input type="text" name="nombre-usuario" id="nombre-usuario" placeholder="Nombre de usuario">
-                </div>
-                <div>
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-                </div>
-                <div>
-                    <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">
-                </div>
-                <div>
-                    <label for="fecha-nacimiento">Fecha de nacimiento</label>
-                    <input type="date" name="fecha-nacimiento" id="fecha-nacimiento">
-                </div>
-                <div>
-                    <label for="corre-E">Correo electrónico</label>
-                    <input type="email" name="corre-E" id="corre-E" placeholder="Correo Electrónico">
-                </div>
-                <div>
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
-                </div>
-                <div>
-                    <label for="poblacion">Poblacion</label>
-                    <input type="text" name="poblacion" id="poblacion" placeholder="Poblacion">
-                </div>
-                <div>
-                    <p>¿Eres estudiante?</p>
-                    <div class="group-radio-buttons">
-                        <div class="radio-buttons">
-                            <input type="radio" name="rd" id="ch-si">
-                            <label for="ch-si">Si</label>
-                        </div>
-                        <div class="radio-buttons">
-                            <input type="radio" name="rd" id="ch-no">
-                            <label for="ch-no">No</label>
+    <div class="contenedor-inicial-museos">
+        <main class="contenedor-principal">
+            <h2 class="mt-5">Tu perfil</h2>
+            <section>
+                <form class="formulario-usuario">
+                    <div>
+                        <label for="nombre-usuario">Nombre de usuario</label>
+                        <input type="text" name="nombre-usuario" id="nombre-usuario" placeholder="Nombre de usuario">
+                    </div>
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    </div>
+                    <div>
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">
+                    </div>
+                    <div>
+                        <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                        <input type="date" name="fecha-nacimiento" id="fecha-nacimiento">
+                    </div>
+                    <div>
+                        <label for="corre-E">Correo electrónico</label>
+                        <input type="email" name="corre-E" id="corre-E" placeholder="Correo Electrónico">
+                    </div>
+                    <div>
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
+                    </div>
+                    <div>
+                        <label for="poblacion">Poblacion</label>
+                        <input type="text" name="poblacion" id="poblacion" placeholder="Poblacion">
+                    </div>
+                    <div>
+                        <p>¿Eres estudiante?</p>
+                        <div class="group-radio-buttons">
+                            <div class="radio-buttons">
+                                <input type="radio" name="rd" id="ch-si">
+                                <label for="ch-si">Si</label>
+                            </div>
+                            <div class="radio-buttons">
+                                <input type="radio" name="rd" id="ch-no">
+                                <label for="ch-no">No</label>
+                            </div>
                         </div>
                     </div>
+                </form>
+                <button class="boton boton-form boton-verde">Guardar cambios</button>
+            </section>
+            <hr>
+            <section>
+                <h2 class="mt-5">Acompañantes</h2>
+                <form class="formulario-acomp">
+                    <select>
+                        <option>Nombre Apellido1 Apellido2</option>
+                    </select>
+                    <select>
+                        <option>Nombre Apellido1 Apellido2</option>
+                    </select>
+                </form>
+                <button class="boton boton-form boton-verde">Crear acompañante</button>
+                <img src="img/calendario.webp" alt="Calendario" class="calendario">
+            </section>
+        </main>
+        <footer class="pie-pagina">
+            <hr>
+            <div class="contenido-footer mb-4">
+                <div class="texto-footer">
+                    <!-- Hay que meter script para actualizar el año actual -->
+                    <p>CopyRight &copy; 2024</p>
+                    <p>Todos los derechos reservados</p>
                 </div>
-            </form>
-            <button class="boton boton-form boton-verde">Guardar cambios</button>
-        </section>
-        <hr>
-        <section>
-            <h2 class="mt-5">Acompañantes</h2>
-            <form class="formulario-acomp">
-                <select>
-                    <option>Nombre Apellido1 Apellido2</option>
-                </select>
-                <select>
-                    <option>Nombre Apellido1 Apellido2</option>
-                </select>
-            </form>
-            <button class="boton boton-form boton-verde">Crear acompañante</button>
-            <img src="img/calendario.webp" alt="Calendario" class="calendario">
-        </section>
-    </main>
-    <footer class="pie-pagina">
-        <hr>
-        <div class="contenido-footer mb-4">
-            <div class="texto-footer">
-                <!-- Hay que meter script para actualizar el año actual -->
-                <p>CopyRight &copy; 2024</p>
-                <p>Todos los derechos reservados</p>
+                <a href="#">Contacto</a>
             </div>
-            <a href="#">Contacto</a>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
 </html>

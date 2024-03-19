@@ -1,6 +1,6 @@
 # Todo List
 
-- [ ] Poner botón para hacer función de slider de exposiciones de un museo
+- [x] Poner botón para hacer función de slider de exposiciones de un museo
 - [ ] Rutas
     - [ ] Acabar página de rutas
     - [x] Redireccionar a la página de rutas desde todos los botones necesarios
