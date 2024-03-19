@@ -579,6 +579,36 @@ section {
     align-items: center;
 }
 
+.museo1-imagen-central {
+    position: relative;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.museo1-imagen-central img{
+    max-width: 35%;
+    height: auto;
+}
+
+.boton-slide {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+}
+
+.boton-slide.izquierda {
+    left: 32%; /* Ajustar según sea necesario */
+}
+
+.boton-slide.derecha {
+    right: 32%; /* Ajustar según sea necesario */
+}
+
+
+
+
 /* ---------------------------Pagina usuario----------------------------- */  
 .formulario-usuario input {
     padding-left: 1rem;
@@ -656,6 +686,8 @@ input[type="radio"] {
     background-color: var(--negro);
     border-radius: 50%;
     display: inline-block;
+    transform: translateY(-50%);
+    z-index: 1; /* Para que esté delante de la línea */
 }
 
 .parada-ruta h5{
@@ -721,3 +753,5 @@ input[type="radio"] {
     }
 
 }
+
+
