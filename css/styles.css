@@ -580,17 +580,17 @@ section {
 }
 
 /* ---------------------------Pagina usuario----------------------------- */  
-input {
+.formulario-usuario input {
     padding-left: 1rem;
     width: 30rem;
     height: 5rem;
-    border: 1px solid var(--gris-claro);
+    border: 1px solid var(--gris-desplegable);
     border-radius: .6rem;
     color: var(--negro)
 }
 
 input::placeholder {
-    color: var(--gris-claro);
+    color: var(--gris-desplegable);
 }
 
 input[type="radio"] {
@@ -642,10 +642,10 @@ input[type="radio"] {
 .formulario-acomp select {
     background-color: var(--gris-desplegable);
     border: none;
+    border-radius: 10px;
     font-size: 2rem;
     padding: 1.2rem;
     width: 100%;
-    box-shadow: .1rem .2rem 1rem var(--sombra);
 }
 
   /* Media Queries */
