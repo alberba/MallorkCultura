@@ -4,4 +4,6 @@
 - [ ] Rutas
     - [ ] Acabar página de rutas
     - [ ] Redireccionar a la página de rutas desde todos los botones necesarios
-- [] Alinear Footer al ancho de pantalla-usuario
+- [] Alinear Footer al ancho de pantalla-usuario y pantalla-ruta
+
+ [  ] Una vez hecha la presentación, hay que "estandarizar" el css

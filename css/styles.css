@@ -648,6 +648,49 @@ input[type="radio"] {
     width: 100%;
 }
 
+/* -------------------------- Pantalla-ruta -------------------------- */
+
+.circ {
+    height: 25px;
+    width: 25px;
+    background-color: var(--negro);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.parada-ruta h5{
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.parada-ruta .horas {
+    font-size: 1.4rem;
+}
+
+.formulario-ruta {
+   display: flex;
+   gap: 2rem;
+}
+
+.formulario-ruta select{
+    background-color: var(--gris-claro);
+    border: none;
+    border-radius: 0.3rem;
+    font-family: "Sora";
+    font-size: 1.6rem;
+    padding-left: .7rem;
+    width: 8rem;
+}
+
+.formulario-ruta label {
+    font-weight: 700;
+}
+
+.descanso {
+    font-weight: 1.2rem;
+    color: var(--gris);
+}
+
   /* Media Queries */
 @media (max-width: 768px) {
     .pie-pagina {
