@@ -680,14 +680,51 @@ input[type="radio"] {
 
 /* -------------------------- Pantalla-ruta -------------------------- */
 
+.section-ruta {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1150px;
+
+
+}
+.section-ruta{
+    margin-left: 3rem;
+}
+
+.left-museo-ruta {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    transform: translateX(-99%);
+}
+
+.contenedor-ruta-general {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
+
 .circ {
     height: 25px;
     width: 25px;
     background-color: var(--negro);
     border-radius: 50%;
     display: inline-block;
-    transform: translateY(-50%);
     z-index: 1; /* Para que esté delante de la línea */
+    margin-right: 4rem;
+}
+
+.parada-ruta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.parada-ruta p {
+    margin: 0 1.5rem 0 0;
 }
 
 .parada-ruta h5{
@@ -710,7 +747,7 @@ input[type="radio"] {
     border-radius: 0.3rem;
     font-family: "Sora";
     font-size: 1.6rem;
-    padding-left: .7rem;
+    padding: .3rem 0 .3rem .7rem;
     width: 8rem;
 }
 

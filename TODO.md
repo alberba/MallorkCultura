@@ -3,7 +3,8 @@
 - [ ] Poner botón para hacer función de slider de exposiciones de un museo
 - [ ] Rutas
     - [ ] Acabar página de rutas
-    - [ ] Redireccionar a la página de rutas desde todos los botones necesarios
-- [] Alinear Footer al ancho de pantalla-usuario y pantalla-ruta
+    - [x] Redireccionar a la página de rutas desde todos los botones necesarios
+    - [ ] Añadir botones x ruta
+- [ ] Alinear Footer al ancho de pantalla-usuario y pantalla-ruta
 
- [  ] Una vez hecha la presentación, hay que "estandarizar" el css
+- [ ] Una vez hecha la presentación, hay que "estandarizar" el css
