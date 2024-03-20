@@ -541,6 +541,7 @@ section {
 
 .exposiciones {
     display: flex;
+    align-items: center;
     gap: 2rem;
     padding: 0;
 }
@@ -556,6 +557,11 @@ section {
     border-radius: 10px;
     filter: brightness(.7);
     object-fit: cover;
+}
+
+.boton-slider-exposiciones{
+    height: max-content;
+    margin-bottom: 6rem;
 }
 
 .exposicion p{
