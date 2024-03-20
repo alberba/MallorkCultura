@@ -596,16 +596,20 @@ section {
     align-items: center;
 }
 
-.museo1-imagen-central {
+.slider-imagen-museo {
+    padding-left: 25px;
     position: relative;
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.museo1-imagen-central img{
-    max-width: 35%;
-    height: auto;
+.imagen-museo{
+    width: 100%;
+    height: 380px !important;
+    object-fit: cover;
+    object-position: top;
+    z-index: 0;
 }
 
 .boton-slide {
@@ -616,11 +620,11 @@ section {
 }
 
 .boton-slide.izquierda {
-    left: 32%; /* Ajustar según sea necesario */
+    left: 2%; /* Ajustar según sea necesario */
 }
 
 .boton-slide.derecha {
-    right: 32%; /* Ajustar según sea necesario */
+    right: 0%;
 }
 
 
