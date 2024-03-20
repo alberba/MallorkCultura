@@ -11,3 +11,17 @@ function eliminarMuseoRuta(boton){
         siguienteDiv.remove();
     }
 }
+
+function eliminarMuseoFiltro(){
+    // Encuentra el elemento li que contiene el botón
+    var chGratuito = document.getElementById("gratuito");
+    // Encuentra el siguiente div
+    var chEntrada = document.getElementById("entrada");
+
+    if(chGratuito.checked && chEntrada.checked || !chGratuito.checked && chEntrada.checked) {
+        alert("hola");
+        location.reload();
+    } else if (chGratuito.checked) {
+        alert("hola");
+    }
+}
