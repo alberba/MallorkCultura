@@ -19,9 +19,13 @@ function eliminarMuseoFiltro(){
     var chEntrada = document.getElementById("entrada");
 
     if(chGratuito.checked && chEntrada.checked || !chGratuito.checked && chEntrada.checked) {
-        alert("hola");
         location.reload();
     } else if (chGratuito.checked) {
-        alert("hola");
+        divMuseos = document.getElementsByClassName("contenedor-museos");
+        museos = divMuseos[0].querySelectorAll(".museo");
+        for (var i = 0; i < 4; i++) {
+            museos[i].remove();
+        }
+
     }
 }
