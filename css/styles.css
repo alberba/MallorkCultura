@@ -629,6 +629,12 @@ section {
 
 
 /* ---------------------------Pagina usuario----------------------------- */  
+
+.contenedor-inicial-usuario {
+    max-width: 1000px;
+    margin: auto;
+}
+
 .formulario-usuario input {
     padding-left: 1rem;
     width: 30rem;
@@ -636,6 +642,10 @@ section {
     border: 1px solid var(--gris-desplegable);
     border-radius: .6rem;
     color: var(--negro)
+}
+
+.section-usuario {
+    align-items: center;
 }
 
 input::placeholder {
@@ -683,7 +693,7 @@ input[type="radio"] {
 }
 
 .formulario-acomp {
-    width: 35%;
+    width: 50%;
     display: grid;
     gap: 3rem;
 }
