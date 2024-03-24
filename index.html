@@ -24,11 +24,13 @@
 <body>
     <header>
         <nav class="my-1">
+            <!-- Barra superior -->
             <a href="index.html" class="logo">
-                <!-- Aquí hay que añadir nuestro logo -->
+                <!-- Foto de nuestro logo -->
                 <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
             </a>
             <div class="menu">
+                <!-- Menu superior derecho -->
                 <a href="pantalla-museos.html">¿Qué visitar?</a>
                 <a href="pantalla-ruta.html">Tu ruta</a>
             </div>
@@ -48,18 +50,22 @@
                 data-size="large"
                 data-logo_alignment="left">
             </div>
+            <!-- Logo y enlace para redireccion a la seccion de user -->
             <a href="pantalla-usuario.html" class="acceso-usuario">
                 <img src="img/svg/user.svg" alt="Botón de usuario">
             </a>
         </nav>
+        <!-- Imagen principal -->
         <div class="overlay header-image">
             <img src="img/main.webp" alt="Fotografía de dos monumentos de Es Baluard" class="imagen-overlay"/>
-            <div class="texto-main-img texto-overlay m-0">
-                <h1 class="mu-0 mb-4" id="titulo-inicio">MallorkCultura</h1>
+            <!-- Texto de la imagen principal -->
+            <div class="texto-main-page texto-overlay m-0">
+                <h1 class="mu-0 mb-4">MallorkCultura</h1>
                 <p>Planifica tu ruta ya</p>
             </div>
         </div>
     </header>
+    <!-- Parte inferior de la pantalla -->
     <div class="contenedor-inicial-index">
         <main class="contenedor-principal">
             <h2 class="mt-5">¿Dónde visitar?</h2>
@@ -69,39 +75,39 @@
                     <!------------ pueblos ------------>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/palma.webp" alt="Foto de la Catedral de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
+                        <p class="texto-overlay">Palma</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/manacor.webp" alt="Foto de la ciudad de Manacor" class="imagen-overlay">
-                        <h3 class="texto-overlay">Manacor</h3>
+                        <p class="texto-overlay">Manacor</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/soller.webp" alt="Foto de Soller con su tren" class="imagen-overlay">
-                        <h3 class="texto-overlay">Sóller</h3>
+                        <p class="texto-overlay">Sóller</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/valldemossa.webp" alt="Foto de Valldemossa" class="imagen-overlay">
-                        <h3 class="texto-overlay">Valldemossa</h3>
+                        <p class="texto-overlay">Valldemossa</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/inca.webp" alt="Foto de las calles de Inca" class="imagen-overlay">
-                        <h3 class="texto-overlay">Inca</h3>
+                        <p class="texto-overlay">Inca</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/calvia.webp" alt="Foto de Calvia" class="imagen-overlay">
-                        <h3 class="texto-overlay">Calvia</h3>
+                        <p class="texto-overlay">Calvia</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/alcudia.webp" alt="Foto de una calle de Alcúdia" class="imagen-overlay">
-                        <h3 class="texto-overlay">Alcúdia</h3>
+                        <p class="texto-overlay">Alcúdia</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/santanyi.webp" alt="Foto de las costas de Santanyí" class="imagen-overlay">
-                        <h3 class="texto-overlay">Santanyí</h3>
+                        <p class="texto-overlay">Santanyí</p>
                     </a>
                     <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
                         <img src="img/pueblos/porreres.webp" alt="Foto de la iglesia de Porreres" class="imagen-overlay">
-                        <h3 class="texto-overlay">Porreres</h3>
+                        <p class="texto-overlay">Porreres</p>
                     </a>
                     <!------------ fin pueblos ----------------->
                 </div>
@@ -109,18 +115,18 @@
             </section>
             <hr>
         </main>
-        <footer class="pie-pagina">
-            <hr>
-            <div class="contenido-footer mb-4">
-                <div class="texto-footer">
-                    <!-- Hay que meter script para actualizar el año actual -->
-                    <p>CopyRight &copy; 2024</p>
-                    <p>Todos los derechos reservados</p>
-                </div>
-                <a href="#">Contacto</a>
-            </div>
-        </footer>
     </div>
+    <footer class="pie-pagina">
+        <hr>
+        <div class="contenido-footer">
+            <div class="texto-footer">
+                <!-- Hay que meter script para actualizar el año actual -->
+                <p>CopyRight &copy; 2024</p>
+                <p>Todos los derechos reservados</p>
+            </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         function handleCredentialResponse(response) {
