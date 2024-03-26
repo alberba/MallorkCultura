@@ -15,15 +15,18 @@
 </head>
 <body>
     <header>
+        <!-- Barra superior -->
         <nav class="my-1">
             <a href="index.html" class="logo">
-                <!-- Aquí hay que añadir nuestro logo -->
+                <!-- Foto de nuestro logo -->
                 <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
             </a>
             <div class="menu">
+                <!-- Menu superior derecho -->
                 <a href="pantalla-museos.html">¿Qué visitar?</a>
                 <a href="pantalla-ruta.html">Tu ruta</a>
             </div>
+            <!-- Logo y enlace para redireccion a la seccion de user -->
             <a href="pantalla-usuario.html" class="acceso-usuario">
                 <img src="img/svg/user.svg" alt="Botón de usuario">
             </a>
@@ -32,12 +35,14 @@
             <img src="img/mallorca-ubi.webp" alt="Mapa hecho con api de google donde aparecerán las ubicaciones de los museos registrados"/>
         </div>
     </header>
+    <!-- Parte inferior de la pantalla -->
     <div class="contenedor-inicial-museo">
         <main class="contenedor-principal">
             <a class="boton-atras" href="index.html">
                 <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
                 Atrás
             </a>
+            <!-- Slider para las fotos del museo -->
             <div class="swiper mySwiper slider-imagen-museo">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -53,14 +58,16 @@
                         <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
                     </div>
                 </div>
+                <!-- Botones del slider -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
+                <!-- Marcador de pagina del slider -->
                 <div class="swiper-pagination"></div>
             </div>
-            
             <div class="section-museo">
+                <!-- Parte inferior izquierda -->
                 <article class="main-museo">
-                    <h1 class="m-0" id="titulo-museo">MUSEO 1</h1>
+                    <h3 class="m-0">MUSEO 1</h3>
                     <p class="desc-museum">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu leo semper, accumsan ante in, imperdiet elit. 
                         Proin lobortis sodales posuere. Fusce tincidunt massa at dictum convallis. Nulla lacinia sodales velit, vel accumsan 
@@ -115,6 +122,7 @@
                         </a>
                     </div>
                 </article>
+                <!-- Parte inferior derecha -->
                 <div class="vl"></div>
                 <aside>
                     <h5>Horario</h5>
@@ -142,17 +150,17 @@
                 </aside>
             </div>
         </main>
-        <footer class="pie-pagina mb-4">
-            <hr>
-            <div class="contenido-footer">
-                <div class="texto-footer">
-                    <p id="copy-text"></p>
-                    <p>Todos los derechos reservados</p>
-                </div>
-                <a href="#">Contacto</a>
-            </div>
-        </footer>
     </div>
+    <footer class="pie-pagina mb-4">
+        <hr>
+        <div class="contenido-footer">
+            <div class="texto-footer">
+                <p id="copy-text"></p>
+                <p>Todos los derechos reservados</p>
+            </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
     <script src="js/date.js" defer></script>
 </body>
 </html>

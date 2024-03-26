@@ -42,17 +42,18 @@ body {
     background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );
 }
 
-/* Esto es por placer mío, que es simplemente quitar la scrollbar - si la queréis devolver, por mi vale: solamente hay que borrarlo */
 ::-webkit-scrollbar {display: none;}
 
 * {
     font-family: var(--letra-fuente);
 }
 
+/* Titulo de index.html */
 h1 {
     font-weight: var(--fuente-bold);
 }
 
+/* Titulos de apartado (los verdes) */
 h2 {
     font-size: 5rem;
     font-weight: var(--fuente-semi-bold);
@@ -60,19 +61,22 @@ h2 {
     text-align: center;
 }
 
+/* Titulos dentro de la pantalla de explicación del museo */
 h3 {
-    font-size: 3rem;
-    font-weight: var(--fuente-semi-bold);
-    color: var(--blanco);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    color: var(--negro);
+    text-align: left;
 }
 
+/*Titulos de las cards de museos*/
 h4 {
     margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
+/* Titulos de datos del museo */
 h5 {
     font-size: 2rem;
     font-weight: 600;
@@ -80,6 +84,7 @@ h5 {
     margin-bottom: 1rem;
 }
 
+/* Anchors */
 a {
     color: black;
     text-decoration: none;
@@ -88,8 +93,8 @@ a {
 a:active{
     background-color: inherit;
 }
+/* --- */
   
-
 img {
     margin: 0;
     padding: 0;
@@ -108,14 +113,17 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
+/*-----------------------*/
 
+/* ESTA CLASE NO LA ENTIENDO */
 .ml-4{
     margin-left: 2rem !important;
 }
 
 
-/* Botones */
+/* -------- Botones -------- */
 
+/* Diseño del boton */
 .boton {
     border:none;
     display: flex;
@@ -131,11 +139,13 @@ img {
     transition: all .1s ease;
 }
 
+
 .boton:hover {
     color:var(--blanco);
     transform: scale(1.05);
 }
 
+/* Colores de los botones */
 .boton-verde {
     background-color: var(--verde-principal);
 }
@@ -152,13 +162,9 @@ img {
     background-color: var(--gris-hover);
 }
 
-.boton-carta {
-    font-size: 16px;
-    padding: 5px 10px;
-    margin: 0 20px;
-    width: 18rem;
-    height: 4rem;
-    cursor: pointer;
+/* Botones especificos */
+.boton-vermas-index {
+    margin: 0 auto;
 }
 
 .boton-form {
@@ -173,7 +179,23 @@ img {
     padding: 0;
 }
 
-/* Overlay */
+.boton-slider-exposiciones {
+    height: max-content;
+    margin-bottom: 6rem;
+}
+
+.boton-atras {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+    gap:1rem;
+}
+/* --------------------------- */
+
+/* --------- Overlay --------- */
 .overlay {
     position: relative;
     width: 100%;
@@ -191,23 +213,14 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.texto-main-img{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-shadow: var(--sombra) 0 5px 10px;
-}
-
-.texto-main-img p {
+    font-size: 3rem;
+    font-weight: var(--fuente-semi-bold);
     color: var(--blanco);
-    font-size: 2.5rem;
-    font-weight: 700 !important;
 }
+/* ------------------------ */
 
-/* Header */
-/* nav */
+/* ------------- Header ---------------- */
+/* --- nav --- */
 
 nav {
     display: flex;
@@ -231,24 +244,27 @@ nav .menu {
 
 }
 
-.logo p {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin: 0;
-}
-
 .header-image {
-    width: 100%;
     aspect-ratio: 64/24;
-
 }
 
-/* Main */
-#titulo-inicio {
-    font-size: 6rem;
-    color: var(--blanco);
-    text-align: center;
+/* --- nav ---  */
+
+/* Texto dentro de la imagen principal */
+.texto-main-page{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-shadow: var(--sombra) 0 5px 10px;
 }
+
+.texto-main-img p {
+    font-size: 2.5rem;
+    font-weight: 700 !important;
+}
+/* --- --- */
+
+/* ------------- Main ----------------- */
 
 .contenedor-principal {
     /* esto tal vez haya que cambiarlo */
@@ -256,94 +272,7 @@ nav .menu {
     width: 100%;
 }
 
-.boton-vermas-index {
-    margin: 0 auto;
-}
-
-.contenedor-pueblos {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin:auto;
-    gap: 5rem;
-}
-
-.pueblo {
-    margin: 0;
-    padding: 0;
-    max-width: 250px;
-    aspect-ratio: 269/166;
-    transition: transform .25s ease-in-out;
-}
-
-.pueblo:hover {
-    transform: scale(1.07);
-}
-
-.pueblo img {
-    border-radius: 1rem;
-    height: 100%;
-    filter: brightness(.7);
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    margin-bottom: 3.5rem;
-}
-
-/* footer */
-.pie-pagina {
-    margin: 0 auto;
-}
-
-.contenido-footer {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.texto-footer {
-    display: flex;
-    gap: 2rem;
-    text-align: center;
-}
-
-.texto-footer p {
-    margin: 0;
-}
-
-/* Estilos para alinear a la izquierda */
-.back-arrow {
-    display: inline-block;
-    text-align: left;
-}
-
-/* Estilos para el enlace */
-.back-arrow a {
-    font-size: 3rem; /* Tamaño de la fuente */
-    text-decoration: none; /* Quita el subrayado */
-    color: black; /* Color del texto */
-}
-
-.titulo-museo-card h4 {
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-.contenedor-inicial-museos {
-    max-width: 1150px;
-    margin: auto;
-}
-
-.contenedor-museos {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 3rem auto;
-    gap: 5rem;
-}
+/* -- Filtros -- */
 
 .contenedor-filtros {
     background-color: var(--gris-desplegable);
@@ -433,7 +362,44 @@ section {
     grid-template-columns: repeat(3, 3fr);
     gap:2rem;
 }
+/* -- Filtros -- */
 
+/* -- ¿Dónde visitar? -- */
+.contenedor-pueblos {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:auto;
+    gap: 5rem;
+}
+
+.pueblo {
+    margin: 0;
+    padding: 0;
+    max-width: 250px;
+    aspect-ratio: 269/166;
+    transition: transform .25s ease-in-out;
+}
+
+.pueblo:hover {
+    transform: scale(1.07);
+}
+
+.pueblo img {
+    border-radius: 1rem;
+    height: 100%;
+    filter: brightness(.7);
+}
+/* -- ¿Dónde visitar? -- */
+
+/* -- Lista de museos -- */
+.contenedor-museos {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 3rem auto;
+    gap: 5rem;
+}
 
 .museo {
     background-color: #fff;
@@ -468,17 +434,7 @@ section {
 
 }
 
-.boton-atras {
-    display: flex;
-    width: max-content;
-    align-items: center;
-    margin: 1rem 0;
-    font-size: 2rem;
-    font-weight: 500;
-    gap:1rem;
-}
-
-
+/* - Selector de paginas - */
 .paginas {
     display: flex;
     justify-content: center;
@@ -498,14 +454,10 @@ section {
 .paginas .pagina-actual {
     color: var(--verde-principal);
 }
+/* - Selector de paginas - */
+/* -- Lista de museos -- */
 
-  /*-------------------------Pantalla-museo1------------------------------*/
-
-.contenedor-inicial-museo {
-    max-width: 1000px;
-    margin: auto;
-}
-
+/* -- Museo -- */
 .section-museo {
     display: flex;
     flex-direction: row;
@@ -518,12 +470,6 @@ section {
     max-width: 700px;
     align-items: normal;
     gap: 2rem;
-}
-
-#titulo-museo {
-    font-size: 3.5rem;
-    color: var(--negro);
-    text-align: left;
 }
 
 .main-museo h3 {
@@ -556,11 +502,6 @@ section {
     border-radius: 10px;
     filter: brightness(.7);
     object-fit: cover;
-}
-
-.boton-slider-exposiciones {
-    height: max-content;
-    margin-bottom: 6rem;
 }
 
 .exposicion p {
@@ -624,17 +565,9 @@ section {
 .boton-slide.derecha {
     right: 0%;
 }
+/* -- Museo -- */
 
-
-
-
-/* ---------------------------Pagina usuario----------------------------- */  
-
-.contenedor-inicial-usuario {
-    max-width: 1000px;
-    margin: auto;
-}
-
+/* -- Usuario -- */
 .formulario-usuario input {
     padding-left: 1rem;
     width: 30rem;
@@ -706,14 +639,9 @@ input[type="radio"] {
     padding: 1.2rem;
     width: 100%;
 }
+/* -- Usuario -- */
 
-/* -------------------------- Pantalla-ruta -------------------------- */
-
-.contenedor-inicial-ruta {
-    max-width: 750px;
-    margin: auto;
-}
-
+/* -- Ruta -- */
 .section-ruta {
     display: flex;
     flex-direction: column;
@@ -797,6 +725,80 @@ input[type="radio"] {
 .descanso {
     font-weight: 1.2rem;
     color: var(--gris);
+}
+/* -- Ruta -- */
+
+section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+/* ------------- Main ----------------- */
+
+/* ------------- footer ---------------- */
+.pie-pagina {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    width: 45%;
+}
+
+.contenido-footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.texto-footer {
+    display: flex;
+    gap: 2rem;
+    text-align: center;
+}
+
+.texto-footer p {
+    margin: 0;
+}
+/* ------------- footer ---------------- */
+
+/* Estilos para alinear a la izquierda */
+.back-arrow {
+    display: inline-block;
+    text-align: left;
+}
+
+/* Estilos para el enlace */
+.back-arrow a {
+    font-size: 3rem; /* Tamaño de la fuente */
+    text-decoration: none; /* Quita el subrayado */
+    color: black; /* Color del texto */
+}
+
+.contenedor-inicial-museos {
+    max-width: 1150px;
+    margin: auto;
+}
+
+/*-------------------------Pantalla-museo1------------------------------*/
+
+.contenedor-inicial-museo {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* ---------------------------Pagina usuario----------------------------- */  
+
+.contenedor-inicial-usuario {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* -------------------------- Pantalla-ruta -------------------------- */
+
+.contenedor-inicial-ruta {
+    max-width: 750px;
+    margin: auto;
 }
 
   /* Media Queries */

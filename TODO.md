@@ -11,5 +11,12 @@
 
 ## 2a Presentación
 - [ ] Una vez hecha la presentación, hay que "estandarizar" el css
+- [ ] Filtro museos
+    - [ ] Ordenar por ascendente/descendente
+    - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
+- [ ] Añadir sección sobre nosotros (correo/nombre/DNI) 
+- [ ] Cambiar posición titulo museo pantalla-museo1
+- [ ] Añadir comentarios/valoraciones a los museos 
+- [ ] Quitar los contenedores de contenedor-inicial-blablabla
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
