@@ -15,6 +15,7 @@
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
 
     <script src="js/login.js" defer></script>
+    <script src="js/essential.js" defer></script>
 
     <!-- Habra que meter internamente el bootstrap-->
     
@@ -24,37 +25,44 @@
 <body>
     <header>
         <nav class="my-1">
-            <!-- Barra superior -->
-            <a href="index.html" class="logo">
-                <!-- Foto de nuestro logo -->
-                <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
-            </a>
-            <div class="menu">
-                <!-- Menu superior derecho -->
-                <a href="pantalla-museos.html">¿Qué visitar?</a>
-                <a href="pantalla-ruta.html">Tu ruta</a>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                <!-- Barra superior -->
+                <a href="index.html" class="logo">
+                    <!-- Foto de nuestro logo -->
+                    <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
+                </a>
+                <button class="menu_icon no-style-button">
+                    <img src="img/svg/menu.svg" alt="Botón de menú"/>
+                </button>
+                <div class="menu">
+                    <a href="pantalla-museos.html">¿Qué visitar?</a>
+                    <a href="pantalla-ruta.html">Tu ruta</a>
+                </div>
+                <div id="google-signin">
+                    <div id="g_id_onload"
+                        data-client_id="669018232457-8piobleimi9a5rtme1788v41ailh6es1.apps.googleusercontent.com"
+                        data-context="signin"
+                        data-ux_mode="popup"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                
+                    <div class="g_id_signin"
+                        data-type="standard"
+                        data-shape="pill"
+                        data-theme="outline"
+                        data-text="signin"
+                        data-size="large"
+                        data-logo_alignment="left">
+                    </div>
+                </div>
+                
+                <!-- Logo y enlace para redireccion a la seccion de user -->
+                <!-- Esto tiene que estar desaparecido hasta que se haya iniciado sesión -->
+                <!--<a href="pantalla-usuario.html" class="acceso-usuario">
+                    <img src="img/svg/user.svg" alt="Botón de usuario">
+                </a>-->
             </div>
-            <div id="g_id_onload"
-                data-client_id="669018232457-8piobleimi9a5rtme1788v41ailh6es1.apps.googleusercontent.com"
-                data-context="signin"
-                data-ux_mode="popup"
-                data-callback="handleCredentialResponse"
-                data-auto_prompt="false">
-            </div>
-        
-            <div class="g_id_signin"
-                data-type="standard"
-                data-shape="pill"
-                data-theme="outline"
-                data-text="signin"
-                data-size="large"
-                data-logo_alignment="left">
-            </div>
-            <!-- Logo y enlace para redireccion a la seccion de user -->
-            <!-- Esto tiene que estar desaparecido hasta que se haya iniciado sesión -->
-            <a href="pantalla-usuario.html" class="acceso-usuario">
-                <img src="img/svg/user.svg" alt="Botón de usuario">
-            </a>
         </nav>
         <!-- Imagen principal -->
         <div class="overlay header-image">

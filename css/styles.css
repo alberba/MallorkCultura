@@ -222,20 +222,40 @@ img {
 /* ------------- Header ---------------- */
 /* --- nav --- */
 
+.menu_icon {
+    display: none;
+
+}
+
+
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 1rem 3rem;
 }
 
-nav .menu {
+.menu {
     display: flex;
     justify-content: space-around;
     gap: 20rem;
     font-size: 2rem;
     font-weight: 650;
 }
+
+.menu.menu-mobile {
+    display:flex !important; 
+    position: absolute; 
+    top: 0%;
+    left: 0%;
+    transform: translate(0, 70px);
+    width:100%; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 1.5rem; 
+    padding: 2rem 0; 
+    z-index: 1; 
+    opacity: 1;
+    background-color: #fff;
+}
+
 
 .logo {
     display: flex;
@@ -803,6 +823,20 @@ section {
 
   /* Media Queries */
 @media (max-width: 768px) {
+
+    .menu_icon {
+        display: block;
+    }
+    
+    .menu {
+        display: none;
+        position:absolute;
+        flex-direction: column;
+        gap: 2rem;
+        transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
+        opacity: 0;
+    }
+
     .pie-pagina {
         width: 90%;
     }
