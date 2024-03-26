@@ -1,0 +1,1 @@
+document.querySelector("#copy-text").innerHTML = "CopyRight &copy; " + (new Date()).getFullYear().toString();
