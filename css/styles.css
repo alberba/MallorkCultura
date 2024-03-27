@@ -230,30 +230,32 @@ img {
 
 nav {
     padding: 1rem 3rem;
+
+    /* El primer hijo div de nav */
+    & div:first-child {
+        display: flex; 
+        position: relative; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
+        z-index: 10;
+    }
 }
 
-.menu {
+.nav-links-header {
     display: flex;
     justify-content: space-around;
     gap: 20rem;
     font-size: 2rem;
     font-weight: 650;
+    transition: all 500ms ease-in-out;
+    transition-delay: 100ms;
 }
 
-.menu.menu-mobile {
-    display:flex !important; 
-    position: absolute; 
-    top: 0%;
-    left: 0%;
+.nav-links-header.nav-links-header-mobile {
     transform: translate(0, 70px);
-    width:100%; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 1.5rem; 
-    padding: 2rem 0; 
-    z-index: 1; 
     opacity: 1;
-    background-color: #fff;
+    z-index: 1;
 }
 
 
@@ -828,13 +830,18 @@ section {
         display: block;
     }
     
-    .menu {
-        display: none;
+    .nav-links-header {
         position:absolute;
+        top:0%;
+        left: 0%;
+        width: 100%;
+        padding: 2rem 0;
         flex-direction: column;
+        align-items: center;
         gap: 2rem;
-        transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
         opacity: 0;
+        z-index: 0;
+        background-color: #fff;
     }
 
     .pie-pagina {
