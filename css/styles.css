@@ -101,6 +101,13 @@ img {
     max-width: 100%;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+
 /* Lineas de separación */
 
 .contenedor-inicial-index {
@@ -250,14 +257,13 @@ nav {
     font-weight: 650;
     transition: all 500ms ease-in-out;
     transition-delay: 100ms;
-}
 
-.nav-links-header.nav-links-header-mobile {
-    transform: translate(0, 70px);
-    opacity: 1;
-    z-index: 1;
+    & .nav-links-header-mobile {
+        transform: translate(0, 70px);
+        opacity: 1;
+        z-index: 1;
+    }
 }
-
 
 .logo {
     display: flex;
@@ -311,10 +317,11 @@ nav {
     gap: .8rem;
     font-weight: 700;
     font-size: 1.75rem;
-}
 
-.boton-filtros img {
-    width: 25px;
+    & img {
+        width: 25px;
+    
+    }
 }
 
 .elemento-filtro-museo {
@@ -322,23 +329,23 @@ nav {
     flex-direction: column;
     gap: .5rem;
     max-width: 330px;
-}
 
-.elemento-filtro-museo input {
-    border: 0;
-    padding: 1rem;
-    border-radius: 5px;
-}
+    & input {
+        border: 0;
+        padding: 1rem;
+        border-radius: 5px;
+    }
 
-.elemento-filtro-museo select {
-    border: 0;
-    padding: .8rem;
-    border-radius: 5px;
-    appearance: none;
-    background-image: url('../img/svg/flecha-menu-down.svg');
-    background-repeat: no-repeat;
-    background-position: right .7em top 50%, 0 0;
-    background-size: 1em auto, 100%;
+    & select {
+        border: 0;
+        padding: .8rem;
+        border-radius: 5px;
+        appearance: none;
+        background-image: url('../img/svg/flecha-menu-down.svg');
+        background-repeat: no-repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: 1em auto, 100%;
+    }
 }    
 
 .select:focus {
@@ -354,14 +361,14 @@ nav {
     flex-direction: row;
     align-items: center;
     gap: .3rem;
-}
 
-.contenedor-range input {
-    width:60%
-}
+    & input {
+        width:60%
+    }
 
-.contenedor-range p {
-    margin: 0;
+    & p {
+        margin:0;
+    }
 }
 
 .opciones-check {
@@ -369,13 +376,12 @@ nav {
     flex-direction: row;
     gap: 1rem;
 
-}
-
-.opciones-check label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: .5rem;
+    & label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .5rem;
+    }
 }
 
 .form-filtro-museos {
@@ -401,16 +407,17 @@ nav {
     max-width: 250px;
     aspect-ratio: 269/166;
     transition: transform .25s ease-in-out;
-}
 
-.pueblo:hover {
-    transform: scale(1.07);
-}
+    &:hover {
+        transform: scale(1.07);
+    }
 
-.pueblo img {
-    border-radius: 1rem;
-    height: 100%;
-    filter: brightness(.7);
+    & img {
+        border-radius: 1rem;
+        height: 100%;
+        filter: brightness(.7);
+    
+    }
 }
 /* -- ¿Dónde visitar? -- */
 
@@ -429,14 +436,14 @@ nav {
     max-width: 350px;
     box-shadow: 0px 4px 20px 2px rgba(0,0,0,0.25);
     border-radius: 10px;
-}
 
-.museo p {
-    text-align:left;
-}
+    & p{
+        text-align: left;
+    }
 
-.museo img {
-    object-fit: cover;
+    & img {
+        object-fit: cover;
+    }
 }
 
 .boton-card-museo {
@@ -462,20 +469,22 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 1.2rem;
+
+    & p {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    & img {
+        scale: 1.2;
+    }
+
+    & .pagina-actual {
+        color: var(--verde-principal);
+    }
+    
 }
 
-.paginas p {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-.paginas img {
-    scale: 1.2;
-}
-
-.paginas .pagina-actual {
-    color: var(--verde-principal);
-}
 /* - Selector de paginas - */
 /* -- Lista de museos -- */
 
@@ -492,14 +501,14 @@ nav {
     max-width: 700px;
     align-items: normal;
     gap: 2rem;
-}
 
-.main-museo h3 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 0;
-    text-align: left;
-    color: var(--negro);
+    & h3 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0;
+        text-align: left;
+        color: var(--negro);
+    }
 }
 
 .desc-museum {
@@ -516,19 +525,19 @@ nav {
 .exposicion {
     display: flex;
     flex-direction: column;
-}
 
-.exposicion img {
-    width: 216px;
-    aspect-ratio: 36/23;
-    border-radius: 10px;
-    filter: brightness(.7);
-    object-fit: cover;
-}
+    & img {
+        width: 216px;
+        aspect-ratio: 36/23;
+        border-radius: 10px;
+        filter: brightness(.7);
+        object-fit: cover;
+    }
 
-.exposicion p {
-    font-weight: 500;
-    margin:.5rem 0 0 0;
+    & p {
+        font-weight: 500;
+        margin:.5rem 0 0 0;
+    }
 }
 
 .vl {
@@ -543,10 +552,10 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
 
-.contenedor-botones-museo a {
-    margin: 0;
+    & a {
+        margin: 0;
+    }
 }
 
 .boton-comp-entrada {
@@ -651,15 +660,15 @@ input[type="radio"] {
     width: 50%;
     display: grid;
     gap: 3rem;
-}
 
-.formulario-acomp select {
-    background-color: var(--gris-desplegable);
-    border: none;
-    border-radius: 10px;
-    font-size: 2rem;
-    padding: 1.2rem;
-    width: 100%;
+    & select {
+        background-color: var(--gris-desplegable);
+        border: none;
+        border-radius: 10px;
+        font-size: 2rem;
+        padding: 1.2rem;
+        width: 100%;
+    }
 }
 /* -- Usuario -- */
 
@@ -669,11 +678,6 @@ input[type="radio"] {
     flex-direction: column;
     gap: 2rem;
     max-width: 1150px;
-
-
-}
-
-.section-ruta {
     margin-left: 3rem;
 }
 
@@ -709,53 +713,47 @@ input[type="radio"] {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    & p{
+        margin: 0 1.5rem 0 0;
+    }
+
+    & h5 {
+        font-size: 3.5rem;
+        font-weight: 700;
+    }
+
+    & .horas {
+        font-size: 1.4rem;
+    }
     
 }
 
-.parada-ruta p {
-    margin: 0 1.5rem 0 0;
-}
-
-.parada-ruta h5 {
-    font-size: 3.5rem;
-    font-weight: 700;
-}
-
-.parada-ruta .horas {
-    font-size: 1.4rem;
-}
-
 .formulario-ruta {
-   display: flex;
-   gap: 2rem;
-}
+    display: flex;
+    gap: 2rem;
 
-.formulario-ruta select {
-    background-color: var(--gris-claro);
-    border: none;
-    border-radius: 0.3rem;
-    font-family: "Sora";
-    font-size: 1.6rem;
-    padding: .3rem 0 .3rem .7rem;
-    width: 8rem;
-}
+    & select {
+        background-color: var(--gris-claro);
+        border: none;
+        border-radius: 0.3rem;
+        font-family: "Sora";
+        font-size: 1.6rem;
+        padding: .3rem 0 .3rem .7rem;
+        width: 8rem;
+    }
 
-.formulario-ruta label {
-    font-weight: 700;
+    & label {
+        font-weight: 700;
+    }
+
 }
 
 .descanso {
     font-weight: 1.2rem;
     color: var(--gris);
 }
-/* -- Ruta -- */
 
-section {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    margin-bottom: 3.5rem;
-}
 /* ------------- Main ----------------- */
 
 /* ------------- footer ---------------- */
@@ -777,24 +775,23 @@ section {
     display: flex;
     gap: 2rem;
     text-align: center;
-}
 
-.texto-footer p {
-    margin: 0;
+    & p {
+        margin: 0;
+    }
 }
-/* ------------- footer ---------------- */
 
 /* Estilos para alinear a la izquierda */
 .back-arrow {
     display: inline-block;
     text-align: left;
-}
 
-/* Estilos para el enlace */
-.back-arrow a {
-    font-size: 3rem; /* Tamaño de la fuente */
-    text-decoration: none; /* Quita el subrayado */
-    color: black; /* Color del texto */
+    /* Estilos para el enlace */
+    & a {
+        font-size: 3rem; /* Tamaño de la fuente */
+        text-decoration: none; /* Quita el subrayado */
+        color: black; /* Color del texto */
+    }
 }
 
 .contenedor-inicial-museos {
@@ -847,18 +844,22 @@ section {
     .pie-pagina {
         width: 90%;
     }
+
     .texto-footer {
         display: flex;
         flex-direction: column;
         align-items: start;
         gap: 1rem;
     }
+
     h1 {
         font-size: 4rem;
     }
+
     h2 {
         font-size: 3rem;
     }
+
     .pueblo {
         max-width: 90%;
     }
@@ -867,6 +868,7 @@ section {
         width: 100%;
         aspect-ratio: 4/3;
     }
+    
     .imagen-overlay{
         height:100%;
     }
