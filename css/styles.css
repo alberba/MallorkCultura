@@ -110,20 +110,6 @@ section {
     margin-bottom: 3.5rem;
 }
 
-/* Lineas de separación */
-
-.contenedor-inicial-index {
-    max-width: 850px;
-    margin: auto
-}
-
-.contenedor-principal hr {
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-}
-/*-----------------------*/
-
 .ml-4{
     margin-left: 2rem !important;
 }
@@ -233,7 +219,6 @@ section {
 
 }
 
-
 nav {
     padding: 1rem 3rem;
 
@@ -298,6 +283,40 @@ nav {
     margin-bottom: 20rem;
     width: 100%;
 }
+
+.contenedor-principal hr {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* -- Diferentes apartados -- */
+.index {
+    max-width: 85rem;
+    margin: auto
+}
+
+.lista-museos {
+    max-width: 115rem;
+    margin: auto;
+}
+
+.info-museo {
+    max-width: 100rem;
+    margin: auto;
+}
+
+.usuario {
+    max-width: 100rem;
+    margin: auto;
+}
+
+.contenedor-inicial-ruta {
+    max-width: 750px;
+    margin: auto;
+}
+/* -- Diferentes apartados -- */
+
 
 /* -- Filtros -- */
 
@@ -791,32 +810,6 @@ input[type="radio"] {
         text-decoration: none; /* Quita el subrayado */
         color: black; /* Color del texto */
     }
-}
-
-.contenedor-inicial-museos {
-    max-width: 1150px;
-    margin: auto;
-}
-
-/*-------------------------Pantalla-museo1------------------------------*/
-
-.contenedor-inicial-museo {
-    max-width: 1000px;
-    margin: auto;
-}
-
-/* ---------------------------Pagina usuario----------------------------- */  
-
-.contenedor-inicial-usuario {
-    max-width: 1000px;
-    margin: auto;
-}
-
-/* -------------------------- Pantalla-ruta -------------------------- */
-
-.contenedor-inicial-ruta {
-    max-width: 750px;
-    margin: auto;
 }
 
   /* Media Queries */

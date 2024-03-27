@@ -36,121 +36,119 @@
         </div>
     </header>
     <!-- Parte inferior de la pantalla -->
-    <div class="contenedor-inicial-museo">
-        <main class="contenedor-principal">
-            <a class="boton-atras" href="index.html">
-                <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
-                Atrás
-            </a>
-            <!-- Slider para las fotos del museo -->
-            <div class="swiper mySwiper slider-imagen-museo">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
-                    </div>
+    <main class="contenedor-principal info-museo">
+        <a class="boton-atras" href="index.html">
+            <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
+            Atrás
+        </a>
+        <!-- Slider para las fotos del museo -->
+        <div class="swiper mySwiper slider-imagen-museo">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
                 </div>
-                <!-- Botones del slider -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <!-- Marcador de pagina del slider -->
-                <div class="swiper-pagination"></div>
+                <div class="swiper-slide">
+                    <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/museo1-big.webp" alt="Imagen del museo" class="imagen-museo">
+                </div>
             </div>
-            <div class="section-museo">
-                <!-- Parte inferior izquierda -->
-                <article class="main-museo">
-                    <h3 class="m-0">MUSEO 1</h3>
-                    <p class="desc-museum">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu leo semper, accumsan ante in, imperdiet elit. 
-                        Proin lobortis sodales posuere. Fusce tincidunt massa at dictum convallis. Nulla lacinia sodales velit, vel accumsan 
-                        felis finibus et. Donec condimentum fermentum orci id ultricies. Etiam auctor sed est et malesuada. Etiam rutrum et 
-                        eros vehicula tincidunt. Cras nec dictum enim. Cras nulla justo, fermentum in metus non, volutpat porta velit. 
-                        Maecenas a placerat turpis. Nullam porttitor augue quam, vitae ornare nisl faucibus nec. Proin auctor, magna a 
-                        vulputate eleifend, ex diam venenatis sem, nec rhoncus libero nibh accumsan velit. In dignissim lacus vel bibendum 
-                        hendrerit. Fusce vel sapien vel turpis viverra dignissim id vitae felis.
-                    </p>
-                    <p class="desc-museum">
-                        Ut viverra tortor id augue tristique dignissim. Nullam sodales sagittis mauris, convallis tristique nisl tristique 
-                        eget. Pellentesque finibus accumsan quam ut rhoncus. Sed blandit, tellus sed mattis imperdiet, nunc turpis elementum 
-                        nibh, eget maximus dui diam quis neque. Nullam consequat orci ut neque fermentum, non varius sem pretium. Cras vel 
-                        fringilla tortor. Pellentesque id pellentesque ligula, ut hendrerit justo. Mauris ultrices ipsum id ex tristique 
-                        gravida. Sed sapien felis, euismod at efficitur eu, interdum nec diam.
-                    </p>
-                    <section>
-                        <h3 class="mb-4">EXPOSICIONES</h3>
-                        <ol class="exposiciones">
-                            <li class="exposicion">
-                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
-                                <p class="nombre">El Miró de Son Boter</p>
-                                <p class="fecha-exp fecha-verde">Ahora hasta el 12/7/24</p>
-                            </li>
-                            <li class="exposicion">
-                                <img src="img/hab-roja.webp" alt="Portada exposicion Habitación Roja">
-                                <p class="nombre">La Habitación Roja</p>
-                                <p class="fecha-exp">15/5/24 - 31/11/24</p>
-                            </li>
-                            <li class="exposicion">
-                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
-                                <p class="nombre">El Miró de Son Boter</p>
-                                <p class="fecha-exp">16/6/24 - 28/9/24</p>
-                            </li>
-                            <button class="no-style-button boton-slider-exposiciones">
-                                <img src="img/svg/next-page-arr.svg" 
-                                alt="Botón para deslizar la lista de exposiciones">
-                            </button>
-                        </ol>
-                    </sect>
-                    
-                    <div class="contenedor-botones-museo">
-                        <a class="boton boton-verde">Añadir a la ruta</a>
-                        <a class="boton boton-gris boton-comp-entrada">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="44" height="44" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
-                                <path d="M11 13l9 -9" />
-                                <path d="M15 4h5v5" />
-                            </svg>
-                            Comprar entrada
-                        </a>
-                    </div>
-                </article>
-                <!-- Parte inferior derecha -->
-                <div class="vl"></div>
-                <aside>
-                    <h5>Horario</h5>
-                    <p>
-                        Lunes a viernes: 9:00 a 15:00 <br>
-                        Sabado: 12:00 a 20:00 <br>
-                        Domingo y festivos: 11:00 a 15:00
-                    </p>
-                    <h5>Precios</h5>
-                    <p>
-                        Adultos: 12€ <br>
-                        Niños: 7€ <br>
-                        Menores de 3 años: Gratis <br>
-                        Senior: 5€ <br>
-                        Estudiante: 6€ <br>
-                        Residente: 3€ <br>
-                    </p>
-                    <h5>Dirección</h5>
-                    <p>
-                        Carrer de la Pietat, 10 <br>
-                        07012 Palma <br>
-                        971 456 456 <br>
-                        info@museo1.com <br>
-                    </p>
-                </aside>
-            </div>
-        </main>
-    </div>
+            <!-- Botones del slider -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Marcador de pagina del slider -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="section-museo">
+            <!-- Parte inferior izquierda -->
+            <article class="main-museo">
+                <h3 class="m-0">MUSEO 1</h3>
+                <p class="desc-museum">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu leo semper, accumsan ante in, imperdiet elit. 
+                    Proin lobortis sodales posuere. Fusce tincidunt massa at dictum convallis. Nulla lacinia sodales velit, vel accumsan 
+                    felis finibus et. Donec condimentum fermentum orci id ultricies. Etiam auctor sed est et malesuada. Etiam rutrum et 
+                    eros vehicula tincidunt. Cras nec dictum enim. Cras nulla justo, fermentum in metus non, volutpat porta velit. 
+                    Maecenas a placerat turpis. Nullam porttitor augue quam, vitae ornare nisl faucibus nec. Proin auctor, magna a 
+                    vulputate eleifend, ex diam venenatis sem, nec rhoncus libero nibh accumsan velit. In dignissim lacus vel bibendum 
+                    hendrerit. Fusce vel sapien vel turpis viverra dignissim id vitae felis.
+                </p>
+                <p class="desc-museum">
+                    Ut viverra tortor id augue tristique dignissim. Nullam sodales sagittis mauris, convallis tristique nisl tristique 
+                    eget. Pellentesque finibus accumsan quam ut rhoncus. Sed blandit, tellus sed mattis imperdiet, nunc turpis elementum 
+                    nibh, eget maximus dui diam quis neque. Nullam consequat orci ut neque fermentum, non varius sem pretium. Cras vel 
+                    fringilla tortor. Pellentesque id pellentesque ligula, ut hendrerit justo. Mauris ultrices ipsum id ex tristique 
+                    gravida. Sed sapien felis, euismod at efficitur eu, interdum nec diam.
+                </p>
+                <section>
+                    <h3 class="mb-4">EXPOSICIONES</h3>
+                    <ol class="exposiciones">
+                        <li class="exposicion">
+                            <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                            <p class="nombre">El Miró de Son Boter</p>
+                            <p class="fecha-exp fecha-verde">Ahora hasta el 12/7/24</p>
+                        </li>
+                        <li class="exposicion">
+                            <img src="img/hab-roja.webp" alt="Portada exposicion Habitación Roja">
+                            <p class="nombre">La Habitación Roja</p>
+                            <p class="fecha-exp">15/5/24 - 31/11/24</p>
+                        </li>
+                        <li class="exposicion">
+                            <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                            <p class="nombre">El Miró de Son Boter</p>
+                            <p class="fecha-exp">16/6/24 - 28/9/24</p>
+                        </li>
+                        <button class="no-style-button boton-slider-exposiciones">
+                            <img src="img/svg/next-page-arr.svg" 
+                            alt="Botón para deslizar la lista de exposiciones">
+                        </button>
+                    </ol>
+                </sect>
+                
+                <div class="contenedor-botones-museo">
+                    <a class="boton boton-verde">Añadir a la ruta</a>
+                    <a class="boton boton-gris boton-comp-entrada">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="44" height="44" viewBox="0 0 24 24" stroke-width="2.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                            <path d="M11 13l9 -9" />
+                            <path d="M15 4h5v5" />
+                        </svg>
+                        Comprar entrada
+                    </a>
+                </div>
+            </article>
+            <!-- Parte inferior derecha -->
+            <div class="vl"></div>
+            <aside>
+                <h5>Horario</h5>
+                <p>
+                    Lunes a viernes: 9:00 a 15:00 <br>
+                    Sabado: 12:00 a 20:00 <br>
+                    Domingo y festivos: 11:00 a 15:00
+                </p>
+                <h5>Precios</h5>
+                <p>
+                    Adultos: 12€ <br>
+                    Niños: 7€ <br>
+                    Menores de 3 años: Gratis <br>
+                    Senior: 5€ <br>
+                    Estudiante: 6€ <br>
+                    Residente: 3€ <br>
+                </p>
+                <h5>Dirección</h5>
+                <p>
+                    Carrer de la Pietat, 10 <br>
+                    07012 Palma <br>
+                    971 456 456 <br>
+                    info@museo1.com <br>
+                </p>
+            </aside>
+        </div>
+    </main>
     <footer class="pie-pagina mb-4">
         <hr>
         <div class="contenido-footer">
