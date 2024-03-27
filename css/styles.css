@@ -311,9 +311,10 @@ nav {
     margin: auto;
 }
 
-.contenedor-inicial-ruta {
+.ruta {
     max-width: 750px;
     margin: auto;
+    margin-bottom: 20rem;
 }
 /* -- Diferentes apartados -- */
 
