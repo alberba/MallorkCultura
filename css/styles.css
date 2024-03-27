@@ -33,9 +33,11 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
 }
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
 body {
     font-size: 16px; /* 1rem = 10px */
     font-family: 'Krub', sans-serif;
@@ -122,11 +124,9 @@ section {
 }
 /*-----------------------*/
 
-/* ESTA CLASE NO LA ENTIENDO */
 .ml-4{
     margin-left: 2rem !important;
 }
-
 
 /* -------- Botones -------- */
 
@@ -144,29 +144,28 @@ section {
     text-transform: uppercase;
     color: var(--blanco);
     transition: all .1s ease;
-}
 
-
-.boton:hover {
-    color:var(--blanco);
-    transform: scale(1.05);
+    &:hover{
+        color:var(--blanco);
+        transform: scale(1.05);
+    }
 }
 
 /* Colores de los botones */
 .boton-verde {
     background-color: var(--verde-principal);
-}
 
-.boton-verde:hover {
-    background-color: var(--verde-hover);
+    &:hover {
+        background-color: var(--verde-hover);
+    }
 }
 
 .boton-gris {
     background-color: var(--gris);
-}
 
-.boton-gris:hover {
-    background-color: var(--gris-hover);
+    &:hover {
+        background-color: var(--gris-hover);
+    }
 }
 
 /* Botones especificos */
@@ -258,7 +257,7 @@ nav {
     transition: all 500ms ease-in-out;
     transition-delay: 100ms;
 
-    & .nav-links-header-mobile {
+    &.nav-links-header-mobile {
         transform: translate(0, 70px);
         opacity: 1;
         z-index: 1;
@@ -868,7 +867,7 @@ input[type="radio"] {
         width: 100%;
         aspect-ratio: 4/3;
     }
-    
+
     .imagen-overlay{
         height:100%;
     }

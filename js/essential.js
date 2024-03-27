@@ -30,4 +30,3 @@ const max768px = () => {
 
 window.addEventListener('resize', max768px);
 window.addEventListener('load', max768px);
-mostrarMenuMovilHeader();
