@@ -207,6 +207,19 @@ img {
 }
 
 /* Header */
+
+.ubi-header {
+    max-width: 100%;
+    height: 50rem;
+    border:0;
+}
+
+
+/* Sirve para eliminar borde azul al hacer click en el mapa */ 
+.gm-style iframe + div { 
+    border:none!important; 
+}   
+
 /* nav */
 
 nav {

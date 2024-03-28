@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href="img/svg/light-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: light)">
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
+    <script src="js/mapa.js" ></script>
+
 
     <title>MallorkCultura - Museos</title>
 </head>
@@ -28,9 +30,7 @@
                 <img src="img/svg/user.svg" alt="Botón de usuario">
             </a>
         </nav>
-        <div>
-            <img src="img/mallorca-ubi.webp" alt="Mapa hecho con api de google donde aparecerán las ubicaciones de los museos registrados"/>
-        </div>
+        <div id="map" class="ubi-header"></div>
     </header>
     <div class="contenedor-inicial-museo">
         <main class="contenedor-principal">
@@ -157,5 +157,5 @@
 </body>
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="js/swiper.js"></script>
+<script async defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script async defer src="js/swiper.js"></script>
