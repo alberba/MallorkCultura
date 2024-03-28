@@ -21,15 +21,18 @@
 </head>
 <body>
     <header>
+        <!-- Barra superior -->
         <nav class="my-1">
             <a href="index.html" class="logo">
-                <!-- Aquí hay que añadir nuestro logo -->
+                <!-- Foto de nuestro logo -->
                 <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
             </a>
+            <!-- Menu superior derecho -->
             <div class="menu">
                 <a href="pantalla-museos.html">¿Qué visitar?</a>
                 <a href="pantalla-ruta.html">Tu ruta</a>
             </div>
+            <!-- Logo y enlace para redireccion a la seccion de user -->
             <a href="pantalla-usuario.html" class="acceso-usuario">
                 <img src="img/svg/user.svg" alt="Botón de usuario">
             </a>
@@ -38,155 +41,154 @@
             <img src="img/ruta.webp" alt="ruta" width="100%"/>
         </div>
     </header>
-    <div class="contenedor-inicial-ruta">
-        <main class="contenedor-principal contenedor-principal-ruta">
-            <a class="boton-atras mt-2 ml-4" href="index.html">
-                <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
-                Atrás
-            </a>
-            <h2 class="mt-4">Tu ruta</h2>
-            <hr class="my-4">
-            <div class="contenedor-ruta-general mt-5">
-                <div class="vl"></div>
-                <ul class="section-ruta">
-                    <li class="parada-ruta">
-                        <div class="left-museo-ruta">
-                            <p class="horas">9:00 - 11:00</p>
-                            <span class="circ"></span>
-                        </div>
-                        <div>
-                            <h5>Museo 1</h5>
-                            <form class="formulario-ruta">
-                                <div>
-                                    <label for="inicio">Inicio:</label>
-                                    <select name="inicio" id="">
-                                        <option>9:00</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inicio">Duración:</label>
-                                    <select name="inicio" id="">
-                                        <option>2h</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
-                            <img src="img/svg/cruz.svg" 
-                             alt="Símbolo de cruz para tachar un museo de la ruta"
-                            />
-                        </button>
-                    </li>
-                    <div>
-                        <p class="descanso">Descanso: 1h 30min</p>
+    <!-- Parte inferior de la pantalla -->
+    <main class="contenedor-principal ruta">
+        <a class="boton-atras mt-2 ml-4" href="index.html">
+            <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
+            Atrás
+        </a>
+        <h2 class="mt-4">Tu ruta</h2>
+        <hr class="my-4">
+        <div class="contenedor-ruta-general mt-5">
+            <div class="vl"></div>
+            <ul class="section-ruta">
+                <li class="parada-ruta">
+                    <div class="left-museo-ruta">
+                        <p class="horas">9:00 - 11:00</p>
+                        <span class="circ"></span>
                     </div>
-                    <li class="parada-ruta">
-                        <div class="left-museo-ruta">
-                            <p class="horas">12:30 - 13:30</p>
-                            <span class="circ"></span>
-                        </div>
-                        <div>
-                            <h5>Museo 2</h5>
-                            <form class="formulario-ruta">
-                                <div>
-                                    <label for="inicio">Inicio:</label>
-                                    <select name="inicio" id="">
-                                        <option>12:30</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inicio">Duración:</label>
-                                    <select name="inicio" id="">
-                                        <option>1h</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
-                            <img src="img/svg/cruz.svg" 
-                             alt="Símbolo de cruz para tachar un museo de la ruta"
-                            />
-                        </button>
-                    </li>
                     <div>
-                        <p class="descanso">Descanso: 2 horas</p>
+                        <h5>Museo 1</h5>
+                        <form class="formulario-ruta">
+                            <div>
+                                <label for="inicio">Inicio:</label>
+                                <select name="inicio" id="">
+                                    <option>9:00</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="inicio">Duración:</label>
+                                <select name="inicio" id="">
+                                    <option>2h</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
-                    <li class="parada-ruta">
-                        <div class="left-museo-ruta">
-                            <p class="horas">15:30 - 17:30</p>
-                            <span class="circ"></span>
-                        </div>
-                        <div>
-                            <h5>Museo 3</h5>
-                            <form class="formulario-ruta">
-                                <div>
-                                    <label for="inicio">Inicio:</label>
-                                    <select name="inicio" id="">
-                                        <option>15:30</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inicio">Duración:</label>
-                                    <select name="inicio" id="">
-                                        <option>2h</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
-                            <img src="img/svg/cruz.svg" 
-                             alt="Símbolo de cruz para tachar un museo de la ruta"
-                            />
-                        </button>
-                    </li>
-                    <div>
-                        <p class="descanso">Descanso: 1 hora</p>
-                    </div>
-                    <li class="parada-ruta">
-                        <div class="left-museo-ruta">
-                            <p class="horas">18:30 - 19:00</p>
-                            <span class="circ"></span>
-                        </div>
-                        <div>
-                            <h5>Museo 4</h5>
-                            <form class="formulario-ruta">
-                                <div>
-                                    <label for="inicio">Inicio:</label>
-                                    <select name="inicio" id="">
-                                        <option>18:30</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="inicio">Duración:</label>
-                                    <select name="inicio" id="">
-                                        <option>30min</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
-                            <img src="img/svg/cruz.svg" 
-                             alt="Símbolo de cruz para tachar un museo de la ruta"
-                            />
-                        </button>
-                    </li>
-                    <div>
-                        <p class="descanso">Descanso: 1 hora</p>
-                    </div>
-                </ul>
-            </div>
-        </main>
-        <footer class="pie-pagina">
-            <hr>
-            <div class="contenido-footer mb-4">
-                <div class="texto-footer">
-                    <!-- Hay que meter script para actualizar el año actual -->
-                    <p>CopyRight &copy; 2024</p>
-                    <p>Todos los derechos reservados</p>
+                    <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
+                        <img src="img/svg/cruz.svg" 
+                            alt="Símbolo de cruz para tachar un museo de la ruta"
+                        />
+                    </button>
+                </li>
+                <div>
+                    <p class="descanso">Descanso: 1h 30min</p>
                 </div>
-                <a href="#">Contacto</a>
+                <li class="parada-ruta">
+                    <div class="left-museo-ruta">
+                        <p class="horas">12:30 - 13:30</p>
+                        <span class="circ"></span>
+                    </div>
+                    <div>
+                        <h5>Museo 2</h5>
+                        <form class="formulario-ruta">
+                            <div>
+                                <label for="inicio">Inicio:</label>
+                                <select name="inicio" id="">
+                                    <option>12:30</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="inicio">Duración:</label>
+                                <select name="inicio" id="">
+                                    <option>1h</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
+                        <img src="img/svg/cruz.svg" 
+                            alt="Símbolo de cruz para tachar un museo de la ruta"
+                        />
+                    </button>
+                </li>
+                <div>
+                    <p class="descanso">Descanso: 2 horas</p>
+                </div>
+                <li class="parada-ruta">
+                    <div class="left-museo-ruta">
+                        <p class="horas">15:30 - 17:30</p>
+                        <span class="circ"></span>
+                    </div>
+                    <div>
+                        <h5>Museo 3</h5>
+                        <form class="formulario-ruta">
+                            <div>
+                                <label for="inicio">Inicio:</label>
+                                <select name="inicio" id="">
+                                    <option>15:30</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="inicio">Duración:</label>
+                                <select name="inicio" id="">
+                                    <option>2h</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
+                        <img src="img/svg/cruz.svg" 
+                            alt="Símbolo de cruz para tachar un museo de la ruta"
+                        />
+                    </button>
+                </li>
+                <div>
+                    <p class="descanso">Descanso: 1 hora</p>
+                </div>
+                <li class="parada-ruta">
+                    <div class="left-museo-ruta">
+                        <p class="horas">18:30 - 19:00</p>
+                        <span class="circ"></span>
+                    </div>
+                    <div>
+                        <h5>Museo 4</h5>
+                        <form class="formulario-ruta">
+                            <div>
+                                <label for="inicio">Inicio:</label>
+                                <select name="inicio" id="">
+                                    <option>18:30</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="inicio">Duración:</label>
+                                <select name="inicio" id="">
+                                    <option>30min</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <button class="no-style-button cruz-ruta" onclick="eliminarMuseoRuta(this)">
+                        <img src="img/svg/cruz.svg" 
+                            alt="Símbolo de cruz para tachar un museo de la ruta"
+                        />
+                    </button>
+                </li>
+                <div>
+                    <p class="descanso">Descanso: 1 hora</p>
+                </div>
+            </ul>
+        </div>
+    </main>
+    <footer class="pie-pagina">
+        <hr>
+        <div class="contenido-footer mb-4">
+            <div class="texto-footer">
+                <p id="copy-text"></p>
+                <p>Todos los derechos reservados</p>
             </div>
-        </footer>
-    </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+    <script src="js/date.js" defer></script>
 </body>
 </html>

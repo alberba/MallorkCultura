@@ -20,80 +20,82 @@
 </head>
 <body>
     <header>
+        <!-- Barra superior -->
         <nav class="my-1">
             <a href="index.html" class="logo">
-                <!-- Aquí hay que añadir nuestro logo -->
+                <!-- Foto de nuestro logo -->
                 <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
             </a>
+            <!-- Menu superior derecho -->
             <div class="menu">
                 <a href="pantalla-museos.html">¿Qué visitar?</a>
                 <a href="pantalla-ruta.html">Tu ruta</a>
             </div>
+            <!-- Logo y enlace para redireccion a la seccion de user -->
             <a href="pantalla-usuario.html" class="acceso-usuario">
                 <img src="img/svg/user.svg" alt="Botón de usuario">
             </a>
         </nav>
     </header>
-    <div class="contenedor-inicial-usuario">
-        <main class="contenedor-principal">
-            <h2 class="mt-5">Tu perfil</h2>
-            <hr class="my-5">
-            <section class="section-usuario">
-                <form class="formulario-usuario">
-                    <div>
-                        <label for="fecha-nacimiento">Fecha de nacimiento</label>
-                        <input type="date" name="fecha-nacimiento" id="fecha-nacimiento">
-                    </div>
-                    <div>
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
-                    </div>
-                    <div>
-                        <label for="poblacion">Poblacion</label>
-                        <input type="text" name="poblacion" id="poblacion" placeholder="Poblacion">
-                    </div>
-                    <div>
-                        <p>¿Eres estudiante?</p>
-                        <div class="group-radio-buttons">
-                            <div class="radio-buttons">
-                                <input type="radio" name="rd" id="ch-si">
-                                <label for="ch-si">Si</label>
-                            </div>
-                            <div class="radio-buttons">
-                                <input type="radio" name="rd" id="ch-no">
-                                <label for="ch-no">No</label>
-                            </div>
+    <!-- Parte inferior de la pantalla -->
+    <main class="contenedor-principal usuario">
+        <h2 class="mt-5">Tu perfil</h2>
+        <hr class="my-5">
+        <section class="section-usuario">
+            <form class="formulario-usuario">
+                <div>
+                    <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                    <input type="date" name="fecha-nacimiento" id="fecha-nacimiento">
+                </div>
+                <div>
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono">
+                </div>
+                <div>
+                    <label for="poblacion">Poblacion</label>
+                    <input type="text" name="poblacion" id="poblacion" placeholder="Poblacion">
+                </div>
+                <div>
+                    <p>¿Eres estudiante?</p>
+                    <div class="group-radio-buttons">
+                        <div class="radio-buttons">
+                            <input type="radio" name="rd" id="ch-si">
+                            <label for="ch-si">Si</label>
+                        </div>
+                        <div class="radio-buttons">
+                            <input type="radio" name="rd" id="ch-no">
+                            <label for="ch-no">No</label>
                         </div>
                     </div>
-                </form>
-                <button class="boton boton-form boton-verde">Guardar cambios</button>
-            </section>
-            <hr>
-            <section class="section-usuario">
-                <h2 class="mt-5">Acompañantes</h2>
-                <form class="formulario-acomp">
-                    <select>
-                        <option>Nombre Apellido1 Apellido2</option>
-                    </select>
-                    <select>
-                        <option>Nombre Apellido1 Apellido2</option>
-                    </select>
-                </form>
-                <button class="boton boton-form boton-verde">Crear acompañante</button>
-                <img src="img/calendario.webp" alt="Calendario" class="calendario">
-            </section>
-        </main>
-        <footer class="pie-pagina">
-            <hr>
-            <div class="contenido-footer mb-4">
-                <div class="texto-footer">
-                    <!-- Hay que meter script para actualizar el año actual -->
-                    <p>CopyRight &copy; 2024</p>
-                    <p>Todos los derechos reservados</p>
                 </div>
-                <a href="#">Contacto</a>
+            </form>
+            <button class="boton boton-form boton-verde">Guardar cambios</button>
+        </section>
+        <hr>
+        <section class="section-usuario">
+            <h2 class="mt-5">Acompañantes</h2>
+            <form class="formulario-acomp">
+                <select>
+                    <option>Nombre Apellido1 Apellido2</option>
+                </select>
+                <select>
+                    <option>Nombre Apellido1 Apellido2</option>
+                </select>
+            </form>
+            <button class="boton boton-form boton-verde">Crear acompañante</button>
+            <img src="img/calendario.webp" alt="Calendario" class="calendario">
+        </section>
+    </main>
+    <footer class="pie-pagina">
+        <hr>
+        <div class="contenido-footer mb-4">
+            <div class="texto-footer">
+                <p id="copy-text"></p>
+                <p>Todos los derechos reservados</p>
             </div>
-        </footer>
-    </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+    <script src="js/date.js" defer></script>
 </body>
 </html>

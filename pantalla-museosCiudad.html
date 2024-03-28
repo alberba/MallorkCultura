@@ -14,15 +14,18 @@
 </head>
 <body>
     <header>
+        <!-- Barra superior -->
         <nav class="my-1">
             <a href="index.html" class="logo">
-                <!-- Aquí hay que añadir nuestro logo -->
+                <!-- Foto de nuestro logo -->
                 <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
             </a>
+            <!-- Menu superior derecho -->
             <div class="menu">
                 <a href="pantalla-museos.html">¿Qué visitar?</a>
                 <a href="pantalla-ruta.html">Tu ruta</a>
             </div>
+            <!-- Logo y enlace para redireccion a la seccion de user -->
             <a href="pantalla-usuario.html" class="acceso-usuario">
                 <img src="img/svg/user.svg" alt="Botón de usuario">
             </a>
@@ -34,123 +37,124 @@
             />
         </div>
     </header>
-    <div class="contenedor-inicial-museos">
-        <main class="contenedor-principal">
-            <a class="boton-atras" href="index.html">
-                <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
-                Inicio
-            </a>
-            <h2 class="mt-5">Palma</h2>
-            <hr>
-            <div class="contenedor-filtros">
-                <button class="boton-filtros">
-                    Filtros
-                    <img src="img/svg/flecha-menu-down.svg" alt="">
-                </button>
-                <form action="" class="form-filtro-museos mt-3">
-                    <div class="elemento-filtro-museo">
-                        <label for="busqueda-nombre">Busqueda por nombre</label>
-                        <input type="search" name="nombre" id="busqueda-nombre" placeholder="Buscar museo">
+    <!-- Parte inferior de la pantalla -->
+    <main class="contenedor-principal lista-museos">
+        <!-- Boton de retorno -->
+        <a class="boton-atras" href="javascript:history.back()">
+            <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
+            Atrás
+        </a>
+        <h2 class="mt-5">Palma</h2>
+        <hr>
+        <!-- Menu de filtros -->
+        <div class="contenedor-filtros">
+            <button class="boton-filtros">
+                Filtros
+                <img src="img/svg/flecha-menu-down.svg" alt="">
+            </button>
+            <!-- Form que se encarga de recibir el input -->
+            <form action="" class="form-filtro-museos mt-3">
+                <div class="elemento-filtro-museo">
+                    <label for="busqueda-nombre">Busqueda por nombre</label>
+                    <input type="search" name="nombre" id="busqueda-nombre" placeholder="Buscar museo">
+                </div>
+                <div class="elemento-filtro-museo">
+                    <label for="">Ordenar por cercanía</label>
+                    <input type="search" name="" id="busqueda-cercania" placeholder="Dirección">
+                </div>
+                <div class="elemento-filtro-museo">
+                    <label for="">Radio de búsqueda</label>
+                    <div class="contenedor-range">
+                        <input type="range" name="" id="busqueda-radio" placeholder="Radio de búsqueda">
+                        <p>10km</p>
                     </div>
-                    <div class="elemento-filtro-museo">
-                        <label for="">Ordenar por cercanía</label>
-                        <input type="search" name="" id="busqueda-cercania" placeholder="Dirección">
+                </div>
+                <div class="elemento-filtro-museo">
+                    <label for="">Tipo de exposición</label>
+                    <select name="" id="seleccion-exposicion" class="select">
+                        <option value="1" selected>Todos</option>
+                        <option value="2">Contemporánea</option>
+                        <option value="3">Clásico</option>
+                    </select>
+                </div>
+                <div class="elemento-filtro-museo">
+                    <label for="dia_visita">Día de visita:</label>
+                    <input type="date" name="" id="">
+                </div>
+                <div id="tipo-entrada elemento-filtro-museo">
+                    <p>Tipo de entrada:</p>
+                    <div class="opciones-check">
+                        <label for="gratuito">
+                        <input type="checkbox" id="gratuito" name="tipo_entrada[]"> Gratuito
+                        </label>
+                        <label for="entrada">
+                        <input type="checkbox" id="entrada" name="tipo_entrada[]"> Entrada
+                        </label>
                     </div>
-                    <div class="elemento-filtro-museo">
-                        <label for="">Radio de búsqueda</label>
-                        <div class="contenedor-range">
-                            <input type="range" name="" id="busqueda-radio" placeholder="Radio de búsqueda">
-                            <p>10km</p>
-                        </div>
                     </div>
-                    <div class="elemento-filtro-museo">
-                        <label for="">Tipo de exposición</label>
-                        <select name="" id="seleccion-exposicion" class="select">
-                            <option value="1" selected>Todos</option>
-                            <option value="2">Contemporánea</option>
-                            <option value="3">Clásico</option>
-                        </select>
-                    </div>
-                    <div class="elemento-filtro-museo">
-                        <label for="dia_visita">Día de visita:</label>
-                        <input type="date" name="" id="">
-                    </div>
-                    <div id="tipo-entrada elemento-filtro-museo">
-                        <p>Tipo de entrada:</p>
-                        <div class="opciones-check">
-                          <label for="gratuito">
-                            <input type="checkbox" id="gratuito" name="tipo_entrada[]"> Gratuito
-                          </label>
-                          <label for="entrada">
-                            <input type="checkbox" id="entrada" name="tipo_entrada[]"> Entrada
-                          </label>
-                        </div>
-                      </div>
-                      
                     
-                </form>
+                
+            </form>
+        </div>
+        <section>
+            <div class="contenedor-museos">
+                <!------------ museos ------------>
+                <article class="museo">
+                    <img src="img/museo1-small.webp" alt="Museo 1">
+                    <header class="titulo-museo-card">
+                        <h4 class="mb-2 mt-3">Museo 1</h4>
+                    </header>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed.</p>
+                    <div class="botones-museo">
+                        <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
+                        <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
+                    </div>
+                </article>
+                <article class="museo">
+                    <img src="img/museo1-small.webp" alt="Museo 1">
+                    <header class="titulo-museo-card">
+                        <h4 class="mb-2 mt-3">Museo 1</h4>
+                    </header>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed.</p>
+                    <div class="botones-museo">
+                        <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
+                        <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
+                    </div>
+                </article>
+                <article class="museo">
+                    <img src="img/museo1-small.webp" alt="Museo 1">
+                    <header class="titulo-museo-card">
+                        <h4 class="mb-2 mt-3">Museo 1</h4>
+                    </header>
+                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed.</p>
+                    <div class="botones-museo">
+                        <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
+                        <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
+                    </div>
+                </article>
+                <!------------ fin museos ----------------->
             </div>
-            <section>
-                <div class="contenedor-museos">
-                    <!------------ museos ------------>
-                    <article class="museo">
-                        <img src="img/museo1-small.webp" alt="Museo 1">
-                        <header class="titulo-museo-card">
-                            <h4 class="mb-2 mt-3">Museo 1</h4>
-                        </header>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed.</p>
-                        <div class="botones-museo">
-                            <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
-                            <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
-                        </div>
-                    </article>
-                    <article class="museo">
-                        <img src="img/museo1-small.webp" alt="Museo 1">
-                        <header class="titulo-museo-card">
-                            <h4 class="mb-2 mt-3">Museo 1</h4>
-                        </header>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed.</p>
-                        <div class="botones-museo">
-                            <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
-                            <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
-                        </div>
-                    </article>
-                    <article class="museo">
-                        <img src="img/museo1-small.webp" alt="Museo 1">
-                        <header class="titulo-museo-card">
-                            <h4 class="mb-2 mt-3">Museo 1</h4>
-                        </header>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed.</p>
-                        <div class="botones-museo">
-                            <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
-                            <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
-                        </div>
-                    </article>
-                    <!------------ fin pueblos ----------------->
-                </div>
-                <div class="paginas">
-                    <a href="#">
-                        <img src="img/svg/prev-page-arr.svg" alt="Página anterior">
-                    </a>
-                    <p><span class="pagina-actual">1</span>..<span class="pagina-actual">1</span></p>
-                    <a href="#">
-                        <img src="img/svg/next-page-arr.svg" alt="Página siguiente">
-                    </a>
-                </div>
-            </section>
-            <hr>
-        </main>
-    
-        <footer class="pie-pagina">
-            <hr>
-            <div class="contenido-footer">
-                <div class="texto-footer">
-                    <!-- Hay que meter script para actualizar el año actual -->
-                    <p>CopyRight &copy; 2024</p>
-                    <p>Todos los derechos reservados</p>
-                </div>
-                <a href="#">Contacto</a>
+            <div class="paginas">
+                <a href="#">
+                    <img src="img/svg/prev-page-arr.svg" alt="Página anterior">
+                </a>
+                <p><span class="pagina-actual">1</span>..<span class="pagina-actual">1</span></p>
+                <a href="#">
+                    <img src="img/svg/next-page-arr.svg" alt="Página siguiente">
+                </a>
             </div>
-        </footer>
-    </div>
+        </section>
+        <hr>
+    </main>
+    <footer class="pie-pagina">
+        <hr>
+        <div class="contenido-footer">
+            <div class="texto-footer">
+                <p id="copy-text"></p>
+                <p>Todos los derechos reservados</p>
+            </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+    <script src="js/date.js" defer></script>
 </body>

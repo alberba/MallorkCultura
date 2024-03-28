@@ -17,5 +17,6 @@
 - [ ] Añadir sección sobre nosotros (correo/nombre/DNI) 
 - [ ] Cambiar posición titulo museo pantalla-museo1
 - [ ] Añadir comentarios/valoraciones a los museos 
+- [X] Quitar los contenedores de contenedor-inicial-blablabla
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página

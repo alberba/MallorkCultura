@@ -15,6 +15,7 @@
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
 
     <script src="js/login.js" defer></script>
+    <script src="js/essential.js" defer></script>
 
     <!-- Habra que meter internamente el bootstrap-->
     
@@ -23,109 +24,122 @@
 </head>
 <body>
     <header>
-        <nav class="my-1">
-            <a href="index.html" class="logo">
-                <!-- Aquí hay que añadir nuestro logo -->
-                <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
-            </a>
-            <div class="menu">
-                <a href="pantalla-museos.html">¿Qué visitar?</a>
-                <a href="pantalla-ruta.html">Tu ruta</a>
+        <nav id="nav-header" class="my-1">
+            <div>
+                <!-- Barra superior -->
+                <a href="index.html" class="logo">
+                    <!-- Foto de nuestro logo -->
+                    <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
+                </a>
+                <button class="menu_icon no-style-button">
+                    <img src="img/svg/menu.svg" alt="Botón de menú"/>
+                </button>
+                <div class="nav-links-header">
+                    <a href="pantalla-museos.html">¿Qué visitar?</a>
+                    <a href="pantalla-ruta.html">Tu ruta</a>
+                </div>
+                <div id="google-signin">
+                    <div id="g_id_onload"
+                        data-client_id="669018232457-8piobleimi9a5rtme1788v41ailh6es1.apps.googleusercontent.com"
+                        data-context="signin"
+                        data-ux_mode="popup"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                
+                    <div class="g_id_signin"
+                        data-type="standard"
+                        data-shape="pill"
+                        data-theme="outline"
+                        data-text="signin"
+                        data-size="large"
+                        data-logo_alignment="left">
+                    </div>
+                </div>
+                
+                <!-- Logo y enlace para redireccion a la seccion de user -->
+                <!-- Esto tiene que estar desaparecido hasta que se haya iniciado sesión -->
+                <!--<a href="pantalla-usuario.html" class="acceso-usuario">
+                    <img src="img/svg/user.svg" alt="Botón de usuario">
+                </a>-->
             </div>
-            <div id="g_id_onload"
-                data-client_id="669018232457-8piobleimi9a5rtme1788v41ailh6es1.apps.googleusercontent.com"
-                data-context="signin"
-                data-ux_mode="popup"
-                data-callback="handleCredentialResponse"
-                data-auto_prompt="false">
-            </div>
-        
-            <div class="g_id_signin"
-                data-type="standard"
-                data-shape="pill"
-                data-theme="outline"
-                data-text="signin"
-                data-size="large"
-                data-logo_alignment="left">
-            </div>
-            <a href="pantalla-usuario.html" class="acceso-usuario">
-                <img src="img/svg/user.svg" alt="Botón de usuario">
-            </a>
         </nav>
+        <!-- Imagen principal -->
         <div class="overlay header-image">
             <img src="img/main.webp" alt="Fotografía de dos monumentos de Es Baluard" class="imagen-overlay"/>
-            <div class="texto-main-img texto-overlay m-0">
-                <h1 class="mu-0 mb-4" id="titulo-inicio">MallorkCultura</h1>
+            <!-- Texto de la imagen principal -->
+            <div class="texto-main-page texto-overlay m-0">
+                <h1 class="mu-0 mb-4">MallorkCultura</h1>
                 <p>Planifica tu ruta ya</p>
             </div>
         </div>
     </header>
-    <div class="contenedor-inicial-index">
-        <main class="contenedor-principal">
-            <h2 class="mt-5">¿Dónde visitar?</h2>
-            <hr>
-            <section>
-                <div class="contenedor-pueblos my-5">
-                    <!------------ pueblos ------------>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/palma.webp" alt="Foto de la Catedral de Palma" class="imagen-overlay">
-                        <h3 class="texto-overlay">Palma</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/manacor.webp" alt="Foto de la ciudad de Manacor" class="imagen-overlay">
-                        <h3 class="texto-overlay">Manacor</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/soller.webp" alt="Foto de Soller con su tren" class="imagen-overlay">
-                        <h3 class="texto-overlay">Sóller</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/valldemossa.webp" alt="Foto de Valldemossa" class="imagen-overlay">
-                        <h3 class="texto-overlay">Valldemossa</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/inca.webp" alt="Foto de las calles de Inca" class="imagen-overlay">
-                        <h3 class="texto-overlay">Inca</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/calvia.webp" alt="Foto de Calvia" class="imagen-overlay">
-                        <h3 class="texto-overlay">Calvia</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/alcudia.webp" alt="Foto de una calle de Alcúdia" class="imagen-overlay">
-                        <h3 class="texto-overlay">Alcúdia</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/santanyi.webp" alt="Foto de las costas de Santanyí" class="imagen-overlay">
-                        <h3 class="texto-overlay">Santanyí</h3>
-                    </a>
-                    <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
-                        <img src="img/pueblos/porreres.webp" alt="Foto de la iglesia de Porreres" class="imagen-overlay">
-                        <h3 class="texto-overlay">Porreres</h3>
-                    </a>
-                    <!------------ fin pueblos ----------------->
-                </div>
-                <a href="pantalla-museos.html" class="boton boton-vermas-index boton-verde">Ver más</a>
-            </section>
-            <hr>
-        </main>
-        <footer class="pie-pagina">
-            <hr>
-            <div class="contenido-footer mb-4">
-                <div class="texto-footer">
-                    <!-- Hay que meter script para actualizar el año actual -->
-                    <p>CopyRight &copy; 2024</p>
-                    <p>Todos los derechos reservados</p>
-                </div>
-                <a href="#">Contacto</a>
+    <!-- Parte inferior de la pantalla -->
+    <main class="contenedor-principal index">
+        <h2 class="mt-5">¿Dónde visitar?</h2>
+        <hr>
+        <section>
+            <div class="contenedor-pueblos my-5">
+                <!------------ pueblos ------------>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/palma.webp" alt="Foto de la Catedral de Palma" class="imagen-overlay">
+                    <p class="texto-overlay">Palma</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/manacor.webp" alt="Foto de la ciudad de Manacor" class="imagen-overlay">
+                    <p class="texto-overlay">Manacor</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/soller.webp" alt="Foto de Soller con su tren" class="imagen-overlay">
+                    <p class="texto-overlay">Sóller</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/valldemossa.webp" alt="Foto de Valldemossa" class="imagen-overlay">
+                    <p class="texto-overlay">Valldemossa</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/inca.webp" alt="Foto de las calles de Inca" class="imagen-overlay">
+                    <p class="texto-overlay">Inca</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/calvia.webp" alt="Foto de Calvia" class="imagen-overlay">
+                    <p class="texto-overlay">Calvia</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/alcudia.webp" alt="Foto de una calle de Alcúdia" class="imagen-overlay">
+                    <p class="texto-overlay">Alcúdia</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/santanyi.webp" alt="Foto de las costas de Santanyí" class="imagen-overlay">
+                    <p class="texto-overlay">Santanyí</p>
+                </a>
+                <a href="pantalla-museosCiudad.html" class="pueblo overlay col-lg-4">
+                    <img src="img/pueblos/porreres.webp" alt="Foto de la iglesia de Porreres" class="imagen-overlay">
+                    <p class="texto-overlay">Porreres</p>
+                </a>
+                <!------------ fin pueblos ----------------->
             </div>
-        </footer>
-    </div>
+            <a href="pantalla-museos.html" class="boton boton-vermas-index boton-verde">Ver más</a>
+        </section>
+        <hr>
+    </main>
+    <footer class="pie-pagina">
+        <hr>
+        <div class="contenido-footer mb-4">
+            <div class="texto-footer">
+                <p id="copy-text"></p>
+                <p>Todos los derechos reservados</p>
+            </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+    <script src="js/date.js" defer></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         function handleCredentialResponse(response) {
             decodeJwtResponse(response.credential);
         }
     </script>
+
 </body>
 </html>
