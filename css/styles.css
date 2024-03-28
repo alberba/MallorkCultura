@@ -242,6 +242,10 @@ nav {
     }
 }
 
+.menu_icon {
+    display: none;
+}
+
 .nav-links-header {
     display: flex;
     justify-content: space-around;
