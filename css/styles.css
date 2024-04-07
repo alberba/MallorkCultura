@@ -4,7 +4,8 @@
     url('../font/Sora-VariableFont_wght.ttf') format('woff2'),             /* Super Modern Browsers */
     url('../font/Sora-VariableFont_wght.ttf') format('woff'),              /* Pretty Modern Browsers */
     url('../font/Sora-VariableFont_wght.ttf') format('truetype'),          /* Safari, Android, iOS */
-    url('../font/Sora-VariableFont_wght.ttf') format('svg');               /* Legacy iOS */
+    url('../font/Sora-VariableFont_wght.ttf') format('svg');  
+    font-weight: 1 1000;
 }
 
 :root {
@@ -26,7 +27,7 @@
     --negro: #000000;
     --verde-principal: #00B532;
     --verde-hover: #01a12e;
-    --sombra: #333333;
+    --sombra: rgba(33, 33, 33);
 }
 
 html {
@@ -280,7 +281,7 @@ nav {
     display: flex;
     align-items: center;
     flex-direction: column;
-    text-shadow: var(--sombra) 0 5px 10px;
+    text-shadow: var(--sombra) 0 .5rem 1rem;
 }
 
 .texto-main-img p {
