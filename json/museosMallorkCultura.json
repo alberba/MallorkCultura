@@ -1,19 +1,59 @@
 {
+    "@type": "Collection",
+    "@context": "https://schema.org",
     "museums" : [
         {
-            "@context": "https://schema.org",
             "@type": ["TouristAttraction","Museum"],
-            "openingHours" : "",
+            "openingHours" : ["Tu-Sa 10:00-20:00", "Su 10:00-15:00"],
             "additionalProperty" : "",
-            "address" : "",
+            "address" : {
+                "@type": "PostalAddress",
+                "streetAddress": "Plaza Porta de Santa Catalina 10",
+                "addressLocality": "Palma",
+                "postalCode": "07012",
+                "addressCountry": "Spain"
+            },
             "aggregateRating" : "",
             "amenityFeature" : "",
             "branchCode" : "",
             "containedInPlace" : "",
             "containsPlace" : "",
-            "event" : "",
-            "faxNumber" : "" ,
-            "geo" : "",
+            "event" : [
+                {
+                    "@type": "Event",
+                    "name": "Bel Fullana. Tractor Buddy",
+                    "description": "",
+                    "eventSchedule": {
+                        "@type": "Schedule",
+                        "startDate": "2024-03-22",
+                        "endDate": "2024-06-09"
+                    },
+                    "organizer": {
+                        "@type": "Person",
+                        "name": "Núria Gómez Gabriel"
+                    }
+                },
+                {
+                    "@type": "Event",
+                    "name": "En diálogo: Museo y Colección",
+                    "description": "",
+                    "eventSchedule": {
+                        "@type": "Schedule",
+                        "startDate": "2024-01-31",
+                        "endDate": "2024-05-26"
+                    },
+                    "organizer": {
+                        "@type": "Person",
+                        "name": "Núria Gómez Gabriel"
+                    }
+                }
+            ],
+            "faxNumber" : "+34971908203" ,
+            "geo" : {
+                "@type": "GeoCoordinates",
+                "latitude": "39.5702375",
+                "longitude": "2.64114266"
+            },
             "geoContains" : "",
             "geoCoveredBy" : "",
             "geoCovers" : "",
@@ -27,31 +67,78 @@
             "globalLocationNumber" : "",
             "hasCertification" : "",
             "hasDriveThroughService" : "",
-            "hasMap" : "",
-            "isAccessibleForFree" : "",
+            "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
+            "hasOfferCatalog" : {
+                "@type": "OfferCatalog",
+                "name": "Tipo de entradas",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general",
+                            "description": "Entrada general al museo",
+                            "priceCurrency": "EUR"
+                        },
+                        "price": "6.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida",
+                            "description": "Entrada reducida al museo para estudiantes, jubilados y grupos culturales y educativos"
+                        },
+                        "price": "4.50",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada gratuita",
+                            "description": "Entrada gratuita para menores de 12 años, desempleados, discapacitados, periodistas, personal docente y miembros del ICOM"
+                        },
+                        "price": "0.00",
+                        "priceCurrency": "EUR"
+                    }
+                ]
+            },
+            "isAccessibleForFree" : false,
             "isicV4" : "",
             "keywords" : "",
-            "latitude" : "",
+            "latitude" : "39.5702375",
             "logo" : "",
-            "longitude" : "",
+            "longitude" : "2.64114266",
             "maximumAttendeeCapacity" : "",
             "openingHoursSpecification" : "",
-            "photo" : "",
-            "publicAccess" : "",
-            "review" : "",
-            "slogan" : "",
-            "smokingAllowed" : "",
+            "photo" : [
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/img-principal.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposicion1.webp",
+                    "description": "Imagen de una zona del museo Es Baluard"
+                }
+
+            ],
+            "publicAccess" : true,
+            "smokingAllowed" : false,
             "specialOpeningHoursSpecification" : "",
-            "telephone" : "",
+            "telephone" : "+34971908200",
             "tourBookingPage" : "",
             "additionalType" : "",
             "alternateName" : "",
-            "description" : "",
+            "description" : "Convertido en sus diferentes fases desde 2004 en el mayor espacio para la conservación y difusión del arte contemporáneo en las Islas Baleares, los diferentes espacios del museo han ido adquiriendo sentido y función de una manera orgánica acorde con su función patrimonial y las necesidades de los públicos.\nEl edificio principal fue diseñado en 2003 por Lluís García-Ruiz, Jaume García-Ruiz, Vicente Tomás y Angel Sánchez Cantalejo, tiene una superficie total de 5.027 m², de los que 2.500 se destinan a espacios expositivos. Está dividido en tres plantas que se relacionan con el exterior, con las murallas y entre sí mediante rampas, claraboyas y grandes balcones interiores, buscando la idea de calle interior.\nDefinido por líneas simples y limpias, el edificio del Museo es del todo respetuoso con el entorno patrimonial e histórico que le rodea y aloja; se integra perfectamente dentro del perfil del baluarte renacentista. El diálogo entre la arquitectura contemporánea del nuevo edificio y la antigua muralla está presente en todo momento y es constante, y uno se da cuenta a medida que recorre los diferentes espacios del museo. El proyecto pretende ser integrador de la construcción moderna y respetar el patrimonio antiguo de las murallas; a la vez que diferenciador. Por este motivo se han utilizado materiales como el hormigón y el vidrio, que permiten distinguir perfectamente las dos tipologías constructivas.\nLos espacios exteriores son concebidos como lugares de exposición y paseo, trazando un recorrido por el perímetro de la muralla. El gran aljibe se mantiene también como espacio expositivo, a la vez que acoge actos diversos en función de la programación del museo.",
             "disambiguatingDescription" : "",
             "identifier" : "",
             "image" : "",
             "mainEntityOfPage" : "",
-            "name" : "",
+            "name" : "Es Baluard Museu d'Art Modern i Contemporani de Palma",
             "potentialAction" : "",
             "sameAs" : "",
             "subjectOf" : "",
