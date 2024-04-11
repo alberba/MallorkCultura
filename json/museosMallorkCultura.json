@@ -143,19 +143,35 @@
             "url" : ""
         },
         {
-            "@context": "https://schema.org",
             "@type": ["TouristAttraction","Museum"],
-            "openingHours" : "",
+            "openingHours" : "Tu-Su 10:00-14:00",
             "additionalProperty" : "",
-            "address" : "",
+            "address" : "Crta. Dique del Oest s/n 07015 Palma - Illes Balears",
             "aggregateRating" : "",
             "amenityFeature" : "",
             "branchCode" : "",
             "containedInPlace" : "",
             "containsPlace" : "",
-            "event" : "",
+            "event" : [
+                {
+                    "@type": "Event",
+                    "name": "Día de las Islas Baleares",
+                    "description": "",
+                    "eventSchedule": {
+                        "@type": "Schedule",
+                        "startDate": "2024-03-09",
+                        "startTime" : "2024-03-09 10:00",
+                        "endDate": "2024-03-09",
+                        "endTime" : "2024-03-09 17:00"
+                    }
+                }
+            ],
             "faxNumber" : "" ,
-            "geo" : "",
+            "geo" : {
+                "@type": "GeoCoordinates",
+                "latitude": "39.54562",
+                "longitude": "2.62897"
+            },
             "geoContains" : "",
             "geoCoveredBy" : "",
             "geoCovers" : "",
@@ -169,31 +185,42 @@
             "globalLocationNumber" : "",
             "hasCertification" : "",
             "hasDriveThroughService" : "",
-            "hasMap" : "",
-            "isAccessibleForFree" : "",
+            "hasMap" : "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
+            "isAccessibleForFree" : true,
             "isicV4" : "",
             "keywords" : "",
-            "latitude" : "",
+            "latitude" : "39.54562",
             "logo" : "",
-            "longitude" : "",
+            "longitude" : "2.62897",
             "maximumAttendeeCapacity" : "",
             "openingHoursSpecification" : "",
-            "photo" : "",
-            "publicAccess" : "",
+            "photo" : [
+                {
+                    "@type" : "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/vista-aerea.webp",
+                    "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
+                },
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/img-principal.webp",
+                    "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
+                }
+            ],
+            "publicAccess" : true,
             "review" : "",
             "slogan" : "",
             "smokingAllowed" : "",
             "specialOpeningHoursSpecification" : "",
-            "telephone" : "",
+            "telephone" : "+34971402145",
             "tourBookingPage" : "",
             "additionalType" : "",
             "alternateName" : "",
-            "description" : "",
+            "description" : "A principios del año 1600 comienza a plantearse entre los miembros del Colegio de Mercaderes la necesidad de construir un fuerte que resguarde el puerto de Palma por el oeste, en las inmediaciones de lo que fue un antiguo puerto romano llamado Porto Pi. La nueva fortificación se construyó en el emplazamiento de una torre de vigía, cuya existencia se conoce por cuadros (como el de Pere Nissart y grabados de la época). La torre quedó embutida dentro de la nueva construcción manteniendo la función de faro o farol. Posteriormente, de 1662 a 1663, el castillo se amplió a partir del núcleo rectangular inicial, conservándolo. Se construyó así una circunvalación con otros cuatro grandes baluartes y adquiriendo su forma peculiar de polígono irregular de apariencia estrellada. Durante la Guerra de Sucesión, se añadieron algunas construcciones defensivas en el exterior, frente al mar. \nEn 1981 se comenzó su rehabilitación para convertirlo en un museo que albergara los fondos procedentes del recién cerrado Parque de Artillería. Con otros fondos procedentes del Museo del Ejército, de las unidades de la Zona Militar de Baleares y de donaciones particulares, se inauguró finalmente el Museo del Castillo de San Carlos el 26 de septiembre de 1991. En 1994, con la ayuda varias entidades públicas y privadas, entre ellas la Asociación de Amigos del Castillo de San Carlos, el museo fue dotado de dos nuevas salas y se mejoró la entrada y la iluminación del edificio. En 1997 se creó el Consorcio Castillo de San Carlos, que gestiona el museo y del que forman parte el Ministerio de Defensa, el Govern de les Illes Balears, el Consell Insular de Mallorca y el Ayuntamiento de Palma.",
             "disambiguatingDescription" : "",
             "identifier" : "",
             "image" : "",
             "mainEntityOfPage" : "",
-            "name" : "",
+            "name" : "Museo Histórico Militar de San Carlos",
             "potentialAction" : "",
             "sameAs" : "",
             "subjectOf" : "",
