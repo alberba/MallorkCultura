@@ -77,8 +77,7 @@
                         "itemOffered": {
                             "@type": "Product",
                             "name": "Entrada general",
-                            "description": "Entrada general al museo",
-                            "priceCurrency": "EUR"
+                            "description": "Entrada general al museo"
                         },
                         "price": "6.00",
                         "priceCurrency": "EUR"
@@ -124,7 +123,6 @@
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposicion1.webp",
                     "description": "Imagen de una zona del museo Es Baluard"
                 }
-
             ],
             "publicAccess" : true,
             "smokingAllowed" : false,
