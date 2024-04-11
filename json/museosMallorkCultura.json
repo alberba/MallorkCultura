@@ -146,7 +146,13 @@
             "@type": ["TouristAttraction","Museum"],
             "openingHours" : "Tu-Su 10:00-14:00",
             "additionalProperty" : "",
-            "address" : "Crta. Dique del Oest s/n 07015 Palma - Illes Balears",
+            "address" : {
+                "@type": "PostalAddress",
+                "streetAddress": "Dique del Oest s/n",
+                "addressLocality": "Palma",
+                "postalCode": "07015",
+                "addressCountry": "Spain"
+            },
             "aggregateRating" : "",
             "amenityFeature" : "",
             "branchCode" : "",
