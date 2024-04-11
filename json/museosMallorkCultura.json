@@ -209,7 +209,7 @@
             "publicAccess" : true,
             "review" : "",
             "slogan" : "",
-            "smokingAllowed" : "",
+            "smokingAllowed" : false,
             "specialOpeningHoursSpecification" : "",
             "telephone" : "+34971402145",
             "tourBookingPage" : "",
