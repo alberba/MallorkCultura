@@ -237,7 +237,13 @@
             "@type": ["TouristAttraction","Museum"],
             "openingHours" : "",
             "additionalProperty" : "",
-            "address" : "",
+            "address" : {
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "",
+                "postalCode": "",
+                "addressCountry": "Spain"
+            },
             "aggregateRating" : "",
             "amenityFeature" : "",
             "branchCode" : "",
@@ -260,7 +266,7 @@
             "hasCertification" : "",
             "hasDriveThroughService" : "",
             "hasMap" : "",
-            "isAccessibleForFree" : "",
+            "isAccessibleForFree" : false,
             "isicV4" : "",
             "keywords" : "",
             "latitude" : "",
@@ -268,14 +274,25 @@
             "longitude" : "",
             "maximumAttendeeCapacity" : "",
             "openingHoursSpecification" : "",
-            "photo" : "",
-            "publicAccess" : "",
+            "photo" : [
+                {
+                    "@type" : "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/img-principal.webp",
+                    "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
+                },
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/interior.webp",
+                    "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
+                }
+            ],
+            "publicAccess" : true,
             "review" : "",
             "slogan" : "",
-            "smokingAllowed" : "",
+            "smokingAllowed" : false,
             "specialOpeningHoursSpecification" : "",
-            "telephone" : "",
-            "tourBookingPage" : "",
+            "telephone" : "+34971171683",
+            "tourBookingPage" : "https://www.rafanadalmuseum.com/producto/entrada-museo/",
             "additionalType" : "",
             "alternateName" : "",
             "description" : "",
@@ -283,11 +300,11 @@
             "identifier" : "",
             "image" : "",
             "mainEntityOfPage" : "",
-            "name" : "",
+            "name" : "Rafa Nadal Museum",
             "potentialAction" : "",
             "sameAs" : "",
             "subjectOf" : "",
-            "url" : ""
+            "url" : "https://www.rafanadalmuseum.com/"
         }
     ]
 }
