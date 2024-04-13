@@ -294,7 +294,7 @@ nav {
 
 .contenedor-principal {
     /* esto tal vez haya que cambiarlo */
-    margin-bottom: 20rem;
+    margin-bottom: 15rem !important;
     width: 100%;
 }
 
@@ -307,7 +307,7 @@ nav {
 /* -- Diferentes apartados -- */
 .index {
     max-width: 91rem;
-    margin: auto;
+    margin: 0 auto;
 
     & section {
         margin: auto 3rem;

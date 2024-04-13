@@ -9,7 +9,7 @@
 - [ ] Añadir sección sobre nosotros (correo/nombre/DNI) 
 - [ ] Cambiar posición titulo museo pantalla-museo1
 - [ ] Añadir comentarios/valoraciones a los museos
-- [ ] Añadir margin-bottom al main de las páginas
+- [x] Añadir margin-bottom al main de las páginas
 - [X] Quitar los contenedores de contenedor-inicial-blablabla
 - [ ] Centrar botón del menú al centro
 ### JavaScript
