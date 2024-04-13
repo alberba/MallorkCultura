@@ -855,9 +855,6 @@ input[type="radio"] {
     }
 
     .texto-footer {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
         gap: 1rem;
     }
 
@@ -876,6 +873,17 @@ input[type="radio"] {
 
     .imagen-overlay{
         height:100%;
+    }
+
+    footer {
+        div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
     }
 
 }
