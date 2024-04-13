@@ -1,7 +1,7 @@
 # Todo List
 
 ## 2a Presentación
-- [ ] Una vez hecha la presentación, hay que "estandarizar" el css
+- [x] Una vez hecha la presentación, hay que "estandarizar" el css
 - [ ] Filtro museos
     - [ ] Ordenar por ascendente/descendente
     - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
@@ -11,7 +11,7 @@
 - [ ] Añadir comentarios/valoraciones a los museos
 - [x] Añadir margin-bottom al main de las páginas
 - [X] Quitar los contenedores de contenedor-inicial-blablabla
-- [ ] Centrar botón del menú al centro
+- [x] Centrar botón del menú al centro
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
 ### APIs
