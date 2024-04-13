@@ -7,7 +7,7 @@
     - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
     - [ ] Acabar la funcionalidad de todos los filtros
 - [ ] Añadir sección sobre nosotros (correo/nombre/DNI) 
-- [ ] Cambiar posición titulo museo pantalla-museo1
+- [x] Cambiar posición titulo museo pantalla-museo1
 - [ ] Añadir comentarios/valoraciones a los museos
 - [x] Añadir margin-bottom al main de las páginas
 - [X] Quitar los contenedores de contenedor-inicial-blablabla
