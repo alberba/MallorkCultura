@@ -12,6 +12,7 @@
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
 
     <script src="js/login.js" defer></script>
+    <script src="js/essential.js" defer></script>
     <script src="js/mapa.js" ></script>
 
 
@@ -43,10 +44,10 @@
                         data-auto_prompt="false">
                     </div>
                 
-                    <div class="g_id_signin"
-                        data-type="standard"
+                    <div class="g_id_signin signin-btn"
+                        data-type="icon"
                         data-shape="pill"
-                        data-theme="outline"
+                        data-theme="filled_black"
                         data-text="signin"
                         data-size="large"
                         data-logo_alignment="left">
@@ -60,7 +61,10 @@
                 </a>-->
             </div>
         </nav>
-        <div id="map" class="ubi-header"></div>
+        <div class="mapa-museo map-container">
+            <div id="map" class="ubi-header"></div>
+            <h2 id=titulo-museo class="m-0 titulo-museo">Es Baluard</h2>
+        </div>
     </header>
     <!-- Parte inferior de la pantalla -->
     <main class="contenedor-principal info-museo">
@@ -93,7 +97,6 @@
         <div class="section-museo">
             <!-- Parte inferior izquierda -->
             <article class="main-museo">
-                <h3 class="m-0">MUSEO 1</h3>
                 <p class="desc-museum">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu leo semper, accumsan ante in, imperdiet elit. 
                     Proin lobortis sodales posuere. Fusce tincidunt massa at dictum convallis. Nulla lacinia sodales velit, vel accumsan 
