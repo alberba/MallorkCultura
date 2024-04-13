@@ -71,6 +71,45 @@
 /**********************************************************************************************************************************************************
  *  MANEJO DEL CALENDARIO
  **********************************************************************************************************************************************************/
+function demoAñadirARuta(){
+    console.log("AÑADIENDO A RUTA");
+    const nombres = ["Juan", "María", "José", "Ana", "Pedro", "Laura", "Carlos", "Marta", "David", "Sofía",
+                "Luis", "Elena", "Alejandro", "Lucía", "Diego", "Paula", "Javier", "Isabel", "Andrés", "Carmen"];
+
+    let lugar = "Museo " + nombres[Math.floor(Math.random() * nombres.length)];
+
+    let num = Math.floor(Math.random() * 100);
+
+    let { horaInicio, horaFin } = generarHorasAleatorias();
+
+    const evento = new Evento(lugar + num, "Calle Falsa "+num, "2024-05-01T"+horaInicio, "2024-05-01T"+horaFin, "Museo");
+    ActualizarVisitas(evento);
+}
+
+function generarHorasAleatorias() {
+    const horasInicio = Math.floor(Math.random() * 24); // Genera una hora aleatoria entre 0 y 23
+    const minutosInicio = Math.floor(Math.random() * 60); // Genera minutos aleatorios entre 0 y 59
+    const segundosInicio = Math.floor(Math.random() * 60); // Genera segundos aleatorios entre 0 y 59
+
+    const horasFin = (horasInicio + Math.floor(Math.random() * (24 - horasInicio))) % 24; // Genera una hora aleatoria mayor que la hora de inicio
+    const minutosFin = Math.floor(Math.random() * 60); // Genera minutos aleatorios entre 0 y 59
+    const segundosFin = Math.floor(Math.random() * 60); // Genera segundos aleatorios entre 0 y 59
+
+    // Formatea las horas, minutos y segundos para asegurarse de que tienen dos dígitos
+    const horaInicioStr = horasInicio.toString().padStart(2, '0');
+    const minutosInicioStr = minutosInicio.toString().padStart(2, '0');
+    const segundosInicioStr = segundosInicio.toString().padStart(2, '0');
+    
+    const horaFinStr = horasFin.toString().padStart(2, '0');
+    const minutosFinStr = minutosFin.toString().padStart(2, '0');
+    const segundosFinStr = segundosFin.toString().padStart(2, '0');
+
+    const horaInicio = `${horaInicioStr}:${minutosInicioStr}:${segundosInicioStr}`;
+    const horaFin = `${horaFinStr}:${minutosFinStr}:${segundosFinStr}`;
+
+    return { horaInicio, horaFin };
+}
+
 /**
  * Función que se encarga de g.uardar en web storage los eventos de la ruta hecha por el usuario a nivel actual
  */
@@ -90,6 +129,7 @@ function ActualizarVisitas(evento) {
  * Función que se encarga de recuperar las visitas de web storage y devolverlas
  */
 function recuperarVisitas() {
+    console.log("RECUPERANDO VISITAS");
     const arrayJSONRecuperado = localStorage.getItem('visitas');
     if (arrayJSONRecuperado) {
         return JSON.parse(arrayJSONRecuperado);
@@ -120,6 +160,7 @@ function eliminarVisita(evento) {
  * Función que se encarga de crear todos los eventos de una ruta en el calendario de google
  */
 function crearEventosCalendario() {
+    console.log("CREANDO EVENTOS");
     const eventos = recuperarVisitas();
     // Bucle para recorrer todos los eventos y crearlos en el calendario
     for(let i = 0; i < eventos.length; i++) {

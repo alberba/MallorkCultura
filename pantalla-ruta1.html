@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma web para encontrar las mejores rutas para explorar los mejores museos de Mallorca">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="img/svg/light-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: light)">
+    <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
+
+    <script src="js/calendar.js" defer></script>
+
+    <title>MallorkCultura</title>
+</head>
+<body>
+    <header>
+        <!-- Barra superior -->
+        <nav id="nav-header" class="my-1">
+            <div>
+                <!-- Barra superior -->
+                <a href="index.html" class="logo">
+                    <!-- Foto de nuestro logo -->
+                    <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
+                </a>
+                <button class="menu_icon no-style-button">
+                    <img src="img/svg/menu.svg" alt="Botón de menú"/>
+                </button>
+                <div class="nav-links-header">
+                    <a href="pantalla-museos.html">¿Qué visitar?</a>
+                    <a href="pantalla-ruta.html">Tu ruta</a>
+                </div>
+            </div>
+        </nav>
+        <div>
+            <img src="img/ruta.webp" alt="ruta" width="100%"/>
+        </div>
+    </header>
+    <!-- Parte inferior de la pantalla -->
+    <main class="contenedor-principal ruta">
+        <a class="boton-atras mt-2 ml-4" href="index.html">
+            <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
+            Atrás
+        </a>
+        <h2 class="mt-4">Tu ruta</h2>
+        <hr class="my-4">
+        <div class="contenedor-ruta-general mt-5">
+            <div class="vl"></div>
+            <ul class="section-ruta">
+                <!-- Aquí se añadirán dinámicamente los eventos -->
+            </ul>
+        </div>
+    </main>
+    <footer class="pie-pagina">
+        <hr>
+        <div class="contenido-footer mb-4">
+            <div class="texto-footer">
+                <p id="copy-text"></p>
+                <p>Todos los derechos reservados</p>
+            </div>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+    <script src="js/date.js" defer></script>
+    <script>
+        // Función para mostrar la ruta en la pantalla
+        function mostrarRuta() {
+            const eventos = recuperarVisitas();
+            const contenedorRuta = document.querySelector('.section-ruta');
+            
+            // Limpiar el contenido existente del contenedor
+            contenedorRuta.innerHTML = '';
+
+            // Verificar si hay eventos
+            if (eventos.length === 0) {
+                // Si no hay eventos, mostrar un mensaje
+                contenedorRuta.innerHTML = '<p>Todavía no has empezado a diseñar tu ruta</p>';
+            } else {
+                // Si hay eventos, mostrar cada uno en la lista
+                eventos.forEach((evento, index) => {
+                    const duracion = calcularDuracion(evento.horaInicio, evento.horaFin);
+                    const descanso = index === eventos.length - 1 ? '' : '<div><p class="descanso">Descanso: 1h</p></div>';
+
+                    const li = document.createElement('li');
+                    li.classList.add('parada-ruta');
+
+                    const divLeft = document.createElement('div');
+                    divLeft.classList.add('left-museo-ruta');
+
+                    const horas = document.createElement('p');
+                    horas.classList.add('horas');
+                    horas.textContent = `${evento.horaInicio.split('T')[1].slice(0, 5)} - ${evento.horaFin.split('T')[1].slice(0, 5)}`;
+                    divLeft.appendChild(horas);
+
+                    const circ = document.createElement('span');
+                    circ.classList.add('circ');
+                    divLeft.appendChild(circ);
+
+                    li.appendChild(divLeft);
+
+                    const divRight = document.createElement('div');
+
+                    const h5 = document.createElement('h5');
+                    h5.textContent = evento.lugar;
+                    divRight.appendChild(h5);
+
+                    const formulario = document.createElement('form');
+                    formulario.classList.add('formulario-ruta');
+
+                    const divDuracion = document.createElement('div');
+                    const labelDuracion = document.createElement('label');
+                    labelDuracion.setAttribute('for', 'duracion');
+                    labelDuracion.textContent = 'Duración:';
+                    const selectDuracion = document.createElement('select');
+                    selectDuracion.setAttribute('name', 'duracion');
+                    const optionDuracion = document.createElement('option');
+                    optionDuracion.textContent = duracion; // Mostrar duración con minutos
+                    selectDuracion.appendChild(optionDuracion);
+                    divDuracion.appendChild(labelDuracion);
+                    divDuracion.appendChild(selectDuracion);
+
+                    formulario.appendChild(divDuracion);
+                    divRight.appendChild(formulario);
+
+                    const botonEliminar = document.createElement('button');
+                    botonEliminar.classList.add('no-style-button', 'cruz-ruta');
+                    botonEliminar.innerHTML = '<img src="img/svg/cruz.svg" alt="Símbolo de cruz para tachar un museo de la ruta" />';
+                    botonEliminar.addEventListener('click', function() {
+                        eliminarVisita(evento);
+                        mostrarRuta();
+                    });
+                    divRight.appendChild(botonEliminar);
+
+                    li.appendChild(divRight);
+
+                    contenedorRuta.appendChild(li);
+                    contenedorRuta.insertAdjacentHTML('beforeend', descanso);
+                });
+            }
+        }
+
+        // Función para calcular la duración a partir de la hora de inicio y fin
+        function calcularDuracion(horaInicio, horaFin) {
+            const inicio = new Date(horaInicio);
+            const fin = new Date(horaFin);
+            const duracionMs = fin - inicio;
+            const duracionMinutos = duracionMs / 60000; // convertir de milisegundos a minutos
+            const horas = Math.floor(duracionMinutos / 60);
+            const minutos = Math.floor(duracionMinutos % 60); // Mostrar solo los minutos sin decimales
+            return `${horas}h ${minutos}min`;
+        }
+
+        // Llamar a la función para mostrar la ruta cuando se carga la página
+        window.addEventListener('DOMContentLoaded', mostrarRuta);
+    </script>
+</body>
+</html>
