@@ -1,55 +1,80 @@
 {
-    "@type": "Collection",
-    "@context": "https://schema.org",
-    "museums" : [
+    "servicios": [
         {
-            "@type": ["TouristAttraction","Museum"],
-            "openingHours" : ["Tu-Sa 10:00-20:00", "Su 10:00-15:00"],
-            "address" : {
-                "@type": "PostalAddress",
-                "streetAddress": "Plaza Porta de Santa Catalina 10",
-                "addressLocality": "Palma",
-                "postalCode": "07012",
-                "addressCountry": "Spain"
-            },
-            "aggregateRating" : "",
-            "event" : [
-                {
-                    "@type": "Event",
-                    "name": "Bel Fullana. Tractor Buddy",
-                    "description": "",
-                    "eventSchedule": {
-                        "@type": "Schedule",
-                        "startDate": "2024-03-22",
-                        "endDate": "2024-06-09"
-                    },
-                    "organizer": {
-                        "@type": "Person",
-                        "name": "Núria Gómez Gabriel"
-                    }
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": "Museum",
+                "openingHours" : ["Tu-Sa 10:00-20:00", "Su 10:00-15:00"],
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Plaza Porta de Santa Catalina 10",
+                    "addressLocality": "Palma",
+                    "postalCode": "07012",
+                    "addressCountry": "Spain"
                 },
-                {
-                    "@type": "Event",
-                    "name": "En diálogo: Museo y Colección",
-                    "description": "",
-                    "eventSchedule": {
-                        "@type": "Schedule",
-                        "startDate": "2024-01-31",
-                        "endDate": "2024-05-26"
+                "aggregateRating" : "",
+                "event" : [
+                    {
+                        "@type": "Event",
+                        "name": "Bel Fullana. Tractor Buddy",
+                        "description": "",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-03-22",
+                            "endDate": "2024-06-09"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": "Núria Gómez Gabriel"
+                        }
                     },
-                    "organizer": {
-                        "@type": "Person",
-                        "name": "Núria Gómez Gabriel"
+                    {
+                        "@type": "Event",
+                        "name": "En diálogo: Museo y Colección",
+                        "description": "",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-01-31",
+                            "endDate": "2024-05-26"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": "Núria Gómez Gabriel"
+                        }
                     }
-                }
-            ],
-            "faxNumber" : "+34971908203" ,
-            "geo" : {
-                "@type": "GeoCoordinates",
-                "latitude": "39.5702375",
-                "longitude": "2.64114266"
+                ],
+                "faxNumber" : "+34971908203" ,
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.5702375",
+                    "longitude": "2.64114266"
+                },
+                "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
+                "isAccessibleForFree" : false,
+                "keywords" : "",
+                "latitude" : "39.5702375",
+                "longitude" : "2.64114266",
+                "photo" : [
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/img-principal.webp",
+                        "description": "Imagen de la entrada del museo Es Baluard"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposicion1.webp",
+                        "description": "Imagen de una zona del museo Es Baluard"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971908200",
+                "tourBookingPage" : "",
+                "description" : "Convertido en sus diferentes fases desde 2004 en el mayor espacio para la conservación y difusión del arte contemporáneo en las Islas Baleares, los diferentes espacios del museo han ido adquiriendo sentido y función de una manera orgánica acorde con su función patrimonial y las necesidades de los públicos.\nEl edificio principal fue diseñado en 2003 por Lluís García-Ruiz, Jaume García-Ruiz, Vicente Tomás y Angel Sánchez Cantalejo, tiene una superficie total de 5.027 m², de los que 2.500 se destinan a espacios expositivos. Está dividido en tres plantas que se relacionan con el exterior, con las murallas y entre sí mediante rampas, claraboyas y grandes balcones interiores, buscando la idea de calle interior.\nDefinido por líneas simples y limpias, el edificio del Museo es del todo respetuoso con el entorno patrimonial e histórico que le rodea y aloja; se integra perfectamente dentro del perfil del baluarte renacentista. El diálogo entre la arquitectura contemporánea del nuevo edificio y la antigua muralla está presente en todo momento y es constante, y uno se da cuenta a medida que recorre los diferentes espacios del museo. El proyecto pretende ser integrador de la construcción moderna y respetar el patrimonio antiguo de las murallas; a la vez que diferenciador. Por este motivo se han utilizado materiales como el hormigón y el vidrio, que permiten distinguir perfectamente las dos tipologías constructivas.\nLos espacios exteriores son concebidos como lugares de exposición y paseo, trazando un recorrido por el perímetro de la muralla. El gran aljibe se mantiene también como espacio expositivo, a la vez que acoge actos diversos en función de la programación del museo.",
+                "name" : "Es Baluard Museu d'Art Modern i Contemporani de Palma",
+                "url" : ""
             },
-            "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
             "hasOfferCatalog" : {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
@@ -85,106 +110,116 @@
                         "priceCurrency": "EUR"
                     }
                 ]
-            },
-            "isAccessibleForFree" : false,
-            "keywords" : "",
-            "latitude" : "39.5702375",
-            "longitude" : "2.64114266",
-            "photo" : [
-                {
-                    "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/img-principal.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
-                },
-                {
-                    "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposicion1.webp",
-                    "description": "Imagen de una zona del museo Es Baluard"
-                }
-            ],
-            "publicAccess" : true,
-            "smokingAllowed" : false,
-            "telephone" : "+34971908200",
-            "tourBookingPage" : "",
-            "description" : "Convertido en sus diferentes fases desde 2004 en el mayor espacio para la conservación y difusión del arte contemporáneo en las Islas Baleares, los diferentes espacios del museo han ido adquiriendo sentido y función de una manera orgánica acorde con su función patrimonial y las necesidades de los públicos.\nEl edificio principal fue diseñado en 2003 por Lluís García-Ruiz, Jaume García-Ruiz, Vicente Tomás y Angel Sánchez Cantalejo, tiene una superficie total de 5.027 m², de los que 2.500 se destinan a espacios expositivos. Está dividido en tres plantas que se relacionan con el exterior, con las murallas y entre sí mediante rampas, claraboyas y grandes balcones interiores, buscando la idea de calle interior.\nDefinido por líneas simples y limpias, el edificio del Museo es del todo respetuoso con el entorno patrimonial e histórico que le rodea y aloja; se integra perfectamente dentro del perfil del baluarte renacentista. El diálogo entre la arquitectura contemporánea del nuevo edificio y la antigua muralla está presente en todo momento y es constante, y uno se da cuenta a medida que recorre los diferentes espacios del museo. El proyecto pretende ser integrador de la construcción moderna y respetar el patrimonio antiguo de las murallas; a la vez que diferenciador. Por este motivo se han utilizado materiales como el hormigón y el vidrio, que permiten distinguir perfectamente las dos tipologías constructivas.\nLos espacios exteriores son concebidos como lugares de exposición y paseo, trazando un recorrido por el perímetro de la muralla. El gran aljibe se mantiene también como espacio expositivo, a la vez que acoge actos diversos en función de la programación del museo.",
-            "name" : "Es Baluard Museu d'Art Modern i Contemporani de Palma",
-            "url" : ""
+            }
         },
         {
-            "@type": ["TouristAttraction","Museum"],
-            "openingHours" : "Tu-Su 10:00-14:00",
-            "address" : {
-                "@type": "PostalAddress",
-                "streetAddress": "Dique del Oest s/n",
-                "addressLocality": "Palma",
-                "postalCode": "07015",
-                "addressCountry": "Spain"
-            },
-            "aggregateRating" : "",
-            "event" : [
-                {
-                    "@type": "Event",
-                    "name": "Día de las Islas Baleares",
-                    "description": "",
-                    "eventSchedule": {
-                        "@type": "Schedule",
-                        "startDate": "2024-03-09",
-                        "startTime" : "2024-03-09 10:00",
-                        "endDate": "2024-03-09",
-                        "endTime" : "2024-03-09 17:00"
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": ["TouristAttraction","Museum"],
+                "openingHours" : "Tu-Su 10:00-14:00",
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Dique del Oest s/n",
+                    "addressLocality": "Palma",
+                    "postalCode": "07015",
+                    "addressCountry": "Spain"
+                },
+                "aggregateRating" : "",
+                "event" : [
+                    {
+                        "@type": "Event",
+                        "name": "Día de las Islas Baleares",
+                        "description": "",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-03-09",
+                            "startTime" : "2024-03-09 10:00",
+                            "endDate": "2024-03-09",
+                            "endTime" : "2024-03-09 17:00"
+                        }
                     }
-                }
-            ],
-            "faxNumber" : "" ,
-            "geo" : {
-                "@type": "GeoCoordinates",
-                "latitude": "39.54562",
-                "longitude": "2.62897"
-            },
-            "hasMap" : "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
-            "isAccessibleForFree" : true,
-            "keywords" : "",
-            "latitude" : "39.54562",
-            "longitude" : "2.62897",
-            "photo" : [
-                {
-                    "@type" : "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/vista-aerea.webp",
-                    "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
+                ],
+                "faxNumber" : "" ,
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.54562",
+                    "longitude": "2.62897"
                 },
-                {
-                    "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/img-principal.webp",
-                    "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
-                }
-            ],
-            "publicAccess" : true,
-            "smokingAllowed" : false,
-            "telephone" : "+34971402145",
-            "tourBookingPage" : "",
-            "description" : "A principios del año 1600 comienza a plantearse entre los miembros del Colegio de Mercaderes la necesidad de construir un fuerte que resguarde el puerto de Palma por el oeste, en las inmediaciones de lo que fue un antiguo puerto romano llamado Porto Pi. La nueva fortificación se construyó en el emplazamiento de una torre de vigía, cuya existencia se conoce por cuadros (como el de Pere Nissart y grabados de la época). La torre quedó embutida dentro de la nueva construcción manteniendo la función de faro o farol. Posteriormente, de 1662 a 1663, el castillo se amplió a partir del núcleo rectangular inicial, conservándolo. Se construyó así una circunvalación con otros cuatro grandes baluartes y adquiriendo su forma peculiar de polígono irregular de apariencia estrellada. Durante la Guerra de Sucesión, se añadieron algunas construcciones defensivas en el exterior, frente al mar. \nEn 1981 se comenzó su rehabilitación para convertirlo en un museo que albergara los fondos procedentes del recién cerrado Parque de Artillería. Con otros fondos procedentes del Museo del Ejército, de las unidades de la Zona Militar de Baleares y de donaciones particulares, se inauguró finalmente el Museo del Castillo de San Carlos el 26 de septiembre de 1991. En 1994, con la ayuda varias entidades públicas y privadas, entre ellas la Asociación de Amigos del Castillo de San Carlos, el museo fue dotado de dos nuevas salas y se mejoró la entrada y la iluminación del edificio. En 1997 se creó el Consorcio Castillo de San Carlos, que gestiona el museo y del que forman parte el Ministerio de Defensa, el Govern de les Illes Balears, el Consell Insular de Mallorca y el Ayuntamiento de Palma.",
-            "name" : "Museo Histórico Militar de San Carlos",
-            "url" : "http://www.castillomuseosancarlos.com/"
+                "hasMap" : "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
+                "isAccessibleForFree" : true,
+                "keywords" : "",
+                "latitude" : "39.54562",
+                "longitude" : "2.62897",
+                "photo" : [
+                    {
+                        "@type" : "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/vista-aerea.webp",
+                        "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/img-principal.webp",
+                        "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971402145",
+                "tourBookingPage" : "",
+                "description" : "A principios del año 1600 comienza a plantearse entre los miembros del Colegio de Mercaderes la necesidad de construir un fuerte que resguarde el puerto de Palma por el oeste, en las inmediaciones de lo que fue un antiguo puerto romano llamado Porto Pi. La nueva fortificación se construyó en el emplazamiento de una torre de vigía, cuya existencia se conoce por cuadros (como el de Pere Nissart y grabados de la época). La torre quedó embutida dentro de la nueva construcción manteniendo la función de faro o farol. Posteriormente, de 1662 a 1663, el castillo se amplió a partir del núcleo rectangular inicial, conservándolo. Se construyó así una circunvalación con otros cuatro grandes baluartes y adquiriendo su forma peculiar de polígono irregular de apariencia estrellada. Durante la Guerra de Sucesión, se añadieron algunas construcciones defensivas en el exterior, frente al mar. \nEn 1981 se comenzó su rehabilitación para convertirlo en un museo que albergara los fondos procedentes del recién cerrado Parque de Artillería. Con otros fondos procedentes del Museo del Ejército, de las unidades de la Zona Militar de Baleares y de donaciones particulares, se inauguró finalmente el Museo del Castillo de San Carlos el 26 de septiembre de 1991. En 1994, con la ayuda varias entidades públicas y privadas, entre ellas la Asociación de Amigos del Castillo de San Carlos, el museo fue dotado de dos nuevas salas y se mejoró la entrada y la iluminación del edificio. En 1997 se creó el Consorcio Castillo de San Carlos, que gestiona el museo y del que forman parte el Ministerio de Defensa, el Govern de les Illes Balears, el Consell Insular de Mallorca y el Ayuntamiento de Palma.",
+                "name" : "Museo Histórico Militar de San Carlos",
+                "url" : "http://www.castillomuseosancarlos.com/"
+            }
         },
         {
-            "@type": ["TouristAttraction","Museum"],
-            "openingHours" : "Mo-Su 10:00-15:00",
-            "address" : {
-                "@type": "PostalAddress",
-                "streetAddress": "Crta. Cales de Mallorca s/n",
-                "addressLocality": "Manacor",
-                "postalCode": "07500",
-                "addressCountry": "Spain"
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": ["TouristAttraction","Museum"],
+                "openingHours" : "Mo-Su 10:00-15:00",
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Crta. Cales de Mallorca s/n",
+                    "addressLocality": "Manacor",
+                    "postalCode": "07500",
+                    "addressCountry": "Spain"
+                },
+                "aggregateRating" : "",
+                "event" : "",
+                "faxNumber" : "",
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.55913",
+                    "longitude": "3.21612"
+                },
+                "hasMap" : "https://maps.app.goo.gl/BcNizXMVEXc5CBBi6",
+                
+                "isAccessibleForFree" : false,
+                "keywords" : "",
+                "latitude" : "39.55913",
+                "longitude" : "3.21612",
+                "photo" : [
+                    {
+                        "@type" : "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/img-principal.webp",
+                        "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/interior.webp",
+                        "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "specialOpeningHoursSpecification" : "",
+                "telephone" : "+34971171683",
+                "tourBookingPage" : "https://www.rafanadalmuseum.com/producto/entrada-museo/",
+                "description" : "Rafa Nadal Museum te invita a vivir una aventura inolvidable en un espacio único, dotado con las últimas tecnologías en medios audiovisuales y en pantallas interactivas, que te permitirá ser el protagonista de tu propia experiencia deportiva. Podrás recorrer la historia del deporte y conocer en primera persona cuáles son sus Aptitudes y Valores a través de impresionantes simuladores y atracciones de última generación.\nRafa Nadal Museum te ofrece dos plantas llenas de emoción, aprendizaje, experiencia, diversión y deporte en estado puro contado por los mejores deportistas del mundo.\nTodos sus espacios expositivos ofrecen un importante componente educativo y didáctico mientras que sus espacios experienciales representan aptitudes y valores presentes tanto en el mundo del deporte como en la vida. Valores como el esfuerzo, la superación personal, el compañerismo, el compromiso o la deportividad son los pilares del Museo de Rafa Nadal.",
+                "name" : "Rafa Nadal Museum",
+                "url" : "https://www.rafanadalmuseum.com/"
             },
-            "aggregateRating" : "",
-            "event" : "",
-            "faxNumber" : "",
-            "geo" : {
-                "@type": "GeoCoordinates",
-                "latitude": "39.55913",
-                "longitude": "3.21612"
-            },
-            "hasMap" : "https://maps.app.goo.gl/BcNizXMVEXc5CBBi6",
             "hasOfferCatalog" : {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
@@ -240,32 +275,7 @@
                         "priceCurrency": "EUR"
                     }
                 ]
-            },
-            "isAccessibleForFree" : false,
-            "keywords" : "",
-            "latitude" : "39.55913",
-            "longitude" : "3.21612",
-            "photo" : [
-                {
-                    "@type" : "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/img-principal.webp",
-                    "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
-                },
-                {
-                    "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/interior.webp",
-                    "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
-                }
-            ],
-            "publicAccess" : true,
-            "smokingAllowed" : false,
-            "specialOpeningHoursSpecification" : "",
-            "telephone" : "+34971171683",
-            "tourBookingPage" : "https://www.rafanadalmuseum.com/producto/entrada-museo/",
-            "description" : "Rafa Nadal Museum te invita a vivir una aventura inolvidable en un espacio único, dotado con las últimas tecnologías en medios audiovisuales y en pantallas interactivas, que te permitirá ser el protagonista de tu propia experiencia deportiva. Podrás recorrer la historia del deporte y conocer en primera persona cuáles son sus Aptitudes y Valores a través de impresionantes simuladores y atracciones de última generación.\nRafa Nadal Museum te ofrece dos plantas llenas de emoción, aprendizaje, experiencia, diversión y deporte en estado puro contado por los mejores deportistas del mundo.\nTodos sus espacios expositivos ofrecen un importante componente educativo y didáctico mientras que sus espacios experienciales representan aptitudes y valores presentes tanto en el mundo del deporte como en la vida. Valores como el esfuerzo, la superación personal, el compañerismo, el compromiso o la deportividad son los pilares del Museo de Rafa Nadal.",
-            "name" : "Rafa Nadal Museum",
-            "url" : "https://www.rafanadalmuseum.com/"
+            }
         }
     ]
 }
-
