@@ -110,6 +110,23 @@ function generarHorasAleatorias() {
     return { horaInicio, horaFin };
 }
 
+function eliminarMuseoRuta(indice) {
+    // Recuperar el array de objetos de visitas del localStorage
+    const arrayJSONRecuperado = localStorage.getItem('visitas');
+
+    // Verificar si el array existe
+    if (arrayJSONRecuperado) {
+        // Parsear el array JSON a un array de objetos
+        const arrayDeObjetosRecuperado = JSON.parse(arrayJSONRecuperado);
+        
+        // Eliminar el objeto correspondiente al índice proporcionado
+        arrayDeObjetosRecuperado.splice(indice, 1);
+
+        // Actualizar el localStorage con el nuevo array de objetos filtrado
+        localStorage.setItem('visitas', JSON.stringify(arrayDeObjetosRecuperado));
+    }
+}
+
 /**
  * Función que se encarga de g.uardar en web storage los eventos de la ruta hecha por el usuario a nivel actual
  */
