@@ -1,0 +1,16 @@
+La categoría principal de nuestro JSON es "Service" 
+y dentro de ella tenemos un museo con la categoría Museum que será el lugar donde el servicio 
+se da y el catálogo de entradas, de tipo OfferCatalog, de este servicio
+
+- Museum: Necesitaremos el tipo PostalAddress para mostrar la dirección, 
+Event para indicar todas las exposiciones que se van a realizar dentro del museo, 
+GeoCoordinates para indicar las coordenadas del museo e ImageObject para mostrar las imagenes relacionadas
+con el museo.
+
+- OfferCatalog: Necesitaremos el tipo Offer para mostrar las entradas que se pueden comprar 
+y Product para saber el producto que ofrece cada tipo de oferta
+
+- Event. Necesitaremos el tipo Schedule para conocer el rango de fechas en el que la exposicion esta
+abierta y Person para conocer el organizador de la exposición
+
+- IsAccessibleForFree: es un atributo para definir que existe entrada gratuita.
