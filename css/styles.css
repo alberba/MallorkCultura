@@ -481,6 +481,15 @@ nav {
     }
 }
 
+.descripcion-museo {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Define el número de líneas que se mostrarán antes de cortar */
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .boton-card-museo {
     width: 100%;
     height: auto;

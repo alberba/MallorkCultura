@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <header class="titulo-museo-card">
                                         <h4 class="mb-2 mt-3">${museo.areaServed.name}</h4>
                                     </header>
-                                    <p class="mb-4">${museo.areaServed.description}</p>
+                                    <p class="mb-4 descripcion-museo">${museo.areaServed.description}</p>
                                     <div class="botones-museo">
                                         <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
                                         <a href="${museo.areaServed.url}" class="boton boton-card-museo boton-gris">Ver más</a>
