@@ -6,7 +6,7 @@ let map;
 
 async function initMap() {
   // The location of Uluru
-  const position = { lat: 39.634688165885, lng: 3.0044974939847444 };
+  const position = { lat: 39.570279022882914, lng: 2.6411309682497817 };
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
@@ -14,7 +14,7 @@ async function initMap() {
 
   // The map, centered at Uluru
   map = new Map(document.getElementById("map"), {
-    zoom: 9,
+    zoom: 12,
     center: position,
     mapId: "DEMO_MAP_ID",
     disableDefaultUI: true,

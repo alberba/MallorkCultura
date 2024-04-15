@@ -18,4 +18,5 @@
 - [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Maps API
     - [ ] Reemplazar las imágenes planas de los mapas por la API de Google Maps
+    - [ ] Implementar funcionalidad Marker con museo del JSON
 - [ ] Google Calendar API
