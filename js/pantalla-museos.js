@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <p class="mb-4 descripcion-museo">${museo.areaServed.description}</p>
                                     <div class="botones-museo">
                                         <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
-                                        <a href="${museo.areaServed.url}" class="boton boton-card-museo boton-gris">Ver más</a>
+                                        <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
                                     </div>
                                 </article>
                             `;
