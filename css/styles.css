@@ -465,6 +465,21 @@ nav {
     gap: 5rem;
 }
 
+.titulo-museo-card {
+    height: 5rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+
+    & h4 {
+        font-size: 2rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+}
+
 .museo {
     background-color: #fff;
     padding: 20px;
@@ -478,12 +493,14 @@ nav {
 
     & img {
         object-fit: cover;
+        aspect-ratio: 310/200;
+        width: 100%;
     }
 }
 
 .descripcion-museo {
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Define el número de líneas que se mostrarán antes de cortar */
+    -webkit-line-clamp: 4; /* Define el número de líneas que se mostrarán antes de cortar */
     -webkit-box-orient: vertical;
     white-space: normal;
     overflow: hidden;

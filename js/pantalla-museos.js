@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <article class="museo">
                                     <img src="${museo.areaServed.photo[0].contentUrl}" alt="${museo.areaServed.name}">
                                     <header class="titulo-museo-card">
-                                        <h4 class="mb-2 mt-3">${museo.areaServed.name}</h4>
+                                        <h4>${museo.areaServed.name}</h4>
                                     </header>
                                     <p class="mb-4 descripcion-museo">${museo.areaServed.description}</p>
                                     <div class="botones-museo">

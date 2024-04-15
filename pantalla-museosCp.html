@@ -65,16 +65,72 @@
         </div>
     </header>
     <main class="contenedor-principal lista-museos">
-        <!-- Contenedor para los museos -->
-        <div id="museos-container" class="contenedor-museos">
-            <!-- Los museos se generarán aquí -->
+        <!-- Botón de retroceso -->
+        <a class="boton-atras" href="index.html">
+            <img src="img/svg/flecha-atras.svg" alt="Botón de volver atrás" class="back-arrow">
+            Inicio
+        </a>
+        <!-- Filtros -->
+        <div class="contenedor-filtros">
+            <button class="boton-filtros" data-bs-toggle="collapse" data-bs-target="#form-filtro">
+                Filtros
+                <img src="img/svg/flecha-menu-down.svg" alt="">
+            </button>
+            <div id="form-filtro" class="collapse">
+                <form action="" class="form-filtro-museos mt-3">
+                    <div class="elemento-filtro-museo">
+                        <label for="busqueda-nombre">Busqueda por nombre</label>
+                        <input type="search" name="nombre" id="busqueda-nombre" placeholder="Buscar museo">
+                    </div>
+                    <div class="elemento-filtro-museo">
+                        <label for="">Ordenar por cercanía</label>
+                        <input type="search" name="" id="busqueda-cercania" placeholder="Dirección">
+                    </div>
+                    <div class="elemento-filtro-museo">
+                        <label for="">Radio de búsqueda</label>
+                        <div class="contenedor-range">
+                            <input type="range" name="" id="busqueda-radio" placeholder="Radio de búsqueda">
+                            <p>10km</p>
+                        </div>
+                    </div>
+                    <div class="elemento-filtro-museo">
+                        <label for="">Tipo de exposición</label>
+                        <select name="" id="seleccion-exposicion" class="select">
+                            <option value="1" selected>Todos</option>
+                            <option value="2">Contemporánea</option>
+                            <option value="3">Clásico</option>
+                        </select>
+                    </div>
+                    <div class="elemento-filtro-museo">
+                        <label for="dia_visita">Día de visita:</label>
+                        <input type="date" name="" id="">
+                    </div>
+                    <div id="tipo-entrada elemento-filtro-museo">
+                        <p>Tipo de entrada:</p>
+                        <div class="opciones-check">
+                            <label for="gratuito">
+                            <input type="checkbox" id="gratuito" name="tipo_entrada[]" onchange="eliminarMuseoFiltro()"> Gratuito
+                            </label>
+                            <label for="entrada">
+                            <input type="checkbox" id="entrada" name="tipo_entrada[]" onchange="eliminarMuseoFiltro()"> Entrada
+                            </label>
+                        </div>
+                        </div>
+                </form>
+            </div>
         </div>
-        <!-- Controles de navegación de página -->
-        <div class="paginas">
-            <img id="prevPageBtn" src="img/svg/prev-page-arr.svg" alt="Página anterior">
-            <p><span class="pagina-actual">1</span>..<span class="siguiente-btn">2</span></p>
-            <img id="nextPageBtn" src="img/svg/next-page-arr.svg" alt="Página siguiente">
-        </div>        
+        <section>
+            <!-- Contenedor para los museos -->
+            <div id="museos-container" class="contenedor-museos">
+                <!-- Los museos se generarán aquí -->
+            </div>
+            <!-- Controles de navegación de página -->
+            <div class="paginas">
+                <img id="prevPageBtn" src="img/svg/prev-page-arr.svg" alt="Página anterior">
+                <p><span class="pagina-actual">1</span>..<span class="siguiente-btn">2</span></p>
+                <img id="nextPageBtn" src="img/svg/next-page-arr.svg" alt="Página siguiente">
+            </div>       
+        </section>
     </main>
     <footer class="pie-pagina">
         <hr>
