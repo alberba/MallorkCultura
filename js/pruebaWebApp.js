@@ -52,12 +52,20 @@ function crearHr() {
     return $("<hr>");
 }
 
+function añadirPueblosRestantes() {
+    pueblos =           ["Palma","Manacor","Valldemossa","Sóller","Fornalux","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Porreres","Santa Eugènia","Alcúdia","Inca","Sencelles","Sant Lorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Santanyí","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Calvià","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
+    pueblosSinTilde =   ["Palma","Manacor","Valldemossa","Soller","Fornalux","Deia","Sant Joan","Banyalbufar","Maria de la Salut","Arta","Porreres","Santa Eugenia","Alcudia","Inca","Sencelles","Sant Lorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuiri","Ses Salines","Santa Maria del Cami","Capdepera","Alaro","Ariany","Bunyola","Estellencs","Costitx","Santanyi","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubi","Sineu","Buger","Calvia","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxi","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
+    
+    // for(let i = 0; i < 9; i++) {
+    //     $("main section .contenedor-pueblos").append(crearBotonPueblo(nombres[i],nombresSinTilde[i]));
+    // } 
+}
+
 function crearBotonVerMas_Pueblos() {
     return $("<button>")
             .addClass("boton boton-vermas-index boton-verde")
             .text("Ver más")
             .attr("id","verMasPueblos")
-            .on("click",function(){
-                        alert("holiwi");
-            });
+            .on("click",function(){añadirPueblosRestantes()});
+
 }
