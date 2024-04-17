@@ -13,6 +13,7 @@
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
 
     <script src="js/calendar.js"></script>
+    <script src="js/mapa.js"></script>
 
     <title>MallorkCultura</title>
 </head>
@@ -33,10 +34,28 @@
                     <a href="pantalla-museos.html">¿Qué visitar?</a>
                     <a href="pantalla-ruta.html">Tu ruta</a>
                 </div>
+                <div id="google-signin">
+                    <div id="g_id_onload"
+                        data-client_id="669018232457-8piobleimi9a5rtme1788v41ailh6es1.apps.googleusercontent.com"
+                        data-context="signin"
+                        data-ux_mode="popup"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                
+                    <div class="g_id_signin signin-btn"
+                        data-type="icon"
+                        data-shape="pill"
+                        data-theme="filled_black"
+                        data-text="signin"
+                        data-size="large"
+                        data-logo_alignment="left">
+                    </div>
+                </div>
             </div>
         </nav>
-        <div>
-            <img src="img/ruta.webp" alt="ruta" width="100%"/>
+        <div class="map-container">
+            <div id="map" class="ubi-header"></div>
         </div>
     </header>
     <!-- Parte inferior de la pantalla -->

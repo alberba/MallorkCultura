@@ -569,20 +569,14 @@ nav {
     overflow: hidden;
 }
 
-.ubi-header:before {
+.mapa-museo:before {
     content: '';
     position: absolute;
     box-shadow: 0 0 100px 60px rgba(0, 0, 0, 0.75);
     z-index: 1;
 }
 
-.ubi-header:before { bottom: -5px; left: 0; right: 0; height: 5px; }
-
-.mapa-museo {
-    box-shadow: 1px -89px 182px -149px rgba(0,0,0,0.75) inset !important;
-    -webkit-box-shadow: 1px -89px 182px -149px rgba(0,0,0,0.75) inset;
-    -moz-box-shadow: 1px -89px 182px -149px rgba(0,0,0,0.75) inset;
-}
+.mapa-museo:before { bottom: -5px; left: 0; right: 0; height: 5px; }
 
 .section-museo {
     display: flex;
