@@ -1,6 +1,7 @@
+// Rehacer la página principal
 $("#logo").on("click",function() {
-    nombres = ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
-    nombresSinTilde = ["Palma", "Manacor", "Soller", "Valldemossa","Inca", "Calvia", "Alcudia", "Santanyi", "Porreres"];
+    nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
+    nombresSinTilde =   ["Palma", "Manacor", "Soller", "Valldemossa","Inca", "Calvia", "Alcudia", "Santanyi", "Porreres"];
     $("main").empty();
     $("main").append(crearH2("¿Dónde visitar?"));
     $("main").append(crearHr());
@@ -11,7 +12,14 @@ $("#logo").on("click",function() {
         $(div).append(crearBotonPueblo(nombres[i],nombresSinTilde[i]));
     }
     $("main").append(sec);
+    $("main").append(crearBotonVerMas_Pueblos());
     $("main").append(crearHr());
+});
+
+// no entiendo porq esto no funciona
+$("#verMasPueblos").on("click",function(){
+    alert("holiwi");
+    console.log("funciona")
 });
 
 function crearSection () {
@@ -48,4 +56,8 @@ function crearH2(titulo) {
 
 function crearHr() {
     return $("<hr>");
+}
+
+function crearBotonVerMas_Pueblos() {
+    return $("<button>").addClass("boton boton-vermas-index boton-verde").text("Ver más").attr("id","verMasPueblos");
 }
