@@ -31,7 +31,8 @@ function crearBotonPueblo (name, nameST) {
     let imagenPrueblo = $("<img>")
     .attr({
         "src" : "img/pueblos/"+nameST+".webp",
-        "alt" : "Foto de " + name
+        "alt" : "Foto de " + name,
+        "class": "imagen-overlay"
     });
     let nombrePueblo = $("<p>")
     .addClass("texto-overlay")
