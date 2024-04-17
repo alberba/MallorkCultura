@@ -16,12 +16,6 @@ $("#logo").on("click",function() {
     $("main").append(crearHr());
 });
 
-// no entiendo porq esto no funciona
-$("#verMasPueblos").on("click",function(){
-    alert("holiwi");
-    console.log("funciona")
-});
-
 function crearSection () {
     return $("<section></section>");
 }
@@ -59,5 +53,11 @@ function crearHr() {
 }
 
 function crearBotonVerMas_Pueblos() {
-    return $("<button>").addClass("boton boton-vermas-index boton-verde").text("Ver más").attr("id","verMasPueblos");
+    return $("<button>")
+            .addClass("boton boton-vermas-index boton-verde")
+            .text("Ver más")
+            .attr("id","verMasPueblos")
+            .on("click",function(){
+                        alert("holiwi");
+            });
 }
