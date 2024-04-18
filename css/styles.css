@@ -104,6 +104,10 @@ img {
     max-width: 100%;
 }
 
+input {
+    background-color: white;
+}
+
 section {
     display: flex;
     flex-direction: column;
@@ -349,6 +353,7 @@ nav {
 }
 
 .boton-filtros {
+    color: var(--negro);
     display: flex;
     padding: 0;
     background-color: inherit;
@@ -369,6 +374,7 @@ nav {
     flex-direction: column;
     gap: .5rem;
     max-width: 330px;
+    
 
     & input {
         border: 0;
@@ -377,6 +383,7 @@ nav {
     }
 
     & select {
+        color: var(--negro);
         border: 0;
         padding: .8rem;
         border-radius: 5px;

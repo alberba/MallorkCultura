@@ -3,7 +3,7 @@
 ## 2a Presentación
 - [x] Una vez hecha la presentación, hay que "estandarizar" el css
 - [ ] Filtro museos
-    - [ ] Estandarizar para IOS
+    - [x] Estandarizar para IOS
     - [ ] Ordenar por ascendente/descendente
     - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
     - [ ] Acabar la funcionalidad de todos los filtros
