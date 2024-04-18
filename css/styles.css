@@ -121,6 +121,11 @@ section {
 
 /* -------- Botones -------- */
 
+button {
+    background: none;
+    border: none;
+}
+
 /* Diseño del boton */
 .boton {
     border:none;

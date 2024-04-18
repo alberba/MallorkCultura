@@ -1,8 +1,12 @@
+/* --- Eventos de botones --- */
 // Rehacer la página principal
 $("#logo").on("click",function() {
     crearDondeVisitar();
 });
 
+/* --- --- */
+
+/* --- Funciones "creadoras" --- */
 //esta función se encarga de "Crear" el apartado de título "¿Dónde visitar?"
 function crearDondeVisitar() {
     nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
@@ -21,17 +25,38 @@ function crearDondeVisitar() {
     $("main").append(crearHr());
 }
 
+function crearUbicacionesPueblo() {
+    $("main").empty();
+    $("main").append(crearH2("¿Dónde visitar?"));
+}
+/* --- --- */
+
+/* --- Funciones genéricas --- */
 // función genérica
 function crearSection () {
     return $("<section></section>");
 }
 
-//función específica
+// función genérica
+function crearH2(titulo) {
+    return $("<h2>").addClass("mt-5").html(titulo);
+}
+
+// función genérica ??
+function crearHr() {
+    return $("<hr>");
+}
+
+/* --- --- */
+
+/* --- Funciones específicas --- */
+
+//función específica - ¿Dónde visitar?
 function crearContenedorPueblos() {
     return $("<div>").attr("class", "contenedor-pueblos my-5");
 }
 
-// función específica
+// función específica - ¿Dónde visitar?
 function crearBotonPueblo (name, nameST) {
     let nuevoBotonPueblo = $("<a>")
     .attr({
@@ -52,17 +77,7 @@ function crearBotonPueblo (name, nameST) {
     return nuevoBotonPueblo;
 }
 
-// función genérica
-function crearH2(titulo) {
-    return $("<h2>").addClass("mt-5").html(titulo);
-}
-
-// función genérica ??
-function crearHr() {
-    return $("<hr>");
-}
-
-// función específica
+// función específica - ¿Dónde visitar?
 function añadirPueblosRestantes() {
     pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
     pueblosSinTilde =   ["Fornalutx","Deia","Sant Joan","Banyalbufar","Maria de la Salut","Arta","Santa Eugenia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuiri","Ses Salines","Santa Maria del Cami","Capdepera","Alaro","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubi","Sineu","Buger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxi","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
@@ -72,12 +87,15 @@ function añadirPueblosRestantes() {
     $("#verMasPueblos").remove();
 }
 
-// función específica
+// función específica - ¿Dónde visitar?
 function crearBotonVerMas_Pueblos() {
     return $("<button>")
             .addClass("boton boton-vermas-index boton-verde")
             .text("Ver más")
             .attr("id","verMasPueblos")
             .on("click",function(){añadirPueblosRestantes()});
-
 }
+
+
+
+/* --- --- */
