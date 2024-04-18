@@ -12,6 +12,7 @@
 
     <script src="js/login.js" defer></script>
     <script src="js/essential.js" defer></script>
+    <script src="js/mapa.js"></script>
 
     <title>MallorkCultura - Museos</title>
 </head>
@@ -58,11 +59,8 @@
                 </a>-->
             </div>
         </nav>
-        <div>
-            <img src="img/mallorca-ubisCiudad.webp" 
-                class="imagen-overlay"
-                alt="Mapa hecho con api de google donde aparecerán las ubicaciones de los museos registrados"
-            />
+        <div class="map-container">
+            <div id="map" class="ubi-header"></div>
         </div>
     </header>
     <!-- Parte inferior de la pantalla -->

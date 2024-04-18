@@ -12,6 +12,9 @@
 - [x] Añadir margin-bottom al main de las páginas
 - [X] Quitar los contenedores de contenedor-inicial-blablabla
 - [x] Centrar botón del menú al centro
+- [ ] Hacer la página responsive
+    - [ ] Pantalla-ruta
+    - [ ] Pantalla-usuario
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
