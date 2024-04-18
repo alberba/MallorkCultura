@@ -25,9 +25,13 @@ function crearDondeVisitar() {
     $("main").append(crearHr());
 }
 
-function crearUbicacionesPueblo() {
+function crearUbicacionesPueblo(pueblo) {
     $("main").empty();
-    $("main").append(crearH2("¿Dónde visitar?"));
+    $("main").append(crearH2(pueblo));
+    $("main").append(crearHr());
+    // aquí hay que añadir los filtros
+    $("main").append(crearSection().append(crearDiv("contenedor-museos").append(crearTarjetaUbicacion())));
+    
 }
 /* --- --- */
 
@@ -38,31 +42,61 @@ function crearSection () {
 }
 
 // función genérica
+function crearArticle(clases) {
+    return $("<article>").addClass(clases);
+}
+
+function crearHeader(clases) {
+    return $("<header>").addClass(clases);
+}
+
+// función genérica
 function crearH2(titulo) {
     return $("<h2>").addClass("mt-5").html(titulo);
 }
 
-// función genérica ??
+function crearH4(titulo) {
+    return $("<h4>").addClass("mb-2 mt-3").html(titulo);
+}
+
+// función genérica
 function crearHr() {
     return $("<hr>");
+}
+
+// función genérica
+function crearDiv(clases) {
+    return $("<div>").addClass(clases);
+}
+
+//función genérica
+function crearImg(direc, textAl) {
+    return $("<img>")
+        .attr({
+            "src":direc,
+            "alt":textAl
+        });
+}
+
+// función genérica
+function crearP(clases, texto) {
+    return $("<p>").addClass(clases).html(texto);
 }
 
 /* --- --- */
 
 /* --- Funciones específicas --- */
 
-//función específica - ¿Dónde visitar?
+//función específica - ¿Dónde visitar? --> Pensar en sustituirla
 function crearContenedorPueblos() {
     return $("<div>").attr("class", "contenedor-pueblos my-5");
 }
 
 // función específica - ¿Dónde visitar?
 function crearBotonPueblo (name, nameST) {
-    let nuevoBotonPueblo = $("<a>")
-    .attr({
-        "href":"pantalla-museosCiudad.html",
-        "class":"pueblo overlay col-lg-4"
-    });
+    let nuevoBotonPueblo = $("<button>")
+    .addClass("pueblo overlay col-lg-4")
+    .on("click",function(){crearUbicacionesPueblo(name)});
     let imagenPrueblo = $("<img>")
     .attr({
         "src" : "img/pueblos/"+nameST+".webp",
@@ -96,6 +130,15 @@ function crearBotonVerMas_Pueblos() {
             .on("click",function(){añadirPueblosRestantes()});
 }
 
+// función específica - Lista de ubicaciones
+function crearTarjetaUbicacion() {
+    art = crearArticle("museo");
+    art.append(crearImg("img/museo1-small.webp","Museo 1"));
+    art.append(crearHeader("titulo-museo-card").append(crearH4("Museo 1")));
+    art.append(crearP("mb-4","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed."));
+    // aquí hay que crear los botones --> crear una función genérica para botones
+    return art;
+}
 
 
 /* --- --- */
