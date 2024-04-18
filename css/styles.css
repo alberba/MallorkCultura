@@ -245,6 +245,12 @@ nav {
 
 .menu_icon {
     display: none;
+    position: absolute;
+    top: 5%;
+    right: 0%;
+    left: 0%;
+    width: 50px;
+    margin: 0 auto;
 }
 
 .nav-links-header {
