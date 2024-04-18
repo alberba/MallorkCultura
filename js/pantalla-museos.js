@@ -16,6 +16,21 @@ function nextPage() {
     changePage(1);
 }
 
+// Función para escapar las comillas simples en un texto
+function escaparComillas(texto) {
+    return texto.replace(/'/g, "\\'");
+}
+
+// Función para almacenar la visita con los detalles del museo
+function almacenarVisita(lugar, direccion, tipo) {
+    console.log("ALMACENAR VISITA");
+    const evento = { lugar, direccion, horaInicio: "2024-06-01T09:00:00", horaFin: "2024-06-01T10:00:00", tipo };
+    console.log("EVENTO CREADO:", evento);
+    ActualizarVisitas(evento);
+    console.log("VISITA AÑADIDA");
+}
+
+// Función para cargar los museos al cargar la página
 document.addEventListener("DOMContentLoaded", function() {
     const museosContainer = document.getElementById("museos-container");
     const jsonData = "json/museosMallorkCultura.json"; // Ruta al archivo JSON
@@ -43,6 +58,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     for (let i = inicio; i < fin; i++) {
                         if (museos[i]) {
                             const museo = museos[i];
+                            console.log("CHECKPOINT 1");
+                            console.log(museo);
+
+                            // Escapar comillas simples en los valores de museo
+                            const nombreEscapado = escaparComillas(museo.areaServed.name);
+                            const direccionEscapada = escaparComillas(museo.areaServed.address.streetAddress);
+
                             const museoHTML = `
                                 <article class="museo">
                                     <img src="${museo.areaServed.photo[0].contentUrl}" alt="${museo.areaServed.name}">
@@ -51,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     </header>
                                     <p class="mb-4 descripcion-museo">${museo.areaServed.description}</p>
                                     <div class="botones-museo">
-                                        <a type="button" class="boton boton-card-museo boton-verde">Añadir</a>
+                                        <a type="button" class="boton boton-card-museo boton-verde" onclick="almacenarVisita('${nombreEscapado}', '${direccionEscapada}', '${museo.areaServed["@type"][1]}')">Añadir</a>
                                         <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
                                     </div>
                                 </article>
@@ -148,4 +170,3 @@ document.addEventListener("DOMContentLoaded", function() {
     // Carga los museos al cargar la página
     cargarMuseos();
 });
-
