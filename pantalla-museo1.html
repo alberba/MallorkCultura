@@ -116,26 +116,39 @@
                 </p>
                 <section>
                     <h3 class="mb-4">EXPOSICIONES</h3>
-                    <ol class="exposiciones">
-                        <li class="exposicion">
-                            <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
-                            <p class="nombre">El Miró de Son Boter</p>
-                            <p class="fecha-exp fecha-verde">Ahora hasta el 12/7/24</p>
-                        </li>
-                        <li class="exposicion">
-                            <img src="img/hab-roja.webp" alt="Portada exposicion Habitación Roja">
-                            <p class="nombre">La Habitación Roja</p>
-                            <p class="fecha-exp">15/5/24 - 31/11/24</p>
-                        </li>
-                        <li class="exposicion">
-                            <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
-                            <p class="nombre">El Miró de Son Boter</p>
-                            <p class="fecha-exp">16/6/24 - 28/9/24</p>
-                        </li>
-                        <button class="no-style-button boton-slider-exposiciones">
-                            <img src="img/svg/next-page-arr.svg" 
-                            alt="Botón para deslizar la lista de exposiciones">
-                        </button>
+                    <ol class="exposiciones swiper">
+                        <div class="swiper-wrapper">
+                            <li class="exposicion swiper-slide">
+                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                                <p class="nombre">El Miró de Son Boter</p>
+                                <p class="fecha-exp fecha-verde">Ahora hasta el 12/7/24</p>
+                            </li>
+                            <li class="exposicion swiper-slide">
+                                <img src="img/hab-roja.webp" alt="Portada exposicion Habitación Roja">
+                                <p class="nombre">La Habitación Roja</p>
+                                <p class="fecha-exp">15/5/24 - 31/11/24</p>
+                            </li>
+                            <li class="exposicion swiper-slide">
+                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                                <p class="nombre">El Miró de Son Boter</p>
+                                <p class="fecha-exp">16/6/24 - 28/9/24</p>
+                            </li>
+                            <li class="exposicion swiper-slide">
+                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                                <p class="nombre">El Miró de Son Boter</p>
+                                <p class="fecha-exp">16/6/24 - 28/9/24</p>
+                            </li>
+                            <li class="exposicion swiper-slide">
+                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                                <p class="nombre">El Miró de Son Boter</p>
+                                <p class="fecha-exp">16/6/24 - 28/9/24</p>
+                            </li>
+                            <li class="exposicion swiper-slide">
+                                <img src="img/imgsonboter.webp" alt="Portada exposicion Son Boter">
+                                <p class="nombre">El Miró de Son Boter</p>
+                                <p class="fecha-exp">16/6/24 - 28/9/24</p>
+                            </li>
+                        </div>
                     </ol>
                 </sect>
                 
@@ -154,29 +167,37 @@
             </article>
             <!-- Parte inferior derecha -->
             <div class="vl"></div>
+            <hr id="separador-horizontal-museo">
             <aside>
-                <h5>Horario</h5>
-                <p>
-                    Lunes a viernes: 9:00 a 15:00 <br>
-                    Sabado: 12:00 a 20:00 <br>
-                    Domingo y festivos: 11:00 a 15:00
-                </p>
-                <h5>Precios</h5>
-                <p>
-                    Adultos: 12€ <br>
-                    Niños: 7€ <br>
-                    Menores de 3 años: Gratis <br>
-                    Senior: 5€ <br>
-                    Estudiante: 6€ <br>
-                    Residente: 3€ <br>
-                </p>
-                <h5>Dirección</h5>
-                <p>
-                    Carrer de la Pietat, 10 <br>
-                    07012 Palma <br>
-                    971 456 456 <br>
-                    info@museo1.com <br>
-                </p>
+                
+                <div>
+                    <h5>Horario</h5>
+                    <p>
+                        Lunes a viernes: 9:00 a 15:00 <br>
+                        Sabado: 12:00 a 20:00 <br>
+                        Domingo y festivos: 11:00 a 15:00
+                    </p>
+                </div>
+                <div>
+                    <h5>Dirección</h5>
+                    <p>
+                        Carrer de la Pietat, 10 <br>
+                        07012 Palma <br>
+                        971 456 456 <br>
+                        info@museo1.com <br>
+                    </p>
+                </div>
+                <div>
+                    <h5>Precios</h5>
+                    <p>
+                        Adultos: 12€ <br>
+                        Niños: 7€ <br>
+                        Menores de 3 años: Gratis <br>
+                        Senior: 5€ <br>
+                        Estudiante: 6€ <br>
+                        Residente: 3€ <br>
+                    </p>
+                </div>
             </aside>
         </div>
     </main>
@@ -200,5 +221,6 @@
 </body>
 </html>
 
-<script async defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script async defer src="js/swiper.js"></script>
+<script src="js/jquery.js"></script>
