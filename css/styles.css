@@ -321,8 +321,9 @@ nav {
 }
 
 .lista-museos {
-    max-width: 115rem;
+    max-width: 121rem;
     margin: auto;
+    padding: 0 3rem;
 }
 
 .info-museo {
@@ -430,7 +431,7 @@ nav {
 .form-filtro-museos {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3, 3fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap:2rem;
 }
 /* -- Filtros -- */
