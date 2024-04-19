@@ -11,7 +11,8 @@ $("#logo").on("click",function() {
 function crearDondeVisitar() {
     nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
     nombresSinTilde =   ["Palma", "Manacor", "Soller", "Valldemossa","Inca", "Calvia", "Alcudia", "Santanyi", "Porreres"];
-    $("main").empty().attr("class","contenedor-principal index");
+    $("main").empty();
+    $("main").attr("class","contenedor-principal index");
     $("main").append(crearH2("¿Dónde visitar?"));
     $("main").append(crearHr());
     sec = crearSection ();
