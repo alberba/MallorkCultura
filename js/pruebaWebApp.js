@@ -11,7 +11,7 @@ $("#logo").on("click",function() {
 function crearDondeVisitar() {
     nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
     nombresSinTilde =   ["Palma", "Manacor", "Soller", "Valldemossa","Inca", "Calvia", "Alcudia", "Santanyi", "Porreres"];
-    $("main").empty();
+    $("main").empty().attr("class","contenedor-principal index");
     $("main").append(crearH2("¿Dónde visitar?"));
     $("main").append(crearHr());
     sec = crearSection ();
@@ -26,10 +26,10 @@ function crearDondeVisitar() {
 }
 
 function crearUbicacionesPueblo(pueblo) {
-    $("main").empty();
+    $("main").empty().attr("class","contenedor-principal lista-museos");
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
-    // aquí hay que añadir los filtros
+    $("main").append(crearFiltros());
     div = crearDiv("contenedor-museos");
     for (let i=0; i<9; i++) {
         div.append(crearTarjetaUbicacion());
@@ -96,6 +96,53 @@ function crearBoton(id = "", clases = "", texto) {
         .html(texto);
 }
 
+// función genérica
+function crearForm(clases = "") {
+    return $("<form>")
+        .addClass(clases);
+}
+
+// función genérica --> le pasas el input al que debe aderirse
+function crearLabel(inputName, text){
+    return $("<label>")
+        .attr("for",inputName)
+        .html(text);
+}
+
+// función genérica
+function crearInput(tipo, nombre, id = "", clase ="", plcHold = "") {
+    return $("<input>")
+        .attr({
+            "type":tipo,
+            "name":nombre,
+            "id":id,
+            "class": clase,
+            "placeholder":plcHold
+        });
+}
+
+// función genérica
+function crearSelect(nombre, id, clases){
+    return $("<select>")
+        .attr({
+            "name": nombre,
+            "id" : id,
+            "class": clases
+        });
+}
+
+// función genérica
+function crearOption(valor, seleccionado = false, texto) {
+    opt = $("<option>")
+        .attr("value", valor)
+        .html(texto);
+    if(seleccionado) {  // Hago esto para ahorrar un atributo en los que no están preseleccionados
+        $("<option>")
+        .attr("selected", seleccionado);
+    }
+    return opt;
+}
+
 /* --- --- */
 
 /* --- Funciones específicas --- */
@@ -158,8 +205,51 @@ function crearTarjetaUbicacion() {
 
 // función específica - Lista de ubicaciones
 function crearFiltros() {
-    div = crearDiv("contenedor-filtros");
-    div.append(crearBoton("boton-filtros","boton-filtros",Filtros).append(crearImg("img/svg/flecha-menu-down.svg","")))
+    filtros = crearDiv("contenedor-filtros");
+    filtros.append(crearBoton("boton-filtros","boton-filtros","Filtros").append(crearImg("img/svg/flecha-menu-down.svg")));
+    form = crearForm("form-filtro-museos mt-3");
+    form
+        .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
+                .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
+                .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
+        )
+        .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
+            .append(crearLabel("","Ordenar por cercanía"))
+            .append(crearInput("search","","busqueda-cercanía","","Dirección"))
+        )
+        .append(crearDiv("elemento-filtro-museo")
+            .append(crearLabel("","Radio de búsqueda"))
+            .append(crearDiv("contenedor-range")
+                .append(crearInput("range","","busqueda-radio"))
+                .append(crearP("","10Km")) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
+            )
+        )
+        .append(crearDiv("elemento-filtro-museo")
+            .append(crearLabel("","Tipo de exposición"))
+            .append(crearSelect("","seleccion-exposicion","select")
+                .append(crearOption(1,true,"Todos"))
+                .append(crearOption(2,"Todos"))
+                .append(crearOption(3,"Todos"))
+            )
+        )
+        .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
+                .append(crearLabel("dia-visita","Día de visita"))
+                .append(crearInput("date","","dia-visita"))
+        )
+        .append(crearDiv("tipo-entrada elemento-filtro-museo")
+            .append(crearP("","Tipo de entrada"))
+            .append(crearDiv("opciones-check")
+                .append(crearLabel("gratuito","Gratuito")
+                    .append(crearInput("checkbox","tipo_entrada[]","gratuito"))
+                )
+                .append(crearLabel("entrada","Entrada")
+                    .append(crearInput("checkbox","tipo_entrada[]","entrada"))
+                )
+            )
+        );
+    filtros.append(form);
+    
+    return filtros;
 }
 
 /* --- --- */
