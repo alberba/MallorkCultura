@@ -83,6 +83,16 @@ function crearP(clases, texto) {
     return $("<p>").addClass(clases).html(texto);
 }
 
+// función genérica
+function crearBoton(id, clases, texto) {
+    return $("<button>").
+        attr({
+            "id":id,
+            "class":clases
+        })
+        .html(texto);
+}
+
 /* --- --- */
 
 /* --- Funciones específicas --- */
@@ -136,7 +146,10 @@ function crearTarjetaUbicacion() {
     art.append(crearImg("img/museo1-small.webp","Museo 1"));
     art.append(crearHeader("titulo-museo-card").append(crearH4("Museo 1")));
     art.append(crearP("mb-4","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed."));
-    // aquí hay que crear los botones --> crear una función genérica para botones
+    art.append(crearDiv("botones-museo")
+                .append(crearBoton("X","boton boton-card-museo boton-verde","Añadir"))
+                .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más"))
+            );
     return art;
 }
 
