@@ -30,8 +30,11 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     // aquí hay que añadir los filtros
-    $("main").append(crearSection().append(crearDiv("contenedor-museos").append(crearTarjetaUbicacion())));
-    
+    div = crearDiv("contenedor-museos");
+    for (let i=0; i<9; i++) {
+        div.append(crearTarjetaUbicacion());
+    }
+    $("main").append(crearSection().append(div));
 }
 /* --- --- */
 
@@ -42,11 +45,11 @@ function crearSection () {
 }
 
 // función genérica
-function crearArticle(clases) {
+function crearArticle(clases = "") {
     return $("<article>").addClass(clases);
 }
 
-function crearHeader(clases) {
+function crearHeader(clases = "") {
     return $("<header>").addClass(clases);
 }
 
@@ -65,12 +68,12 @@ function crearHr() {
 }
 
 // función genérica
-function crearDiv(clases) {
+function crearDiv(clases = "") {
     return $("<div>").addClass(clases);
 }
 
 //función genérica
-function crearImg(direc, textAl) {
+function crearImg(direc, textAl = "") {
     return $("<img>")
         .attr({
             "src":direc,
@@ -79,12 +82,12 @@ function crearImg(direc, textAl) {
 }
 
 // función genérica
-function crearP(clases, texto) {
+function crearP(clases = "", texto) {
     return $("<p>").addClass(clases).html(texto);
 }
 
 // función genérica
-function crearBoton(id, clases, texto) {
+function crearBoton(id = "", clases = "", texto) {
     return $("<button>").
         attr({
             "id":id,
@@ -153,5 +156,10 @@ function crearTarjetaUbicacion() {
     return art;
 }
 
+// función específica - Lista de ubicaciones
+function crearFiltros() {
+    div = crearDiv("contenedor-filtros");
+    div.append(crearBoton("boton-filtros","boton-filtros",Filtros).append(crearImg("img/svg/flecha-menu-down.svg","")))
+}
 
 /* --- --- */
