@@ -236,7 +236,8 @@ function crearFiltros() {
                 .append(crearLabel("dia-visita","Día de visita"))
                 .append(crearInput("date","","dia-visita"))
         )
-        .append(crearDiv("tipo-entrada elemento-filtro-museo")
+        .append(crearDiv("elemento-filtro-museo")
+            .attr("id","tipo-entrada") // Pocos divs necesitan un id, no veo necesidad de tener que incluir el id en la función para crear div's
             .append(crearP("","Tipo de entrada"))
             .append(crearDiv("opciones-check")
                 .append(crearLabel("gratuito","Gratuito")
