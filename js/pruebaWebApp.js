@@ -25,6 +25,8 @@ function crearDondeVisitar() {
     $("main").append(crearHr());
 }
 
+// esta función se encarga de "Crear" el listado de museos de un pueblo --> seguramente haya que cambiar algo 
+// falta que se haga lo del mapa
 function crearUbicacionesPueblo(pueblo) {
     $("main").empty().attr("class","contenedor-principal lista-museos");
     $("main").append(crearH2(pueblo));
@@ -97,9 +99,12 @@ function crearBoton(id = "", clases = "", texto) {
 }
 
 // función genérica
-function crearForm(clases = "") {
+function crearForm(id,clases = "") {
     return $("<form>")
-        .addClass(clases);
+        .attr({
+            "id":id,
+            "class":clases
+        });
 }
 
 // función genérica --> le pasas el input al que debe aderirse
@@ -206,8 +211,14 @@ function crearTarjetaUbicacion() {
 // función específica - Lista de ubicaciones
 function crearFiltros() {
     filtros = crearDiv("contenedor-filtros");
-    filtros.append(crearBoton("boton-filtros","boton-filtros","Filtros").append(crearImg("img/svg/flecha-menu-down.svg")));
-    form = crearForm("form-filtro-museos mt-3");
+    filtros.append(crearBoton("boton-filtros","boton-filtros","Filtros")
+                    .append(crearImg("img/svg/flecha-menu-down.svg"))
+                    .attr({
+                        "data-bs-toggle":"collapse",
+                        "data-bs-target":"#form-filtro"
+                    })
+                );
+    form = crearForm("form-filtro","form-filtro-museos mt-3");
     form
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
                 .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))

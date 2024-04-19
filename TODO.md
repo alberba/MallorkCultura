@@ -19,6 +19,7 @@
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
+- [ ] Añadir que los filtros se plieguen y desplieguen con jquery
 ### APIs
 - [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Maps API
