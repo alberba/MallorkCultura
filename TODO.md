@@ -25,6 +25,7 @@
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 - [ ] Hacer función para poner el mapa (Albert + Mati)
+- [ ] Crear función para volver atrás del boton Atrás
 ### APIs
 - [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Maps API

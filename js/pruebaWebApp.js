@@ -36,6 +36,7 @@ function crearDondeVisitar() {
 function crearUbicacionesPueblo(pueblo) {
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
+    $("main").append(crearBotonAtras());
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
@@ -83,11 +84,12 @@ function crearDiv(clases = "") {
 }
 
 //función genérica
-function crearImg(direc, textAl = "") {
+function crearImg(direc, textAl = "", clases = "") {
     return $("<img>")
         .attr({
             "src":direc,
-            "alt":textAl
+            "alt":textAl,
+            "class": clases
         });
 }
 
@@ -207,7 +209,17 @@ function crearBotonVerMas_Pueblos() {
             .on("click",function(){añadirPueblosRestantes()});
 }
 
+// función específica - Por todo
+// ACABAR
+function crearBotonAtras() {
+    return $("<button>")
+            .html("Atrás")
+            .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás","back-arrow"))
+            .on("click", function(){});
+}
+
 // función específica - Lista de ubicaciones
+// habrá que añadir los JSON a esto
 function crearTarjetaUbicacion() {
     art = crearArticle("museo");
     art.append(crearImg("img/museo1-small.webp","Museo 1"));
