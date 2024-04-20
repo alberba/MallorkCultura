@@ -47,6 +47,26 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearSection().append(div));
     $("main").append(crearSelectorPagina());    // esto va a requerir revisión
 }
+
+function crearInfoUbi(){
+    $("main").empty();
+    $("main").attr("class","contenedor-principal info-museo");
+    $("main").append(crearBotonAtras());
+
+    //Parte del slider habrá que arreglarla
+    $("main")
+        .append(crearDiv("swiper mySwiper slider-imagen-museo")
+                .append(crearDiv("swiper-wrapper")
+                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
+                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
+                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
+                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
+                )
+                .append(crearDiv("swiper-button-next"))
+                .append(crearDiv("swiper-button-prev"))
+                .append(crearDiv("swiper-pagination"))
+            )
+}
 /* --- --- */
 
 /* --- Funciones genéricas --- */
@@ -191,6 +211,7 @@ function crearBotonPueblo (name, nameST) {
 }
 
 // función específica - ¿Dónde visitar?
+// habría que mejorar esta basura
 function añadirPueblosRestantes() {
     pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
     pueblosSinTilde =   ["Fornalutx","Deia","Sant Joan","Banyalbufar","Maria de la Salut","Arta","Santa Eugenia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuiri","Ses Salines","Santa Maria del Cami","Capdepera","Alaro","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubi","Sineu","Buger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxi","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
@@ -226,8 +247,12 @@ function crearTarjetaUbicacion() {
     art.append(crearHeader("titulo-museo-card").append(crearH4("Museo 1")));
     art.append(crearP("mb-4","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed."));
     art.append(crearDiv("botones-museo")
-                .append(crearBoton("X","boton boton-card-museo boton-verde","Añadir"))
-                .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más"))
+                .append(crearBoton("X","boton boton-card-museo boton-verde","Añadir")
+                            .on("click",function(){})   // Aquí hay que añadir la función para añadir a la ruta
+                        )
+                .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
+                            .on("click",function(){crearInfoUbi()})
+                    )
             );
     return art;
 }
