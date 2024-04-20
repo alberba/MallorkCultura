@@ -59,13 +59,12 @@ function crearInfoUbi(){
                 .append(crearDiv("swiper-wrapper")
                     .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
                     .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
-                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
-                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
                 )
                 .append(crearDiv("swiper-button-next"))
                 .append(crearDiv("swiper-button-prev"))
                 .append(crearDiv("swiper-pagination"))
-            )
+            );
+    
 }
 /* --- --- */
 

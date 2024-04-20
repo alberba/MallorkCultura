@@ -26,7 +26,7 @@
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 - [ ] Hacer función para poner el mapa (Albert + Mati)
 - [ ] Crear función para volver atrás del boton Atrás
-- [ ] En info museo, mejorar el código para crear sliders
+- [ ] En info museo, arreglar el slider
 ### APIs
 - [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Maps API
