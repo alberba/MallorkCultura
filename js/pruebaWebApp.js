@@ -29,7 +29,8 @@ function crearDondeVisitar() {
 // esta función se encarga de "Crear" el listado de museos de un pueblo --> seguramente haya que cambiar algo 
 // falta que se haga lo del mapa
 function crearUbicacionesPueblo(pueblo) {
-    $("main").empty().attr("class","contenedor-principal lista-museos");
+    $("main").empty()
+    $("main").attr("class","contenedor-principal lista-museos");
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
@@ -38,6 +39,7 @@ function crearUbicacionesPueblo(pueblo) {
         div.append(crearTarjetaUbicacion());
     }
     $("main").append(crearSection().append(div));
+    $("main").append();
 }
 /* --- --- */
 
@@ -219,7 +221,7 @@ function crearFiltros() {
                         "data-bs-target":"#form-filtro"
                     })
                 );
-    form = crearForm("form-filtro","form-filtro-museos mt-3");
+    form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show");
     form
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
                 .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
