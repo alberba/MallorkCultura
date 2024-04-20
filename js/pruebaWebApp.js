@@ -39,7 +39,7 @@ function crearUbicacionesPueblo(pueblo) {
         div.append(crearTarjetaUbicacion());
     }
     $("main").append(crearSection().append(div));
-    $("main").append();
+    $("main").append(crearSelectorPagina());    // esto va a requerir revisión
 }
 /* --- --- */
 
@@ -151,6 +151,10 @@ function crearOption(valor, seleccionado = false, texto) {
     return opt;
 }
 
+// función genérica
+function crearSpan(clases, texto) {
+    return $("<span>").addClass(clases).html(texto);
+}
 /* --- --- */
 
 /* --- Funciones específicas --- */
@@ -265,6 +269,18 @@ function crearFiltros() {
     filtros.append(form);
     
     return filtros;
+}
+
+// función específica - Lista de ubicaciones
+// esta habrá que cambiarla
+function crearSelectorPagina() {
+    div = crearDiv("paginas");
+    return div.append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
+        .append(crearP("","..")
+                .prepend(crearSpan("pagina-actual","1"))
+                .append(crearSpan("","2"))
+            )
+        .append(crearImg("img/svg/next-page-arr.svg","Página siguiente"));
 }
 
 /* --- --- */

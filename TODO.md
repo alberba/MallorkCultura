@@ -19,7 +19,11 @@
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
-- [ ] Añadir que los filtros se plieguen y desplieguen con jquery
+- [X] Añadir que los filtros se plieguen y desplieguen con jquery
+### JQuery
+- [ ] Revisar de "optimizar" los returns de las funciones
+- [ ] Actualizar función de crearSelectorPagina
+    - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 ### APIs
 - [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Maps API
