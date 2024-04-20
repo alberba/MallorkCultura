@@ -29,3 +29,23 @@ function eliminarMuseoFiltro(){
 
     }
 }
+
+// Método para el funcionamiento del botón de leer más en pantalla-museo
+function leerMas(boton) {
+    const parrafosAdicionales = $(".leer-mas").toggle();
+    $("#first-desc-museum").toggleClass("first-desc-museum-mobile");
+
+    if (parrafosAdicionales.is(":hidden")) {
+        if (!primerParrafoVisible()) {
+            $("#first-desc-museum")[0].scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazar hacia el inicio del primer párrafo
+        }
+        $("#leer-mas-btn").html("Leer más");
+    } else {
+        $("#leer-mas-btn").html("Leer menos");
+    }
+}
+
+function primerParrafoVisible() {
+    const primerParrafo = $("#first-desc-museum");
+    return primerParrafo.offset().top >= $(window).scrollTop();
+}

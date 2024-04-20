@@ -13,6 +13,7 @@
 
     <script src="js/login.js" defer></script>
     <script src="js/essential.js" defer></script>
+    <script src="js/index.js"></script>
     <script src="js/mapa.js" ></script>
     <script src="js/calendar.js"></script>
 
@@ -98,7 +99,7 @@
         <div class="section-museo">
             <!-- Parte inferior izquierda -->
             <article class="main-museo">
-                <p class="desc-museum">
+                <p class="desc-museum first-desc-museum-mobile" id="first-desc-museum">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu leo semper, accumsan ante in, imperdiet elit. 
                     Proin lobortis sodales posuere. Fusce tincidunt massa at dictum convallis. Nulla lacinia sodales velit, vel accumsan 
                     felis finibus et. Donec condimentum fermentum orci id ultricies. Etiam auctor sed est et malesuada. Etiam rutrum et 
@@ -107,13 +108,21 @@
                     vulputate eleifend, ex diam venenatis sem, nec rhoncus libero nibh accumsan velit. In dignissim lacus vel bibendum 
                     hendrerit. Fusce vel sapien vel turpis viverra dignissim id vitae felis.
                 </p>
-                <p class="desc-museum">
+                <p class="desc-museum leer-mas">
                     Ut viverra tortor id augue tristique dignissim. Nullam sodales sagittis mauris, convallis tristique nisl tristique 
                     eget. Pellentesque finibus accumsan quam ut rhoncus. Sed blandit, tellus sed mattis imperdiet, nunc turpis elementum 
                     nibh, eget maximus dui diam quis neque. Nullam consequat orci ut neque fermentum, non varius sem pretium. Cras vel 
                     fringilla tortor. Pellentesque id pellentesque ligula, ut hendrerit justo. Mauris ultrices ipsum id ex tristique 
                     gravida. Sed sapien felis, euismod at efficitur eu, interdum nec diam.
                 </p>
+                <p class="desc-museum leer-mas">
+                    Ut viverra tortor id augue tristique dignissim. Nullam sodales sagittis mauris, convallis tristique nisl tristique 
+                    eget. Pellentesque finibus accumsan quam ut rhoncus. Sed blandit, tellus sed mattis imperdiet, nunc turpis elementum 
+                    nibh, eget maximus dui diam quis neque. Nullam consequat orci ut neque fermentum, non varius sem pretium. Cras vel 
+                    fringilla tortor. Pellentesque id pellentesque ligula, ut hendrerit justo. Mauris ultrices ipsum id ex tristique 
+                    gravida. Sed sapien felis, euismod at efficitur eu, interdum nec diam.
+                </p>
+                <button class="boton boton-verde" id="leer-mas-btn" onclick="leerMas(this)">Leer más</button>
                 <section>
                     <h3 class="mb-4">EXPOSICIONES</h3>
                     <ol class="exposiciones swiper">
@@ -166,7 +175,7 @@
                 </div>
             </article>
             <!-- Parte inferior derecha -->
-            <div class="vl" id="separador-horizontal-museo"></div>
+            <div class="vl" id="separador-vertical-museo"></div>
             <hr id="separador-horizontal-museo">
             <aside>
                 
