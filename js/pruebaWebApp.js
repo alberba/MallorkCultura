@@ -1,3 +1,8 @@
+// Crear la página principal al cargar la página
+$(function() {
+    crearDondeVisitar();
+});
+
 /* --- Eventos de botones --- */
 // Rehacer la página principal
 $("#logo").on("click",function() {
