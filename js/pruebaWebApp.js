@@ -233,6 +233,7 @@ function crearTarjetaUbicacion() {
 }
 
 // función específica - Lista de ubicaciones
+// hacer que funcionen
 function crearFiltros() {
     filtros = crearDiv("contenedor-filtros");
     filtros.append(crearBoton("boton-filtros","boton-filtros","Filtros")
@@ -276,10 +277,10 @@ function crearFiltros() {
             .append(crearP("","Tipo de entrada"))
             .append(crearDiv("opciones-check")
                 .append(crearLabel("gratuito","Gratuito")
-                    .append(crearInput("checkbox","tipo_entrada[]","gratuito"))
+                    .prepend(crearInput("checkbox","tipo_entrada[]","gratuito"))
                 )
                 .append(crearLabel("entrada","Entrada")
-                    .append(crearInput("checkbox","tipo_entrada[]","entrada"))
+                    .prepend(crearInput("checkbox","tipo_entrada[]","entrada"))
                 )
             )
         );
