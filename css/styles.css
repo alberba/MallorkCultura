@@ -1000,7 +1000,7 @@ input[type="radio"] {
         width: 80%;
     }
 
-    .vl {
+    #separador-horizontal-museo {
         display: none;
     }
 
@@ -1015,6 +1015,38 @@ input[type="radio"] {
 
     .ubi-header{
         height: 30rem;
+    }
+
+    /* pantalla ruta */
+
+    .cruz-ruta {
+        margin-left: 2rem;
+
+        & img {
+            width: 4rem;
+        }
+    }
+
+    .section-ruta {
+        margin-left: .5rem;
+    }
+
+    .formulario-ruta{
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .parada-ruta {
+        & h5 {
+            font-size: 2.5rem;
+        }
+    }
+    .left-museo-ruta {
+        transform: translate(-84%, 30%);
+    }
+
+    .contenedor-ruta-general {
+        padding-left: 12rem;
     }
 
 }
