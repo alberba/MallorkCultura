@@ -234,6 +234,7 @@ function crearBotonVerMas_Pueblos() {
 function crearBotonAtras() {
     return $("<button>")
             .html("Atrás")
+            .addClass("boton-atras")
             .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás","back-arrow"))
             .on("click", function(){});
 }

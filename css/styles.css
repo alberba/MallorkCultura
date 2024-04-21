@@ -97,6 +97,10 @@ a:active{
     background-color: inherit;
 }
 /* --- */
+
+button {
+    font-weight: inherit;
+}
   
 img {
     margin: 0;
