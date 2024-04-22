@@ -100,6 +100,8 @@ a:active{
 
 button {
     font-weight: inherit;
+    background: none;
+    border: none;
 }
   
 img {
@@ -124,12 +126,6 @@ section {
 }
 
 /* -------- Botones -------- */
-
-button {
-    background: none;
-    border: none;
-}
-
 /* Diseño del boton */
 .boton {
     border:none;
