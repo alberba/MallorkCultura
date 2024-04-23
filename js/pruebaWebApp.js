@@ -1,3 +1,13 @@
+const jsonUrl = "json/museosMallorkCultura.json";
+let museos;
+
+fetch(jsonUrl)
+    .then(response => response.json())
+    .then(data => {
+        museos = data.servicios;
+    })
+    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+
 // Crear la página principal al cargar la página
 $(function() {
     crearDondeVisitar();
@@ -14,14 +24,23 @@ $("#logo").on("click",function() {
 /* --- Funciones "creadoras" --- */
 //esta función se encarga de "Crear" el apartado de título "¿Dónde visitar?"
 function crearDondeVisitar() {
-    nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
-    nombresSinTilde =   ["Palma", "Manacor", "Soller", "Valldemossa","Inca", "Calvia", "Alcudia", "Santanyi", "Porreres"];
+    $("header > div").remove();
+    $("header").append(crearDiv("overlay header-image")
+        .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay"))
+        .append(crearDiv("texto-main-page texto-overlay m-0")
+            .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
+            .append(crearP({texto: "Planifica tu ruta ya"}))
+        )
+
+    );
+    let nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
+    let nombresSinTilde =   ["Palma", "Manacor", "Soller", "Valldemossa","Inca", "Calvia", "Alcudia", "Santanyi", "Porreres"];
     $("main").empty();
     $("main").attr("class","contenedor-principal index");
     $("main").append(crearH2("¿Dónde visitar?"));
     $("main").append(crearHr());
-    sec = crearSection ();
-    div = crearContenedorPueblos();
+    let sec = crearSection ();
+    let div = crearContenedorPueblos();
     $(sec).append(div);
     for(let i = 0; i < 9; i++) {
         $(div).append(crearBotonPueblo(nombres[i],nombresSinTilde[i]));
@@ -34,13 +53,19 @@ function crearDondeVisitar() {
 // esta función se encarga de "Crear" el listado de museos de un pueblo --> seguramente haya que cambiar algo 
 // falta que se haga lo del mapa
 function crearUbicacionesPueblo(pueblo) {
+    $("header > div").remove();
+    $("header").append(crearDiv("mapa-museo map-container")
+        .append(crearDiv("ubi-header").attr("id","map"))
+    );
+    initMap({lat: 39.570279022882914, lng: 2.6411309682497817});
+
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
     $("main").append(crearBotonAtras());
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
-    div = crearDiv("contenedor-museos");
+    let div = crearDiv("contenedor-museos");
     for (let i=0; i<9; i++) {
         div.append(crearTarjetaUbicacion());
     }
@@ -48,22 +73,62 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearSelectorPagina());    // esto va a requerir revisión
 }
 
-function crearInfoUbi(){
+function crearInfoUbi(nombreLugar){
+    window.scrollTo(0, 0);
+    const lugar = museos.find(museo => museo.areaServed.nombre === nombreLugar);
+    $("header > div").remove();
+    $("header").append(crearDiv("mapa-museo map-container")
+        .append(crearDiv("ubi-header").attr("id","map"))
+        .append($("<h2>").addClass("m-0 titulo-museo").attr("id", "titulo-museo").html(lugar.areaServed.name))
+    );
+
+    let posicion = {lat: parseFloat(lugar.areaServed.geo.latitude), lng: parseFloat(lugar.areaServed.geo.longitude)};
+    initMap(posicion, [posicion]);
     $("main").empty();
     $("main").attr("class","contenedor-principal info-museo");
     $("main").append(crearBotonAtras());
 
     //Parte del slider habrá que arreglarla
-    $("main")
-        .append(crearDiv("swiper mySwiper slider-imagen-museo")
-                .append(crearDiv("swiper-wrapper")
-                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
-                    .append(crearDiv("swiper-slide").append(crearImg("img/museo1-big.webp","Imagen del museo","imagen-museo")))
+    $("main").append(crearDiv("swiper mySwiper slider-imagen-museo")
+        .append(generarCarrousselFotos(lugar.areaServed.photo))
+        .append(crearDiv("swiper-button-next"))
+        .append(crearDiv("swiper-button-prev"))
+        .append(crearDiv("swiper-pagination"))
+    )
+    .append(crearDiv("section-museo")
+        .append(generarArticuloLugarYDescripcion(lugar)
+            .append(crearBoton("leer-mas-btn", "boton boton-verde", "Leer más")
+                .on("click", leerMas)
+            )
+            .append(crearSection()
+                .append(crearH3("mb-4", "EXPOSICIONES"))
+                .append($("<ol>")
+                    .addClass("exposiciones swiper")
+                    .append(generarDivExposiciones(lugar.areaServed.event))
                 )
-                .append(crearDiv("swiper-button-next"))
-                .append(crearDiv("swiper-button-prev"))
-                .append(crearDiv("swiper-pagination"))
-            );
+            )
+            .append(crearDiv("contenedor-botones-museo")
+                .append($("<a>")
+                    .addClass("boton boton-verde")
+                    //TODO: Cambiar esto
+                    .html("Añadir a la ruta")
+                )
+                .append($("<a>")
+                    .addClass("boton boton-gris boton-comp-entrada")
+                    //TODO: Cambiar esto
+                    .html("Comprar entrada")
+                    .append(crearImg("img/svg/boton-añadir-carrito.svg","Icono de redireccion"))
+                )
+            )
+        )
+        .append(crearDiv("vl").attr("id","separador-vertical-museo"))
+        .append(crearHr().attr("id","separador-horizontal-museo"))
+        .append(generarAsideMuseo(lugar))
+    )
+
+    if (lugar.areaServed.event.length > 0) {
+        activarSwipersMuseo();
+    }
     
 }
 /* --- --- */
@@ -86,6 +151,10 @@ function crearHeader(clases = "") {
 // función genérica
 function crearH2(titulo) {
     return $("<h2>").addClass("mt-5").html(titulo);
+}
+
+function crearH3(clases="",titulo) {
+    return $("<h3>").addClass(clases).html(titulo);
 }
 
 function crearH4(titulo) {
@@ -113,8 +182,12 @@ function crearImg(direc, textAl = "", clases = "") {
 }
 
 // función genérica
-function crearP(clases = "", texto) {
-    return $("<p>").addClass(clases).html(texto);
+function crearP({clases = "", texto, id = ""}) {
+    return $("<p>").
+        attr({
+            "id":id,
+            "class":clases
+        }).html(texto);
 }
 
 // función genérica
@@ -167,12 +240,11 @@ function crearSelect(nombre, id, clases){
 
 // función genérica
 function crearOption(valor, seleccionado = false, texto) {
-    opt = $("<option>")
+    let opt = $("<option>")
         .attr("value", valor)
         .html(texto);
     if(seleccionado) {  // Hago esto para ahorrar un atributo en los que no están preseleccionados
-        $("<option>")
-        .attr("selected", seleccionado);
+        opt.prop("selected", true);
     }
     return opt;
 }
@@ -184,6 +256,129 @@ function crearSpan(clases, texto) {
 /* --- --- */
 
 /* --- Funciones específicas --- */
+
+// Función para generar el carroussel de fotos a partir del JSON
+function generarCarrousselFotos(fotos) {
+    let carrousselFotos = crearDiv("swiper-wrapper");
+    fotos.forEach(foto => {
+        carrousselFotos.append(crearDiv("swiper-slide")
+            .append(crearImg(foto.contentUrl, foto.description, "imagen-museo"))
+        );
+    });
+    return carrousselFotos;
+}
+
+function generarArticuloLugarYDescripcion(lugar) {
+    let articulo = crearArticle("main-museo");
+    lugar.areaServed.description.split("\n").forEach((parrafo, index) => {
+        if(index === 0) {
+            articulo.append(crearP({
+                clases: "desc-museum first-desc-museum-mobile",
+                id: "first-desc-museum",
+                texto: parrafo
+            }));
+        } else {
+            articulo.append(crearP({
+                clases: "desc-museum leer-mas",
+                texto: parrafo
+            }));
+        }
+    });
+    return articulo;
+}
+
+function generarDivExposiciones(exposiciones) {
+    let expos = crearDiv("swiper-wrapper");
+    if(exposiciones !== "") {
+        exposiciones.forEach(expo => {
+            expos.append($("<li>")
+                .addClass("exposicion swiper-slide")
+                .append(crearImg(expo.image.contentUrl, expo.image.description))
+                .append(crearP({
+                    clases: "nombre",
+                    texto: expo.name
+                }))
+                .append(crearP({
+                    clases: "fecha-exp",
+                    texto: expo.eventSchedule.startDate + " - " + expo.eventSchedule.endDate
+                }))
+            );
+        });
+        return expos;
+    } else {
+        return "";
+    }
+
+}
+
+function generarAsideMuseo(lugar) {
+    let aside = $("<aside>");
+    aside.append(crearDiv()
+        .append($("<h5>").html("Horario"))
+        .append(crearP({
+            clases: "",
+            texto: crearFechasHorarioLugar(lugar.areaServed.openingHours)
+        }))
+    )
+    .append(crearDiv()
+        .append($("<h5>").html("Dirección"))
+        .append(crearP({
+            clases: "",
+            texto: crearTextoDirecciónLugar(lugar)
+        }))
+    )
+    .append(crearDiv()
+        .append($("<h5>").html("Precios"))
+        .append(crearP({
+            clases: "",
+            texto: crearTextoPreciosLugar(lugar.hasOfferCatalog)
+        }))
+    );
+
+    return aside;
+}
+
+function crearFechasHorarioLugar(horario) {
+    let dias = {
+        "Mo": "Lunes",
+        "Tu": "Martes",
+        "We": "Miércoles",
+        "Th": "Jueves",
+        "Fr": "Viernes",
+        "Sa": "Sábado",
+        "Su": "Domingo"
+    };
+    let horarioEspañol =  horario.map(horario => {
+        let [diasIngles, horas] = horario.split(" ");
+        let [diaInicio, diaFin] = diasIngles.split("-");
+        return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
+    });
+
+    return horarioEspañol.join("<br>");
+}
+
+function crearTextoDirecciónLugar(lugar) {
+    let direccion = lugar.areaServed.address;
+    return `${direccion.streetAddress} <br>
+            ${direccion.postalCode} ${direccion.addressLocality} <br>
+            ${lugar.areaServed.telephone.replace("+34", "").replace(/(\d{3})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")} <br>
+            ${direccion.email}`;
+}
+
+function crearTextoPreciosLugar(catalogoOfertas) {
+    let ofertas = catalogoOfertas.itemListElement.map(offer => {
+        let precio = parseFloat(offer.price);
+        if (precio === 0) {
+            return `${offer.itemOffered.name}: Gratuito`;
+        } else if (Number.isInteger(precio)) {
+            return `${offer.itemOffered.name}: ${precio}€`;
+        } else {
+            return `${offer.itemOffered.name}: ${precio.toFixed(2)}€`;
+        }
+        
+    });
+    return ofertas.join("<br>");
+}
 
 //función específica - ¿Dónde visitar? --> Pensar en sustituirla
 function crearContenedorPueblos() {
@@ -212,8 +407,8 @@ function crearBotonPueblo (name, nameST) {
 // función específica - ¿Dónde visitar?
 // habría que mejorar esta basura
 function añadirPueblosRestantes() {
-    pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
-    pueblosSinTilde =   ["Fornalutx","Deia","Sant Joan","Banyalbufar","Maria de la Salut","Arta","Santa Eugenia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuiri","Ses Salines","Santa Maria del Cami","Capdepera","Alaro","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubi","Sineu","Buger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxi","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
+    const pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
+    const pueblosSinTilde =   ["Fornalutx","Deia","Sant Joan","Banyalbufar","Maria de la Salut","Arta","Santa Eugenia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuiri","Ses Salines","Santa Maria del Cami","Capdepera","Alaro","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubi","Sineu","Buger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxi","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
     for(let i = 0; i<pueblos.length; i++) {
         $("main section .contenedor-pueblos").append(crearBotonPueblo(pueblos[i],pueblosSinTilde[i]));
     } 
@@ -242,37 +437,40 @@ function crearBotonAtras() {
 // función específica - Lista de ubicaciones
 // habrá que añadir los JSON a esto
 function crearTarjetaUbicacion() {
-    art = crearArticle("museo");
-    art.append(crearImg("img/museo1-small.webp","Museo 1"));
-    art.append(crearHeader("titulo-museo-card").append(crearH4("Museo 1")));
-    art.append(crearP("mb-4","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed."));
-    art.append(crearDiv("botones-museo")
-                .append(crearBoton("X","boton boton-card-museo boton-verde","Añadir")
-                            .on("click",function(){})   // Aquí hay que añadir la función para añadir a la ruta
-                        )
-                .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
-                            .on("click",function(){crearInfoUbi()})
-                    )
-            );
-    return art;
+    return crearArticle("museo")
+        .append(crearImg("img/museo1-small.webp","Museo 1"))
+        .append(crearHeader("titulo-museo-card").append(crearH4("Museo 1")))
+        .append(
+            crearP({
+                clases: "mb-4",
+                texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed."
+            })
+        )
+        .append(crearDiv("botones-museo")
+            .append(crearBoton("X","boton boton-card-museo boton-verde","Añadir")
+                .on("click",function(){})   // Aquí hay que añadir la función para añadir a la ruta
+            )
+            .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
+                .on("click",function(){crearInfoUbi()})
+            )
+        );
 }
 
 // función específica - Lista de ubicaciones
 // hacer que funcionen
 function crearFiltros() {
-    filtros = crearDiv("contenedor-filtros");
-    filtros.append(crearBoton("boton-filtros","boton-filtros","Filtros")
-                    .append(crearImg("img/svg/flecha-menu-down.svg"))
-                    .attr({
-                        "data-bs-toggle":"collapse",
-                        "data-bs-target":"#form-filtro"
-                    })
-                );
-    form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show");
-    form
+    let filtros = crearDiv("contenedor-filtros")
+        .append(crearBoton("boton-filtros","boton-filtros","Filtros")
+            .append(crearImg("img/svg/flecha-menu-down.svg"))
+            .attr({
+                "data-bs-toggle":"collapse",
+                "data-bs-target":"#form-filtro"
+            })
+        );
+    let form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show")
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
-                .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
-                .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
+            .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
+            .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
             .append(crearLabel("","Ordenar por cercanía"))
@@ -282,15 +480,18 @@ function crearFiltros() {
             .append(crearLabel("","Radio de búsqueda"))
             .append(crearDiv("contenedor-range")
                 .append(crearInput("range","","busqueda-radio"))
-                .append(crearP("","10Km")) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
+                .append(crearP({
+                    clases: "",
+                    texto: "10Km"
+                })) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
             )
         )
         .append(crearDiv("elemento-filtro-museo")
             .append(crearLabel("","Tipo de exposición"))
             .append(crearSelect("","seleccion-exposicion","select")
-                .append(crearOption(1,true,"Todos"))
-                .append(crearOption(2,"Todos"))
-                .append(crearOption(3,"Todos"))
+                .append(crearOption(1, true, "Todos"))
+                .append(crearOption(2, false, "Todos"))
+                .append(crearOption(3, false, "Todos"))
             )
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
@@ -299,7 +500,10 @@ function crearFiltros() {
         )
         .append(crearDiv("elemento-filtro-museo")
             .attr("id","tipo-entrada") // Pocos divs necesitan un id, no veo necesidad de tener que incluir el id en la función para crear div's
-            .append(crearP("","Tipo de entrada"))
+            .append(crearP({
+                clases:"",
+                texto:"Tipo de entrada"
+            }))
             .append(crearDiv("opciones-check")
                 .append(crearLabel("gratuito","Gratuito")
                     .prepend(crearInput("checkbox","tipo_entrada[]","gratuito"))
@@ -317,12 +521,15 @@ function crearFiltros() {
 // función específica - Lista de ubicaciones
 // esta habrá que cambiarla
 function crearSelectorPagina() {
-    div = crearDiv("paginas");
-    return div.append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
-        .append(crearP("","..")
-                .prepend(crearSpan("pagina-actual","1"))
-                .append(crearSpan("","2"))
-            )
+    return crearDiv("paginas")
+        .append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
+        .append(crearP({
+                clases:"",
+                texto:".."
+            })
+            .prepend(crearSpan("pagina-actual","1"))
+            .append(crearSpan("","2"))
+        )
         .append(crearImg("img/svg/next-page-arr.svg","Página siguiente"));
 }
 

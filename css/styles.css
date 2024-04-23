@@ -646,15 +646,17 @@ nav {
     align-items: center;
     gap: 2rem;
     padding: 0;
+    margin-left: initial;
 }
 
 .exposicion {
     display: flex;
     flex-direction: column;
     width: initial;
+    text-align: start;
 
     & img {
-        width: 216px;
+        width: 250px;
         aspect-ratio: 36/23;
         border-radius: 10px;
         filter: brightness(.7);

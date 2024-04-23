@@ -8,10 +8,11 @@
                 "openingHours" : ["Tu-Sa 10:00-20:00", "Su 10:00-15:00"],
                 "address" : {
                     "@type": "PostalAddress",
-                    "streetAddress": "Plaza Porta de Santa Catalina 10",
+                    "streetAddress": "Plaza Porta de Santa Catalina, 10",
                     "addressLocality": "Palma",
                     "postalCode": "07012",
-                    "addressCountry": "Spain"
+                    "addressCountry": "Spain",
+                    "email": "museu@esbaluard.org"
                 },
                 "aggregateRating" : "",
                 "event" : [
@@ -27,6 +28,11 @@
                         "organizer": {
                             "@type": "Person",
                             "name": "Núria Gómez Gabriel"
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposiciones/tractor-buddy.webp",
+                            "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
                         }
                     },
                     {
@@ -41,6 +47,11 @@
                         "organizer": {
                             "@type": "Person",
                             "name": "Eva Cifre"
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposiciones/enDialogoMuseoYColeccion.webp",
+                            "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
                         }
                     }
                 ],
@@ -123,7 +134,8 @@
                     "streetAddress": "Dique del Oest s/n",
                     "addressLocality": "Palma",
                     "postalCode": "07015",
-                    "addressCountry": "Spain"
+                    "addressCountry": "Spain",
+                    "email": "museomilitarsancarlos@et.mde.es"
                 },
                 "aggregateRating" : "",
                 "event" : [
@@ -137,6 +149,11 @@
                             "startTime" : "2024-03-09 10:00",
                             "endDate": "2024-03-09",
                             "endTime" : "2024-03-09 17:00"
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/exposiciones/diaIslasBaleares.webp",
+                            "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
                         }
                     }
                 ],
@@ -183,7 +200,8 @@
                     "streetAddress": "Crta. Cales de Mallorca s/n",
                     "addressLocality": "Manacor",
                     "postalCode": "07500",
-                    "addressCountry": "Spain"
+                    "addressCountry": "Spain",
+                    "email": "box.office@rafanadalacademy.com"
                 },
                 "aggregateRating" : "",
                 "event" : "",
