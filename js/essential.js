@@ -1,29 +1,27 @@
 // Contenedor que contiene los enlaces del header "¿Que visitar? | "Tu ruta"
-const navLinksHeader = document.querySelector('.nav-links-header');
+const navLinksHeader = $('.nav-links-header');
 // Contenedor que contiene el botón del menú
-const menu_button = document.querySelector('.menu_icon');
-const nav = document.querySelector("#nav-header");
+const menu_button = $('.menu_icon');
+const nav = $("#nav-header");
 
 // Gestión de eventos para mostrar el menú en dispositivos móviles cuando el usuario presione el botón
-menu_button.addEventListener('click', () => {
-    navLinksHeader.classList.toggle('nav-links-header-mobile');
+menu_button.on('click', () => {
+    navLinksHeader.toggleClass('nav-links-header-mobile');
 });
 
 const max768px = () => {
     
-    const div = nav.querySelector("div");
+    const div = nav.find("div").first();
     if (window.innerWidth <= 768) {
-        if (div.contains(navLinksHeader)) {
+        if ($.contains(div[0], navLinksHeader[0])) {
             // Elimina el contenedor del div y lo añade en el nav del header
-            div.removeChild(navLinksHeader);
-            nav.appendChild(navLinksHeader);
+            $(navLinksHeader).detach().appendTo(nav);
         }
     } else {
-        if (!div.contains(navLinksHeader)) {
+        if (!$.contains(div[0], navLinksHeader[0])) {
             // Eliminamos la clase para evitar errores
-            navLinksHeader.classList.remove("nav-links-header-mobile");
-            nav.removeChild(navLinksHeader);
-            div.insertBefore(navLinksHeader, document.querySelector('#google-signin'));
+            navLinksHeader.removeClass("nav-links-header-mobile");
+            $(navLinksHeader).detach().insertBefore('#google-signin');
         }
     }
 }

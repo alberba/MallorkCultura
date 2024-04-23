@@ -1,21 +1,3 @@
-// Seleccionar los botones de cambio de página por su ID
-const prevPageBtn = document.getElementById('prevPageBtn');
-const nextPageBtn = document.getElementById('nextPageBtn');
-
-// Añadir eventos de clic a los botones de cambio de página
-prevPageBtn.addEventListener('click', previousPage);
-nextPageBtn.addEventListener('click', nextPage);
-
-// Función para ir a la página anterior
-function previousPage() {
-    changePage(-1);
-}
-
-// Función para ir a la siguiente página
-function nextPage() {
-    changePage(1);
-}
-
 // Función para escapar las comillas simples en un texto
 function escaparComillas(texto) {
     return texto.replace(/'/g, "\\'");
@@ -52,35 +34,38 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Función para mostrar los museos en la página actual
                 function mostrarMuseos() {
                     // Borra el contenido anterior de los museos
-                    museosContainer.innerHTML = "";
+                    if (museosContainer) {
+                        museosContainer.innerHTML = "";
 
-                    // Itera sobre los museos de la página actual y genera el HTML correspondiente
-                    for (let i = inicio; i < fin; i++) {
-                        if (museos[i]) {
-                            const museo = museos[i];
-                            console.log("CHECKPOINT 1");
-                            console.log(museo);
+                        // Itera sobre los museos de la página actual y genera el HTML correspondiente
+                        for (let i = inicio; i < fin; i++) {
+                            if (museos[i]) {
+                                const museo = museos[i];
+                                console.log("CHECKPOINT 1");
+                                console.log(museo);
 
-                            // Escapar comillas simples en los valores de museo
-                            const nombreEscapado = escaparComillas(museo.areaServed.name);
-                            const direccionEscapada = escaparComillas(museo.areaServed.address.streetAddress);
+                                // Escapar comillas simples en los valores de museo
+                                const nombreEscapado = escaparComillas(museo.areaServed.name);
+                                const direccionEscapada = escaparComillas(museo.areaServed.address.streetAddress);
 
-                            const museoHTML = `
-                                <article class="museo">
-                                    <img src="${museo.areaServed.photo[0].contentUrl}" alt="${museo.areaServed.name}">
-                                    <header class="titulo-museo-card">
-                                        <h4>${museo.areaServed.name}</h4>
-                                    </header>
-                                    <p class="mb-4 descripcion-museo">${museo.areaServed.description}</p>
-                                    <div class="botones-museo">
-                                        <a type="button" class="boton boton-card-museo boton-verde" onclick="almacenarVisita('${nombreEscapado}', '${direccionEscapada}', '${museo.areaServed["@type"][1]}')">Añadir</a>
-                                        <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
-                                    </div>
-                                </article>
-                            `;
-                            museosContainer.innerHTML += museoHTML;
+                                const museoHTML = `
+                                    <article class="museo">
+                                        <img src="${museo.areaServed.photo[0].contentUrl}" alt="${museo.areaServed.name}">
+                                        <header class="titulo-museo-card">
+                                            <h4>${museo.areaServed.name}</h4>
+                                        </header>
+                                        <p class="mb-4 descripcion-museo">${museo.areaServed.description}</p>
+                                        <div class="botones-museo">
+                                            <a type="button" class="boton boton-card-museo boton-verde" onclick="almacenarVisita('${nombreEscapado}', '${direccionEscapada}', '${museo.areaServed["@type"][1]}')">Añadir</a>
+                                            <a href="pantalla-museo1.html" class="boton boton-card-museo boton-gris">Ver más</a>
+                                        </div>
+                                    </article>
+                                `;
+                                museosContainer.innerHTML += museoHTML;
+                            }
                         }
                     }
+                    
                 }
 
                 // Muestra los museos en la página actual
@@ -99,65 +84,64 @@ document.addEventListener("DOMContentLoaded", function() {
                         fin = numMuseos;
                         inicio = (paginaActual - 1) * museosPorPagina;
                     }
-                    document.getElementById("pageNum").innerText = paginaActual;
+                    $('#pageNum').text(paginaActual);
                     mostrarMuseos();
                     updatePagination();
                 }
 
                 // Event listener para botón de página anterior
-                document.getElementById("prevPageBtn").addEventListener("click", function() {
+                $("#prevPageBtn").on("click", function() {
                     changePage(-1);
                 });
 
                 // Event listener para botón de página siguiente
-                document.getElementById("nextPageBtn").addEventListener("click", function() {
+                $("#nextPageBtn").on("click", function() {
                     changePage(1);
                 });
 
                 // Función para actualizar la numeración de página
                 function updatePagination() {
                     const totalPages = Math.ceil(numMuseos / museosPorPagina);
-                    const paginationContainer = document.querySelector('.paginas p');
-                    paginationContainer.innerHTML = '';
+                    const paginationContainer = $('.paginas p');
+                    paginationContainer.html('');
 
                     if (totalPages <= 3) {
                         for (let i = 1; i <= totalPages; i++) {
                             const pageNum = document.createElement('span');
-                            pageNum.textContent = i;
+                            $('#pageNum').text(i);
                             if (i === paginaActual) {
                                 pageNum.classList.add('pagina-actual');
                             }
                             pageNum.addEventListener('click', () => changePage(i - paginaActual));
-                            paginationContainer.appendChild(pageNum);
+                            paginationContainer.append(pageNum);
                         }
                     } else {
-                        const firstPage = document.createElement('span');
-                        firstPage.textContent = 1;
-                        firstPage.addEventListener('click', () => changePage(1 - paginaActual));
-                        paginationContainer.appendChild(firstPage);
+                        const firstPage = $('<span>').text(1)
+                        .on('click', () => changePage(1 - paginaActual));
+                        paginationContainer.append(firstPage);
 
                         if (paginaActual > 2) {
-                            paginationContainer.appendChild(document.createTextNode('..'));
+                            paginationContainer.append(document.createTextNode('..'));
                         }
 
                         for (let i = Math.max(2, paginaActual - 1); i < Math.min(totalPages - 1, paginaActual + 2); i++) {
-                            const pageNum = document.createElement('span');
-                            pageNum.textContent = i;
+                            const pageNum = $('<span>');
+                            pageNum.text(i);
                             if (i === paginaActual) {
-                                pageNum.classList.add('pagina-actual');
+                                pageNum.addClass('pagina-actual');
                             }
-                            pageNum.addEventListener('click', () => changePage(i - paginaActual));
-                            paginationContainer.appendChild(pageNum);
+                            pageNum.on('click', () => changePage(i - paginaActual));
+                            paginationContainer.append(pageNum);
                         }
 
                         if (paginaActual < totalPages - 1) {
-                            paginationContainer.appendChild(document.createTextNode('..'));
+                            paginationContainer.append(document.createTextNode('..'));
                         }
 
-                        const lastPage = document.createElement('span');
-                        lastPage.textContent = totalPages;
-                        lastPage.addEventListener('click', () => changePage(totalPages - paginaActual));
-                        paginationContainer.appendChild(lastPage);
+                        const lastPage = $('<span>');
+                        lastPage.text(totalPages);
+                        lastPage.on('click', () => changePage(totalPages - paginaActual));
+                        paginationContainer.append(lastPage);
                     }
                 }
 

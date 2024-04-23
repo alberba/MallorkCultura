@@ -21,6 +21,7 @@
      * Callback after api.js is loaded.
      */
     function gapiLoaded() {
+        // @ts-ignore
         gapi.load('client', initializeGapiClient);
     }
 
@@ -29,6 +30,7 @@
      * discovery doc to initialize the API.
      */
     async function initializeGapiClient() {
+        // @ts-ignore
         await gapi.client.init({
             apiKey: API_KEY,
             discoveryDocs: [DISCOVERY_DOC],
@@ -40,6 +42,7 @@
        * Callback after Google Identity Services are loaded.
        */
       function gisLoaded() {
+        // @ts-ignore
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: CLIENT_ID,
           scope: SCOPES,
@@ -56,9 +59,11 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
+          // @ts-ignore
           await listUpcomingEvents();
         };
 
+        // @ts-ignore
         if (gapi.client.getToken() === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
           // when establishing a new session.
@@ -210,14 +215,17 @@ function crearEventosCalendario() {
             }
         };
         // Creamos una solicitud de api
+        // @ts-ignore
         const request = gapi.client.calendar.events.insert({
             'calendarId': 'primary',
             'resource': event
         });
 
+        let response
+
         try{
             // Enviamos la solicitud
-            const response = request.execute();
+            response = request.execute();
             // Eliminamos la visita del local storage
             eliminarVisita(eventos[i]);
         }catch(error){
