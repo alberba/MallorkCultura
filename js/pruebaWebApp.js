@@ -16,9 +16,9 @@ $(function() {
 
 /* --- Eventos de botones --- */
 // Rehacer la página principal
-$("#logo").on("click",function() {
-    crearDondeVisitar();
-});
+$("#logo").on("click", crearDondeVisitar);
+
+$("#queVisitar").on("click", crearPantallaUbicaciones);
 
 /* --- --- */
 
@@ -51,8 +51,48 @@ function crearDondeVisitar() {
     $("main").append(crearHr());
 }
 
-// esta función se encarga de "Crear" el listado de museos de un pueblo --> seguramente haya que cambiar algo 
-// falta que se haga lo del mapa
+// esta función se encarga de "Crear" el listado de museos de todos los pueblos
+function crearPantallaUbicaciones() {
+    $("header > div").remove();
+    $("header").append(crearDiv("mapa-museo map-container")
+        .append(crearDiv("ubi-header").attr("id","map"))
+    );
+    initMap({
+        position: centroMallorca, 
+        zoom: 9,
+        arrPositionMarkers: museos.map(museo => ({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)}))
+    });
+
+    $("main").empty()
+    $("main").attr("class","contenedor-principal lista-museos");
+    $("main").append(crearBotonAtras());
+    $("main").append(crearFiltros());
+    let div = crearDiv("contenedor-museos");
+    museos.forEach(museo => {
+        div.append(
+            crearArticle("museo")
+                .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
+                .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
+                .append(crearP({
+                    clases: "mb-4 descripcion-museo",
+                    texto: museo.areaServed.description        
+                }))
+                .append(crearDiv("botones-museo")
+                    .append(crearBoton("","boton boton-card-museo boton-verde","Añadir")
+                        .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
+                    )
+                    .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
+                        .on("click", () => crearInfoUbi(museo.areaServed.name))
+                    )
+                
+                )
+        )
+    });
+    $("main").append(crearSection().append(div));
+    $("main").append(crearSelectorPagina());    // esto va a requerir revisión
+}
+
+// esta función se encarga de "Crear" el listado de museos de un pueblo
 function crearUbicacionesPueblo(pueblo) {
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
@@ -78,7 +118,7 @@ function crearUbicacionesPueblo(pueblo) {
 
 function crearInfoUbi(nombreLugar){
     window.scrollTo(0, 0);
-    const lugar = museos.find(museo => museo.areaServed.nombre === nombreLugar);
+    const lugar = museos.find(museo => museo.areaServed.name === nombreLugar);
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
@@ -106,13 +146,7 @@ function crearInfoUbi(nombreLugar){
             .append(crearBoton("leer-mas-btn", "boton boton-verde", "Leer más")
                 .on("click", leerMas)
             )
-            .append(crearSection()
-                .append(crearH3("mb-4", "EXPOSICIONES"))
-                .append($("<ol>")
-                    .addClass("exposiciones swiper")
-                    .append(generarDivExposiciones(lugar.areaServed.event))
-                )
-            )
+            .append((generarDivExposiciones(lugar.areaServed.event)))
             .append(crearDiv("contenedor-botones-museo")
                 .append($("<a>")
                     .addClass("boton boton-verde")
@@ -294,8 +328,10 @@ function generarArticuloLugarYDescripcion(lugar) {
 }
 
 function generarDivExposiciones(exposiciones) {
-    let expos = crearDiv("swiper-wrapper");
-    if(exposiciones !== "") {
+    
+    if (exposiciones !== "") {
+        
+        let expos = crearDiv("swiper-wrapper");
         exposiciones.forEach(expo => {
             expos.append($("<li>")
                 .addClass("exposicion swiper-slide")
@@ -310,9 +346,15 @@ function generarDivExposiciones(exposiciones) {
                 }))
             );
         });
-        return expos;
+        let exposDiv = crearSection()
+        .append(crearH3("mb-4", "EXPOSICIONES"))
+        .append($("<ol>")
+            .addClass("exposiciones swiper")
+            .append(expos));
+        return exposDiv;
     } else {
         return "";
+    
     }
 
 }
@@ -354,13 +396,19 @@ function crearFechasHorarioLugar(horario) {
         "Sa": "Sábado",
         "Su": "Domingo"
     };
-    let horarioEspañol =  horario.map(horario => {
+    if (!Array.isArray(horario)) {
         let [diasIngles, horas] = horario.split(" ");
         let [diaInicio, diaFin] = diasIngles.split("-");
         return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
-    });
-
-    return horarioEspañol.join("<br>");
+    } else {
+        let horarioEspañol =  horario.map(horario => {
+            let [diasIngles, horas] = horario.split(" ");
+            let [diaInicio, diaFin] = diasIngles.split("-");
+            return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
+        });
+    
+        return horarioEspañol.join("<br>");
+    }
 }
 
 function crearTextoDirecciónLugar(lugar) {
@@ -372,6 +420,9 @@ function crearTextoDirecciónLugar(lugar) {
 }
 
 function crearTextoPreciosLugar(catalogoOfertas) {
+    if (!catalogoOfertas) {
+        return "Entrada general: Gratuito"
+    }
     let ofertas = catalogoOfertas.itemListElement.map(offer => {
         let precio = parseFloat(offer.price);
         if (precio === 0) {

@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                 const museoHTML = `
                                     <article class="museo">
-                                        <img src="${museo.areaServed.photo[0].contentUrl}" alt="${museo.areaServed.name}">
+                                        <img src="${museo.areaServed.photo[0].contentUrl}" alt="${museo.areaServed.photo[0].description}">
                                         <header class="titulo-museo-card">
                                             <h4>${museo.areaServed.name}</h4>
                                         </header>

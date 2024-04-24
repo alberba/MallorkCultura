@@ -624,6 +624,13 @@ nav {
     text-align: justify;
 }
 
+.first-desc-museum-mobile {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+}
+
 .leer-mas {
     display: none;
 }
@@ -1022,13 +1029,6 @@ input[type="radio"] {
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
         }
-    }
-
-    .first-desc-museum-mobile {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 9;
-        -webkit-box-orient: vertical;
     }
 
     .contenedor-botones-museo {
