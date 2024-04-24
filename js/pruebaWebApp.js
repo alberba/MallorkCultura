@@ -1,4 +1,5 @@
 const jsonUrl = "json/museosMallorkCultura.json";
+const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
 let museos;
 
 fetch(jsonUrl)
@@ -57,7 +58,9 @@ function crearUbicacionesPueblo(pueblo) {
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
     );
-    initMap({lat: 39.570279022882914, lng: 2.6411309682497817});
+    initMap({ 
+        position: {lat: 39.570279022882914, lng: 2.6411309682497817} // TODO: Habrá que cambiarlo al centro de la ciudad
+    });
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
@@ -83,7 +86,10 @@ function crearInfoUbi(nombreLugar){
     );
 
     let posicion = {lat: parseFloat(lugar.areaServed.geo.latitude), lng: parseFloat(lugar.areaServed.geo.longitude)};
-    initMap(posicion, [posicion]);
+    initMap({
+        position: posicion, 
+        arrPositionMarkers: [posicion]
+    });
     $("main").empty();
     $("main").attr("class","contenedor-principal info-museo");
     $("main").append(crearBotonAtras());
