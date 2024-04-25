@@ -77,6 +77,7 @@ function crearPantallaUbicaciones() {
     $("main").append(crearBotonAtras());
     $("main").append(crearFiltros());
     let div = crearDiv("contenedor-museos");
+    // usar crearTarjetaUbicacion(museo) para ahorrarse todo este código
     museos.forEach(museo => {
         div.append(
             crearArticle("museo")
@@ -164,6 +165,10 @@ function crearInfoUbi(nombreLugar){
                 )
                 .append($("<a>")
                     .addClass("boton boton-gris boton-comp-entrada")
+                    .attr({
+                        "href":lugar.areaServed.tourBookingPage ?? lugar.areaServed.url,    // Si tiene web de entradas, redirige allí, sinó, redirige a la web inicial
+                        "target":"_blank"
+                    })
                     //TODO: Cambiar esto
                     .html("Comprar entrada")
                     .append(crearImg("img/svg/boton-añadir-carrito.svg","Icono de redireccion"))
