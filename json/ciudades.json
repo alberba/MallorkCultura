@@ -3,15 +3,119 @@
         {
             "@context": "https://schema.org",
             "@type": "City",
-            "latitude": "",
-            "longitude": "",
+            "latitude": "39.56931",
+            "longitude": "2.64916",
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/palma.webp",
                     "description": "Imagen de la entrada del museo Es Baluard"
                 },
-            "name": ""
+            "name": "Palma"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.56988",
+            "longitude": "3.20930",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/manacor.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Manacor"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.76721",
+            "longitude": "2.71574",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/soller.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Sóller"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.71156",
+            "longitude": "2.62272",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/valldemossa.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Valldemossa"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.71776",
+            "longitude": "2.90796",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/inca.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Inca"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.56518",
+            "longitude": "2.50355",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/calvia.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Calvià"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.85345",
+            "longitude": "3.12394",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/alcudia.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Alcúdia"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.35372",
+            "longitude": "3.13059",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/santanyi.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Santanyí"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.51479",
+            "longitude": "3.02414",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/porreres.webp",
+                    "description": "Imagen de la entrada del museo Es Baluard"
+                },
+            "name": "Porreres"
         }
     ]
 }
