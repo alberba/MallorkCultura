@@ -31,13 +31,14 @@ $("#logo").on("click", crearDondeVisitar);
 
 $("#queVisitar").on("click", crearPantallaUbicaciones);
 
-$("#tuRuta").on("click",function(){$("main").empty()}); // A cambiar
+$("#tuRuta").on("click",crearTuRuta); // A cambiar
 
 /* --- --- */
 
 /* --- Funciones "creadoras" --- */
 //esta función se encarga de "Crear" el apartado de título "¿Dónde visitar?"
 function crearDondeVisitar() {
+    window.scrollTo(0, 0);
     $("header > div").remove();
     $("header").append(crearDiv("overlay header-image")
         .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay"))
@@ -45,7 +46,6 @@ function crearDondeVisitar() {
             .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
             .append(crearP({texto: "Planifica tu ruta ya"}))
         )
-
     );
     $("main").empty();
     $("main").attr("class","contenedor-principal index");
@@ -186,6 +186,18 @@ function crearInfoUbi(nombreLugar){
         activarSwipersMuseo();
     }
     
+}
+
+// esta función se encarga de "Crear" la pantalla de la ruta
+function crearTuRuta(){
+    window.scrollTo(0, 0);
+    // AQUÍ HAY QUE AÑADIR LO DE QUE MUESTRE EL MAPA Y BLA BLA BLA --> ALBERT
+    $("main").empty();
+    $("main").attr("class","contenedor-principal ruta");
+    $("main").append(crearBotonAtras());
+    $("main").append(crearH2("Tu ruta"))
+        .append(crearHr);
+    // Me imagino que aquí tiene que participar carlos para lo de leer desde el webstorage
 }
 /* --- --- */
 
