@@ -8,7 +8,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/palma.webp",
+                    "contentUrl": "/img/pueblos/palma.webp",
                     "description": "Foto de palma"
                 },
             "name": "Palma"
@@ -21,7 +21,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/manacor.webp",
+                    "contentUrl": "/img/pueblos/manacor.webp",
                     "description": "Foto de Manacor"
                 },
             "name": "Manacor"
@@ -34,7 +34,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/soller.webp",
+                    "contentUrl": "/img/pueblos/soller.webp",
                     "description": "Foto de Sóller"
                 },
             "name": "Sóller"
@@ -47,7 +47,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/valldemossa.webp",
+                    "contentUrl": "/img/pueblos/valldemossa.webp",
                     "description": "Foto de Valldemossa"
                 },
             "name": "Valldemossa"
@@ -60,7 +60,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/inca.webp",
+                    "contentUrl": "/img/pueblos/inca.webp",
                     "description": "Foto de Inca"
                 },
             "name": "Inca"
@@ -73,7 +73,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/calvia.webp",
+                    "contentUrl": "/img/pueblos/calvia.webp",
                     "description": "Foto de Calvià"
                 },
             "name": "Calvià"
@@ -86,7 +86,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/alcudia.webp",
+                    "contentUrl": "/img/pueblos/alcudia.webp",
                     "description": "Foto de Alcúdia"
                 },
             "name": "Alcúdia"
@@ -99,7 +99,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/santanyi.webp",
+                    "contentUrl": "/img/pueblos/santanyi.webp",
                     "description": "Foto de Santanyí"
                 },
             "name": "Santanyí"
@@ -112,7 +112,7 @@
             "photo" :
                 {
                     "@type": "ImageObject",
-                    "contentUrl": "https://www.mallorkcultura.com/img/pueblos/porreres.webp",
+                    "contentUrl": "/img/pueblos/porreres.webp",
                     "description": "Foto de Porreres"
                 },
             "name": "Porreres"
