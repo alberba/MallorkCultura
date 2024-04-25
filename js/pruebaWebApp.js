@@ -469,7 +469,7 @@ function crearBotonPueblo (pueblo) {
 // función específica - ¿Dónde visitar?
 function añadirPueblosRestantes() {
     for(let i = 9; i < pueblos.length; i++) {
-        
+        $("main .contenedor-pueblos").append(crearBotonPueblo(pueblos[i]));
     } 
     $("#verMasPueblos").remove();
 }
