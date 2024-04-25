@@ -9,7 +9,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/palma.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de palma"
                 },
             "name": "Palma"
         },
@@ -22,7 +22,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/manacor.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Manacor"
                 },
             "name": "Manacor"
         },
@@ -35,7 +35,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/soller.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Sóller"
                 },
             "name": "Sóller"
         },
@@ -48,7 +48,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/valldemossa.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Valldemossa"
                 },
             "name": "Valldemossa"
         },
@@ -61,7 +61,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/inca.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Inca"
                 },
             "name": "Inca"
         },
@@ -74,7 +74,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/calvia.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Calvià"
                 },
             "name": "Calvià"
         },
@@ -87,7 +87,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/alcudia.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Alcúdia"
                 },
             "name": "Alcúdia"
         },
@@ -100,7 +100,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/santanyi.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Santanyí"
                 },
             "name": "Santanyí"
         },
@@ -113,7 +113,7 @@
                 {
                     "@type": "ImageObject",
                     "contentUrl": "https://www.mallorkcultura.com/img/museos/pueblos/porreres.webp",
-                    "description": "Imagen de la entrada del museo Es Baluard"
+                    "description": "Foto de Porreres"
                 },
             "name": "Porreres"
         }

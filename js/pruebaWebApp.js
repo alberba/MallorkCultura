@@ -1,11 +1,22 @@
-const jsonUrl = "json/museosMallorkCultura.json";
+const jsonUrlMuseos = "json/museosMallorkCultura.json";
+const jsonUrlPueblos = "json/pueblos.json";
 const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
 let museos;
+let pueblos;
 
-fetch(jsonUrl)
+// leer json de museos
+fetch(jsonUrlMuseos)
     .then(response => response.json())
     .then(data => {
         museos = data.servicios;
+    })
+    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+
+// leer json de pueblos
+fetch(jsonUrlPueblos)
+    .then(response => response.json())
+    .then(data => {
+        pueblos = data.cities;
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
@@ -34,8 +45,8 @@ function crearDondeVisitar() {
         )
 
     );
-    let nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
-    let nombresArchivo =    ["palma", "manacor", "soller", "valldemossa","inca", "calvia", "alcudia", "santanyi", "porreres"];
+    // let nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
+    // let nombresArchivo =    ["palma", "manacor", "soller", "valldemossa","inca", "calvia", "alcudia", "santanyi", "porreres"];
     $("main").empty();
     $("main").attr("class","contenedor-principal index");
     $("main").append(crearH2("¿Dónde visitar?"));
@@ -44,7 +55,7 @@ function crearDondeVisitar() {
     let div = crearContenedorPueblos();
     $(sec).append(div);
     for(let i = 0; i < 9; i++) {
-        $(div).append(crearBotonPueblo(nombres[i],nombresArchivo[i]));
+        $(div).append(crearBotonPueblo(pueblos[i]));
     }
     $("main").append(sec);
     $("main").append(crearBotonVerMas_Pueblos());
@@ -443,21 +454,17 @@ function crearContenedorPueblos() {
 }
 
 // función específica - ¿Dónde visitar?
-function crearBotonPueblo (name, nameST) {
+function crearBotonPueblo (pueblo) {
     let nuevoBotonPueblo = $("<button>")
     .addClass("pueblo overlay col-lg-4")
-    .on("click",function(){crearUbicacionesPueblo(name)});
-    let imagenPrueblo = $("<img>")
-    .attr({
-        "src" : "img/pueblos/"+nameST+".webp",
-        "alt" : "Foto de " + name,
-        "class": "imagen-overlay"
-    });
-    let nombrePueblo = $("<p>")
-    .addClass("texto-overlay")
-    .html(name);
-
-    $(nuevoBotonPueblo).append(imagenPrueblo).append(nombrePueblo);
+    .on("click",function(){crearUbicacionesPueblo(pueblo.name)});
+    $(nuevoBotonPueblo)
+        .append(
+            crearImg(pueblo.photo.contentUrl, pueblo.photo.description,"imagen-overlay")
+        )
+        .append(
+            crearP({clases: "texto-overlay", texto: pueblo.name})
+        );
     return nuevoBotonPueblo;
 }
 
@@ -467,7 +474,7 @@ function añadirPueblosRestantes() {
     const pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
     const pueblosSinTilde =   ["fornalutx","deia","santJoan","banyalbufar","mariaDeLaSalut","arta","santaEugenia","sencelles","santLlorençDesCardassar","santaMargalida","petra","lloseta","mancorDeLaVall","montuiri","sesSalines","santaMariaDelCami","capdepera","alaro","ariany","bunyola","estellencs","costitx","llucmajor","pollença","puigpunyent","campanet","felanitx","algaida","llubi","sineu","buger","esporles","binissalem","escorca","saPobla","andratx","sonServera","campos","marratxi","consell","lloretDeVistalegre","vilafrancaDeBonany"];
     for(let i = 0; i<pueblos.length; i++) {
-        $("main section .contenedor-pueblos").append(crearBotonPueblo(pueblos[i],pueblosSinTilde[i]));
+        //$("main section .contenedor-pueblos").append(crearBotonPueblo(pueblos[i],pueblosSinTilde[i]));
     } 
     $("#verMasPueblos").remove();
 }
