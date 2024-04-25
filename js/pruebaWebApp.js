@@ -31,6 +31,8 @@ $("#logo").on("click", crearDondeVisitar);
 
 $("#queVisitar").on("click", crearPantallaUbicaciones);
 
+$("#tuRuta").on("click",function(){$("main").empty()}); // A cambiar
+
 /* --- --- */
 
 /* --- Funciones "creadoras" --- */
