@@ -31,7 +31,9 @@ $("#logo").on("click", crearDondeVisitar);
 
 $("#queVisitar").on("click", crearPantallaUbicaciones);
 
-$("#tuRuta").on("click",crearTuRuta); // A cambiar
+$("#tuRuta").on("click",crearTuRuta);
+
+$("#Contacto").on("click",crearContacto)
 
 /* --- --- */
 
@@ -198,6 +200,13 @@ function crearTuRuta(){
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
     // Me imagino que aquí tiene que participar carlos para lo de leer desde el webstorage
+}
+
+// esta función se encarga de "Crear" la pantalla de contacto ??
+function crearContacto() {
+    $("main").empty();
+    $("main").attr("class","contenedor-principal contacto");
+    $("main").append(crearDiv("contenedor-contacto"));
 }
 /* --- --- */
 
