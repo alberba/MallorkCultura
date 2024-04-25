@@ -1,0 +1,40 @@
+{
+    "personas": [
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "email" : "carlos.martinez10@estudiant.uib.cat",
+            "familyName" : "Martínez García",
+            "givenName" : "Carlos",
+            "image": {
+                "@type": "ImageObject",
+                "contentUrl": "/img/componentes/morio.png",
+                "description": "Retrato de Carlos Martínez García"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "email" : "matias.ponseti1@estudiant.uib.cat",
+            "familyName" : "Ponseti Martorell",
+            "givenName" : "Matías",
+            "image": {
+                "@type": "ImageObject",
+                "contentUrl": "/img/componentes/morio.png",
+                "description": "Retrato de Matías Ponseti Martorell"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "email" : "albert.salom1@estudiant.uib.cat",
+            "familyName" : "Salom Vanrell",
+            "givenName" : "Albert",
+            "image": {
+                "@type": "ImageObject",
+                "contentUrl": "/img/componentes/morio.png",
+                "description": "Retrato de "
+            }
+        }
+    ]
+}
