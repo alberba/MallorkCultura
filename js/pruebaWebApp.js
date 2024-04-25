@@ -1,8 +1,10 @@
 const jsonUrlMuseos = "json/museosMallorkCultura.json";
 const jsonUrlPueblos = "json/pueblos.json";
+const jsonUrlComponentes = "json/componentes.json";
 const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
 let museos;
 let pueblos;
+let componentes;
 
 // leer json de museos
 fetch(jsonUrlMuseos)
@@ -17,6 +19,14 @@ fetch(jsonUrlPueblos)
     .then(response => response.json())
     .then(data => {
         pueblos = data.cities;
+    })
+    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+
+// leer json de componentes
+fetch(jsonUrlComponentes)
+    .then(response => response.json())
+    .then(data => {
+        componentes = data.personas;
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
@@ -206,7 +216,13 @@ function crearTuRuta(){
 function crearContacto() {
     $("main").empty();
     $("main").attr("class","contenedor-principal contacto");
-    $("main").append(crearDiv("contenedor-contacto"));
+    $("main").append(crearH2("¿Quiénes somos?"))
+            .append(crearHr);
+    let div = crearDiv("contenedor-contacto my-5");
+    componentes.forEach(componente => {
+        div.append(crearTarjetaComponente(componente));
+    });
+    $("main").append(div);
 }
 /* --- --- */
 
@@ -329,6 +345,16 @@ function crearOption(valor, seleccionado = false, texto) {
 // función genérica
 function crearSpan(clases, texto) {
     return $("<span>").addClass(clases).html(texto);
+}
+
+// función genérica
+function crearA(direc, clases, texto) {
+    return $("<a>")
+            .attr({
+                "href" : direc,
+                "class" : clases
+            })
+            .html(texto)
 }
 /* --- --- */
 
@@ -615,6 +641,20 @@ function crearSelectorPagina() {
             .append(crearSpan("","2"))
         )
         .append(crearImg("img/svg/next-page-arr.svg","Página siguiente"));
+}
+
+// función específica - Contacto
+function crearTarjetaComponente(componente) {
+    return crearArticle("componente")
+        .append(crearImg(componente.image.contentUrl,componente.image.description))
+        .append(crearHeader("titulo-componente-card")
+                .append(crearH4(", " + componente.givenName)
+                            .prepend(crearSpan("apellidos-contacto",componente.familyName))
+                )
+            )
+        .append(crearDiv("contenedor-contacto")
+                    .append(crearA("mailto:"+componente.email, "enlace-contacto", componente.email))
+            );
 }
 
 /* --- --- */

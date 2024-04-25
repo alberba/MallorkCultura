@@ -348,7 +348,8 @@ nav {
 }
 
 .contacto {
-    max-width: 200rem;
+    max-width: 120rem;
+    margin: auto;
 }
 /* -- Diferentes apartados -- */
 
@@ -927,9 +928,30 @@ input[type="radio"] {
 .contenedor-contacto {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
+.componente {
+    padding: 1rem;
+    max-width: 30rem;
+}
+
+.titulo-componente-card {
+
+}
+
+.contenedor-contacto {
+    display: flex;
+}
+
+.enlace-contacto {
+    color: var(--verde-principal);
+    text-decoration: underline;
+}
+
+.apellidos-contacto {
+    text-transform: uppercase;
+}
 
 /* -- Contacto -- */
 
