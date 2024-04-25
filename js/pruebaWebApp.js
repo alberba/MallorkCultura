@@ -109,9 +109,26 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearHr());
     $("main").append(crearFiltros());
     let div = crearDiv("contenedor-museos");
-    for (let i=0; i<9; i++) {
-        div.append(crearTarjetaUbicacion());
-    }
+    museos.forEach(museo => { if (museo.areaServed.address.addressLocality == pueblo)
+        div.append(
+            crearArticle("museo")
+                .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
+                .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
+                .append(crearP({
+                    clases: "mb-4 descripcion-museo",
+                    texto: museo.areaServed.description        
+                }))
+                .append(crearDiv("botones-museo")
+                    .append(crearBoton("","boton boton-card-museo boton-verde","Añadir")
+                        .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
+                    )
+                    .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
+                        .on("click", () => crearInfoUbi(museo.areaServed.name))
+                    )
+                
+                )
+        )
+    });
     $("main").append(crearSection().append(div));
     $("main").append(crearSelectorPagina());    // esto va a requerir revisión
 }
