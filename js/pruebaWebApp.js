@@ -110,24 +110,7 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearFiltros());
     let div = crearDiv("contenedor-museos");
     museos.forEach(museo => { if (museo.areaServed.address.addressLocality == pueblo)
-        div.append(
-            crearArticle("museo")
-                .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
-                .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
-                .append(crearP({
-                    clases: "mb-4 descripcion-museo",
-                    texto: museo.areaServed.description        
-                }))
-                .append(crearDiv("botones-museo")
-                    .append(crearBoton("","boton boton-card-museo boton-verde","Añadir")
-                        .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
-                    )
-                    .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
-                        .on("click", () => crearInfoUbi(museo.areaServed.name))
-                    )
-                
-                )
-        )
+        div.append(crearTarjetaUbicacion(museo));
     });
     $("main").append(crearSection().append(div));
     $("main").append(crearSelectorPagina());    // esto va a requerir revisión
@@ -509,25 +492,22 @@ function crearBotonAtras() {
 }
 
 // función específica - Lista de ubicaciones
-// habrá que añadir los JSON a esto
-function crearTarjetaUbicacion() {
+function crearTarjetaUbicacion(museo) {
     return crearArticle("museo")
-        .append(crearImg("img/museo1-small.webp","Museo 1"))
-        .append(crearHeader("titulo-museo-card").append(crearH4("Museo 1")))
-        .append(
-            crearP({
-                clases: "mb-4",
-                texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet enim id sapien fermentum aliquet et ut nibh. Sed."
-            })
-        )
-        .append(crearDiv("botones-museo")
-            .append(crearBoton("X","boton boton-card-museo boton-verde","Añadir")
-                .on("click",function(){})   // Aquí hay que añadir la función para añadir a la ruta
-            )
-            .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
-                .on("click",function(){crearInfoUbi()})
-            )
-        );
+             .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
+             .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
+             .append(crearP({
+                 clases: "mb-4 descripcion-museo",
+                 texto: museo.areaServed.description        
+             }))
+             .append(crearDiv("botones-museo")
+                 .append(crearBoton("","boton boton-card-museo boton-verde","Añadir")
+                     .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
+                 )
+                 .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
+                     .on("click", () => crearInfoUbi(museo.areaServed.name))
+                 )        
+             );
 }
 
 // función específica - Lista de ubicaciones
