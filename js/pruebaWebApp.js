@@ -45,8 +45,6 @@ function crearDondeVisitar() {
         )
 
     );
-    // let nombres =           ["Palma", "Manacor", "Sóller", "Valldemossa","Inca", "Calvià", "Alcúdia", "Santanyí", "Porreres"];
-    // let nombresArchivo =    ["palma", "manacor", "soller", "valldemossa","inca", "calvia", "alcudia", "santanyi", "porreres"];
     $("main").empty();
     $("main").attr("class","contenedor-principal index");
     $("main").append(crearH2("¿Dónde visitar?"));
@@ -470,8 +468,6 @@ function crearBotonPueblo (pueblo) {
 
 // función específica - ¿Dónde visitar?
 function añadirPueblosRestantes() {
-    // const pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
-    // const pueblosSinTilde =   ["fornalutx","deia","santJoan","banyalbufar","mariaDeLaSalut","arta","santaEugenia","sencelles","santLlorençDesCardassar","santaMargalida","petra","lloseta","mancorDeLaVall","montuiri","sesSalines","santaMariaDelCami","capdepera","alaro","ariany","bunyola","estellencs","costitx","llucmajor","pollença","puigpunyent","campanet","felanitx","algaida","llubi","sineu","buger","esporles","binissalem","escorca","saPobla","andratx","sonServera","campos","marratxi","consell","lloretDeVistalegre","vilafrancaDeBonany"];
     for(let i = 9; i < pueblos.length; i++) {
         
     } 
