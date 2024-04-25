@@ -469,12 +469,11 @@ function crearBotonPueblo (pueblo) {
 }
 
 // función específica - ¿Dónde visitar?
-// habría que mejorar esta basura
 function añadirPueblosRestantes() {
-    const pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
-    const pueblosSinTilde =   ["fornalutx","deia","santJoan","banyalbufar","mariaDeLaSalut","arta","santaEugenia","sencelles","santLlorençDesCardassar","santaMargalida","petra","lloseta","mancorDeLaVall","montuiri","sesSalines","santaMariaDelCami","capdepera","alaro","ariany","bunyola","estellencs","costitx","llucmajor","pollença","puigpunyent","campanet","felanitx","algaida","llubi","sineu","buger","esporles","binissalem","escorca","saPobla","andratx","sonServera","campos","marratxi","consell","lloretDeVistalegre","vilafrancaDeBonany"];
-    for(let i = 0; i<pueblos.length; i++) {
-        //$("main section .contenedor-pueblos").append(crearBotonPueblo(pueblos[i],pueblosSinTilde[i]));
+    // const pueblos =           ["Fornalutx","Deià","Sant Joan","Banyalbufar","Maria de la Salut","Artà","Santa Eugènia","Sencelles","Sant Llorenç des Cardassar","Santa Margalida","Petra","Lloseta","Mancor de la Vall","Montuïri","Ses Salines","Santa Maria del Camí","Capdepera","Alaró","Ariany","Bunyola","Estellencs","Costitx","Llucmajor","Pollença","Puigpunyent","Campanet","Felanitx","Algaida","Llubí","Sineu","Búger","Esporles","Binissalem","Escorca","Sa Pobla","Andratx","Son Servera","Campos","Marratxí","Consell","Lloret de Vistalegre","Vilafranca de Bonany"];
+    // const pueblosSinTilde =   ["fornalutx","deia","santJoan","banyalbufar","mariaDeLaSalut","arta","santaEugenia","sencelles","santLlorençDesCardassar","santaMargalida","petra","lloseta","mancorDeLaVall","montuiri","sesSalines","santaMariaDelCami","capdepera","alaro","ariany","bunyola","estellencs","costitx","llucmajor","pollença","puigpunyent","campanet","felanitx","algaida","llubi","sineu","buger","esporles","binissalem","escorca","saPobla","andratx","sonServera","campos","marratxi","consell","lloretDeVistalegre","vilafrancaDeBonany"];
+    for(let i = 9; i < pueblos.length; i++) {
+        
     } 
     $("#verMasPueblos").remove();
 }

@@ -20,6 +20,7 @@
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
 - [X] Añadir que los filtros se plieguen y desplieguen con jquery
+- [ ] Comentar el código
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
@@ -36,3 +37,9 @@
 - [ ] Google Calendar API
     - [x] Implementar funcionalidad de añadir eventos a Google Calendar
     - [ ] Implementar funcionalidad de ver eventos en Google Calendar
+### JSON
+- [ ] Acabar de rellenar los campos vacíos de nuestro JSON de museos
+### Multimedia
+- [ ] Al menos una foto nuestra
+- [ ] Al menos un video nuestro
+- [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)

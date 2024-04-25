@@ -116,6 +116,552 @@
                     "description": "Foto de Porreres"
                 },
             "name": "Porreres"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.78218",
+            "longitude": "2.74082",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/fornalutx.webp",
+                    "description": "Foto de Fornalutx"
+                },
+            "name": "Fornalutx"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.74795",
+            "longitude": "2.64841",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/deia.webp",
+                    "description": "Foto de Deià"
+                },
+            "name": "Deià"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.59538",
+            "longitude": "3.03935",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/santJoan.webp",
+                    "description": "Foto de Sant Joan"
+                },
+            "name": "Sant Joan"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.68755",
+            "longitude": "2.51454",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/banyalbufar.webp",
+                    "description": "Foto de Banyalbufar"
+                },
+            "name": "Banyalbufar"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.66409",
+            "longitude": "3.07345",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/mariaDeLaSalut.webp",
+                    "description": "Foto de Marria de la Salut"
+                },
+            "name": "Maria de la Salut"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.69453",
+            "longitude": "3.35089",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/arta.webp",
+                    "description": "Foto de Artà"
+                },
+            "name": "Artà"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.62316",
+            "longitude": "2.83884",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/santaEugenia.webp",
+                    "description": "Foto de Santa Eugènia"
+                },
+            "name": "Santa Eugènia"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.64605",
+            "longitude": "2.89953",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/sencelles.webp",
+                    "description": "Foto de Sencelles"
+                },
+            "name": "Sencelles"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.61121",
+            "longitude": "3.28529",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/santLlorençDesCardassar.webp",
+                    "description": "Foto de Sant Llorenç des Cardassar"
+                },
+            "name": "Sant Llorenç des Cardassar"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.70191",
+            "longitude": "3.10410",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/santaMargalida.webp",
+                    "description": "Foto de Santa Margalida"
+                },
+            "name": "Santa Margalida"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.61408",
+            "longitude": "3.11400",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/petra.webp",
+                    "description": "Foto de Petra"
+                },
+            "name": "Petra"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.71800",
+            "longitude": "2.86930",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/lloseta.webp",
+                    "description": "Foto de Lloseta"
+                },
+            "name": "Lloseta"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.75023",
+            "longitude": "2.87224",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/mancorDeLaVall.webp",
+                    "description": "Foto de Mancor de la Vall"
+                },
+            "name": "Mancor de la Vall"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.56766",
+            "longitude": "2.98207",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/montuiri.webp",
+                    "description": "Foto de Mntuïri"
+                },
+            "name": "Montuïri"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.33828",
+            "longitude": "3.05255",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/sesSalines.webp",
+                    "description": "Foto de Ses Salines"
+                },
+            "name": "Ses Salines"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.64877",
+            "longitude": "2.77424",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/santaMariaDelCami.webp",
+                    "description": "Foto de Santa Maria del Camí"
+                },
+            "name": "Santa Maria del Camí"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.70235",
+            "longitude": "3.43505",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/capdepera.webp",
+                    "description": "Foto de Capdepera"
+                },
+            "name": "Capdepera"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.70729",
+            "longitude": "2.79176",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/alaro.webp",
+                    "description": "Foto de Alaró"
+                },
+            "name": "Alaró"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.65089",
+            "longitude": "3.11233",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/ariany.webp",
+                    "description": "Foto de Ariany"
+                },
+            "name": "Ariany"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.69612",
+            "longitude": "2.70062",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/bunyola.webp",
+                    "description": "Foto de Bunyola"
+                },
+            "name": "Bunyola"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.65346",
+            "longitude": "2.48088",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/estellencs.webp",
+                    "description": "Foto de Estellencs"
+                },
+            "name": "Estellencs"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.65639",
+            "longitude": "2.94950",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/costitx.webp",
+                    "description": "Foto de Costitx"
+                },
+            "name": "Costitx"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.49101",
+            "longitude": "2.89218",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/llucmajor.webp",
+                    "description": "Foto de Llucmajor"
+                },
+            "name": "Llucmajor"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.87724",
+            "longitude": "3.01708",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/pollença.webp",
+                    "description": "Foto de Pollença"
+                },
+            "name": "Pollença"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.62757",
+            "longitude": "2.52869",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/puigpunyent.webp",
+                    "description": "Foto de Puigpunyent"
+                },
+            "name": "Puigpunyent"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.77602",
+            "longitude": "2.96266",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/campanet.webp",
+                    "description": "Foto de Campanet"
+                },
+            "name": "Campanet"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.46976",
+            "longitude": "3.14851",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/felanitx.webp",
+                    "description": "Foto de Felanitx"
+                },
+            "name": "Felanitx"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.56032",
+            "longitude": "2.89281",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/algaida.webp",
+                    "description": "Foto de Algaida"
+                },
+            "name": "Algaida"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.69937",
+            "longitude": "3.00619",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/llubi.webp",
+                    "description": "Foto de Llubí"
+                },
+            "name": "Llubí"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.64264",
+            "longitude": "3.00884",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/sineu.webp",
+                    "description": "Foto de Sineu"
+                },
+            "name": "Sineu"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.75853",
+            "longitude": "2.98458",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/buger.webp",
+                    "description": "Foto de Búger"
+                },
+            "name": "Búger"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.66577",
+            "longitude": "2.57884",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/esporles.webp",
+                    "description": "Foto de Esporles"
+                },
+            "name": "Esporles"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.68821",
+            "longitude": "2.84384",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/binissalem.webp",
+                    "description": "Foto de Binissalem"
+                },
+            "name": "Binissalem"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.82616",
+            "longitude": "2.84744",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/escorca.webp",
+                    "description": "Foto de Escorca"
+                },
+            "name": "Escorca"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.76979",
+            "longitude": "3.02520",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/saPobla.webp",
+                    "description": "Foto de Sa Pobla"
+                },
+            "name": "Sa Pobla"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.57439",
+            "longitude": "2.42011",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/andratx.webp",
+                    "description": "Foto de Andratx"
+                },
+            "name": "Andratx"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.62009",
+            "longitude": "3.35971",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/sonServera.webp",
+                    "description": "Foto de Son Servera"
+                },
+            "name": "Son Servera"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.43246",
+            "longitude": "3.01937",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/campos.webp",
+                    "description": "Foto de Campos"
+                },
+            "name": "Campos"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.62125",
+            "longitude": "2.72633",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/marratxi.webp",
+                    "description": "Foto de Marratxí"
+                },
+            "name": "Marratxí"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.66856",
+            "longitude": "2.81332",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/consell.webp",
+                    "description": "Foto de Consell"
+                },
+            "name": "Consell"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.61794",
+            "longitude": "2.97448",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/lloretDeVistalegre.webp",
+                    "description": "Foto de Lloret de Vistalegre"
+                },
+            "name": "Lloret de Vistalegre"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "City",
+            "latitude": "39.56983",
+            "longitude": "3.08851",
+            "photo" :
+                {
+                    "@type": "ImageObject",
+                    "contentUrl": "/img/pueblos/vilafrancaDeBonany.webp",
+                    "description": "Foto de Vilafranca de Bonany"
+                },
+            "name": "Vilafranca de Bonany"
         }
     ]
 }
