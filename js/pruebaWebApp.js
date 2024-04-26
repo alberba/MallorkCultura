@@ -223,6 +223,12 @@ function crearContacto() {
         div.append(crearTarjetaComponente(componente));
     });
     $("main").append(div);
+    $("main").append(crearDiv("contenedor-logo-uib my-5")
+                        .append(crearH2(" como estudiantes de "))
+                        .append(crearImg("img/logo_UIB.webp", "Logo de la UIB","my-5")
+                                .on("click",function(){window.open("https://uib.cat")})
+                            )
+                );
 }
 /* --- --- */
 
