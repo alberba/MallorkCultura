@@ -18,6 +18,7 @@
     - [x] Pantalla-usuario
     - [ ] Contacto
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
+- [ ] Eliminar input de tipo de exposición en los filtros
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página
 - [X] Añadir que los filtros se plieguen y desplieguen con jquery
