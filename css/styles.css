@@ -345,6 +345,8 @@ nav {
     max-width: 750px;
     margin: auto;
     margin-bottom: 20rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .contacto {
@@ -920,6 +922,11 @@ input[type="radio"] {
 .descanso {
     font-weight: 1.2rem;
     color: var(--gris);
+}
+
+.guardar-calendar {
+    margin-top: 20px;
+    text-align: center;
 }
 
 /* -- Ruta -- */

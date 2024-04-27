@@ -29,6 +29,7 @@
 - [ ] Hacer función para poner el mapa (Albert + Mati)
 - [ ] Crear función para volver atrás del boton Atrás
 - [ ] En info museo, arreglar el slider
+- [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### APIs
 - [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Maps API
