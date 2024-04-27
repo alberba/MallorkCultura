@@ -76,6 +76,7 @@ function crearDondeVisitar() {
 
 // esta función se encarga de "Crear" el listado de museos de todos los pueblos
 function crearPantallaUbicaciones() {
+    window.scrollTo(0, 0);
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
@@ -118,6 +119,7 @@ function crearPantallaUbicaciones() {
 
 // esta función se encarga de "Crear" el listado de museos de un pueblo
 function crearUbicacionesPueblo(pueblo) {
+    window.scrollTo(0, 0);
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
@@ -214,6 +216,15 @@ function crearTuRuta(){
 
 // esta función se encarga de "Crear" la pantalla de contacto ??
 function crearContacto() {
+    window.scrollTo(0, 0);
+    $("header > div").remove();
+    $("header").append(crearDiv("overlay header-image")
+        .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay"))
+        .append(crearDiv("texto-main-page texto-overlay m-0")
+            .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
+            .append(crearP({texto: "Planifica tu ruta ya"}))
+        )
+    );
     $("main").empty();
     $("main").attr("class","contenedor-principal contacto");
     $("main").append(crearH2("¿Quiénes somos?"))

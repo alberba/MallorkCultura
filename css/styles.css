@@ -943,7 +943,8 @@ input[type="radio"] {
     }
 
     & img {
-        width: 100%;
+        max-width: 31rem;
+        height: auto;
     }
 }
 
