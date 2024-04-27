@@ -491,6 +491,8 @@ nav {
     height: 5rem;
     margin-top: 1rem;
     margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
 
     & h4 {
         font-size: 2rem;
@@ -573,10 +575,8 @@ nav {
 
 /* -- Museo -- */
 #titulo-museo {
-    position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 42rem;
     left: 0;
     right: 0;
     text-align: center;
@@ -584,6 +584,19 @@ nav {
     color: var(--blanco);
     z-index: 10;
     letter-spacing: .2rem;
+}
+
+.contenedor-titulo-museo {
+    position: absolute;
+    display: flex;
+    top: 41rem;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 7rem;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .map-container {
@@ -934,8 +947,12 @@ input[type="radio"] {
 /* -- Contacto -- */
 .contenedor-contacto {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 3.5rem;
+    width: 90%;
+    margin: 0 auto;
+    justify-items: center;
+    justify-content: center;
 
     & a {
         width: 4rem;
@@ -945,6 +962,10 @@ input[type="radio"] {
             color: var(--verde-principal);
         }
     }
+}
+
+.componente:last-child {
+    grid-column-end: 5;
 }
 
 .imagen-contacto {
@@ -962,6 +983,7 @@ input[type="radio"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    grid-column: span 2;
 
 
     & p{
@@ -1139,8 +1161,11 @@ input[type="radio"] {
     }
 
     #titulo-museo {
-        font-size: 5rem;
-        top: 22rem;
+        font-size: 3rem;
+    }
+
+    .contenedor-titulo-museo {
+        top: 22.5rem;
     }
 
     .exposiciones {
@@ -1195,5 +1220,9 @@ input[type="radio"] {
             font-size: 1.8rem;
         }
     }
+
+}
+
+@media (max-width: 1050px) {
 
 }

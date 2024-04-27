@@ -7,16 +7,16 @@
     - [ ] Ordenar por ascendente/descendente
     - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
     - [ ] Acabar la funcionalidad de todos los filtros
-- [ ] Añadir sección sobre nosotros (correo/nombre/DNI) 
+- [x] Añadir sección sobre nosotros (correo/nombre/DNI) 
 - [x] Cambiar posición titulo museo pantalla-museo1
 - [ ] Añadir comentarios/valoraciones a los museos
 - [x] Añadir margin-bottom al main de las páginas
 - [X] Quitar los contenedores de contenedor-inicial-blablabla
 - [x] Centrar botón del menú al centro
-- [ ] Hacer la página responsive
+- [x] Hacer la página responsive
     - [x] Pantalla-ruta
     - [x] Pantalla-usuario
-    - [ ] Contacto
+    - [x] Contacto
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
 ### JavaScript
 - [ ] Añadir onclick a los botones de la página

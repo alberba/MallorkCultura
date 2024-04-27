@@ -19,6 +19,8 @@ fetch(jsonUrlPueblos)
     .then(response => response.json())
     .then(data => {
         pueblos = data.cities;
+        // Se llama a la función desde aquí para no tener que esperar a que se cargue el JSON
+        crearDondeVisitar();
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
@@ -29,11 +31,6 @@ fetch(jsonUrlComponentes)
         componentes = data.personas;
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
-
-// Crear la página principal al cargar la página
-$(function() {
-    crearDondeVisitar();
-});
 
 /* --- Eventos de botones --- */
 // Rehacer la página principal
@@ -67,7 +64,7 @@ function crearDondeVisitar() {
     let div = crearContenedorPueblos();
     $(sec).append(div);
     for(let i = 0; i < 9; i++) {
-        $(div).append(crearBotonPueblo(pueblos[i]));
+        div.append(crearBotonPueblo(pueblos[i]));
     }
     $("main").append(sec);
     $("main").append(crearBotonVerMas_Pueblos());
@@ -148,7 +145,9 @@ function crearInfoUbi(nombreLugar){
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
-        .append($("<h2>").addClass("m-0 titulo-museo").attr("id", "titulo-museo").html(lugar.areaServed.name))
+        .append(crearDiv("contenedor-titulo-museo")
+            .append($("<h2>").addClass("m-0 titulo-museo").attr("id", "titulo-museo").html(lugar.areaServed.name))
+        )
     );
 
     let posicion = {lat: parseFloat(lugar.areaServed.geo.latitude), lng: parseFloat(lugar.areaServed.geo.longitude)};
@@ -671,7 +670,7 @@ function crearTarjetaComponente(componente) {
                             .prepend(crearSpan("apellidos-contacto", componente.givenName))
                 )
             )
-        .append(crearDiv("contenedor-contacto")
+        .append(crearDiv()
                     .append(crearA("mailto:"+componente.email, "enlace-contacto", "")
                         .append(crearImg("img/svg/icono-correo.svg","Icono de correo"))
                     )
