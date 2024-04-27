@@ -232,7 +232,7 @@ function crearContacto() {
     let div = crearDiv("contenedor-contacto my-5");
     componentes.forEach(componente => {
         let comp = crearTarjetaComponente(componente);
-        comp.find("img").addClass("imagen-contacto");
+        comp.find("img:first").addClass("imagen-contacto");
         div.append(comp);
     });
     $("main").append(div);
@@ -667,12 +667,14 @@ function crearTarjetaComponente(componente) {
     return crearArticle("componente")
         .append(crearImg(componente.image.contentUrl,componente.image.description))
         .append(crearHeader("titulo-componente-card")
-                .append(crearH4(", " + componente.givenName)
-                            .prepend(crearSpan("apellidos-contacto",componente.familyName))
+                .append(crearH4(" " + componente.familyName)
+                            .prepend(crearSpan("apellidos-contacto", componente.givenName))
                 )
             )
         .append(crearDiv("contenedor-contacto")
-                    .append(crearA("mailto:"+componente.email, "enlace-contacto", componente.email))
+                    .append(crearA("mailto:"+componente.email, "enlace-contacto", "")
+                        .append(crearImg("img/svg/icono-correo.svg","Icono de correo"))
+                    )
             );
 }
 
