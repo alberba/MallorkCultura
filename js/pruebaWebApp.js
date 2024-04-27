@@ -38,7 +38,7 @@ $("#logo").on("click", crearDondeVisitar);
 
 $("#queVisitar").on("click", crearPantallaUbicaciones);
 
-$("#tuRuta").on("click",crearTuRuta);
+$("#tuRuta").on("click", crearTuRuta);
 
 $("#Contacto").on("click",crearContacto)
 
@@ -86,28 +86,12 @@ function crearPantallaUbicaciones() {
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
-    $("main").append(crearBotonAtras());
+    $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
     $("main").append(crearFiltros());
     let div = crearDiv("contenedor-museos");
     // usar crearTarjetaUbicacion(museo) para ahorrarse todo este código
     museos.forEach(museo => {
-        div.append(
-            crearArticle("museo")
-                .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
-                .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
-                .append(crearP({
-                    clases: "mb-4 descripcion-museo",
-                    texto: museo.areaServed.description        
-                }))
-                .append(crearDiv("botones-museo")
-                    .append(crearBoton("","boton boton-card-museo boton-verde","Añadir")
-                        .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
-                    )
-                    .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
-                        .on("click", () => crearInfoUbi(museo.areaServed.name))
-                    )
-                
-                )
+        div.append(crearTarjetaUbicacion(museo, crearPantallaUbicaciones)
         )
     });
     $("main").append(crearSection().append(div));
@@ -127,19 +111,19 @@ function crearUbicacionesPueblo(pueblo) {
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
-    $("main").append(crearBotonAtras());
+    $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
     let div = crearDiv("contenedor-museos");
     museos.forEach(museo => { if (museo.areaServed.address.addressLocality == pueblo)
-        div.append(crearTarjetaUbicacion(museo));
+        div.append(crearTarjetaUbicacion(museo, () => crearUbicacionesPueblo(pueblo)));
     });
     $("main").append(crearSection().append(div));
-    $("main").append(crearSelectorPagina());    // esto va a requerir revisión
+    $("main").append(crearSelectorPagina());
 }
 
-function crearInfoUbi(nombreLugar){
+function crearInfoUbi(nombreLugar, funcionAnterior){
     window.scrollTo(0, 0);
     const lugar = museos.find(museo => museo.areaServed.name === nombreLugar);
     $("header > div").remove();
@@ -157,7 +141,7 @@ function crearInfoUbi(nombreLugar){
     });
     $("main").empty();
     $("main").attr("class","contenedor-principal info-museo");
-    $("main").append(crearBotonAtras());
+    $("main").append(crearBotonAtras(funcionAnterior));
 
     //Parte del slider habrá que arreglarla
     $("main").append(crearDiv("swiper mySwiper slider-imagen-museo")
@@ -207,7 +191,7 @@ function crearTuRuta(){
     // AQUÍ HAY QUE AÑADIR LO DE QUE MUESTRE EL MAPA Y BLA BLA BLA --> ALBERT
     $("main").empty();
     $("main").attr("class","contenedor-principal ruta");
-    $("main").append(crearBotonAtras());
+    $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
     // Me imagino que aquí tiene que participar carlos para lo de leer desde el webstorage
@@ -557,16 +541,16 @@ function crearBotonVerMas_Pueblos() {
 
 // función específica - Por todo
 // ACABAR
-function crearBotonAtras() {
+function crearBotonAtras(funcionADirigir, texto = "Atrás") {
     return $("<button>")
-            .html("Atrás")
+            .html(texto)
             .addClass("boton-atras")
             .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás","back-arrow"))
-            .on("click", function(){});
+            .on("click", funcionADirigir);
 }
 
 // función específica - Lista de ubicaciones
-function crearTarjetaUbicacion(museo) {
+function crearTarjetaUbicacion(museo, funcionAnterior) {
     return crearArticle("museo")
              .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
              .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
@@ -579,7 +563,7 @@ function crearTarjetaUbicacion(museo) {
                      .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
                  )
                  .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
-                     .on("click", () => crearInfoUbi(museo.areaServed.name))
+                     .on("click", () => crearInfoUbi(museo.areaServed.name, funcionAnterior))
                  )        
              );
 }
