@@ -602,8 +602,8 @@ function crearFiltros() {
             .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
-            .append(crearLabel("","Ordenar por cercanía"))
-            .append(crearInput("search","","busqueda-cercanía","","Dirección"))
+            .append(crearLabel("","Ordenar por cercania"))
+            .append(crearInput("search","","busqueda-cercania","","Dirección"))
         )
         .append(crearDiv("elemento-filtro-museo")
             .append(crearLabel("","Radio de búsqueda"))
@@ -619,8 +619,8 @@ function crearFiltros() {
             .append(crearLabel("","Tipo de exposición"))
             .append(crearSelect("","seleccion-exposicion","select")
                 .append(crearOption(1, true, "Todos"))
-                .append(crearOption(2, false, "Todos"))
-                .append(crearOption(3, false, "Todos"))
+                .append(crearOption(2, false, "Contemporánea"))
+                .append(crearOption(3, false, "Clásico"))
             )
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
