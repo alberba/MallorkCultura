@@ -936,14 +936,33 @@ input[type="radio"] {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
+    & a {
+        width: 4rem;
+
+        & img {
+            width: 100%;
+            color: var(--verde-principal);
+        }
+    }
+}
+
+.imagen-contacto {
+    border-radius: 50%;
+    width: 20rem;
+    margin-bottom: 2rem;
 }
 
 .componente {
-    background-color: var(--blanco);
+    background-color: var(--blanco); 
     padding: 20px;
-    max-width: 350px;
+    width: 300px;
     box-shadow: 0px 4px 20px 2px rgba(0,0,0,0.25);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 
     & p{
         text-align: left;
@@ -956,7 +975,6 @@ input[type="radio"] {
 }
 
 .titulo-componente-card {
-    height: 5rem;
     margin-top: 1rem;
     margin-bottom: .5rem;
 
@@ -967,6 +985,7 @@ input[type="radio"] {
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
+        text-align: center;
     }
 }
 
@@ -975,17 +994,13 @@ input[type="radio"] {
     text-decoration: underline;
 }
 
-.apellidos-contacto {
-    text-transform: uppercase;
-}
-
 .contenedor-logo-uib {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     & img {
-        width: 40%;
+        width: 30%;
         cursor: pointer;
     }
 }
