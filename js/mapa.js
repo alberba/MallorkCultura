@@ -4,7 +4,15 @@
 (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
   ({ key: "AIzaSyDpJ7opt7DIqghZ5FJ4RC-p-5674AMWy9c", v: "beta" });
 
-async function initMap({position, zoom=12, arrPositionMarkers=[], arrPositionRoutes=[]}) {
+/**
+ * Función encargada para inicializar el mapa y mostrarlo por pantalla
+ * @param position Posición central del mapa
+ * @param zoom Zoom del mapa. Cuanto mayor sea el número, la vista del mapa será más cercana. 
+ *             Por defecto, el valor del zoom será 12.
+ * @param arrPositionMarkers Optional. Array de posiciones de los marcadores que se quieren añadir al mapa.
+ * @param arrPositionRoutes Optional. Array de posiciones de la ruta que se quiere añadir al mapa.
+ */
+  async function initMap({position, zoom=12, arrPositionMarkers=[], arrPositionRoutes=[]}) {
 
   // Importamos la librería para mostrar el mapa
   // @ts-ignore
@@ -33,6 +41,7 @@ async function initMap({position, zoom=12, arrPositionMarkers=[], arrPositionRou
     minZoom: 8,
   });
 
+  // Añadimos los marcadores al mapa, en caso de que sean pasados por parámetro
   if (arrPositionMarkers.length > 0) {
     arrPositionMarkers.forEach(positionMarker => {
       new AdvancedMarkerView({
@@ -42,8 +51,11 @@ async function initMap({position, zoom=12, arrPositionMarkers=[], arrPositionRou
     });
   }
 
+  // Añadimos la ruta al mapa, en caso de que sea pasada por parámetro
   if (arrPositionRoutes.length > 0) {
     const directionsService = new DirectionsService();
+    // En caso de que haya más de dos puntos en la ruta, tendremos 
+    // que hacer uso de puntos intermedios
     if (arrPositionRoutes.length > 2) {
       directionsService.route({
         // Origen de la ruta
@@ -72,27 +84,23 @@ async function initMap({position, zoom=12, arrPositionMarkers=[], arrPositionRou
 
 }
 
-/*const directionsService = new DirectionsService();
-
-// Método para añadir una ruta al mapa
-directionsService.route({
-  // Origen de la ruta
-  origin: { lat: 39.570279022882914, lng: 2.6411309682497817 },
-  // Puntos intermedios
-  waypoints: [{ location: { lat: 39.57520180772055, lng: 2.6636397140336925 } }],
-  // Destino de la ruta
-  destination: { lat: 39.58902731565138, lng: 2.653168369738759 },
-  // Modo de transporte
-  travelMode: "DRIVING",
-}, (response, status) => {
-  if (status === "OK") { // No hay error en la respuesta
-    const directionsRenderer = new DirectionsRenderer();
-    // Añadimos la ruta al mapa
-    directionsRenderer.setMap(map);
-    // Añadimos la respuesta de la ruta
-    directionsRenderer.setDirections(response);
-  } else {
-    // Avisamos al usuario de que ha habido un error
-    window.alert("Directions request failed due to " + status);
+/**
+ * Función encargada de iniciar el mapa en la localización de un pueblo junto con sus museos
+ * @param {Object} dataPueblo Objeto con la información del pueblo sacada del JSON
+ * @param {Array<Object>} museosPueblo Array con la información de los museos del pueblo
+ */
+function iniciarMapaPueblo(dataPueblo, museosPueblo) {
+  // Ofrece una experiencia personalizada para los pueblos
+  let zoomMapa = 12;
+  if (dataPueblo.name !== "Palma") {
+      zoomMapa = 14;
   }
-});*/
+
+  // Filtra y prepara la geolocalización de los museos del pueblo con el formato adecuado
+  let museosPuebloGeo = museosPueblo.map(museo => ({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)}));
+  initMap({ 
+      position: {lat: parseFloat(dataPueblo.latitude), lng: parseFloat(dataPueblo.longitude)},
+      zoom: zoomMapa,
+      arrPositionMarkers: museosPuebloGeo
+  });
+}

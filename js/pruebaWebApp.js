@@ -44,10 +44,16 @@ $("#Contacto").on("click",crearContacto)
 
 /* --- --- */
 
+
 /* --- Funciones "creadoras" --- */
-//esta función se encarga de "Crear" el apartado de título "¿Dónde visitar?"
+/**
+ * Función que se encarga de crear la pantalla principal de la web
+ */
 function crearDondeVisitar() {
+    // Hacer que la página suba al principio
     window.scrollTo(0, 0);
+    // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar el mapa de otra página,
+    // se elimine y no se quede en la página principal
     $("header > div").remove();
     $("header").append(crearDiv("overlay header-image")
         .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay"))
@@ -56,28 +62,38 @@ function crearDondeVisitar() {
             .append(crearP({texto: "Planifica tu ruta ya"}))
         )
     );
+
     $("main").empty();
     $("main").attr("class","contenedor-principal index");
     $("main").append(crearH2("¿Dónde visitar?"));
     $("main").append(crearHr());
-    let sec = crearSection ();
+    let section = crearSection ();
     let div = crearContenedorPueblos();
-    $(sec).append(div);
+    $(section).append(div);
     for(let i = 0; i < 9; i++) {
         div.append(crearBotonPueblo(pueblos[i]));
     }
-    $("main").append(sec);
+    $("main").append(section);
     $("main").append(crearBotonVerMas_Pueblos());
     $("main").append(crearHr());
 }
 
-// esta función se encarga de "Crear" el listado de museos de todos los pueblos
+
+/**
+ * Función que se encarga de crear la pantalla de los museos de todos los pueblos.
+ *  A esta se accede a partir del botón del header "¿Qué visitar?"
+ */
 function crearPantallaUbicaciones() {
+    // Hacer que la página suba al principio
     window.scrollTo(0, 0);
+    // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
+    // de portada de la pantalla principal, se elimine
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
     );
+
+    // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
     initMap({
         position: centroMallorca, 
         zoom: 9,
@@ -85,29 +101,39 @@ function crearPantallaUbicaciones() {
     });
 
     $("main").empty()
-    $("main").attr("class","contenedor-principal lista-museos");
-    $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
-    $("main").append(crearFiltros());
-    let div = crearDiv("contenedor-museos");
-    // usar crearTarjetaUbicacion(museo) para ahorrarse todo este código
+    $("main").attr("class","contenedor-principal lista-museos")
+        .append(crearBotonAtras(crearDondeVisitar, "Inicio"))
+        .append(crearFiltros());
+
+    let contenedorMuseo = crearDiv("contenedor-museos");
+    // Añade las tarjetas de los museos
     museos.forEach(museo => {
-        div.append(crearTarjetaUbicacion(museo, crearPantallaUbicaciones)
+        contenedorMuseo.append(crearTarjetaUbicacion(museo, crearPantallaUbicaciones)
         )
     });
-    $("main").append(crearSection().append(div));
-    $("main").append(crearSelectorPagina());    // esto va a requerir revisión
+
+    $("main").append(crearSection().append(contenedorMuseo));
+    $("main").append(crearSelectorPagina());
 }
 
-// esta función se encarga de "Crear" el listado de museos de un pueblo
+
+/**
+ * Función que se encarga de crear la pantalla de los museos de un pueblo en concreto
+ * @param {String} pueblo Nombre del pueblo del que se quieren mostrar los museos
+ */
 function crearUbicacionesPueblo(pueblo) {
+    // Hacer que la página suba al principio
     window.scrollTo(0, 0);
+    // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
+    // de portada de la pantalla principal, se elimine
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
     );
-    initMap({ 
-        position: {lat: 39.570279022882914, lng: 2.6411309682497817} // TODO: Habrá que cambiarlo al centro de la ciudad
-    });
+
+    // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
+    let museosPueblo = museos.filter(museo => museo.areaServed.address.addressLocality === pueblo);
+    iniciarMapaPueblo(pueblos.find(p => p.name === pueblo), museosPueblo);
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
@@ -115,17 +141,27 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
-    let div = crearDiv("contenedor-museos");
-    museos.forEach(museo => { if (museo.areaServed.address.addressLocality == pueblo)
-        div.append(crearTarjetaUbicacion(museo, () => crearUbicacionesPueblo(pueblo)));
+
+    let contenedorMuseos = crearDiv("contenedor-museos");
+    museosPueblo.forEach(museo => {
+        contenedorMuseos.append(crearTarjetaUbicacion(museo, () => crearUbicacionesPueblo(pueblo)));
     });
-    $("main").append(crearSection().append(div));
+    $("main").append(crearSection().append(contenedorMuseos));
+
     $("main").append(crearSelectorPagina());
 }
 
+/**
+ * Función que se encarga de crear la pantalla de información de un lugar en concreto
+ * @param {String} nombreLugar Nombre del lugar del que se quiere mostrar la información
+ * @param {Function} funcionAnterior Función que se ejecutará al pulsar el botón de atrás
+ */
 function crearInfoUbi(nombreLugar, funcionAnterior){
-    window.scrollTo(0, 0);
     const lugar = museos.find(museo => museo.areaServed.name === nombreLugar);
+    // Hacer que la página suba al principio
+    window.scrollTo(0, 0);
+    // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
+    // de portada de la pantalla principal, se elimine
     $("header > div").remove();
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
@@ -134,25 +170,29 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
         )
     );
 
+    // Inicializa el mapa con la posición del lugar
     let posicion = {lat: parseFloat(lugar.areaServed.geo.latitude), lng: parseFloat(lugar.areaServed.geo.longitude)};
     initMap({
         position: posicion, 
         arrPositionMarkers: [posicion]
     });
+
     $("main").empty();
     $("main").attr("class","contenedor-principal info-museo");
     $("main").append(crearBotonAtras(funcionAnterior));
 
-    //Parte del slider habrá que arreglarla
+    // Creación del slider de imágenes
     $("main").append(crearDiv("swiper mySwiper slider-imagen-museo")
         .append(generarCarrousselFotos(lugar.areaServed.photo))
         .append(crearDiv("swiper-button-next"))
         .append(crearDiv("swiper-button-prev"))
         .append(crearDiv("swiper-pagination"))
-    )
-    .append(crearDiv("section-museo")
+    );
+
+    // Creación de la información del museo
+    $("main").append(crearDiv("section-museo")
         .append(generarArticuloLugarYDescripcion(lugar)
-            .append(crearBoton("leer-mas-btn", "boton boton-verde", "Leer más")
+            .append(crearBoton("Leer más", "leer-mas-btn", "boton boton-verde")
                 .on("click", leerMas)
             )
             .append((generarDivExposiciones(lugar.areaServed.event)))
@@ -177,27 +217,33 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
         .append(crearDiv("vl").attr("id","separador-vertical-museo"))
         .append(crearHr().attr("id","separador-horizontal-museo"))
         .append(generarAsideMuseo(lugar))
-    )
+    );
+    activarSwipersImagenes();
 
+    // Activar el swiper de exposiciones si hay exposiciones
     if (lugar.areaServed.event.length > 0) {
-        activarSwipersMuseo();
+        activarExposicionSwiper();
     }
     
 }
 
-// esta función se encarga de "Crear" la pantalla de la ruta
+/**
+ * Función que se encarga de crear la pantalla de la ruta
+ */
 function crearTuRuta(){
     window.scrollTo(0, 0);
-    // AQUÍ HAY QUE AÑADIR LO DE QUE MUESTRE EL MAPA Y BLA BLA BLA --> ALBERT
+    // TODO: Añadir el mapa con la ruta
     $("main").empty();
     $("main").attr("class","contenedor-principal ruta");
     $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
-    // Me imagino que aquí tiene que participar carlos para lo de leer desde el webstorage
+    // TODO: Añadir el apartado de Carlos de WEBSTORAGE
 }
 
-// esta función se encarga de "Crear" la pantalla de contacto ??
+/**
+ * Función que se encarga de crear la pantalla de contacto
+ */
 function crearContacto() {
     window.scrollTo(0, 0);
     $("header > div").remove();
@@ -228,45 +274,86 @@ function crearContacto() {
 }
 /* --- --- */
 
-/* --- Funciones genéricas --- */
-// función genérica
+
+/* --- FUNCIONES GENÉRICAS --- */
+
+/**
+ * Función genérica para generar un section
+ * @returns {JQuery<HTMLElement>} Un elemento section
+ */
 function crearSection () {
     return $("<section></section>");
 }
 
-// función genérica
+/**
+ * Función genérica para generar un article
+ * @param {String=} clases Optional. Clases que se le quieren añadir al article
+ * @returns {JQuery<HTMLElement>} Un elemento article
+ */
 function crearArticle(clases = "") {
     return $("<article>").addClass(clases);
 }
 
+/**
+ * Función genérica para generar un Header
+ * @param {String=} clases Clases que se le quieren añadir al header
+ * @returns {JQuery<HTMLElement>} Un elemento header
+ */
 function crearHeader(clases = "") {
     return $("<header>").addClass(clases);
 }
 
-// función genérica
+/**
+ * Función genérica para generar un H2
+ * @param {String} titulo Titulo del H2 
+ * @returns {JQuery<HTMLElement>} Un elemento h2
+ */
 function crearH2(titulo) {
     return $("<h2>").addClass("mt-5").html(titulo);
 }
 
-function crearH3(clases="",titulo) {
+/**
+ * Función genérica para generar un H3
+ * @param {String} titulo Titulo del H3
+ * @param {String=} clases Optional. Clases que se le quieren añadir al h3
+ * @returns {JQuery<HTMLElement>} Un elemento h3
+ */
+function crearH3(titulo, clases="") {
     return $("<h3>").addClass(clases).html(titulo);
 }
 
+/**
+ * Función genérica para generar un H4
+ * @param {String} titulo 
+ * @returns {JQuery<HTMLElement>} Un elemento h4
+ */
 function crearH4(titulo) {
     return $("<h4>").addClass("mb-2 mt-3").html(titulo);
 }
 
-// función genérica
+/**
+ * Función genérica para generar un Hr
+ * @returns {JQuery<HTMLElement>} Un elemento hr
+ */
 function crearHr() {
     return $("<hr>");
 }
 
-// función genérica
+/**
+ * Función genérica para generar un div
+ * @param {String=} clases Optional. Clases que se le quieren añadir al div
+ * @returns 
+ */
 function crearDiv(clases = "") {
     return $("<div>").addClass(clases);
 }
 
-//función genérica
+/**
+ * Función genérica para generar un img
+ * @param {String} direc Dirección de la imagen
+ * @param {String=} textAl Optional. Texto alternativo de la imagen
+ * @param {String=} clases Optional. Clases que se le quieren añadir a la imagen
+ */
 function crearImg(direc, textAl = "", clases = "") {
     return $("<img>")
         .attr({
@@ -276,7 +363,14 @@ function crearImg(direc, textAl = "", clases = "") {
         });
 }
 
-// función genérica
+/**
+ * Crea un elemento de párrafo (p) con las clases, el texto y el id especificados.
+ * @param {Object} param0 - Un objeto que contiene las propiedades del párrafo.
+ * @param {string=} param0.clases - Las clases CSS que se aplicarán al párrafo. Por defecto es una cadena vacía.
+ * @param {string} param0.texto - El texto que se mostrará en el párrafo.
+ * @param {string=} param0.id - El id que se asignará al párrafo. Por defecto es una cadena vacía.
+ * @returns {JQuery<HTMLElement>} Un elemento de párrafo (p) de jQuery con las propiedades especificadas.
+ */
 function crearP({clases = "", texto, id = ""}) {
     return $("<p>").
         attr({
@@ -285,8 +379,14 @@ function crearP({clases = "", texto, id = ""}) {
         }).html(texto);
 }
 
-// función genérica
-function crearBoton(id = "", clases = "", texto) {
+/**
+ * Función genérica para generar un botón
+ * @param {String} texto Texto que se le quiere añadir al botón
+ * @param {String=} id Optional. Id del botón
+ * @param {String=} clases Clases que se le quieren añadir al botón
+ * @returns {JQuery<HTMLElement>} Un elemento button
+ */
+function crearBoton(texto, id = "", clases = "") {
     return $("<button>").
         attr({
             "id":id,
@@ -295,8 +395,13 @@ function crearBoton(id = "", clases = "", texto) {
         .html(texto);
 }
 
-// función genérica
-function crearForm(id,clases = "") {
+/**
+ * Función genérica para generar un formulario
+ * @param {String} id Id del formulario
+ * @param {String=} clases Optional. Clases que se le quieren añadir al formulario
+ * @returns {JQuery<HTMLElement>} Un elemento form
+ */
+function crearForm(id, clases = "") {
     return $("<form>")
         .attr({
             "id":id,
@@ -304,14 +409,27 @@ function crearForm(id,clases = "") {
         });
 }
 
-// función genérica --> le pasas el input al que debe aderirse
+/**
+ * Función genérica para generar un label
+ * @param {String} inputName input al que adherirse
+ * @param {String} text Texto del label
+ * @returns {JQuery<HTMLElement>} Un elemento label
+ */
 function crearLabel(inputName, text){
     return $("<label>")
         .attr("for",inputName)
         .html(text);
 }
 
-// función genérica
+/**
+ * Función genérica para generar un input
+ * @param {String} tipo Tipo de input
+ * @param {String} nombre Nombre del input
+ * @param {String=} id Optional. Id del input
+ * @param {String=} clase Optional. Clases que se le quieren añadir al input
+ * @param {String=} plcHold Optional. Placeholder del input
+ * @returns {JQuery<HTMLElement>} Un elemento input
+ */
 function crearInput(tipo, nombre, id = "", clase ="", plcHold = "") {
     return $("<input>")
         .attr({
@@ -323,7 +441,13 @@ function crearInput(tipo, nombre, id = "", clase ="", plcHold = "") {
         });
 }
 
-// función genérica
+/**
+ * Función genérica para generar un select
+ * @param {string} nombre Nombre del select
+ * @param {string} id Id del select
+ * @param {string} clases Clases que se le quieren añadir al select 
+ * @returns {JQuery<HTMLElement>} Un elemento select
+ */
 function crearSelect(nombre, id, clases){
     return $("<select>")
         .attr({
@@ -333,27 +457,44 @@ function crearSelect(nombre, id, clases){
         });
 }
 
-// función genérica
-function crearOption(valor, seleccionado = false, texto) {
+/**
+ * Función genérica para generar un option
+ * @param {string} texto El texto del option
+ * @param {number} valor El valor del option
+ * @param {boolean=} seleccionado 
+ * @returns {JQuery<HTMLElement>} Un elemento option
+ */
+function crearOption(texto, valor, seleccionado = false) {
     let opt = $("<option>")
         .attr("value", valor)
         .html(texto);
-    if(seleccionado) {  // Hago esto para ahorrar un atributo en los que no están preseleccionados
+    if(seleccionado) {
         opt.prop("selected", true);
     }
     return opt;
 }
 
-// función genérica
+/**
+ * Función genérica para generar un span
+ * @param {String} clases Clases que se le quieren añadir al span
+ * @param {string} texto Texto que se le quiere añadir al span
+ * @returns {JQuery<HTMLElement>} Un elemento span
+ */
 function crearSpan(clases, texto) {
     return $("<span>").addClass(clases).html(texto);
 }
 
-// función genérica
-function crearA(direc, clases, texto) {
+/**
+ * Función genérica para generar un anchor
+ * @param {string} direccionamiento El enlace al que se redirigirá el anchor
+ * @param {string} clases Las clases que se le quieren añadir al anchor 
+ * @param {string} texto El texto que se le quiere añadir al anchor
+ * @returns {JQuery<HTMLElement>} Un elemento anchor
+ */
+function crearA(direccionamiento, clases, texto) {
     return $("<a>")
             .attr({
-                "href" : direc,
+                "href" : direccionamiento,
                 "class" : clases
             })
             .html(texto)
@@ -362,7 +503,11 @@ function crearA(direc, clases, texto) {
 
 /* --- Funciones específicas --- */
 
-// Función para generar el carroussel de fotos a partir del JSON
+/**
+ * Función que se encarga de crear una tarjeta de componente
+ * @param {Array<Object>} fotos Array de objetos con las fotos del componente
+ * @returns {JQuery<HTMLElement>} Un elemento div con el swipper de imagenes
+ */
 function generarCarrousselFotos(fotos) {
     let carrousselFotos = crearDiv("swiper-wrapper");
     fotos.forEach(foto => {
@@ -373,6 +518,11 @@ function generarCarrousselFotos(fotos) {
     return carrousselFotos;
 }
 
+/**
+ * Función que se encarga de crear el articulo del lugar junto con la descripción
+ * @param {Object} lugar Lugar del que se quiere mostrar la información
+ * @returns {JQuery<HTMLElement>} Un elemento article con la información del lugar
+ */
 function generarArticuloLugarYDescripcion(lugar) {
     let articulo = crearArticle("main-museo");
     lugar.areaServed.description.split("\n").forEach((parrafo, index) => {
@@ -392,6 +542,11 @@ function generarArticuloLugarYDescripcion(lugar) {
     return articulo;
 }
 
+/**
+ * Función que se encarga de crear el swipper de exposiciones
+ * @param {Object} exposiciones Exposiciones del museo
+ * @returns {JQuery<HTMLElement>|string} Un elemento section con el swipper de exposiciones
+ */
 function generarDivExposiciones(exposiciones) {
     
     if (exposiciones !== "") {
@@ -412,7 +567,7 @@ function generarDivExposiciones(exposiciones) {
             );
         });
         let exposDiv = crearSection()
-        .append(crearH3("mb-4", "EXPOSICIONES"))
+        .append(crearH3("EXPOSICIONES", "mb-4"))
         .append($("<ol>")
             .addClass("exposiciones swiper")
             .append(expos));
@@ -424,6 +579,11 @@ function generarDivExposiciones(exposiciones) {
 
 }
 
+/**
+ * Función que se encarga de generar el aside del museo, con la información de horarios, dirección y precios
+ * @param {object} lugar Lugar del que se quiere mostrar la información
+ * @returns {JQuery<HTMLElement>} Un elemento aside con la información del museo
+ */
 function generarAsideMuseo(lugar) {
     let aside = $("<aside>");
     aside.append(crearDiv()
@@ -451,6 +611,11 @@ function generarAsideMuseo(lugar) {
     return aside;
 }
 
+/**
+ * Función que formatea el horario de un lugar del JSON a un formato indicado para la página web
+ * @param {Array<string>|string} horario 
+ * @returns {string} El horario formateado
+ */
 function crearFechasHorarioLugar(horario) {
     let dias = {
         "Mo": "Lunes",
@@ -476,6 +641,11 @@ function crearFechasHorarioLugar(horario) {
     }
 }
 
+/**
+ * Función genérica para crear el texto con el formato correcto de la dirección de un lugar
+ * @param {Object} lugar 
+ * @returns 
+ */
 function crearTextoDirecciónLugar(lugar) {
     let direccion = lugar.areaServed.address;
     return `${direccion.streetAddress} <br>
@@ -484,6 +654,11 @@ function crearTextoDirecciónLugar(lugar) {
             ${direccion.email}`;
 }
 
+/**
+ * Función genérica para crear el texto con el formato correcto de los precios de un lugar
+ * @param {Object} catalogoOfertas Objeto con las ofertas del lugar
+ * @returns 
+ */
 function crearTextoPreciosLugar(catalogoOfertas) {
     if (!catalogoOfertas) {
         return "Entrada general: Gratuito"
@@ -499,6 +674,7 @@ function crearTextoPreciosLugar(catalogoOfertas) {
         }
         
     });
+    // Une el array de String a un único String con saltos de línea
     return ofertas.join("<br>");
 }
 
@@ -507,11 +683,15 @@ function crearContenedorPueblos() {
     return $("<div>").attr("class", "contenedor-pueblos my-5");
 }
 
-// función específica - ¿Dónde visitar?
+/**
+ * Función que se encarga de crear un botón de un pueblo de la página principal ¿Dónde visitar?
+ * @param {Object} pueblo Objeto con la información del pueblo
+ * @returns {JQuery<HTMLElement>} Un elemento button con la información del pueblo
+ */
 function crearBotonPueblo (pueblo) {
     let nuevoBotonPueblo = $("<button>")
     .addClass("pueblo overlay col-lg-4")
-    .on("click",function(){crearUbicacionesPueblo(pueblo.name)});
+    .on("click",() => crearUbicacionesPueblo(pueblo.name));
     $(nuevoBotonPueblo)
         .append(
             crearImg(pueblo.photo.contentUrl, pueblo.photo.description,"imagen-overlay")
@@ -559,10 +739,10 @@ function crearTarjetaUbicacion(museo, funcionAnterior) {
                  texto: museo.areaServed.description        
              }))
              .append(crearDiv("botones-museo")
-                 .append(crearBoton("","boton boton-card-museo boton-verde","Añadir")
+                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
                      .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
                  )
-                 .append(crearBoton("Y","boton boton-card-museo boton-gris","Ver más")
+                 .append(crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
                      .on("click", () => crearInfoUbi(museo.areaServed.name, funcionAnterior))
                  )        
              );
@@ -572,7 +752,7 @@ function crearTarjetaUbicacion(museo, funcionAnterior) {
 // hacer que funcionen
 function crearFiltros() {
     let filtros = crearDiv("contenedor-filtros")
-        .append(crearBoton("boton-filtros","boton-filtros","Filtros")
+        .append(crearBoton("Filtros", "boton-filtros", "boton-filtros")
             .append(crearImg("img/svg/flecha-menu-down.svg"))
             .attr({
                 "data-bs-toggle":"collapse",
@@ -601,9 +781,9 @@ function crearFiltros() {
         .append(crearDiv("elemento-filtro-museo")
             .append(crearLabel("","Tipo de exposición"))
             .append(crearSelect("","seleccion-exposicion","select")
-                .append(crearOption(1, true, "Todos"))
-                .append(crearOption(2, false, "Contemporánea"))
-                .append(crearOption(3, false, "Clásico"))
+                .append(crearOption("Todos", 1, true))
+                .append(crearOption("Contemporánea", 2, false))
+                .append(crearOption("Clásico", 3, false))
             )
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre

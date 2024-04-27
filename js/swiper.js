@@ -1,4 +1,5 @@
-function activarSwipersMuseo() {
+function activarSwipersImagenes() {
+  // @ts-ignore
   let swiper = new Swiper(".mySwiper", {
     pagination: {
       el: ".swiper-pagination",
@@ -9,6 +10,10 @@ function activarSwipersMuseo() {
       prevEl: ".swiper-button-prev",
     },
   });
+}
+
+function activarExposicionSwiper() {
+  // @ts-ignore
   let exposicionSwiper = new Swiper(".exposiciones", {
     slidesPerView: "auto",
     spaceBetween: 10,

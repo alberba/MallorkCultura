@@ -24,6 +24,7 @@
     - [x] Reemplazar las imágenes planas de los mapas por la API de Google Maps
     - [x] Implementar funcionalidad Marker con museo del JSON
         - [x] Implementar Markers pantalla-museos
+    - [ ] Implementar mapa en pantalla-ruta
 - [ ] Google Calendar API
     - [x] Implementar funcionalidad de añadir eventos a Google Calendar
     - [ ] Implementar funcionalidad de ver eventos en Google Calendar
