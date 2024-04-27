@@ -220,7 +220,9 @@ function crearContacto() {
             .append(crearHr);
     let div = crearDiv("contenedor-contacto my-5");
     componentes.forEach(componente => {
-        div.append(crearTarjetaComponente(componente));
+        let comp = crearTarjetaComponente(componente);
+        comp.find("img").addClass("imagen-contacto");
+        div.append(comp);
     });
     $("main").append(div);
     $("main").append(crearDiv("contenedor-logo-uib my-5")
