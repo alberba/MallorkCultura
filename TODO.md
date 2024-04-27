@@ -8,6 +8,7 @@
     - [ ] Acabar la funcionalidad de todos los filtros
 - [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
+- [ ] Eliminar input de tipo de exposición en los filtros
 ### JavaScript
 - [ ] Comentar el código
 ### JQuery
