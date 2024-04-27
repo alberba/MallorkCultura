@@ -16,6 +16,10 @@ function mostrarRuta() {
     if (eventos.length === 0) {
         // Si no hay eventos, mostrar un mensaje
         contenedorRuta.innerHTML = '<p>Todavía no has empezado a diseñar tu ruta</p>';
+        var botonGuardar = document.querySelector('.guardar-calendar button');
+        if(botonGuardar != null){
+            botonGuardar.remove();
+        }
     } else {
         // Si hay eventos, mostrar cada uno en la lista
         eventos.forEach((evento, index) => {
@@ -98,6 +102,23 @@ function mostrarRuta() {
             contenedorRuta.appendChild(li);
             contenedorRuta.innerHTML += descanso;
         });
+        var botonGuardar = document.querySelector('.guardar-calendar button');
+        if(botonGuardar == null){
+            const contenedorBoton = document.querySelector('.guardar-calendar');
+
+            if(contenedorBoton == null){
+                console.error("El contenedor de la ruta no se encuentra.");
+                return;
+            }
+
+            botonGuardar = document.createElement('button');
+            botonGuardar.classList.add('boton', 'boton-verde');
+            botonGuardar.textContent = 'Añadir a calendar';
+            botonGuardar.setAttribute('onclick', 'guardarRuta()');
+
+            // Insertar el botón después de la lista de eventos
+            contenedorBoton.appendChild(botonGuardar);
+        }
     }
 }
 
@@ -121,6 +142,11 @@ function eliminarMuseoRuta(index) {
 function recuperarVisitas() {
     const visitas = localStorage.getItem('visitas');
     return visitas ? JSON.parse(visitas) : [];
+}
+
+// Función para guardar la ruta en el calendario
+function guardarRuta(){
+    
 }
 
 
