@@ -247,7 +247,6 @@ function crearTuRuta(){
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
 
-    
     $("main").append(mostrarTiempo("Palma"));
 
     $("main").append(crearDiv("contenedor-ruta-general mt-5", "ctdRuta")
@@ -637,12 +636,12 @@ function crearFiltros() {
 // función específica - Lista de ubicaciones
 // añade funcionalidad a los filtros
 function añadirAccionesFiltros(){
-    $("#busqueda-nombre").change(cambiarUbicacionesPorNombre(this.val()));
-    $("#busqueda-cercania").change(cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
-    $("#busqueda-radio").change(cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
-    $("#dia_visita").change(cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
-    $("#gratuito").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
-    $("#entrada").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
+    $("#busqueda-nombre").on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val()));
+    $("#busqueda-cercania").on("change", () => cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
+    $("#busqueda-radio").on("change", () => cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
+    $("#dia_visita").on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
+    $("#gratuito").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
+    $("#entrada").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
 }
 
 // función específica - Lista de ubicaciones
