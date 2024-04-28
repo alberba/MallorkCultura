@@ -88,7 +88,7 @@ function demoAñadirARuta(){
     let { horaInicio, horaFin } = generarHorasAleatorias();
 
     const evento = new Evento(lugar + num, "Calle Falsa "+num, "2024-05-01T"+horaInicio, "2024-05-01T"+horaFin, "Museo");
-    ActualizarVisitas(evento);
+    actualizarVisitas(evento);
 }
 
 function generarHorasAleatorias() {
@@ -135,7 +135,7 @@ function eliminarMuseoRuta(indice) {
 /**
  * Función que se encarga de g.uardar en web storage los eventos de la ruta hecha por el usuario a nivel actual
  */
-function ActualizarVisitas(evento) {
+function actualizarVisitas(evento) {
     const arrayJSONRecuperado = localStorage.getItem('visitas');
     if (arrayJSONRecuperado) {
         const arrayDeObjetosRecuperado = JSON.parse(arrayJSONRecuperado);

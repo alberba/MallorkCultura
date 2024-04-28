@@ -64,7 +64,7 @@
         // Puntos intermedios
         waypoints: arrPositionRoutes.slice(1,-1).map(pos => ({ location: { lat: pos.lat, lng: pos.lng } })).slice(1, -1),
         // Destino de la ruta
-        destination: { lat: arrPositionRoutes[-1].lat, lng: arrPositionRoutes[-1].lng },
+        destination: { lat: arrPositionRoutes[arrPositionRoutes.length - 1].lat, lng: arrPositionRoutes[arrPositionRoutes.length - 1].lng },
         // Modo de transporte
         travelMode: "DRIVING",
       }, (response, status) => {
@@ -76,6 +76,21 @@
           directionsRenderer.setDirections(response);
         } else {
           // Avisamos al usuario de que ha habido un error
+          window.alert("Directions request failed due to " + status);
+        }
+      });
+    } else {
+      // En caso de que haya dos puntos en la ruta, no necesitamos puntos intermedios
+      directionsService.route({
+        origin: { lat: arrPositionRoutes[0].lat, lng: arrPositionRoutes[0].lng },
+        destination: { lat: arrPositionRoutes[1].lat, lng: arrPositionRoutes[1].lng },
+        travelMode: "DRIVING",
+      }, (response, status) => {
+        if (status === "OK") {
+          const directionsRenderer = new DirectionsRenderer();
+          directionsRenderer.setMap(map);
+          directionsRenderer.setDirections(response);
+        } else {
           window.alert("Directions request failed due to " + status);
         }
       });

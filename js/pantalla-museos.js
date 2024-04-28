@@ -8,7 +8,7 @@ function almacenarVisita(lugar, direccion, tipo) {
     console.log("ALMACENAR VISITA");
     const evento = { lugar, direccion, horaInicio: "2024-06-01T09:00:00", horaFin: "2024-06-01T10:00:00", tipo };
     console.log("EVENTO CREADO:", evento);
-    ActualizarVisitas(evento);
+    actualizarVisitas(evento);
     console.log("VISITA AÑADIDA");
 }
 

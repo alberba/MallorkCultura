@@ -233,13 +233,39 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
  */
 function crearTuRuta(){
     window.scrollTo(0, 0);
-    // TODO: Añadir el mapa con la ruta
+    // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
+    // de portada de la pantalla principal, se elimine
+    $("header > div").remove();
+    $("header").append(crearDiv("mapa-museo map-container")
+        .append(crearDiv("ubi-header").attr("id","map"))
+    );
+    
     $("main").empty();
     $("main").attr("class","contenedor-principal ruta");
     $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
+
+    $("main").append(crearDiv("contenedor-ruta-general mt-5", "ctdRuta")
+        .append(crearDiv("vl"))
+        .append($("<ul>").addClass("section-ruta"))    
+    ).append(crearDiv("guardar-calendar"));
+
     // TODO: Añadir el apartado de Carlos de WEBSTORAGE
+    mostrarRuta();
+
+    // TODO: Añadir el mapa con la ruta
+    let eventos = recuperarVisitas();
+    let eventosGeo = eventos.map(evento => {
+        let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+        console.log(museo);
+        return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
+    });
+    console.log(eventosGeo);
+    initMap({position: centroMallorca,
+        zoom: 9,
+        arrPositionRoutes: eventosGeo
+    })
 }
 
 /**
@@ -639,6 +665,20 @@ function crearTarjetaContacto(componente) {
             );
 }
 
+// Función para almacenar la visita con los detalles del museo
+function almacenarVisita(lugar, direccion, tipo) {
+    console.log("ALMACENAR VISITA");
+    const evento = { lugar, direccion, horaInicio: "2024-06-01T09:00:00", horaFin: "2024-06-01T10:00:00", tipo };
+    console.log("EVENTO CREADO:", evento);
+    actualizarVisitas(evento);
+    console.log("VISITA AÑADIDA");
+}
+
+// Función para escapar las comillas simples en un texto
+function escaparComillas(texto) {
+    return texto.replace(/'/g, "\\'");
+}
+
 /* --- FUNCIONES GENÉRICAS --- */
 
 /**
@@ -706,10 +746,11 @@ function crearHr() {
 /**
  * Función genérica para generar un div
  * @param {String=} clases Optional. Clases que se le quieren añadir al div
- * @returns 
+ * @param {String=} id Optional. Id del div
+ * @returns {JQuery<HTMLElement>} Un elemento div
  */
-function crearDiv(clases = "") {
-    return $("<div>").addClass(clases);
+function crearDiv(clases = "", id="") {
+    return $("<div>").addClass(clases).attr("id",id);
 }
 
 /**
