@@ -9,7 +9,7 @@ function cambiarUbicacionesPorNombre(nombre) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if (nombre == "" || museo.areaServed.name == nombre)
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
 
@@ -19,7 +19,7 @@ function cambiarUbicacionesPorCercanía(direccion, rango) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if (museo.areaServed.name == valor)
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
 
@@ -52,13 +52,34 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
     }
 
     museos.forEach(museo => { if (contiene(dia, museo))
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
 
 function contiene(dia, m) {
-    let dias = ["Mo","Tu","We","Th","Fr","Sa","Su"]
+    let diasSemana = ["Mo","Tu","We","Th","Fr","Sa","Su"];
     let horarioApertura = m.areaServed.openingHours;
+    let diasSemanaAbierto;
+    let diaAbierto1;
+    let diaAbierto2;
+    let aux = [];
+    horarioApertura.forEach(x => {
+        aux.push(x.split(" ",1)[0]);
+    });
+    console.log("Primera pausa: " + aux)
+    aux.forEach(aux2 => {
+        if (aux2.length == 2) {
+            if (dia == aux2) {
+                return true;
+            }
+        } else {
+            diaAbierto1 = aux2.slice(0,2);
+            diaAbierto2 = aux2.slice(3,5);
+            diasSemanaAbierto = diasSemana.slice(diasSemana.indexOf(diaAbierto1),diasSemana.indexOf(diaAbierto2)+1);
+            return true;
+        }
+    });
+
     return false;
 }
 
@@ -66,6 +87,6 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada))
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
