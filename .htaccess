@@ -14,3 +14,5 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 #Redirection code Ends
+
+Header set Access-Control-Allow-Origin "*"
