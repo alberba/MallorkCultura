@@ -8,7 +8,7 @@ $("#entrada").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), th
 function cambiarUbicacionesPorNombre(nombre) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { if (museo.areaServed.name == nombre)
+    museos.forEach(museo => { if (nombre == "" || museo.areaServed.name == nombre)
         contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
     });
 }
@@ -58,7 +58,7 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
 
 function contiene(dia, m) {
     let dias = ["Mo","Tu","We","Th","Fr","Sa","Su"]
-    let apertura = m.areaServed.openingHours;
+    let horarioApertura = m.areaServed.openingHours;
     return false;
 }
 
