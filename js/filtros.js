@@ -1,10 +1,4 @@
-$("#busqueda-nombre").change(cambiarUbicacionesPorNombre(this.val()));
-$("#busqueda-cercania").change(cambiarUbicacionesPorCercanía(this.val(), $("#busqueda-radio").val()));
-$("#busqueda-radio").change(cambiarUbicacionesPorCercanía($("#busqueda-cercania").val(), this.val()));
-$("#dia_visita").change(cambiarUbicacionesPorDiaDeVisita(this.val()));
-$("#gratuito").change(cambiarUbicacionesPorTipoDeEntrada(this.val(), $("#entrada").val()));
-$("#entrada").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), this.val()));
-
+// búsqueda por nombre
 function cambiarUbicacionesPorNombre(nombre) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
@@ -13,16 +7,71 @@ function cambiarUbicacionesPorNombre(nombre) {
     });
 }
 
+
+
+
+
+
+
 // búsqueda por cercanía a una dirección
-// Acabar
-function cambiarUbicacionesPorCercanía(direccion, rango) {
+// Revisar??
+function cambiarUbicacionesPorCercania(direccion, rango) {  // rango está en km
+    let coordsDireccion = recuperarLatLng(direccion);       // devuelve un objeto LatLng de google con la latitud y longitu de la ubicación
+    let coordsMuseo;
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { if (museo.areaServed.name == valor)
-        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+    museos.forEach(museo => { 
+        coordsMuseo = {
+            lat: museo.areaServed.geo.latitude,
+            lng: museo.areaServed.geo.longitude
+        };
+        if ( parseFloat(recuperarDistancia(coordsDireccion,coordsMuseo)) <= rango*1000) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+        }
     });
 }
 
+function recuperarLatLng(direccion) {
+    let geocoder = new google.maps.Geocoder();
+    return geocoder
+        .geocode({address:direccion})
+        .then((response) => {
+            if (response.results[0]) {
+                    return response.results.geometry.location;
+                }
+        })
+        .catch((e) => window.alert("Geocoder falló debido a: " + e));
+}
+
+/**
+ * 
+ * @param {*} coords 
+ * @param {*} coordsMuseo 
+ */
+function recuperarDistancia(coordsDireccion,coordsMuseo){
+    let service = new google.maps.DistanceMatrixService();
+    return service
+        .getDistanceMatrix(
+            {
+                origins: [coordsDireccion],
+                destinations: [coordsMuseo],
+                unitSystem: google.maps.UnitSystem.METRIC
+            })
+        .then((response) => {
+            return response.rows[0].distance.value; // devuelve metros
+        })
+        .catch((e) => window.alert("DistanceMatrix falló debido a: " + e));
+}
+
+
+
+
+
+
+
+
+
+// búsqueda por día
 function cambiarUbicacionesPorDiaDeVisita(fecha) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
@@ -83,6 +132,14 @@ function contiene(dia, m) {
     return false;
 }
 
+
+
+
+
+
+
+
+/* Tipo de entrada */
 function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();

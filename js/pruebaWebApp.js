@@ -141,6 +141,7 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
+    añadirAccionesFiltros()
 
     let contenedorMuseos = crearDiv("contenedor-museos");
     museosPueblo.forEach(museo => {
@@ -628,6 +629,18 @@ function crearFiltros() {
     filtros.append(form);
     
     return filtros;
+}
+
+// función específica - Lista de ubicaciones
+// añade funcionalidad a los filtros
+function añadirAccionesFiltros(){
+    //$("#busqueda-nombre").change(cambiarUbicacionesPorNombre(this.val()));
+    $("#busqueda-nombre").on("click",console.log("follar"));
+    $("#busqueda-cercania").change(cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
+    $("#busqueda-radio").change(cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
+    $("#dia_visita").change(cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
+    $("#gratuito").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
+    $("#entrada").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
 }
 
 // función específica - Lista de ubicaciones
