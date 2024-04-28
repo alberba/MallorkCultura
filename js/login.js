@@ -11,3 +11,7 @@ function parseJwt (token) {
 function decodeJwtResponse(data){
     console.log(parseJwt(data))
 }
+
+function handleCredentialResponse(response) {
+    decodeJwtResponse(response.credential);
+}
