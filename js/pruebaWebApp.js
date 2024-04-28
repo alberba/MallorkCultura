@@ -261,7 +261,7 @@ function crearContacto() {
             .append(crearHr);
     let div = crearDiv("contenedor-contacto my-5");
     componentes.forEach(componente => {
-        let comp = crearTarjetaComponente(componente);
+        let comp = crearTarjetaContacto(componente);
         comp.find("img:first").addClass("imagen-contacto");
         div.append(comp);
     });
@@ -275,6 +275,369 @@ function crearContacto() {
 }
 /* --- --- */
 
+/* --- Funciones específicas --- */
+
+/**
+ * Función que se encarga de crear una tarjeta de componente
+ * @param {Array<Object>} fotos Array de objetos con las fotos del componente
+ * @returns {JQuery<HTMLElement>} Un elemento div con el swipper de imagenes
+ */
+function generarCarrousselFotos(fotos) {
+    let carrousselFotos = crearDiv("swiper-wrapper");
+    fotos.forEach(foto => {
+        carrousselFotos.append(crearDiv("swiper-slide")
+            .append(crearImg(foto.contentUrl, foto.description, "imagen-museo"))
+        );
+    });
+    return carrousselFotos;
+}
+
+/**
+ * Función que se encarga de crear el articulo del lugar junto con la descripción
+ * @param {Object} lugar Lugar del que se quiere mostrar la información
+ * @returns {JQuery<HTMLElement>} Un elemento article con la información del lugar
+ */
+function generarArticuloLugarYDescripcion(lugar) {
+    let articulo = crearArticle("main-museo");
+    lugar.areaServed.description.split("\n").forEach((parrafo, index) => {
+        if(index === 0) {
+            articulo.append(crearP({
+                clases: "desc-museum first-desc-museum-mobile",
+                id: "first-desc-museum",
+                texto: parrafo
+            }));
+        } else {
+            articulo.append(crearP({
+                clases: "desc-museum leer-mas",
+                texto: parrafo
+            }));
+        }
+    });
+    return articulo;
+}
+
+/**
+ * Función que se encarga de crear el swipper de exposiciones
+ * @param {Object} exposiciones Exposiciones del museo
+ * @returns {JQuery<HTMLElement>|string} Un elemento section con el swipper de exposiciones
+ */
+function generarDivExposiciones(exposiciones) {
+    
+    if (exposiciones !== "") {
+        
+        let expos = crearDiv("swiper-wrapper");
+        exposiciones.forEach(expo => {
+            expos.append($("<li>")
+                .addClass("exposicion swiper-slide")
+                .append(crearImg(expo.image.contentUrl, expo.image.description))
+                .append(crearP({
+                    clases: "nombre",
+                    texto: expo.name
+                }))
+                .append(crearP({
+                    clases: "fecha-exp",
+                    texto: expo.eventSchedule.startDate + " - " + expo.eventSchedule.endDate
+                }))
+            );
+        });
+        let exposDiv = crearSection()
+        .append(crearH3("EXPOSICIONES", "mb-4"))
+        .append($("<ol>")
+            .addClass("exposiciones swiper")
+            .append(expos));
+        return exposDiv;
+    } else {
+        return "";
+    
+    }
+
+}
+
+/**
+ * Función que se encarga de generar el aside del museo, con la información de horarios, dirección y precios
+ * @param {object} lugar Lugar del que se quiere mostrar la información
+ * @returns {JQuery<HTMLElement>} Un elemento aside con la información del museo
+ */
+function generarAsideMuseo(lugar) {
+    let aside = $("<aside>");
+    aside.append(crearDiv()
+        .append($("<h5>").html("Horario"))
+        .append(crearP({
+            clases: "",
+            texto: crearFechasHorarioLugar(lugar.areaServed.openingHours)
+        }))
+    )
+    .append(crearDiv()
+        .append($("<h5>").html("Dirección"))
+        .append(crearP({
+            clases: "",
+            texto: crearTextoDirecciónLugar(lugar)
+        }))
+    )
+    .append(crearDiv()
+        .append($("<h5>").html("Precios"))
+        .append(crearP({
+            clases: "",
+            texto: crearTextoPreciosLugar(lugar.hasOfferCatalog)
+        }))
+    );
+
+    return aside;
+}
+
+/**
+ * Función que formatea el horario de un lugar del JSON a un formato indicado para la página web
+ * @param {Array<string>|string} horario 
+ * @returns {string} El horario formateado
+ */
+function crearFechasHorarioLugar(horario) {
+    let dias = {
+        "Mo": "Lunes",
+        "Tu": "Martes",
+        "We": "Miércoles",
+        "Th": "Jueves",
+        "Fr": "Viernes",
+        "Sa": "Sábado",
+        "Su": "Domingo"
+    };
+    if (!Array.isArray(horario)) {
+        let [diasIngles, horas] = horario.split(" ");
+        let [diaInicio, diaFin] = diasIngles.split("-");
+        return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
+    } else {
+        let horarioEspañol =  horario.map(horario => {
+            let [diasIngles, horas] = horario.split(" ");
+            let [diaInicio, diaFin] = diasIngles.split("-");
+            return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
+        });
+    
+        return horarioEspañol.join("<br>");
+    }
+}
+
+/**
+ * Función genérica para crear el texto con el formato correcto de la dirección de un lugar
+ * @param {Object} lugar 
+ * @returns 
+ */
+function crearTextoDirecciónLugar(lugar) {
+    let direccion = lugar.areaServed.address;
+    return `${direccion.streetAddress} <br>
+            ${direccion.postalCode} ${direccion.addressLocality} <br>
+            ${lugar.areaServed.telephone.replace("+34", "").replace(/(\d{3})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")} <br>
+            ${direccion.email}`;
+}
+
+/**
+ * Función genérica para crear el texto con el formato correcto de los precios de un lugar
+ * @param {Object} catalogoOfertas Objeto con las ofertas del lugar
+ * @returns 
+ */
+function crearTextoPreciosLugar(catalogoOfertas) {
+    if (!catalogoOfertas) {
+        return "Entrada general: Gratuito"
+    }
+    let ofertas = catalogoOfertas.itemListElement.map(offer => {
+        let precio = parseFloat(offer.price);
+        if (precio === 0) {
+            return `${offer.itemOffered.name}: Gratuito`;
+        } else if (Number.isInteger(precio)) {
+            return `${offer.itemOffered.name}: ${precio}€`;
+        } else {
+            return `${offer.itemOffered.name}: ${precio.toFixed(2)}€`;
+        }
+        
+    });
+    // Une el array de String a un único String con saltos de línea
+    return ofertas.join("<br>");
+}
+
+//función específica - ¿Dónde visitar? --> Pensar en sustituirla
+function crearContenedorPueblos() {
+    return $("<div>").attr("class", "contenedor-pueblos my-5");
+}
+
+/**
+ * Función que se encarga de crear un botón de un pueblo de la página principal ¿Dónde visitar?
+ * @param {Object} pueblo Objeto con la información del pueblo
+ * @returns {JQuery<HTMLElement>} Un elemento button con la información del pueblo
+ */
+function crearBotonPueblo (pueblo) {
+    let nuevoBotonPueblo = $("<button>")
+    .addClass("pueblo overlay col-lg-4")
+    .on("click",() => crearUbicacionesPueblo(pueblo.name));
+    $(nuevoBotonPueblo)
+        .append(
+            crearImg(pueblo.photo.contentUrl, pueblo.photo.description,"imagen-overlay")
+        )
+        .append(
+            crearP({clases: "texto-overlay", texto: pueblo.name})
+        );
+    return nuevoBotonPueblo;
+}
+
+/**
+ * Función que se encarga de añadir los pueblos restantes a la página principal ¿Dónde visitar?
+ */
+function añadirPueblosRestantes() {
+    for(let i = 9; i < pueblos.length; i++) {
+        $("main .contenedor-pueblos").append(crearBotonPueblo(pueblos[i]));
+    } 
+    $("#verMasPueblos").remove();
+}
+
+/**
+ * Función que se encarga de crear el botón "Ver más" de la página principal ¿Dónde visitar?. 
+ * Al darle al botón, se llamará a la función añadirPueblosRestantes
+ * @returns {JQuery<HTMLElement>} Un elemento button con el botón "Ver más"
+ */
+function crearBotonVerMas_Pueblos() {
+    return $("<button>")
+            .addClass("boton boton-vermas-index boton-verde")
+            .text("Ver más")
+            .attr("id","verMasPueblos")
+            .on("click", añadirPueblosRestantes);
+}
+
+/**
+ * Función que se encarga de crear una tarjeta de componente
+ * @param funcionADirigir La función a la que se dirigirá al pulsar el botón. 
+ *                        Deberá ser la función que se encarga de crear la pantalla anterior
+ * @param {String=} texto Texto que se le quiere añadir al botón. Por defecto es "Atrás"
+ * @returns {JQuery<HTMLElement>} Un elemento button con el botón de volver atrás
+ */
+function crearBotonAtras(funcionADirigir, texto = "Atrás") {
+    return $("<button>")
+            .html(texto)
+            .addClass("boton-atras")
+            .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás","back-arrow"))
+            .on("click", funcionADirigir);
+}
+
+/**
+ * Función que se encarga de crear la tarjeta de los lugares de la lista de ubicaciones
+ * @param {Object} museo Museo del que se quiere crear la tarjeta
+ * @param funcionAnterior Función actual. Servirá para crear posteriormente el botón Atrás
+ * @returns {JQuery<HTMLElement>} Un elemento article con la información del museo
+ */
+function crearTarjetaUbicacion(museo, funcionAnterior) {
+    return crearArticle("museo")
+             .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
+             .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
+             .append(crearP({
+                 clases: "mb-4 descripcion-museo",
+                 texto: museo.areaServed.description        
+             }))
+             .append(crearDiv("botones-museo")
+                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
+                     .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
+                 )
+                 .append(crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
+                     .on("click", () => crearInfoUbi(museo.areaServed.name, funcionAnterior))
+                 )        
+             );
+}
+
+// TODO: Hacer que funcionen
+/**
+ *  Función que se encarga de crear el Filtro de la pantalla de búsqueda. También
+ *  manejará los eventos de los filtros
+ * @returns {JQuery<HTMLElement>} Un elemento div con los filtros
+ */
+function crearFiltros() {
+    let filtros = crearDiv("contenedor-filtros")
+        .append(crearBoton("Filtros", "boton-filtros", "boton-filtros")
+            .append(crearImg("img/svg/flecha-menu-down.svg"))
+            .attr({
+                "data-bs-toggle":"collapse",
+                "data-bs-target":"#form-filtro"
+            })
+        );
+    let form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show")
+        .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
+            .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
+            .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
+        )
+        .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
+            .append(crearLabel("","Ordenar por cercania"))
+            .append(crearInput("search","","busqueda-cercania","","Dirección"))
+        )
+        .append(crearDiv("elemento-filtro-museo")
+            .append(crearLabel("","Radio de búsqueda"))
+            .append(crearDiv("contenedor-range")
+                .append(crearInput("range","","busqueda-radio"))
+                .append(crearP({
+                    clases: "",
+                    texto: "10Km"
+                })) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
+            )
+        )
+        .append(crearDiv("elemento-filtro-museo")
+            .append(crearLabel("","Tipo de exposición"))
+            .append(crearSelect("","seleccion-exposicion","select")
+                .append(crearOption("Todos", 1, true))
+                .append(crearOption("Contemporánea", 2, false))
+                .append(crearOption("Clásico", 3, false))
+            )
+        )
+        .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
+                .append(crearLabel("dia-visita","Día de visita"))
+                .append(crearInput("date","","dia-visita"))
+        )
+        .append(crearDiv("elemento-filtro-museo")
+            .attr("id","tipo-entrada") // Pocos divs necesitan un id, no veo necesidad de tener que incluir el id en la función para crear div's
+            .append(crearP({
+                clases:"",
+                texto:"Tipo de entrada"
+            }))
+            .append(crearDiv("opciones-check")
+                .append(crearLabel("gratuito","Gratuito")
+                    .prepend(crearInput("checkbox","tipo_entrada[]","gratuito"))
+                )
+                .append(crearLabel("entrada","Entrada")
+                    .prepend(crearInput("checkbox","tipo_entrada[]","entrada"))
+                )
+            )
+        );
+    filtros.append(form);
+    
+    return filtros;
+}
+
+// función específica - Lista de ubicaciones
+// esta habrá que cambiarla
+function crearSelectorPagina() {
+    return crearDiv("paginas")
+        .append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
+        .append(crearP({
+                clases:"",
+                texto:".."
+            })
+            .prepend(crearSpan("pagina-actual","1"))
+            .append(crearSpan("","2"))
+        )
+        .append(crearImg("img/svg/next-page-arr.svg","Página siguiente"));
+}
+
+/**
+ * Función que se encarga de crear una tarjeta de contacto
+ * @param {Object} componente Objeto JSON con la información del contacto
+ * @returns {JQuery<HTMLElement>} Un elemento article con la información del contacto
+ */
+function crearTarjetaContacto(componente) {
+    return crearArticle("componente")
+        .append(crearImg(componente.image.contentUrl,componente.image.description))
+        .append(crearHeader("titulo-componente-card")
+                .append(crearH4(" " + componente.familyName)
+                            .prepend(crearSpan("apellidos-contacto", componente.givenName))
+                )
+            )
+        .append(crearDiv()
+                    .append(crearA("mailto:"+componente.email, "enlace-contacto", "")
+                        .append(crearImg("img/svg/icono-correo.svg","Icono de correo"))
+                    )
+            );
+}
 
 /* --- FUNCIONES GENÉRICAS --- */
 
@@ -501,345 +864,5 @@ function crearA(direccionamiento, clases, texto) {
             .html(texto)
 }
 /* --- --- */
-
-/* --- Funciones específicas --- */
-
-/**
- * Función que se encarga de crear una tarjeta de componente
- * @param {Array<Object>} fotos Array de objetos con las fotos del componente
- * @returns {JQuery<HTMLElement>} Un elemento div con el swipper de imagenes
- */
-function generarCarrousselFotos(fotos) {
-    let carrousselFotos = crearDiv("swiper-wrapper");
-    fotos.forEach(foto => {
-        carrousselFotos.append(crearDiv("swiper-slide")
-            .append(crearImg(foto.contentUrl, foto.description, "imagen-museo"))
-        );
-    });
-    return carrousselFotos;
-}
-
-/**
- * Función que se encarga de crear el articulo del lugar junto con la descripción
- * @param {Object} lugar Lugar del que se quiere mostrar la información
- * @returns {JQuery<HTMLElement>} Un elemento article con la información del lugar
- */
-function generarArticuloLugarYDescripcion(lugar) {
-    let articulo = crearArticle("main-museo");
-    lugar.areaServed.description.split("\n").forEach((parrafo, index) => {
-        if(index === 0) {
-            articulo.append(crearP({
-                clases: "desc-museum first-desc-museum-mobile",
-                id: "first-desc-museum",
-                texto: parrafo
-            }));
-        } else {
-            articulo.append(crearP({
-                clases: "desc-museum leer-mas",
-                texto: parrafo
-            }));
-        }
-    });
-    return articulo;
-}
-
-/**
- * Función que se encarga de crear el swipper de exposiciones
- * @param {Object} exposiciones Exposiciones del museo
- * @returns {JQuery<HTMLElement>|string} Un elemento section con el swipper de exposiciones
- */
-function generarDivExposiciones(exposiciones) {
-    
-    if (exposiciones !== "") {
-        
-        let expos = crearDiv("swiper-wrapper");
-        exposiciones.forEach(expo => {
-            expos.append($("<li>")
-                .addClass("exposicion swiper-slide")
-                .append(crearImg(expo.image.contentUrl, expo.image.description))
-                .append(crearP({
-                    clases: "nombre",
-                    texto: expo.name
-                }))
-                .append(crearP({
-                    clases: "fecha-exp",
-                    texto: expo.eventSchedule.startDate + " - " + expo.eventSchedule.endDate
-                }))
-            );
-        });
-        let exposDiv = crearSection()
-        .append(crearH3("EXPOSICIONES", "mb-4"))
-        .append($("<ol>")
-            .addClass("exposiciones swiper")
-            .append(expos));
-        return exposDiv;
-    } else {
-        return "";
-    
-    }
-
-}
-
-/**
- * Función que se encarga de generar el aside del museo, con la información de horarios, dirección y precios
- * @param {object} lugar Lugar del que se quiere mostrar la información
- * @returns {JQuery<HTMLElement>} Un elemento aside con la información del museo
- */
-function generarAsideMuseo(lugar) {
-    let aside = $("<aside>");
-    aside.append(crearDiv()
-        .append($("<h5>").html("Horario"))
-        .append(crearP({
-            clases: "",
-            texto: crearFechasHorarioLugar(lugar.areaServed.openingHours)
-        }))
-    )
-    .append(crearDiv()
-        .append($("<h5>").html("Dirección"))
-        .append(crearP({
-            clases: "",
-            texto: crearTextoDirecciónLugar(lugar)
-        }))
-    )
-    .append(crearDiv()
-        .append($("<h5>").html("Precios"))
-        .append(crearP({
-            clases: "",
-            texto: crearTextoPreciosLugar(lugar.hasOfferCatalog)
-        }))
-    );
-
-    return aside;
-}
-
-/**
- * Función que formatea el horario de un lugar del JSON a un formato indicado para la página web
- * @param {Array<string>|string} horario 
- * @returns {string} El horario formateado
- */
-function crearFechasHorarioLugar(horario) {
-    let dias = {
-        "Mo": "Lunes",
-        "Tu": "Martes",
-        "We": "Miércoles",
-        "Th": "Jueves",
-        "Fr": "Viernes",
-        "Sa": "Sábado",
-        "Su": "Domingo"
-    };
-    if (!Array.isArray(horario)) {
-        let [diasIngles, horas] = horario.split(" ");
-        let [diaInicio, diaFin] = diasIngles.split("-");
-        return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
-    } else {
-        let horarioEspañol =  horario.map(horario => {
-            let [diasIngles, horas] = horario.split(" ");
-            let [diaInicio, diaFin] = diasIngles.split("-");
-            return diaFin ? `${dias[diaInicio]} a ${dias[diaFin]}: ${horas}` : `${dias[diaInicio]}: ${horas}`;
-        });
-    
-        return horarioEspañol.join("<br>");
-    }
-}
-
-/**
- * Función genérica para crear el texto con el formato correcto de la dirección de un lugar
- * @param {Object} lugar 
- * @returns 
- */
-function crearTextoDirecciónLugar(lugar) {
-    let direccion = lugar.areaServed.address;
-    return `${direccion.streetAddress} <br>
-            ${direccion.postalCode} ${direccion.addressLocality} <br>
-            ${lugar.areaServed.telephone.replace("+34", "").replace(/(\d{3})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")} <br>
-            ${direccion.email}`;
-}
-
-/**
- * Función genérica para crear el texto con el formato correcto de los precios de un lugar
- * @param {Object} catalogoOfertas Objeto con las ofertas del lugar
- * @returns 
- */
-function crearTextoPreciosLugar(catalogoOfertas) {
-    if (!catalogoOfertas) {
-        return "Entrada general: Gratuito"
-    }
-    let ofertas = catalogoOfertas.itemListElement.map(offer => {
-        let precio = parseFloat(offer.price);
-        if (precio === 0) {
-            return `${offer.itemOffered.name}: Gratuito`;
-        } else if (Number.isInteger(precio)) {
-            return `${offer.itemOffered.name}: ${precio}€`;
-        } else {
-            return `${offer.itemOffered.name}: ${precio.toFixed(2)}€`;
-        }
-        
-    });
-    // Une el array de String a un único String con saltos de línea
-    return ofertas.join("<br>");
-}
-
-//función específica - ¿Dónde visitar? --> Pensar en sustituirla
-function crearContenedorPueblos() {
-    return $("<div>").attr("class", "contenedor-pueblos my-5");
-}
-
-/**
- * Función que se encarga de crear un botón de un pueblo de la página principal ¿Dónde visitar?
- * @param {Object} pueblo Objeto con la información del pueblo
- * @returns {JQuery<HTMLElement>} Un elemento button con la información del pueblo
- */
-function crearBotonPueblo (pueblo) {
-    let nuevoBotonPueblo = $("<button>")
-    .addClass("pueblo overlay col-lg-4")
-    .on("click",() => crearUbicacionesPueblo(pueblo.name));
-    $(nuevoBotonPueblo)
-        .append(
-            crearImg(pueblo.photo.contentUrl, pueblo.photo.description,"imagen-overlay")
-        )
-        .append(
-            crearP({clases: "texto-overlay", texto: pueblo.name})
-        );
-    return nuevoBotonPueblo;
-}
-
-// función específica - ¿Dónde visitar?
-function añadirPueblosRestantes() {
-    for(let i = 9; i < pueblos.length; i++) {
-        $("main .contenedor-pueblos").append(crearBotonPueblo(pueblos[i]));
-    } 
-    $("#verMasPueblos").remove();
-}
-
-// función específica - ¿Dónde visitar?
-function crearBotonVerMas_Pueblos() {
-    return $("<button>")
-            .addClass("boton boton-vermas-index boton-verde")
-            .text("Ver más")
-            .attr("id","verMasPueblos")
-            .on("click",function(){añadirPueblosRestantes()});
-}
-
-// función específica - Por todo
-// ACABAR
-function crearBotonAtras(funcionADirigir, texto = "Atrás") {
-    return $("<button>")
-            .html(texto)
-            .addClass("boton-atras")
-            .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás","back-arrow"))
-            .on("click", funcionADirigir);
-}
-
-// función específica - Lista de ubicaciones
-function crearTarjetaUbicacion(museo, funcionAnterior) {
-    return crearArticle("museo")
-             .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
-             .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
-             .append(crearP({
-                 clases: "mb-4 descripcion-museo",
-                 texto: museo.areaServed.description        
-             }))
-             .append(crearDiv("botones-museo")
-                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
-                     .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
-                 )
-                 .append(crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
-                     .on("click", () => crearInfoUbi(museo.areaServed.name, funcionAnterior))
-                 )        
-             );
-}
-
-// función específica - Lista de ubicaciones
-// hacer que funcionen
-function crearFiltros() {
-    let filtros = crearDiv("contenedor-filtros")
-        .append(crearBoton("Filtros", "boton-filtros", "boton-filtros")
-            .append(crearImg("img/svg/flecha-menu-down.svg"))
-            .attr({
-                "data-bs-toggle":"collapse",
-                "data-bs-target":"#form-filtro"
-            })
-        );
-    let form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show")
-        .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
-            .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
-            .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
-        )
-        .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
-            .append(crearLabel("","Ordenar por cercania"))
-            .append(crearInput("search","","busqueda-cercania","","Dirección"))
-        )
-        .append(crearDiv("elemento-filtro-museo")
-            .append(crearLabel("","Radio de búsqueda"))
-            .append(crearDiv("contenedor-range")
-                .append(crearInput("range","","busqueda-radio"))
-                .append(crearP({
-                    clases: "",
-                    texto: "10Km"
-                })) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
-            )
-        )
-        .append(crearDiv("elemento-filtro-museo")
-            .append(crearLabel("","Tipo de exposición"))
-            .append(crearSelect("","seleccion-exposicion","select")
-                .append(crearOption("Todos", 1, true))
-                .append(crearOption("Contemporánea", 2, false))
-                .append(crearOption("Clásico", 3, false))
-            )
-        )
-        .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
-                .append(crearLabel("dia-visita","Día de visita"))
-                .append(crearInput("date","","dia-visita"))
-        )
-        .append(crearDiv("elemento-filtro-museo")
-            .attr("id","tipo-entrada") // Pocos divs necesitan un id, no veo necesidad de tener que incluir el id en la función para crear div's
-            .append(crearP({
-                clases:"",
-                texto:"Tipo de entrada"
-            }))
-            .append(crearDiv("opciones-check")
-                .append(crearLabel("gratuito","Gratuito")
-                    .prepend(crearInput("checkbox","tipo_entrada[]","gratuito"))
-                )
-                .append(crearLabel("entrada","Entrada")
-                    .prepend(crearInput("checkbox","tipo_entrada[]","entrada"))
-                )
-            )
-        );
-    filtros.append(form);
-    
-    return filtros;
-}
-
-// función específica - Lista de ubicaciones
-// esta habrá que cambiarla
-function crearSelectorPagina() {
-    return crearDiv("paginas")
-        .append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
-        .append(crearP({
-                clases:"",
-                texto:".."
-            })
-            .prepend(crearSpan("pagina-actual","1"))
-            .append(crearSpan("","2"))
-        )
-        .append(crearImg("img/svg/next-page-arr.svg","Página siguiente"));
-}
-
-// función específica - Contacto
-function crearTarjetaComponente(componente) {
-    return crearArticle("componente")
-        .append(crearImg(componente.image.contentUrl,componente.image.description))
-        .append(crearHeader("titulo-componente-card")
-                .append(crearH4(" " + componente.familyName)
-                            .prepend(crearSpan("apellidos-contacto", componente.givenName))
-                )
-            )
-        .append(crearDiv()
-                    .append(crearA("mailto:"+componente.email, "enlace-contacto", "")
-                        .append(crearImg("img/svg/icono-correo.svg","Icono de correo"))
-                    )
-            );
-}
 
 /* --- --- */
