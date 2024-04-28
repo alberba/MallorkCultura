@@ -15,16 +15,10 @@
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
-- [ ] Hacer función para poner el mapa en pantalla-ruta (Albert + Mati)
 - [ ] En info museo, arreglar el slider
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### APIs
 - [ ] Implementar SpeechRecognition o TextToSpeech
-- [ ] Google Maps API
-    - [x] Reemplazar las imágenes planas de los mapas por la API de Google Maps
-    - [x] Implementar funcionalidad Marker con museo del JSON
-        - [x] Implementar Markers pantalla-museos
-    - [ ] Implementar mapa en pantalla-ruta
 - [ ] Google Calendar API
     - [x] Implementar funcionalidad de añadir eventos a Google Calendar
     - [ ] Implementar funcionalidad de ver eventos en Google Calendar
@@ -36,6 +30,14 @@
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
 
 # HECHO
+## 28/04
+- [x] Hacer función para poner el mapa en pantalla-ruta (Albert + Mati)
+- [x] Google Maps API
+    - [x] Reemplazar las imágenes planas de los mapas por la API de Google Maps
+    - [x] Implementar funcionalidad Marker con museo del JSON
+        - [x] Implementar Markers pantalla-museos
+    - [x] Implementar mapa en pantalla-ruta 
+
 ## 27/04
 - [x] Crear función para volver atrás del boton Atrás
 - [x] Añadir sección sobre nosotros (correo/nombre/DNI) 

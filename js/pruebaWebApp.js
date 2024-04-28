@@ -246,6 +246,9 @@ function crearTuRuta(){
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
 
+    
+    $("main").append(mostrarTiempo("Palma"));
+
     $("main").append(crearDiv("contenedor-ruta-general mt-5", "ctdRuta")
         .append(crearDiv("vl"))
         .append($("<ul>").addClass("section-ruta"))    
