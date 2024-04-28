@@ -174,6 +174,7 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
     let posicion = {lat: parseFloat(lugar.areaServed.geo.latitude), lng: parseFloat(lugar.areaServed.geo.longitude)};
     initMap({
         position: posicion, 
+        zoom: 14,
         arrPositionMarkers: [posicion]
     });
 

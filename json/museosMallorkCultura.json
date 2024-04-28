@@ -160,14 +160,14 @@
                 "faxNumber" : "",
                 "geo" : {
                     "@type": "GeoCoordinates",
-                    "latitude": "39.54562",
-                    "longitude": "2.62897"
+                    "latitude": "39.546563",
+                    "longitude": "2.623437"
                 },
                 "hasMap" : "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
                 "isAccessibleForFree" : true,
                 "keywords" : "",
-                "latitude" : "39.54562",
-                "longitude" : "2.62897",
+                "latitude": "39.546563",
+                "longitude": "2.623437",
                 "photo" : [
                     {
                         "@type" : "ImageObject",
