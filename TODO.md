@@ -22,8 +22,6 @@
 - [ ] Google Calendar API
     - [x] Implementar funcionalidad de añadir eventos a Google Calendar
     - [ ] Implementar funcionalidad de ver eventos en Google Calendar
-### JSON
-- [ ] Acabar de rellenar los campos vacíos de nuestro JSON de museos
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
@@ -37,7 +35,7 @@
     - [x] Implementar funcionalidad Marker con museo del JSON
         - [x] Implementar Markers pantalla-museos
     - [x] Implementar mapa en pantalla-ruta 
-
+- [x] API del Tiempo 
 ## 27/04
 - [x] Crear función para volver atrás del boton Atrás
 - [x] Añadir sección sobre nosotros (correo/nombre/DNI) 
