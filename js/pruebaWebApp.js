@@ -634,8 +634,7 @@ function crearFiltros() {
 // función específica - Lista de ubicaciones
 // añade funcionalidad a los filtros
 function añadirAccionesFiltros(){
-    //$("#busqueda-nombre").change(cambiarUbicacionesPorNombre(this.val()));
-    $("#busqueda-nombre").on("click",console.log("follar"));
+    $("#busqueda-nombre").change(cambiarUbicacionesPorNombre(this.val()));
     $("#busqueda-cercania").change(cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
     $("#busqueda-radio").change(cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
     $("#dia_visita").change(cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));

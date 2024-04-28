@@ -1,5 +1,7 @@
 // búsqueda por nombre
 function cambiarUbicacionesPorNombre(nombre) {
+    console.log("llamada cambiarUbicacionesPorNombre");
+
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if (nombre == "" || museo.areaServed.name == nombre)
@@ -15,7 +17,9 @@ function cambiarUbicacionesPorNombre(nombre) {
 
 // búsqueda por cercanía a una dirección
 // Revisar??
-function cambiarUbicacionesPorCercania(direccion, rango) {  // rango está en km
+function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  // rango está en km
+    console.log("llamada cambiarUbicacionesPorCercania");
+    
     let coordsDireccion = recuperarLatLng(direccion);       // devuelve un objeto LatLng de google con la latitud y longitu de la ubicación
     let coordsMuseo;
     let contenedorUbicaciones = $(".contenedor-museos");
@@ -73,6 +77,8 @@ function recuperarDistancia(coordsDireccion,coordsMuseo){
 
 // búsqueda por día
 function cambiarUbicacionesPorDiaDeVisita(fecha) {
+    console.log("llamada cambiarUbicacionesPorDiaDeVisita");
+
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     let dia;
@@ -141,6 +147,8 @@ function contiene(dia, m) {
 
 /* Tipo de entrada */
 function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
+    console.log("llamada cambiarUbicacionesPorTipoDeEntrada");
+
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada))
