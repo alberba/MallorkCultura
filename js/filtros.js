@@ -125,7 +125,7 @@ function contiene(dia, m) {
             diaAbierto1 = aux2.slice(0,2);
             diaAbierto2 = aux2.slice(3,5);
             diasSemanaAbierto = diasSemana.slice(diasSemana.indexOf(diaAbierto1),diasSemana.indexOf(diaAbierto2)+1);
-            return true;
+            return diasSemanaAbierto.includes(dia);
         }
     });
 
