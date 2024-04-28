@@ -1,29 +1,84 @@
-$("#busqueda-nombre").change(cambiarUbicacionesPorNombre(this.val()));
-$("#busqueda-cercania").change(cambiarUbicacionesPorCercanía(this.val(), $("#busqueda-radio").val()));
-$("#busqueda-radio").change(cambiarUbicacionesPorCercanía($("#busqueda-cercania").val(), this.val()));
-$("#dia_visita").change(cambiarUbicacionesPorDiaDeVisita(this.val()));
-$("#gratuito").change(cambiarUbicacionesPorTipoDeEntrada(this.val(), $("#entrada").val()));
-$("#entrada").change(cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), this.val()));
-
+// búsqueda por nombre
 function cambiarUbicacionesPorNombre(nombre) {
+    console.log("llamada cambiarUbicacionesPorNombre");
+
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if (nombre == "" || museo.areaServed.name == nombre)
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
+
+
+
+
+
+
 
 // búsqueda por cercanía a una dirección
-// Acabar
-function cambiarUbicacionesPorCercanía(direccion, rango) {
+// Revisar??
+function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  // rango está en km
+    console.log("llamada cambiarUbicacionesPorCercania");
+    
+    let coordsDireccion = recuperarLatLng(direccion);       // devuelve un objeto LatLng de google con la latitud y longitu de la ubicación
+    let coordsMuseo;
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { if (museo.areaServed.name == valor)
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+    museos.forEach(museo => { 
+        coordsMuseo = {
+            lat: museo.areaServed.geo.latitude,
+            lng: museo.areaServed.geo.longitude
+        };
+        if ( parseFloat(recuperarDistancia(coordsDireccion,coordsMuseo)) <= rango*1000) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+        }
     });
 }
 
+function recuperarLatLng(direccion) {
+    let geocoder = new google.maps.Geocoder();
+    return geocoder
+        .geocode({address:direccion})
+        .then((response) => {
+            if (response.results[0]) {
+                    return response.results.geometry.location;
+                }
+        })
+        .catch((e) => window.alert("Geocoder falló debido a: " + e));
+}
+
+/**
+ * 
+ * @param {*} coords 
+ * @param {*} coordsMuseo 
+ */
+function recuperarDistancia(coordsDireccion,coordsMuseo){
+    let service = new google.maps.DistanceMatrixService();
+    return service
+        .getDistanceMatrix(
+            {
+                origins: [coordsDireccion],
+                destinations: [coordsMuseo],
+                unitSystem: google.maps.UnitSystem.METRIC
+            })
+        .then((response) => {
+            return response.rows[0].distance.value; // devuelve metros
+        })
+        .catch((e) => window.alert("DistanceMatrix falló debido a: " + e));
+}
+
+
+
+
+
+
+
+
+
+// búsqueda por día
 function cambiarUbicacionesPorDiaDeVisita(fecha) {
+    console.log("llamada cambiarUbicacionesPorDiaDeVisita");
+
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     let dia;
@@ -52,20 +107,51 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
     }
 
     museos.forEach(museo => { if (contiene(dia, museo))
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
 
 function contiene(dia, m) {
-    let dias = ["Mo","Tu","We","Th","Fr","Sa","Su"]
+    let diasSemana = ["Mo","Tu","We","Th","Fr","Sa","Su"];
     let horarioApertura = m.areaServed.openingHours;
+    let diasSemanaAbierto;
+    let diaAbierto1;
+    let diaAbierto2;
+    let aux = [];
+    horarioApertura.forEach(x => {
+        aux.push(x.split(" ",1)[0]);
+    });
+    console.log("Primera pausa: " + aux)
+    aux.forEach(aux2 => {
+        if (aux2.length == 2) {
+            if (dia == aux2) {
+                return true;
+            }
+        } else {
+            diaAbierto1 = aux2.slice(0,2);
+            diaAbierto2 = aux2.slice(3,5);
+            diasSemanaAbierto = diasSemana.slice(diasSemana.indexOf(diaAbierto1),diasSemana.indexOf(diaAbierto2)+1);
+            return diasSemanaAbierto.includes(dia);
+        }
+    });
+
     return false;
 }
 
+
+
+
+
+
+
+
+/* Tipo de entrada */
 function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
+    console.log("llamada cambiarUbicacionesPorTipoDeEntrada");
+
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     museos.forEach(museo => { if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada))
-        contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
+        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
