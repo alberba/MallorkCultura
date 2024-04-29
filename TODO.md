@@ -10,6 +10,7 @@
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
 - [ ] Eliminar input de tipo de exposición en los filtros
 - [ ] Gestionar la aparición del boton de perfil en el header tras iniciar sesión
+- [ ] Gestión cerrar Sesión google
 ### JavaScript
 - [ ] Comentar el código
 - [ ] Ordenar las funciones de "pruebaWebApp.js"

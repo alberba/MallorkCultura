@@ -10,70 +10,66 @@ function cambiarUbicacionesPorNombre(nombre) {
 }
 
 
-
-
-
-
-
 // búsqueda por cercanía a una dirección
 // Revisar??
-function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  // rango está en km
+async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  // rango está en km
     console.log("llamada cambiarUbicacionesPorCercania");
+    console.log(rango)
     
-    let coordsDireccion = recuperarLatLng(direccion);       // devuelve un objeto LatLng de google con la latitud y longitu de la ubicación
-    let coordsMuseo;
-    let contenedorUbicaciones = $(".contenedor-museos");
-    contenedorUbicaciones.empty();
-    museos.forEach(museo => { 
-        coordsMuseo = {
-            lat: museo.areaServed.geo.latitude,
-            lng: museo.areaServed.geo.longitude
-        };
-        if ( parseFloat(recuperarDistancia(coordsDireccion,coordsMuseo)) <= rango*1000) {
-            contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
-        }
+    // Esto sucederá en caso de cambiar el rango antes de poner una dirección
+    if(direccion == "") {
+        return;
+    }
+
+    recuperarLatLng(direccion).then(coordsDireccion => {
+        console.log(coordsDireccion);
+        let coordsMuseo;
+        let contenedorUbicaciones = $(".contenedor-museos");
+        contenedorUbicaciones.empty();
+        museos.forEach(museo => { 
+            coordsMuseo = {
+                lat: museo.areaServed.geo.latitude,
+                lng: museo.areaServed.geo.longitude
+            };
+            console.log("Distancia: " + calcularDistancia(coordsDireccion, coordsMuseo) + " km");
+            if (calcularDistancia(coordsDireccion, coordsMuseo) <= rango) {
+                contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            }
+        });
     });
+    
 }
 
 function recuperarLatLng(direccion) {
-    let geocoder = new google.maps.Geocoder();
-    return geocoder
-        .geocode({address:direccion})
-        .then((response) => {
-            if (response.results[0]) {
-                    return response.results.geometry.location;
-                }
+    let geo;
+    return fetch("https://geocode.maps.co/search?q="+direccion+"&api_key=662f95ede90a4385758387pkl2dc4fb")
+        .then(response => response.json())
+        .then(data => {
+            geo = {lat: data[0].lat, lng: data[0].lon};
+            console.log(geo);
+            return geo;
         })
-        .catch((e) => window.alert("Geocoder falló debido a: " + e));
+        .catch(error => console.error(error));
 }
 
-/**
- * 
- * @param {*} coords 
- * @param {*} coordsMuseo 
- */
-function recuperarDistancia(coordsDireccion,coordsMuseo){
-    let service = new google.maps.DistanceMatrixService();
-    return service
-        .getDistanceMatrix(
-            {
-                origins: [coordsDireccion],
-                destinations: [coordsMuseo],
-                unitSystem: google.maps.UnitSystem.METRIC
-            })
-        .then((response) => {
-            return response.rows[0].distance.value; // devuelve metros
-        })
-        .catch((e) => window.alert("DistanceMatrix falló debido a: " + e));
+function calcularDistancia(coordsDireccion, coordsMuseo) {
+    const radioTierra = 6371; // Radio de la Tierra en kilómetros
+    const dLat = toRadians(coordsMuseo.lat - coordsDireccion.lat);
+    const dLon = toRadians(coordsMuseo.lng - coordsDireccion.lng);
+
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(toRadians(coordsDireccion.lat)) * Math.cos(toRadians(coordsMuseo.lat)) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distancia = radioTierra * c; // Distancia en kilómetros
+    return distancia;
 }
 
-
-
-
-
-
-
-
+function toRadians(grados) {
+    return grados * Math.PI / 180;
+}
 
 // búsqueda por día
 function cambiarUbicacionesPorDiaDeVisita(fecha) {

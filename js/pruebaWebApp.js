@@ -142,7 +142,6 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
-    añadirAccionesFiltros()
 
     let contenedorMuseos = crearDiv("contenedor-museos");
     museosPueblo.forEach(museo => {
@@ -151,6 +150,7 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearSection().append(contenedorMuseos));
 
     $("main").append(crearSelectorPagina());
+    añadirAccionesFiltros()
 }
 
 /**
@@ -606,19 +606,27 @@ function crearFiltros() {
     let form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show")
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
             .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
-            .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo"))
+            .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo")
+                .on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val())))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
             .append(crearLabel("","Ordenar por cercania"))
-            .append(crearInput("search","","busqueda-cercania","","Dirección"))
+            .append(crearInput("search","","busqueda-cercania","","Dirección")
+                .on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()))))
         )
         .append(crearDiv("elemento-filtro-museo")
             .append(crearLabel("","Radio de búsqueda"))
             .append(crearDiv("contenedor-range")
-                .append(crearInput("range","","busqueda-radio"))
+                .append(crearInput("range","","busqueda-radio")
+                    .on("mouseup", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val())))
+                    .on("input", function() {
+                        let valor = $(this).val();
+                        $(".texto-range").text(valor + "Km");
+                     })
+                )
                 .append(crearP({
-                    clases: "",
-                    texto: "10Km"
+                    clases: "texto-range",
+                    texto: "50Km"
                 })) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
             )
         )
@@ -632,7 +640,8 @@ function crearFiltros() {
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
                 .append(crearLabel("dia-visita","Día de visita"))
-                .append(crearInput("date","","dia-visita"))
+                .append(crearInput("date","","dia-visita")
+                    .on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val())))
         )
         .append(crearDiv("elemento-filtro-museo")
             .attr("id","tipo-entrada") // Pocos divs necesitan un id, no veo necesidad de tener que incluir el id en la función para crear div's
@@ -642,14 +651,19 @@ function crearFiltros() {
             }))
             .append(crearDiv("opciones-check")
                 .append(crearLabel("gratuito","Gratuito")
-                    .prepend(crearInput("checkbox","tipo_entrada[]","gratuito"))
+                    .prepend(crearInput("checkbox","tipo_entrada[]","gratuito")
+                        .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val())))
                 )
                 .append(crearLabel("entrada","Entrada")
-                    .prepend(crearInput("checkbox","tipo_entrada[]","entrada"))
+                    .prepend(crearInput("checkbox","tipo_entrada[]","entrada")
+                        .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val())))
                 )
             )
         );
     filtros.append(form);
+    $("#dia_visita").on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
+    $("#gratuito").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
+    $("#entrada").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
     
     return filtros;
 }
@@ -658,8 +672,8 @@ function crearFiltros() {
 // añade funcionalidad a los filtros
 function añadirAccionesFiltros(){
     $("#busqueda-nombre").on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val()));
-    $("#busqueda-cercania").on("change", () => cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
-    $("#busqueda-radio").on("change", () => cambiarUbicacionesPorCercania($("#busqueda-cercania").val(), $("#busqueda-radio").val()));
+    $("#busqueda-cercania").on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val())));
+    $("#busqueda-radio").on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val())));
     $("#dia_visita").on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
     $("#gratuito").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
     $("#entrada").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
