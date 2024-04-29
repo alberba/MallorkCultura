@@ -5,6 +5,7 @@ const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
 let museos;
 let pueblos;
 let componentes;
+let speechSynthesisActivado = false;
 
 // leer json de museos
 fetch(jsonUrlMuseos)
@@ -194,8 +195,13 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
     // Creación de la información del museo
     $("main").append(crearDiv("section-museo")
         .append(generarArticuloLugarYDescripcion(lugar)
-            .append(crearBoton("Leer más", "leer-mas-btn", "boton boton-verde")
-                .on("click", leerMas)
+            .append(crearDiv("botones-descripcion")
+                .append(crearBoton("Leer más", "leer-mas-btn", "boton boton-verde")
+                    .on("click", leerMas)
+                )
+                .append(crearBoton("", "escuchar-btn", "boton-verde btn-volume")
+                    .on("click", () => speechDescription(lugar.areaServed.name, lugar.areaServed.description))
+                    .append(crearImg("img/svg/volume.svg","Icono de volumen para escuchar el titulo y la descripcion","volume-icon")))
             )
             .append((generarDivExposiciones(lugar.areaServed.event)))
             .append(crearDiv("contenedor-botones-museo")
@@ -225,6 +231,21 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
     // Activar el swiper de exposiciones si hay exposiciones
     if (lugar.areaServed.event.length > 0) {
         activarExposicionSwiper();
+    }
+    
+}
+
+function speechDescription(titulo, descripcion) {
+    if (speechSynthesisActivado) {
+        window.speechSynthesis.cancel();
+        speechSynthesisActivado = false;
+    } else {
+        speechSynthesisActivado = true;
+        const mensajeTitulo = new SpeechSynthesisUtterance(titulo);
+        window.speechSynthesis.speak(mensajeTitulo);
+        const mensajeTexto = new SpeechSynthesisUtterance(descripcion);
+        window.speechSynthesis.speak(mensajeTexto);
+        
     }
     
 }

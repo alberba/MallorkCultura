@@ -659,7 +659,7 @@ nav {
     width: initial;
     height: initial;
     font-size: 1.5rem;
-    margin: auto;
+    margin: 0 !important;
     padding: 1rem 2rem;
     margin-bottom: 2.5rem;
 }
@@ -718,6 +718,27 @@ nav {
     & a {
         margin: 0;
     }
+}
+
+#escuchar-btn {
+    border-radius: .6rem;
+    padding: .5rem;
+    border: 0;
+}
+
+#escuchar-btn:hover {
+    background-color: var(--verde-hover);
+}
+
+.botones-descripcion {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3rem;
+}
+
+.volume-icon {
+    width: 3rem;
+    border: 0;
 }
 
 .boton-comp-entrada {

@@ -9,16 +9,16 @@
 - [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Actualizar styles de buttons para que queden como los anchors anteriores
 - [ ] Eliminar input de tipo de exposición en los filtros
+- [ ] Gestionar la aparición del boton de perfil en el header tras iniciar sesión
 ### JavaScript
 - [ ] Comentar el código
+- [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 - [ ] En info museo, arreglar el slider
-- [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### APIs
-- [ ] Implementar SpeechRecognition o TextToSpeech
 - [ ] Google Calendar API
     - [x] Implementar funcionalidad de añadir eventos a Google Calendar
     - [ ] Implementar funcionalidad de ver eventos en Google Calendar
@@ -28,6 +28,9 @@
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
 
 # HECHO
+## 29/04
+- [x] Implementar SpeechRecognition o TextToSpeech
+
 ## 28/04
 - [x] Hacer función para poner el mapa en pantalla-ruta (Albert + Mati)
 - [x] Google Maps API
