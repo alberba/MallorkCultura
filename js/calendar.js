@@ -9,7 +9,7 @@
 
     // Authorization scopes required by the API; multiple scopes can be
     // included, separated by spaces.
-    const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+    const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
     let tokenClient;
     let gapiInited = false;
@@ -36,6 +36,7 @@
             discoveryDocs: [DISCOVERY_DOC],
         });
         gapiInited = true;
+        maybeEnableButtons();
     }
 
       /**
@@ -49,6 +50,7 @@
           callback: '', // defined later
         });
         gisInited = true;
+        maybeEnableButtons();
       }
 
       /**
@@ -59,10 +61,8 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
-          // @ts-ignore
-          await listUpcomingEvents();
         };
-
+        
         // @ts-ignore
         if (gapi.client.getToken() === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
@@ -71,6 +71,15 @@
         } else {
           // Skip display of account chooser and consent dialog for an existing session.
           tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      function maybeEnableButtons() {
+        if (gapiInited && gisInited) {
+          const botonGuardar = document.getElementById('add-to-calendar-button');
+          if(botonGuardar && botonGuardar instanceof HTMLButtonElement){
+            botonGuardar.disabled = false;
+          }
         }
       }
 /**********************************************************************************************************************************************************
