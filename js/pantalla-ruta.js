@@ -151,9 +151,9 @@ function guardarRuta(){
         alert("Debes iniciar sesión para guardar la ruta en tu calendario");
         return;
     }
-    handleAuthClick();
+    alert("CHECKPOINT 1, se ha autorizado el uso de Google Calendar");
     crearEventosCalendario();
-    localStorage.removeItem('visitas');
+    alert("CHECKPOINT 2, se han creado los eventos en Google Calendar");
 }
 
 

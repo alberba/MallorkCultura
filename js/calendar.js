@@ -190,9 +190,13 @@ function eliminarVisita(evento) {
 /**
  * Función que se encarga de crear todos los eventos de una ruta en el calendario de google
  */
-function crearEventosCalendario() {
+async function crearEventosCalendario() {
     console.log("CREANDO EVENTOS");
     const eventos = recuperarVisitas();
+
+    // Wait for user to authorize access to Calendar
+    await handleAuthClick();
+
     // Bucle para recorrer todos los eventos y crearlos en el calendario
     for(let i = 0; i < eventos.length; i++) {
         // Creamos un evento
