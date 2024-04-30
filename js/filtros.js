@@ -151,3 +151,30 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
         contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
     });
 }
+
+/* Cercanía al usuario */
+function cambiarUbicacionesCercaUsuario() {
+    let geoLocator = navigator.geolocation;
+    geoLocator.getCurrentPosition(success);
+}
+
+function success(pos) {
+    let coordsAux = pos.coords;
+    let coords = {
+        lat: coordsAux.latitude,
+        lng: coordsAux.longitude
+    };
+    let coordsMuseo;
+    let contenedorUbicaciones = $(".contenedor-museos");
+        contenedorUbicaciones.empty();
+        museos.forEach(museo => { 
+            coordsMuseo = {
+                lat: museo.areaServed.geo.latitude,
+                lng: museo.areaServed.geo.longitude
+            };
+            console.log("Distancia: " + calcularDistancia(coords, coordsMuseo) + " km");
+            if (calcularDistancia(coords, coordsMuseo) <= 10) {
+                contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            }
+        });
+}

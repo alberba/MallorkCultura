@@ -5,10 +5,12 @@
     - [x] Estandarizar para IOS
     - [ ] Ordenar por ascendente/descendente
     - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
+        - [x] Añadir botón
+        - [ ] Añadir funcionalidad
     - [ ] Acabar la funcionalidad de todos los filtros
 - [ ] Añadir comentarios/valoraciones a los museos
-- [ ] Actualizar styles de buttons para que queden como los anchors anteriores
-- [ ] Eliminar input de tipo de exposición en los filtros
+- [X] Actualizar styles de buttons para que queden como los anchors anteriores
+- [X] Eliminar input de tipo de exposición en los filtros
 - [ ] Gestionar la aparición del boton de perfil en el header tras iniciar sesión
 - [ ] Gestión cerrar Sesión google
 ### JavaScript
