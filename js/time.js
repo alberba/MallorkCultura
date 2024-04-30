@@ -5,26 +5,48 @@
  */
 function mostrarTiempo(pueblo) {
     let section = crearSection().addClass("contenedor-tiempo");
-    fetch('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + pueblo + '?unitGroup=metric&include=days&key=RZGP4QS4N8RAJ7CEQ4UYWVEYQ&contentType=json', {
+    //TODO: Cambiar la URL de la API para obtener el tiempo de un pueblo concreto
+    fetch('https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/3.0/onecall?lat=39.571625&lon=2.650544&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
     "method": "GET",
     "headers": {
         "Content-Type": "application/json"
     }
-    })
+})
     .then(response => response.json())
     .then(data => {
-        let dias = data.days;
+        let dias = data.daily;
 
         for(let i = 0; i < 5; i++) {
             let dia = dias[i];
+            let temp;
+            let nombreDia;
+            if(i == 0) {
+                dia = data.current;
+                temp = Math.round(data.current.temp).toString()+ "°C";
+                nombreDia = "Hoy";
+            } else {
+                temp = Math.round(dia.temp.min).toString() + "-" + Math.round(dia.temp.max).toString() + "°C";
+                nombreDia = obtenerDiaSemana(dia.dt);
+            }
+            
             let div = crearDiv("contenedor-tiempo-dia p-4");
+            let icon = dia.weather[0].icon;
 
-            div.append(crearImg("img/weather/" + dia.icon + ".svg", "", "imagen-tiempo"))
-            .append(crearP({texto: obtenerDiaSemana(dia.datetime)}))
-            .append(crearP({texto: Math.floor(dia.temp).toString() + "°C"}));
+            if (icon.substring(0, 2) == "01" || icon.substring(0, 2) == "02") {
+                div.append(crearImg("img/weather/" + icon + ".svg", "", "imagen-tiempo"));
+            } else if (icon.substring(0, 2) == "09" || icon.substring(0, 2) == "10") {
+                div.append(crearImg("img/weather/09.svg", "", "imagen-tiempo"));
+            } else {
+                div.append(crearImg("img/weather/"+ icon.substring(0, 2) + ".svg", "", "imagen-tiempo"));
+            }
+            div.append(crearP({texto: nombreDia}))
+            .append(crearP({texto: temp}));
             section.append(div);
         }
     })
+    .catch(err => {
+        console.error(err);
+    });
     return section;
 }
 
@@ -34,14 +56,9 @@ function mostrarTiempo(pueblo) {
  * @returns {String} Nombre del día de la semana correspondiente a la fecha (Ejemplo: "Lun")
  */
 function obtenerDiaSemana(fechaString) {
-    // Dividir la cadena de fecha en año, mes y día
-    let partesFecha = fechaString.split("-");
-    let año = parseInt(partesFecha[0]);
-    let mes = parseInt(partesFecha[1]) - 1; // Los meses en JavaScript son indexados desde 0 (enero = 0)
-    let dia = parseInt(partesFecha[2]);
 
-    // Crear un objeto Date con la fecha especificada
-    let fecha = new Date(año, mes, dia);
+    // Convert the fechaString to a number
+    let fecha = new Date(Number(fechaString) * 1000);
 
     // Array con los nombres de los días de la semana
     let diasSemana = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];

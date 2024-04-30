@@ -23,6 +23,8 @@
   // Librería para rutas
   // @ts-ignore
   const { DirectionsService, DirectionsRenderer } = await google.maps.importLibrary("routes");
+  console.log(arrPositionRoutes.slice(1,-1))
+  console.log(arrPositionRoutes.slice(1,-1).map(pos => ({ location: { lat: pos.lat, lng: pos.lng } })))
 
   // Posición inicial del mapa (Centro del mapa)
 
@@ -62,7 +64,7 @@
 
         origin: { lat: arrPositionRoutes[0].lat, lng: arrPositionRoutes[0].lng },
         // Puntos intermedios
-        waypoints: arrPositionRoutes.slice(1,-1).map(pos => ({ location: { lat: pos.lat, lng: pos.lng } })).slice(1, -1),
+        waypoints: arrPositionRoutes.slice(1,-1).map(pos => ({ location: { lat: pos.lat, lng: pos.lng } })),
         // Destino de la ruta
         destination: { lat: arrPositionRoutes[arrPositionRoutes.length - 1].lat, lng: arrPositionRoutes[arrPositionRoutes.length - 1].lng },
         // Modo de transporte
