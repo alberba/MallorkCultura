@@ -614,7 +614,7 @@ function crearFiltros() {
             .append(crearInput("search","","busqueda-cercania","","Dirección")
                 .on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()))))
         )
-        .append(crearDiv("elemento-filtro-museo")
+        .append(crearDiv("elemento-filtro-museo")   // Input radio de búsqueda
             .append(crearLabel("","Radio de búsqueda"))
             .append(crearDiv("contenedor-range")
                 .append(crearInput("range","","busqueda-radio")
@@ -628,14 +628,6 @@ function crearFiltros() {
                     clases: "texto-range",
                     texto: "50Km"
                 })) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
-            )
-        )
-        .append(crearDiv("elemento-filtro-museo")
-            .append(crearLabel("","Tipo de exposición"))
-            .append(crearSelect("","seleccion-exposicion","select")
-                .append(crearOption("Todos", 1, true))
-                .append(crearOption("Contemporánea", 2, false))
-                .append(crearOption("Clásico", 3, false))
             )
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
