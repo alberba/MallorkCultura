@@ -650,7 +650,12 @@ function crearFiltros() {
                         .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val())))
                 )
             )
-        );
+        )
+        .append(crearDiv("elemento-filtro-museo")
+                    .append(crearBoton("Buscar cerca de mí","buscarCercaDeMi","boton boton-verde")
+                                .on("click",() => cambiarUbicacionesCercaUsuario())
+                            ) 
+                );
     filtros.append(form);
     
     return filtros;
