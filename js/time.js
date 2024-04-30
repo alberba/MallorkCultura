@@ -17,7 +17,7 @@ function mostrarTiempo(pueblo) {
 
         for(let i = 0; i < 5; i++) {
             let dia = dias[i];
-            let div = crearDiv("contenedor-tiempo-dia m-4 p-4");
+            let div = crearDiv("contenedor-tiempo-dia p-4");
 
             div.append(crearImg("img/weather/" + dia.icon + ".svg", "", "imagen-tiempo"))
             .append(crearP({texto: obtenerDiaSemana(dia.datetime)}))

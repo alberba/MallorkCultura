@@ -347,6 +347,7 @@ nav {
     margin-bottom: 20rem;
     display: flex;
     flex-direction: column;
+    padding:1rem;
 }
 
 .contacto {
@@ -873,10 +874,17 @@ input[type="radio"] {
     gap: 2rem;
     max-width: 1150px;
     margin-left: 3rem;
+    width: 100%;
 }
 
 .cruz-ruta {
-    margin-left: 8rem;
+    width:4rem;
+    height:auto;
+
+    & img {
+        width: 4rem;
+    
+    }
 }
 
 .left-museo-ruta {
@@ -886,11 +894,16 @@ input[type="radio"] {
     transform: translateX(-99%);
 }
 
+.right-museo-ruta {
+    width: 100%;
+}
+
 .contenedor-ruta-general {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: auto;
+    width:100%;
+    padding-left:13rem;
 }
 
 .contenedor-tiempo {
@@ -900,6 +913,8 @@ input[type="radio"] {
     background-color: rgba(0, 255, 26, 0.338);
     border-radius:10px; 
     justify-content: center;
+    gap:2rem;
+    padding:1rem;
 }
 
 .contenedor-tiempo-dia {
@@ -937,6 +952,7 @@ input[type="radio"] {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 
     & p{
         margin: 0 1.5rem 0 0;
@@ -991,6 +1007,7 @@ input[type="radio"] {
 .guardar-calendar {
     margin-top: 20px;
     text-align: center;
+    align-self: center;
 }
 
 /* -- Ruta -- */
@@ -1263,6 +1280,28 @@ input[type="radio"] {
         padding-left: 12rem;
     }
 
+    .contenedor-tiempo{
+        flex-wrap: wrap;
+        margin:auto;
+    }
+
+    .imagen-tiempo{
+        width:4rem;;
+    }
+
+    .contenedor-tiempo-dia{
+        width: 7rem;
+        padding: 1rem !important;
+
+        & p {
+            font-size: 1.25rem;
+        }
+    }
+
+    .contenedor-tiempo-dia:last-child{
+        display: none;
+    }
+
     /* Pantalla usuario */
     .formulario-acomp {
         width: 80%;
@@ -1274,6 +1313,25 @@ input[type="radio"] {
 
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 380px) {
+    .contenedor-tiempo-dia:nth-last-child(2){
+        display: none;
+    }
+}
 
+@media (max-width: 320px) {
+    .parada-ruta{
+        & p {
+            width: 5.5rem;
+            margin-right: 1rem;
+        }
+    }
+
+    .contenedor-ruta-general {
+        padding-left: 8rem;
+    }
+
+    .circ {
+        margin-right: 3.5rem;
+    }
 }

@@ -44,6 +44,7 @@ function mostrarRuta() {
             li.appendChild(divLeft);
 
             const divRight = document.createElement('div');
+            divRight.classList.add('right-museo-ruta');
 
             const h5Container = document.createElement('div');
             h5Container.classList.add('parada-ruta','museo-container');
@@ -155,8 +156,3 @@ function guardarRuta(){
     crearEventosCalendario();
     alert("CHECKPOINT 2, se han creado los eventos en Google Calendar");
 }
-
-
-
-// Cargar la ruta al cargar la página
-window.addEventListener('DOMContentLoaded', mostrarRuta);

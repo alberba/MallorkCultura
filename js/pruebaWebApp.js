@@ -150,7 +150,6 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearSection().append(contenedorMuseos));
 
     $("main").append(crearSelectorPagina());
-    añadirAccionesFiltros()
 }
 
 /**
@@ -661,22 +660,8 @@ function crearFiltros() {
             )
         );
     filtros.append(form);
-    $("#dia_visita").on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
-    $("#gratuito").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
-    $("#entrada").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
     
     return filtros;
-}
-
-// función específica - Lista de ubicaciones
-// añade funcionalidad a los filtros
-function añadirAccionesFiltros(){
-    $("#busqueda-nombre").on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val()));
-    $("#busqueda-cercania").on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val())));
-    $("#busqueda-radio").on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val())));
-    $("#dia_visita").on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val()));
-    $("#gratuito").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
-    $("#entrada").on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val()));
 }
 
 // función específica - Lista de ubicaciones
