@@ -41,7 +41,7 @@ $("#queVisitar").on("click", crearPantallaUbicaciones);
 
 $("#tuRuta").on("click", crearTuRuta);
 
-$("#Contacto").on("click",crearContacto)
+$("#Contacto").on("click", crearContacto);
 
 /* --- --- */
 
