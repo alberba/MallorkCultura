@@ -599,17 +599,18 @@ function crearFiltros() {
             .append(crearImg("img/svg/flecha-menu-down.svg"))
             .attr({
                 "data-bs-toggle":"collapse",
-                "data-bs-target":"#form-filtro"
+                "data-bs-target":"#campos-filtro"
             })
         );
-    let form = crearForm("form-filtro","form-filtro-museos mt-3 collapse show")
+    
+    let camposFiltros = crearDiv("campos-filtro-museos mt-3 collapse show","campos-filtro")
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
             .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
             .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo")
                 .on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val())))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
-            .append(crearLabel("","Ordenar por cercania"))
+            .append(crearLabel("","Búsqueda por cercanía a"))
             .append(crearInput("search","","busqueda-cercania","","Dirección")
                 .on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()))))
         )
@@ -656,7 +657,7 @@ function crearFiltros() {
                                 .on("click",() => cambiarUbicacionesCercaUsuario())
                             ) 
                 );
-    filtros.append(form);
+    filtros.append(camposFiltros);
     
     return filtros;
 }

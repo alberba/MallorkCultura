@@ -15,7 +15,9 @@
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 - [ ] En info museo, arreglar el slider
 ### APIs
-
+- [ ] Google Maps API  
+    - [ ] Actualizar el mapa al activar filtros de ubicaciones
+    
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro

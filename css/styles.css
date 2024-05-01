@@ -448,7 +448,7 @@ nav {
     }
 }
 
-.form-filtro-museos {
+.campos-filtro-museos {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
