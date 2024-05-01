@@ -330,98 +330,179 @@ function crearContacto() {
  * 
  */
 function mostrarRuta() {
-    const eventos = recuperarVisitas();
-    const contenedorRuta = $('.section-ruta');
-    
+    const eventos = recuperarVisitas(); // Recuperar los eventos
+    const contenedorRuta = $('.section-ruta'); // Obtener el contenedor de la ruta
+
     // Limpiar el contenido existente del contenedor
-    contenedorRuta.innerHTML = '';
+    contenedorRuta.empty();
 
     // Verificar si hay eventos
     if (eventos.length === 0) {
         // Si no hay eventos, mostrar un mensaje
-        contenedorRuta.innerHTML = '<p>Todavía no has empezado a diseñar tu ruta</p>';
+        contenedorRuta.html('<p>Todavía no has empezado a diseñar tu ruta</p>');
         var botonGuardar = $('.guardar-calendar button');
-        if(botonGuardar != null){
+        if(botonGuardar.length !== 0){
             botonGuardar.remove();
         }
     } else {
         // Si hay eventos, mostrar cada uno en la lista
         eventos.forEach((evento, index) => {
-            const duracion = calcularDuracion(evento.horaInicio, evento.horaFin);
-            const descanso = index === eventos.length - 1 ? '' : '<div><p class="descanso">Descanso: 1h</p></div>';
+            const duracion = calcularDuracion(evento.horaInicio, evento.horaFin); // Calcular la duración del evento
+            const descanso = index === eventos.length - 1 ? '' : '<div><p class="descanso">Descanso: 1h</p></div>'; // Añadir un descanso si no es el último evento
 
-            const li = document.createElement('li');
-            li.classList.add('parada-ruta');
+            const li = $('<li></li>').addClass('parada-ruta'); // Crear un nuevo elemento de lista
 
-            const divLeft = crearDiv("left-museo-ruta");
+            const divLeft = $('<div></div>').addClass("left-museo-ruta"); // Crear un div para la parte izquierda
 
-            divLeft.appendChild(crearP({clases: "horas", texto: `${evento.horaInicio.split('T')[1].slice(0, 5)} - ${evento.horaFin.split('T')[1].slice(0, 5)}`}));
+            const horaInicioSplit = evento.horaInicio.split('T')[1].slice(0, 5); // Obtener la hora de inicio
+            const horaFinSplit = evento.horaFin.split('T')[1].slice(0, 5); // Obtener la hora de fin
 
-            divLeft.appendChild(crearSpan('circ',""));
+            // Calcular la hora de fin en función de la hora de inicio y la duración
+            const horasSeleccionadas = horaInicioSplit.split(':');
+            const duracionSeleccionada = duracion.split(' ');
+            const horasDuracion = duracionSeleccionada[0].slice(0, -1);
+            const minutosDuracion = duracionSeleccionada[1].slice(0, -3);
+            const horaFinCalculada = (parseInt(horasSeleccionadas[0]) + parseInt(horasDuracion)).toString().padStart(2, '0');
+            const minutosFinCalculado = (parseInt(horasSeleccionadas[1]) + parseInt(minutosDuracion)).toString().padStart(2, '0');
+            const horaFin = horaFinCalculada + ':' + minutosFinCalculado;
 
-            li.appendChild(divLeft);
+            // Crear el elemento de texto con la hora de inicio y fin
+            const horasText = `${horaInicioSplit} - ${horaFin}`;
+            const horasElement = $('<p></p>').addClass("horas").text(horasText);
 
-            const divRight = crearDiv("right-museo-ruta");
+            // Crear un span para el círculo
+            const circSpan = $('<span></span>').addClass('circ');
 
-            const h5Container = crearDiv("parada-ruta museo-container");
+            // Agregar el texto y el círculo al div izquierdo
+            divLeft.append(horasElement);
+            divLeft.append(circSpan);
 
-            const h5 = document.createElement('h5');
-            h5.textContent = evento.lugar;
+            // Agregar el div izquierdo al elemento de lista
+            li.append(divLeft);
 
-            const botonEliminar = crearBoton("","",'no-style-button cruz-ruta');
-            botonEliminar.setAttribute('onclick', `eliminarMuseoRuta(${index})`);
-            const imgCruz = crearImg('img/svg/cruz.svg', 'Símbolo de cruz para tachar un museo de la ruta');
-            botonEliminar.appendChild(imgCruz);
+            // Crear el div para la parte derecha
+            const divRight = $('<div></div>').addClass("right-museo-ruta");
 
-            h5Container.appendChild(h5);
-            h5Container.appendChild(botonEliminar);
+            // Crear el div para el nombre del museo y el botón de eliminar
+            const h5Container = $('<div></div>').addClass("parada-ruta museo-container");
+            const h5 = $('<h5></h5>').text(evento.lugar); // Crear el nombre del museo
+            const botonEliminar = $('<button></button>').addClass('no-style-button cruz-ruta'); // Crear el botón de eliminar
+            botonEliminar.attr('onclick', `eliminarMuseoRuta(${index})`); // Agregar el evento onclick al botón de eliminar
+            const imgCruz = $('<img>').attr('src', 'img/svg/cruz.svg').attr('alt', 'Símbolo de cruz para tachar un museo de la ruta'); // Crear la imagen de la cruz
+            botonEliminar.append(imgCruz); // Agregar la imagen de la cruz al botón de eliminar
 
-            divRight.appendChild(h5Container);
+            // Agregar el nombre del museo y el botón de eliminar al contenedor
+            h5Container.append(h5);
+            h5Container.append(botonEliminar);
 
-            const formulario = crearForm("","formulario-ruta");
+            // Agregar el contenedor al div derecho
+            divRight.append(h5Container);
 
-            const divInicio = crearDiv();
-            const labelInicio = crearLabel("","Inicio");
-            labelInicio.setAttribute('for', 'inicio');
-            const selectInicio = crearSelect("inicio","","");
+            // Crear el formulario para la duración
+            const formulario = $('<form></form>').addClass("formulario-ruta");
+
+            // Crear el div para la hora de inicio
+            const divInicio = $('<div></div>');
+            const labelInicio = $('<label></label>').text("Inicio"); // Crear la etiqueta para la hora de inicio
+            const selectInicio = $('<select></select>').addClass("inicio"); // Crear el select para la hora de inicio
+
+            // Llenar el select con las opciones de hora de inicio
+            for (let i = 0; i < 24; i++) {
+                const hora = i.toString().padStart(2, '0');
+                const optionInicio = $('<option></option>').text(`${hora}:00`).attr('value', hora + ':00').prop('selected', horaInicioSplit.split(':')[0] === hora && horaInicioSplit.split(':')[1] === '00');
+                selectInicio.append(optionInicio);
+                const optionInicio30 = $('<option></option>').text(`${hora}:30`).attr('value', hora + ':30').prop('selected', horaInicioSplit.split(':')[0] === hora && horaInicioSplit.split(':')[1] === '30');
+                selectInicio.append(optionInicio30);
+            }
             
-            const textoInicio = evento.horaInicio.split('T')[1].slice(0, 5); // Mostrar solo hora y minutos
-            //TODO ARREGLAR EL DESPLEGABLE DE INICIO
-            const optionInicio = crearOption(textoInicio,0,true);
-            selectInicio.appendChild(optionInicio);
-            divInicio.appendChild(labelInicio);
-            divInicio.appendChild(selectInicio);
+            // Agregar la etiqueta y el select al div de inicio
+            divInicio.append(labelInicio);
+            divInicio.append(selectInicio);
 
-            formulario.appendChild(divInicio);
+            // Agregar el div de inicio al formulario
+            formulario.append(divInicio);
 
-            const divDuracion = crearDiv();
-            const labelDuracion = crearLabel("",'Duración');
-            labelDuracion.setAttribute('for', 'duracion');
-            const selectDuracion = crearSelect("duracion","","");
-            //TODO ARREGLAR EL DESPLEGABLE DE DURACION
-            const optionDuracion = crearOption(duracion,0,true);
-            selectDuracion.appendChild(optionDuracion);
-            divDuracion.appendChild(labelDuracion);
-            divDuracion.appendChild(selectDuracion);
+            // Crear el div para la duración
+            const divDuracion = $('<div></div>');
+            const labelDuracion = $('<label></label>').text('Duración'); // Crear la etiqueta para la duración
+            const selectDuracion = $('<select></select>').addClass("duracion"); // Crear el select para la duración
 
-            formulario.appendChild(divDuracion);
-            divRight.appendChild(formulario);
+            // Llenar el select con las opciones de duración
+            for (let i = 15; i <= 360; i += 15) {
+                const horas = Math.floor(i / 60);
+                const minutos = i % 60;
+                const duracionText = `${horas}h ${minutos}min`;
+                const duracionValue = horas.toString().padStart(2, '0') + ':' + minutos.toString().padStart(2, '0');
+                const optionDuracion = $('<option></option>').text(duracionText).attr('value', duracionValue);
+                if (duracionText === duracion) {
+                    optionDuracion.prop('selected', true);
+                }
+                selectDuracion.append(optionDuracion);
+            }
 
-            
+            // Agregar la etiqueta y el select al div de duración
+            divDuracion.append(labelDuracion);
+            divDuracion.append(selectDuracion);
 
-            li.appendChild(divRight);
-            contenedorRuta.appendChild(li);
-            contenedorRuta.innerHTML += descanso;
+            // Agregar el div de duración al formulario
+            formulario.append(divDuracion);
+
+            // Agregar el formulario al div derecho
+            divRight.append(formulario);
+
+            // Agregar el div derecho al elemento de lista
+            li.append(divRight);
+
+            // Agregar el elemento de lista al contenedor de la ruta
+            contenedorRuta.append(li);
+
+            // Agregar el descanso al contenedor de la ruta
+            contenedorRuta.append(descanso);
+
+            // Evento change para los selects de inicio y duración
+            selectInicio.on('change', function() {
+                const horaInicio = $(this).val();
+                const duracionSeleccionada = selectDuracion.val().split(':');
+                const horaFinCalculada = (parseInt(horaInicio.split(':')[0]) + parseInt(duracionSeleccionada[0])).toString().padStart(2, '0');
+                const minutosFinCalculado = (parseInt(horaInicio.split(':')[1]) + parseInt(duracionSeleccionada[1])).toString().padStart(2, '0');
+                const horaFin = horaFinCalculada + ':' + minutosFinCalculado;
+
+                // Obtener el índice del evento correspondiente
+                const index = $(this).closest('li').index();
+                alert(index);
+
+                actualizarEventosMostrarRuta(index, horaInicio, horaFin);
+
+                divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
+            });
+
+            selectDuracion.on('change', function() {
+                const duracion = $(this).val();
+                const horaInicio = selectInicio.val();
+                const duracionSeleccionada = duracion.split(':');
+                const horaFinCalculada = (parseInt(horaInicio.split(':')[0]) + parseInt(duracionSeleccionada[0])).toString().padStart(2, '0');
+                const minutosFinCalculado = (parseInt(horaInicio.split(':')[1]) + parseInt(duracionSeleccionada[1])).toString().padStart(2, '0');
+                const horaFin = horaFinCalculada + ':' + minutosFinCalculado;
+
+                // Obtener el índice del evento correspondiente
+                const index = $(this).closest('li').index();
+
+                actualizarEventosMostrarRuta(index, horaInicio, horaFin);
+
+                divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
+            });
         });
+
+        // Verificar si el botón de guardar no está presente y añadirlo si no lo está
         var botonGuardar = $('.guardar-calendar button');
-        if(botonGuardar == null){
+        if(botonGuardar.length === 0){
             const contenedorBoton = $('.guardar-calendar');
 
-            botonGuardar = crearBoton('Añadir a calendar','add-to-calendar-button',"boton boton-verde");
-            botonGuardar.setAttribute('onclick', 'handleAuthClick()');
+            botonGuardar = $('<button></button>').text('Añadir a calendar').addClass('add-to-calendar-button boton boton-verde');
+            botonGuardar.attr('onclick', 'handleAuthClick()');
 
             // Insertar el botón después de la lista de eventos
-            contenedorBoton.appendChild(botonGuardar);
+            contenedorBoton.append(botonGuardar);
         }
     }
 }
@@ -457,6 +538,25 @@ function eliminarMuseoRuta(index) {
 function recuperarVisitas() {
     const visitas = localStorage.getItem('visitas');
     return visitas ? JSON.parse(visitas) : [];
+}
+
+/**
+ * Función que ordena los eventos en función de la hora de inicio
+ */
+function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
+    const visitas = recuperarVisitas();
+
+    // Actualizar el evento correspondiente
+    visitas[index].horaInicio = visitas[index].horaInicio.split('T')[0] + "T" + horaInicio + ':00';
+    visitas[index].horaFin = visitas[index].horaFin.split('T')[0] + "T" + horaFin + ':00';
+    //ordenar los eventos
+    visitas.sort((a, b) => {
+        const horaInicioA = new Date(a.horaInicio);
+        const horaInicioB = new Date(b.horaInicio);
+        return horaInicioA.getTime() - horaInicioB.getTime();
+    });
+    localStorage.setItem('visitas', JSON.stringify(visitas));
+    mostrarRuta();
 }
 
 /**
