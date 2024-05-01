@@ -159,6 +159,8 @@ function cambiarUbicacionesCercaUsuario() {
 }
 
 function success(pos) {
+    $("#busqueda-radio").val(10);
+    $(".texto-range").html("10Km");
     let coordsAux = pos.coords;
     let coords = {
         lat: coordsAux.latitude,
