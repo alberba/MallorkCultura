@@ -22,6 +22,8 @@
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
+### Errores de CSS
+- [ ] Añadir límite de overflow a los nombres de exposiciones --> ver en museo sa bassa blanca (alcúdia)
 
 # HECHO
 ## 01/05
