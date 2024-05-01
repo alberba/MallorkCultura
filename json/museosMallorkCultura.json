@@ -635,14 +635,14 @@
                 "faxNumber" : "" ,
                 "geo" : {
                     "@type": "GeoCoordinates",
-                    "latitude": "39.55494",
-                    "longitude": "2.60966"
+                    "latitude": "39.58108389927165",
+                    "longitude": "2.4328001968939583"
                 },
                 "hasMap" : "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
                 "isAccessibleForFree" : false,
                 "keywords" : "",
-                "latitude" : "39.58099294056496",
-                "longitude" : "2.4328001971174196",
+                "latitude" : "39.58108389927165",
+                "longitude" : "2.4328001968939583",
                 "photo" : [
                     {
                         "@type": "ImageObject",
