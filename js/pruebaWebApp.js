@@ -610,7 +610,7 @@ function crearFiltros() {
                 .on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val())))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
-            .append(crearLabel("","Ordenar por cercania"))
+            .append(crearLabel("","Búsqueda por cercanía a"))
             .append(crearInput("search","","busqueda-cercania","","Dirección")
                 .on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()))))
         )
