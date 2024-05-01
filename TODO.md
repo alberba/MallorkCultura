@@ -25,6 +25,8 @@
 - [ ] Google Calendar API
     - [x] Implementar funcionalidad de añadir eventos a Google Calendar
     - [ ] Implementar funcionalidad de ver eventos en Google Calendar
+- [ ] Google Maps API  
+    - [ ] Actualizar el mapa al activar filtros de ubicaciones
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
