@@ -691,7 +691,7 @@
                 },
                 "aggregateRating" : "",
                 "event" : 
-                    {
+                    [{
                         "@type": "Event",
                         "name": "ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS",
                         "description": "En las pinturas de ambas “escuelas” se perciben rasgos comunes, señas de identidad de unos y otros que, si bien definen a cada grupo particularmente, permiten establecer entre ellos paralelismos y similitudes: tanto unos como otros han crecido al margen de cualquier formación académica; crean desde su interior, con una mirada puesta especialmente en la tradición, las raíces y las creencias del lugar al que pertenecen. Plasman su cotidianidad y sus vivencias en pinturas de gran belleza formal y vibrante colorido, cargadas de simbolismo, dotando de gran unidad al conjunto.",
@@ -709,7 +709,7 @@
                             "contentUrl": "https://www.msbb.org/images/exposiciones-temporales/Expo%20actual%201.jpg",
                             "description": "Imagen de una pintura de la exposición ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS, por Youssef Aït Tazarin."
                         }
-                    },
+                    }],
                 "faxNumber" : "+34971897163" ,
                 "geo" : {
                     "@type": "GeoCoordinates",
