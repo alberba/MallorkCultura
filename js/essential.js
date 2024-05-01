@@ -5,9 +5,28 @@ const menu_button = $('.menu_icon');
 const nav = $("#nav-header");
 
 // Gestión de eventos para mostrar el menú en dispositivos móviles cuando el usuario presione el botón
-menu_button.on('click', () => {
+menu_button.on('click', (event) => {
+    event.stopPropagation();
     navLinksHeader.toggleClass('nav-links-header-mobile');
+
+    // Si el menú está desplegado, añade el controlador de eventos al documento
+    if (navLinksHeader.hasClass('nav-links-header-mobile')) {
+        $(document).on('click', hideMenu);
+    } else {
+        // Si el menú no está desplegado, elimina el controlador de eventos del documento
+        $(document).off('click', hideMenu);
+    }
 });
+
+const hideMenu = function(event) {
+    // Comprueba si se ha hecho clic fuera del menú
+    if (!$(event.target).closest('.nav-links-header-mobile').length) {
+        // Oculta el menú
+        navLinksHeader.removeClass('nav-links-header-mobile');
+        // Elimina el controlador de eventos
+        $(document).off('click', hideMenu);
+    }
+};
 
 const max768px = () => {
     
@@ -21,7 +40,7 @@ const max768px = () => {
         if (!$.contains(div[0], navLinksHeader[0])) {
             // Eliminamos la clase para evitar errores
             navLinksHeader.removeClass("nav-links-header-mobile");
-            $(navLinksHeader).detach().insertBefore('#google-signin');
+            $(navLinksHeader).detach().insertAfter('#logo');
         }
     }
 }
