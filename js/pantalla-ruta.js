@@ -115,7 +115,7 @@ function mostrarRuta() {
             botonGuardar = document.createElement('button');
             botonGuardar.classList.add('boton', 'boton-verde');
             botonGuardar.textContent = 'Añadir a calendar';
-            botonGuardar.setAttribute('onclick', 'guardarRuta()');
+            botonGuardar.setAttribute('onclick', 'handleAuthClick()');
             botonGuardar.id = 'add-to-calendar-button';
 
             // Insertar el botón después de la lista de eventos

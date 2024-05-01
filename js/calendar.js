@@ -2,7 +2,7 @@
  * FUNCIONES PARA EL BUEN FUNCIONAMIENTO DE LA API DE GOOGLE CALENDAR
  **********************************************************************************************************************************************************/
     const CLIENT_ID = '669018232457-tolv7hmbpgrd2ns604dcmm5dsnligtp0';
-    const API_KEY = 'AIzaSyDpJ7opt7DIqghZ5FJ4RC-p-5674AMWy9c';
+    const API_KEY = 'AIzaSyDYRvgHLEuiLChioE6uR_4rpRNRN7yVJME';
 
     // Discovery doc URL for APIs used by the quickstart
     const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
@@ -61,6 +61,7 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
+          await crearEventosCalendario();
         };
         
         // @ts-ignore
@@ -85,20 +86,6 @@
 /**********************************************************************************************************************************************************
  *  MANEJO DEL CALENDARIO
  **********************************************************************************************************************************************************/
-function demoAñadirARuta(){
-    console.log("AÑADIENDO A RUTA");
-    const nombres = ["Juan", "María", "José", "Ana", "Pedro", "Laura", "Carlos", "Marta", "David", "Sofía",
-                "Luis", "Elena", "Alejandro", "Lucía", "Diego", "Paula", "Javier", "Isabel", "Andrés", "Carmen"];
-
-    let lugar = "Museo " + nombres[Math.floor(Math.random() * nombres.length)];
-
-    let num = Math.floor(Math.random() * 100);
-
-    let { horaInicio, horaFin } = generarHorasAleatorias();
-
-    const evento = new Evento(lugar + num, "Calle Falsa "+num, "2024-05-01T"+horaInicio, "2024-05-01T"+horaFin, "Museo");
-    actualizarVisitas(evento);
-}
 
 function generarHorasAleatorias() {
     const horasInicio = Math.floor(Math.random() * 24); // Genera una hora aleatoria entre 0 y 23
@@ -193,9 +180,7 @@ function eliminarVisita(evento) {
 async function crearEventosCalendario() {
     console.log("CREANDO EVENTOS");
     const eventos = recuperarVisitas();
-
-    // Wait for user to authorize access to Calendar
-    await handleAuthClick();
+    console.log(eventos);
 
     // Bucle para recorrer todos los eventos y crearlos en el calendario
     for(let i = 0; i < eventos.length; i++) {

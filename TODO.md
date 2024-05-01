@@ -4,15 +4,8 @@
 - [ ] Filtro museos
     - [x] Estandarizar para IOS
     - [ ] Ordenar por ascendente/descendente
-    - [ ] Añadir filtro buscar cerca de mí (boton de ubicación)
-        - [x] Añadir botón
-        - [ ] Añadir funcionalidad
     - [ ] Acabar la funcionalidad de todos los filtros
 - [ ] Añadir comentarios/valoraciones a los museos
-- [X] Actualizar styles de buttons para que queden como los anchors anteriores
-- [X] Eliminar input de tipo de exposición en los filtros
-- [ ] Gestionar la aparición del boton de perfil en el header tras iniciar sesión
-- [ ] Gestión cerrar Sesión google
 ### JavaScript
 - [ ] Comentar el código
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
@@ -22,15 +15,22 @@
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 - [ ] En info museo, arreglar el slider
 ### APIs
-- [ ] Google Calendar API
-    - [x] Implementar funcionalidad de añadir eventos a Google Calendar
-    - [ ] Implementar funcionalidad de ver eventos en Google Calendar
+
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
 
 # HECHO
+## 01/05
+- [x] Añadir filtro buscar cerca de mí (boton de ubicación)
+    - [x] Añadir botón
+    - [x] Añadir funcionalidad
+- [X] Actualizar styles de buttons para que queden como los anchors anteriores
+- [X] Eliminar input de tipo de exposición en los filtros
+- [x] Google Calendar API
+    - [x] Implementar funcionalidad de añadir eventos a Google Calendar
+
 ## 29/04
 - [x] Implementar SpeechRecognition o TextToSpeech
 

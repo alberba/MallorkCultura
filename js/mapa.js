@@ -2,7 +2,7 @@
 // Sirve para importar las librerías necesarias de Google Maps
 // @ts-ignore
 (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-  ({ key: "AIzaSyDpJ7opt7DIqghZ5FJ4RC-p-5674AMWy9c", v: "beta" });
+  ({ key: "AIzaSyDpJ7opt7DIqghZ5FJ4RC-p-5674AMWy9c", v: "weekly", language: "es", region: "ES", libraries: "marker" });
 
 /**
  * Función encargada para inicializar el mapa y mostrarlo por pantalla
@@ -19,12 +19,10 @@
   const { Map } = await google.maps.importLibrary("maps");
   // Librería para marcadores
   // @ts-ignore
-  const { AdvancedMarkerView} = await google.maps.importLibrary("marker");
+  const { AdvancedMarkerElement} = await google.maps.importLibrary("marker");
   // Librería para rutas
   // @ts-ignore
   const { DirectionsService, DirectionsRenderer } = await google.maps.importLibrary("routes");
-  console.log(arrPositionRoutes.slice(1,-1))
-  console.log(arrPositionRoutes.slice(1,-1).map(pos => ({ location: { lat: pos.lat, lng: pos.lng } })))
 
   // Posición inicial del mapa (Centro del mapa)
 
@@ -34,7 +32,7 @@
     // Posición inicial del mapa
     center: position,
     // Id del mapa (Aplicable para estilos)
-    mapId: "DEMO_MAP_ID",
+    mapId: "8a56541fb48439ba",
     // Deshabilitar controles por defecto y conseguir un mapa limpio
     disableDefaultUI: true,
     // Muestra el botón de pantalla completa
@@ -46,9 +44,9 @@
   // Añadimos los marcadores al mapa, en caso de que sean pasados por parámetro
   if (arrPositionMarkers.length > 0) {
     arrPositionMarkers.forEach(positionMarker => {
-      new AdvancedMarkerView({
+      new AdvancedMarkerElement({
         map: map,
-        position: positionMarker,
+        position: positionMarker
       });
     });
   }
