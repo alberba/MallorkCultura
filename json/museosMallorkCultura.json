@@ -294,6 +294,594 @@
                     }
                 ]
             }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": "Museum",
+                "openingHours" : ["Tu-Sa 10:00-18:00", "Su 10:00-15:00"],
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Calle de Saridakis, 29",
+                    "addressLocality": "Palma",
+                    "postalCode": "07015",
+                    "addressCountry": "Spain",
+                    "email": "info@miromallorca.com"
+                },
+                "aggregateRating" : "",
+                "event" : [
+                    {
+                        "@type": "Event",
+                        "name": "«Pilar Juncosa, l’estel fulgurant»",
+                        "description": "Con el objetivo de visibilizar, dotar de reconocimiento y rendir homenaje a la figura de Pilar Juncosa, le hemos dedicado un espacio expositivo permanente en nuestra biblioteca que, desde 2021, lleva su nombre.",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-04-02",
+                            "endDate": "2028-04-02"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": ""
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://miromallorca.com/content/uploads/2024/04/expo_biblioteca_pilar_juncosa-9-1024x768.jpeg",
+                            "description": "Imagen de la exposición «Pilar Juncosa, l’estel fulgurant»."
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "name": "Miró, 1983",
+                        "description": "'Miró, 1983' es una exposición única que ofrece una mirada diferente y singular al legado artístico de Joan Miró a la ciudad de Palma. La generosidad del artista y su mujer, Pilar Juncosa, hicieron posible que hoy podamos disfrutar en Mallorca de los dos talleres de creación del artista, Taller Sert y Son Boter, y de un fondo museográfico integrado por cerca de 7.000 obras entre pintura, escultura, dibujos, objetos y obra gráfica.",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-03-21",
+                            "endDate": "2025-12-31"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": ""
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://miromallorca.com/content/uploads/2024/03/pinturas-3-dep-15.jpg",
+                            "description": "Imagen de la exposición de 'Miró, 1983'."
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "name": "«Joan Miró. Es cuando duermo que veo claro»",
+                        "description": "La exposición 'Joan Miró. Es cuando duermo que veo claro' que se podrá visitar a partir del 28 de abril en el Museo Archeologico Regionale della Valle de Aosta (Italia), nace de la voluntad de mostrar la vertiente más combativa del artista.\nJoan Miró muestra una gran sensibilidad con los tiempos convulsos que le toca vivir y es a partir de ahí que entabla una relación dialéctica con su contexto histórico y social. Una actitud contestataria, elaborada desde el trabajo, lejos de cámaras y afiliaciones políticas.",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2023-04-28",
+                            "endDate": "2023-10-01"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": ""
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://miromallorca.com/content/uploads/2023/04/expo_aosta_paco_28abril23-11-1024x576.jpeg",
+                            "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
+                        }
+                    }
+                ],
+                "faxNumber" : "" ,
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.55494",
+                    "longitude": "2.60966"
+                },
+                "hasMap" : "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
+                "isAccessibleForFree" : false,
+                "keywords" : "",
+                "latitude" : "39.55494",
+                "longitude" : "2.60966",
+                "photo" : [
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://miromallorca.com/content/uploads/2017/06/taller-ser-exterior-e1537355253732.jpg",
+                        "description": "Imagen de la entrada de la fundación Miró"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://arquitecturaviva.com/assets/uploads/obras/45894/av_imagen.webp",
+                        "description": "Imagen de vista aerea de la fundación Miró"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://img.remediosdigitales.com/490979/estudi/1366_2000.jpg",
+                        "description": "Imagen de una exposición de la fundación Miró"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971701420",
+                "tourBookingPage" : "https://miromallorca.com/es/visitanos/#visitTimeFees",
+                "description" : "La Fundació Pilar i Joan Miró a Mallorca es una institución cultural fundamentada en los talleres que el artista  legó a los ciudadanos. Permite descubrir el arte de Joan Miró y estudiar el proceso creativo en el lugar en el que residió y trabajó durante casi 30 años.\nCon vocación de servicio público y un enfoque interdisciplinario, desea convertirse en un espacio de conocimiento, vínculo social y participación, tanto a nivel local como internacional. La Fundació es un centro apropiado para la creación artística contemporánea y para reflexionar en torno a diversidad de temas vinculados a la obra de Joan Miró.",
+                "name" : "Fundació Pilar i Joan Miró",
+                "url" : "https://miromallorca.com/es/"
+            },
+            "hasOfferCatalog" : {
+                "@type": "OfferCatalog",
+                "name": "Tipo de entradas",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general",
+                            "description": "Entrada general al museo"
+                        },
+                        "price": "10.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida",
+                            "description": "Entrada reducida al museo para mayores de 66 años, pensionistas, personas con discapacidad acreditada, carnet joven o similar, grupos organizados de +10 personas que no vengan por AAVV ni TTOO, asociaciones\\entidades o instituciones con convenio"
+                        },
+                        "price": "6.50",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida para residentes en Palma",
+                            "description": "Entrada reducida para residentes en el municipio de Palma (debe acreditarse dicha residencia)"
+                        },
+                        "price": "4.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada gratuita",
+                            "description": "Sábados a partir de las 15h. Menores de 16 años. Volunarios de la Fundació."
+                        },
+                        "price": "0.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Pase anual 'Miró todo el año'",
+                            "description": "Con el pase anual puede visitar la Fundació Miró Mallorca tantas veces desee"
+                        },
+                        "price": "16.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Talleres o actividades educativas",
+                            "description": "Participación en talleres o actividades educativas, habitualmente los sábados por la mañana."
+                        },
+                        "price": "3.50",
+                        "priceCurrency": "EUR"
+                    }
+                ]
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": "Museum",
+                "openingHours" : ["Mo 10:00-19:00","Tu-Th 10:00-13:30","Fr 10:00-19:00","Sa 11:00-13:00"],
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Carrer Major 10",
+                    "addressLocality": "Capdepera",
+                    "postalCode": "07580",
+                    "addressCountry": "Spain",
+                    "email": "espai@artgustavo.com"
+                },
+                "aggregateRating" : "",
+                "event" : "",
+                "faxNumber" : "" ,
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.70248815860186",
+                    "longitude": "3.432684499647989"
+                },
+                "hasMap" : "https://maps.app.goo.gl/AXkQHU9EM1BUbkX88",
+                "isAccessibleForFree" : true,
+                "keywords" : "",
+                "latitude" : "39.70248815860186",
+                "longitude" : "3.432684499647989",
+                "photo" : [
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.artgustavo.com/wp-content/uploads/2018/06/galeria-de-arte-espai-gustavo-b92-1024x840.jpg",
+                        "description": "Imagen de la entrada del espai GUSTAVO"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.artgustavo.com/wp-content/uploads/2022/06/5-1024x1024.jpg",
+                        "description": "Imagen del interior"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://media-cdn.tripadvisor.com/media/photo-s/1b/60/4a/84/art.jpg",
+                        "description": "Imagen del interior"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.artgustavo.com/wp-content/uploads/2021/12/d2ss0-sssssssssj4pg-1024x768.jpg",
+                        "description": "Imagen del mostrador del interior, una recepcionista y el artista"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971677993",
+                "tourBookingPage" : null,
+                "description" : "Entre verdes colinas, palmeras, almendros e higueras en el noreste de Mallorca, a medio camino entre Capdepera y Cala Ratjada, el artista español Gustavo (Peñalver Vico) vive en su Casa Estudio Son Turó, que es sin duda uno de los más bellos de la isla. En 1995, el Estudio fue diseñado por el arquitecto José García Ruiz con la colaboración de Gustavo, 250 metros cuadrados en el estilo Bauhaus.\nGustavo ofrece ahora a sus fans y coleccionistas de todo el mundo un nuevo destino para admirar y comprar sus obras, su galería privada ESPAI GUSTAVO. En enero de 2020, el entonces ya octogenario transformó la antigua panadería «Ca n’Angel», en el corazón de Capdepera, en una espaciosa y moderna galería y espacio cultural para hacer accesible su arte a un público aún más amplio: desde pinturas al óleo, serigrafías y esculturas hasta catálogos, baldosas, tazas, botellas de vino, imanes, puzles… los amantes del arte encontrarán una amplia gama de arte, objetos y productos de merchandising.\nEl ESPAI GUSTAVO transmite la actitud ante la vida del artista de renombre internacional: incansablemente creativo, pinta en varios lienzos a la vez, hace bocetos y se embriaga con los colores y las formas. Mientras lo hace, escucha música de Jacques Brel, Udo Lindenberg, Maria Callas o Mozart, bebe su café con leche y desarrolla constantemente nuevas ideas. Desde su finca Son Turó Gustavo admira al mar y en los días claro puede divisar Menorca.\nSu finca idílica, el verde paisaje, las siluetas de las palmeras, las suaves montañas de fondo, el sol mediterráneo, el cielo azul con nubes blancas, el canto de los pájaros, toda esta belleza y alegría de la vida encuentra su camino en sus coloridas obras.\n¡Descubra las inconfundibles “figuras grotescas en situaciones absurdas” de Gustavo y sumérjase en este cosmos artísticamente tan valioso y significativo!",
+                "name" : "Espai Gustavo",
+                "url" : "https://www.artgustavo.com/"
+            },
+            "hasOfferCatalog" : null
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": "Museum",
+                "openingHours" : "Tu-Sa 11:00-18:00",
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Estanyera 2",
+                    "addressLocality": "Andratx",
+                    "postalCode": "07150",
+                    "addressCountry": "Spain",
+                    "email": "info@ccandratx.com"
+                },
+                "aggregateRating" : "",
+                "event" : [
+                    {
+                        "@type": "Event",
+                        "name": "THE SOFTNESS",
+                        "description": "",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-03-24",
+                            "endDate": "2025-05-10"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": "Raquel Victoria"
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/med-CCA2403_TheSoftness_001.JPG?etag=%2268bc4b-66150624%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=839,560",
+                            "description": "Imagen de la exposición THE SOFTNESS."
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "name": "THE BLISS OF IGNORANCE",
+                        "description": "",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-03-23",
+                            "endDate": "2025-09-01"
+                        },
+                        "organizer": [{
+                            "@type": "Person",
+                            "name": "Stefan Rinck"
+                        },
+                        {
+                            "@type": "Person",
+                            "name": "Philip Grözinger"
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/med-CCA2403_Ignorance_10UWA.JPG?etag=%226a10fd-66150831%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=935,624",
+                            "description": "Imagen de la exposición THE BLISS OF IGNORANCE."
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "name": "TRINE SØNDERGAARD",
+                        "description": "Selection of works from the photography exhibition 'WORKS'",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2023-07-14",
+                            "endDate": "2023-10-22"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": ""
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/_DSC9118.jpg?etag=%22459a1-6437c814%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=1412%2B943&extract=767%2B199%2B634%2B487&quality=85",
+                            "description": "Imagen de la exposición TRINE SØNDERGAARD"
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "name": "ESTRELLATION - Duo exhibition",
+                        "description": "'Estrellation' invites you to delve into the intriguing interplay of contrasting styles and perspectives, creating a visual narrative that speaks to the complexity of Lindena and John's shared journey. As you navigate through the installation, immerse yourself in the rich tapestry of their artistic trajectories and witness the profound resonance born from their collaboration at CCA. This exhibition is not just a display of individual talent but a testament to the power of artistic dialogue and the boundless possibilities when two brilliant minds come together in the realm of contemporary visual art.",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-01-20",
+                            "endDate": "2024-06-01"
+                        },
+                        "organizer": [{
+                            "@type": "Person",
+                            "name": "Kalin Lindena"
+                        },
+                        {
+                            "@type": "Person",
+                            "name": "Christof John"
+                        }],
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/low_DSC3938.jpg?etag=%22757f9-65b4c8c2%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=1500,1049&quality=85",
+                            "description": "Imagen de la exposición TRINE SØNDERGAARD"
+                        }
+                    }
+                ],
+                "faxNumber" : "" ,
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.55494",
+                    "longitude": "2.60966"
+                },
+                "hasMap" : "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
+                "isAccessibleForFree" : false,
+                "keywords" : "",
+                "latitude" : "39.58099294056496",
+                "longitude" : "2.4328001971174196",
+                "photo" : [
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://ccandratx.eu/____impro/1/Residencies/01.%20View%20from%20Mountain.jpg?etag=%22123082-5d3c6802%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=1180,787&extract=0,214,1180,359",
+                        "description": "Imagen de vista aerea de CCA Andratx"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://xmallorca.com/mallorca-travel/uploads/2019/03/ccandratx.jpg",
+                        "description": "Imagen del jardín lateral"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.helencummins.es/wp-content/uploads/2019/07/CCA-03-1200x801.jpg",
+                        "description": "Imagen de una exposición de CCA Andratx"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://tubodaenmallorca.es/wp-content/uploads/2018/03/CCCAndratx-12.jpeg",
+                        "description": "Imagen nocturna de un evento en el patio interior"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971701420",
+                "tourBookingPage" : null,
+                "description" : "CCA is located in a beautiful natural surrounding in the town of Sa Coma (Andratx), 30 minutes drive north of Palma. Here we share a landscape that is spread across to the small village of Sa Coma, through the valley and into the innate landscape of the fertile terraces and the tall pine-covered mountains. These landscapes lead directly to the sign-posted 'nature walks' that Mallorca is internationally known for. There you can walk for hours with breathtaking beautiful scenery as your sole companion.\nThe soil is fertile and has been cultivated for millenniums. The Centre is self-suffcient in oranges, lemons, almonds, figs and olives. The property also has its own spring - a great rarity on this sundrenched island. It provides sufficient water to cover the needs of the whole centre and is an important contribution to the paradisiac quality of the place.\nAndratx is a small town situated in a beautiful valley with terraced crops stretching up the mountainside. A few kilometres away lies Port Andratx, a charming harbour town situated between steep mountain slopes.\nThe exhibition spaces are large and high to the ceiling but flexible with concrete flooring and simple white walls. With limited window room and tailored lighting, these exhibition spaces give specific emphasis on the art displayed. Howebver, the patio's large glass doors open into the exhibition halls, the gift shop and the restaurant, with the light being beautifully filtered through the colonnade.",
+                "name" : "CCA Andratx",
+                "url" : "https://ccandratx.eu/about"
+            },
+            "hasOfferCatalog" : null
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": "Museum",
+                "openingHours" : ["We-Sa 10:00-18:00", "Su 10:00-15:00"],
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Camí del Coll Baix",
+                    "addressLocality": "Alcúdia",
+                    "postalCode": "07400",
+                    "addressCountry": "Spain",
+                    "email": ""
+                },
+                "aggregateRating" : "",
+                "event" : 
+                    {
+                        "@type": "Event",
+                        "name": "ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS",
+                        "description": "En las pinturas de ambas “escuelas” se perciben rasgos comunes, señas de identidad de unos y otros que, si bien definen a cada grupo particularmente, permiten establecer entre ellos paralelismos y similitudes: tanto unos como otros han crecido al margen de cualquier formación académica; crean desde su interior, con una mirada puesta especialmente en la tradición, las raíces y las creencias del lugar al que pertenecen. Plasman su cotidianidad y sus vivencias en pinturas de gran belleza formal y vibrante colorido, cargadas de simbolismo, dotando de gran unidad al conjunto.",
+                        "eventSchedule": {
+                            "@type": "Schedule",
+                            "startDate": "2024-04-02",
+                            "endDate": "2025-04-02"
+                        },
+                        "organizer": {
+                            "@type": "Person",
+                            "name": ""
+                        },
+                        "image": {
+                            "@type": "ImageObject",
+                            "contentUrl": "https://www.msbb.org/images/exposiciones-temporales/Expo%20actual%201.jpg",
+                            "description": "Imagen de una pintura de la exposición ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS, por Youssef Aït Tazarin."
+                        }
+                    },
+                "faxNumber" : "+34971897163" ,
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.84324074674918",
+                    "longitude": "3.1788397969037017"
+                },
+                "hasMap" : "https://maps.app.goo.gl/RAv7WBHsp63nspVYA",
+                "isAccessibleForFree" : false,
+                "keywords" : "",
+                "latitude" : "39.84324074674918",
+                "longitude" : "3.1788397969037017",
+                "photo" : [
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://arquitecturaviva.com/assets/uploads/articulos/77976/av_thumb__av_imagen.webp",
+                        "description": "Imagen de vista aerea de la entrada del Museo Sa Bassa Blanca"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://travelhiddenplaces.com/wp-content/uploads/2020/10/icono-hidden-museo-sa-bassa-blanca-msbb-fundacio-yannick-vu-ben-jakober-mallorca-1.png",
+                        "description": "Imagen de la entrada del Museo Sa Bassa Blanca"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://phantom-expansion.unidadeditorial.es/68e3e4439e993fcdacd9c11eb5d9e9bf/crop/0x0/1300x866/resize/828/f/jpg/assets/multimedia/imagenes/2022/07/08/16572663274961.jpg",
+                        "description": "Imagen de una exposición del Museo Sa Bassa Blanca"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://media-cdn.tripadvisor.com/media/photo-s/15/c9/ac/f0/escultura-de-granito.jpg",
+                        "description": "Imagen de una escultura del parque de esculturas del Museo Sa Bassa Blanca"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.msbb.org/media/k2/items/cache/077ab55046ce80eaf9a3ddea999597ca_Generic.jpg",
+                        "description": "Imagen de una exposición del Museo Sa Bassa Blanca"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971701420",
+                "tourBookingPage" : "https://www.msbb.org/informacion-general/horarios-y-tarifas",
+                "description" : "En el edificio principal del Museo Sa Bassa Blanca (msbb) realizado por el arquitecto egipcio Hassan Fathy, el visitante podrá encontrarse con una colección de arte moderno y contemporáneo.\nEn la primera sala del primer piso del edificio Hassan Fathy, se exponen obras de artistas contemporáneos africanos bajo el título Ex Africa semper aliquid novi. Los artistas son: Sara Ouhaddou (Marruecos, 1986),  Soly Cissé (Senegal,1969), Gresham Tapiwa Nyaude (Zimbabwe, 1988), Thierry Oussou (Benin, 1988), Serge Attukwei Clottey (Ghana, 1985), El Anatsui (Ghana, 1944), Houston Maludi  (República democrática del Congo, 1978), Kane Kwei / Eric Adjerty Anag, (Ghana). Se presenta también una túnica de cazador de Nigeria del siglo XX.\nSe exhibe también, una selección de dibujos e ilustraciones de Domenico Gnoli, realizados en Mallorca y Roma entre 1964-69, entre lo que cabe señalar la serie “Los Monstruos”, para la cual Robert Graves escribió un texto y que en 2013 ha sido expuesta en el pabellón central la Bienal de Venecia.\nDesde enero de 2014, en el primer piso se puede ver también una selección de más de 50 retratos fotográficos de artistas fundamentales de los siglos XX y XXI, realizados en blanco y negro y en color, por el reconocido crítico de arte alemán Werner Kruger, que amablemente ha querido regalar a la Fundación parte de su archivo personal. Son creadores como De Chirico, Kounellis, Moore, Tàpies, Tinguely, Beuys, Baselitz, Oldenburg, Ando, Newton, Schnabel, Vostell, Johns, Kiefer, Barceló, Serra, o Hartung.\nEsta ala contiene a su vez una sala de esculturas, con algunas obras de Meret Oppenheim, Miralda, Takis y Alan Rath, entre otros.\nLa planta baja, primer piso (sala grande, altillo) y parte de la segunda planta acoge la exposición temporal Artistas Singulares Marroquíes.\nEn el segundo piso, se encuentran la sala de pinturas y la sala de esculturas de Vu Cao Dam (1908-2000), padre de Yannick Vu, considerado uno de los mejores artistas vietnamitas del siglo XX.\nLa sutileza oriental de la muestra contrasta con la belleza del artesonado mudéjar que cubre la última sala, fechado en 1498 y declarado “Bien de Interés Cultural del Patrimonio de las Islas Baleares”, una experiencia única y que hará las delicias de aquellas personas interesadas en el arte de ese período.",
+                "name" : "Museo Sa Bassa Blanca",
+                "url" : "https://www.msbb.org/"
+            },
+            "hasOfferCatalog" : {
+                "@type": "OfferCatalog",
+                "name": "Tipo de entradas",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general Parque y Jardín",
+                            "description": "Entrada general al Parque de Esculturas y Jardín de Rosas"
+                        },
+                        "price": "7.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida Parque y Jardín",
+                            "description": "Entrada reducida al Parque de Esculturas y Jardín de Rosas"
+                        },
+                        "price": "5.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada gratuita Parque y Jardín",
+                            "description": "Entrada gratuita para menores de 7 años y personas discapacitadas al Parque de Esculturas y Jardín de Rosas"
+                        },
+                        "price": "0.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general Nins, Parque y Jardín",
+                            "description": "Entrada general para Nins/Sokrates + Parque de Esculturas y Jardín de Rosas"
+                        },
+                        "price": "12.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida Parque y Jardín",
+                            "description": "Entrada reducida para Nins/Sokrates + Parque de Esculturas y Jardín de Rosas"
+                        },
+                        "price": "10.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada gratuita Nins, Parque y Jardín",
+                            "description": "Entrada gratuita para menores de 7 años para Nins/Sokrates + Parque de Esculturas y Jardín de Rosas"
+                        },
+                        "price": "0.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general Casa Hassan Fathy",
+                            "description": "Entrada general para Visita Dialogada a la Casa Hassan Fathy"
+                        },
+                        "price": "28.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida Casa Hassan Fathy",
+                            "description": "Entrada reducida para Visita Dialogada a la Casa Hassan Fathy"
+                        },
+                        "price": "20.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada gratuita Casa Hassan Fathy",
+                            "description": "Entrada gratuita para menores de 7 años para Visita Dialogada a la Casa Hassan Fathy"
+                        },
+                        "price": "0.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general Visita Completa",
+                            "description": "Entrada general para Visita Completa"
+                        },
+                        "price": "38.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida Visita Completa",
+                            "description": "Entrada reducida para Visita Completa"
+                        },
+                        "price": "28.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada gratuita Visita Completa",
+                            "description": "Entrada gratuita para menores de 7 años para Visita Completa"
+                        },
+                        "price": "0.00",
+                        "priceCurrency": "EUR"
+                    }
+                ]
+            }
         }
     ]
 }
