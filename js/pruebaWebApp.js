@@ -325,6 +325,139 @@ function crearContacto() {
 /* --- --- */
 
 /* --- Funciones específicas --- */
+/**
+ * Función que se encarga de leer del webStorage y crea las componentes para mostrar la ruta al usuario
+ * 
+ */
+function mostrarRuta() {
+    const eventos = recuperarVisitas();
+    const contenedorRuta = $('.section-ruta');
+    
+    // Limpiar el contenido existente del contenedor
+    contenedorRuta.innerHTML = '';
+
+    // Verificar si hay eventos
+    if (eventos.length === 0) {
+        // Si no hay eventos, mostrar un mensaje
+        contenedorRuta.innerHTML = '<p>Todavía no has empezado a diseñar tu ruta</p>';
+        var botonGuardar = $('.guardar-calendar button');
+        if(botonGuardar != null){
+            botonGuardar.remove();
+        }
+    } else {
+        // Si hay eventos, mostrar cada uno en la lista
+        eventos.forEach((evento, index) => {
+            const duracion = calcularDuracion(evento.horaInicio, evento.horaFin);
+            const descanso = index === eventos.length - 1 ? '' : '<div><p class="descanso">Descanso: 1h</p></div>';
+
+            const li = document.createElement('li');
+            li.classList.add('parada-ruta');
+
+            const divLeft = crearDiv("left-museo-ruta");
+
+            divLeft.appendChild(crearP({clases: "horas", texto: `${evento.horaInicio.split('T')[1].slice(0, 5)} - ${evento.horaFin.split('T')[1].slice(0, 5)}`}));
+
+            divLeft.appendChild(crearSpan('circ',""));
+
+            li.appendChild(divLeft);
+
+            const divRight = crearDiv("right-museo-ruta");
+
+            const h5Container = crearDiv("parada-ruta museo-container");
+
+            const h5 = document.createElement('h5');
+            h5.textContent = evento.lugar;
+
+            const botonEliminar = crearBoton("","",'no-style-button cruz-ruta');
+            botonEliminar.setAttribute('onclick', `eliminarMuseoRuta(${index})`);
+            const imgCruz = crearImg('img/svg/cruz.svg', 'Símbolo de cruz para tachar un museo de la ruta');
+            botonEliminar.appendChild(imgCruz);
+
+            h5Container.appendChild(h5);
+            h5Container.appendChild(botonEliminar);
+
+            divRight.appendChild(h5Container);
+
+            const formulario = crearForm("","formulario-ruta");
+
+            const divInicio = crearDiv();
+            const labelInicio = crearLabel("","Inicio");
+            labelInicio.setAttribute('for', 'inicio');
+            const selectInicio = crearSelect("inicio","","");
+            
+            const textoInicio = evento.horaInicio.split('T')[1].slice(0, 5); // Mostrar solo hora y minutos
+            //TODO ARREGLAR EL DESPLEGABLE DE INICIO
+            const optionInicio = crearOption(textoInicio,0,true);
+            selectInicio.appendChild(optionInicio);
+            divInicio.appendChild(labelInicio);
+            divInicio.appendChild(selectInicio);
+
+            formulario.appendChild(divInicio);
+
+            const divDuracion = crearDiv();
+            const labelDuracion = crearLabel("",'Duración');
+            labelDuracion.setAttribute('for', 'duracion');
+            const selectDuracion = crearSelect("duracion","","");
+            //TODO ARREGLAR EL DESPLEGABLE DE DURACION
+            const optionDuracion = crearOption(duracion,0,true);
+            selectDuracion.appendChild(optionDuracion);
+            divDuracion.appendChild(labelDuracion);
+            divDuracion.appendChild(selectDuracion);
+
+            formulario.appendChild(divDuracion);
+            divRight.appendChild(formulario);
+
+            
+
+            li.appendChild(divRight);
+            contenedorRuta.appendChild(li);
+            contenedorRuta.innerHTML += descanso;
+        });
+        var botonGuardar = $('.guardar-calendar button');
+        if(botonGuardar == null){
+            const contenedorBoton = $('.guardar-calendar');
+
+            botonGuardar = crearBoton('Añadir a calendar','add-to-calendar-button',"boton boton-verde");
+            botonGuardar.setAttribute('onclick', 'handleAuthClick()');
+
+            // Insertar el botón después de la lista de eventos
+            contenedorBoton.appendChild(botonGuardar);
+        }
+    }
+}
+
+/** 
+ * Función para calcular la duración entre dos horas
+ * @param horaInicio Date con la fecha a la que empieza un evento
+ * @param horaFin Date con la fecha a la que termina el mismo evento
+ * @return Un string con la hora y minutos que hay de diferencia
+ */
+function calcularDuracion(horaInicio, horaFin) {
+    const inicio = new Date(horaInicio);
+    const fin = new Date(horaFin);
+    const duracionMinutos = Math.round((fin.getTime() - inicio.getTime()) / (1000 * 60)); // Convertir milisegundos a minutos y redondear
+    return `${Math.floor(duracionMinutos / 60)}h ${duracionMinutos % 60}min`; // Mostrar duración con horas y minutos
+}
+
+/**
+ * Funcion que elimina un evento de la ruta
+ * @param index indice del evento a eliminar 
+ */
+function eliminarMuseoRuta(index) {
+    const eventos = recuperarVisitas();
+    eventos.splice(index, 1); // Eliminar el evento correspondiente al índice
+    localStorage.setItem('visitas', JSON.stringify(eventos)); // Actualizar el localStorage
+    mostrarRuta(); // Mostrar la ruta actualizada
+}
+
+/**
+ * Función que recupera el array de objetos evento si existe, sino devuelve un array vacío
+ * @returns devuelve un array de objetos evento
+ */
+function recuperarVisitas() {
+    const visitas = localStorage.getItem('visitas');
+    return visitas ? JSON.parse(visitas) : [];
+}
 
 /**
  * Función que se encarga de crear una tarjeta de componente
