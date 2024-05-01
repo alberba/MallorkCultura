@@ -350,7 +350,7 @@ function mostrarRuta() {
             const duracion = calcularDuracion(evento.horaInicio, evento.horaFin); // Calcular la duración del evento
             const descanso = index === eventos.length - 1 ? '' : '<div><p class="descanso">Descanso: 1h</p></div>'; // Añadir un descanso si no es el último evento
 
-            const li = $('<li></li>').addClass('parada-ruta'); // Crear un nuevo elemento de lista
+            const li = $('<li></li>').addClass('parada-ruta').attr('data-index', index); // Crear un nuevo elemento de lista y establecer el índice del evento como atributo de datos
 
             const divLeft = $('<div></div>').addClass("left-museo-ruta"); // Crear un div para la parte izquierda
 
@@ -362,9 +362,17 @@ function mostrarRuta() {
             const duracionSeleccionada = duracion.split(' ');
             const horasDuracion = duracionSeleccionada[0].slice(0, -1);
             const minutosDuracion = duracionSeleccionada[1].slice(0, -3);
-            const horaFinCalculada = (parseInt(horasSeleccionadas[0]) + parseInt(horasDuracion)).toString().padStart(2, '0');
-            const minutosFinCalculado = (parseInt(horasSeleccionadas[1]) + parseInt(minutosDuracion)).toString().padStart(2, '0');
-            const horaFin = horaFinCalculada + ':' + minutosFinCalculado;
+            let horaFinCalculada = (parseInt(horasSeleccionadas[0]) + parseInt(duracionSeleccionada[0]))
+            let minutosFinCalculado = (parseInt(horasSeleccionadas[1]) + parseInt(duracionSeleccionada[1]))
+            if(minutosFinCalculado == 60){
+                minutosFinCalculado = 0;
+                horaFinCalculada++;
+
+            }
+            const horaFinC = horaFinCalculada.toString().padStart(2,"0");
+            const minutosFinC = minutosFinCalculado.toString().padStart(2,"0");
+
+            const horaFin = horaFinC + ':' + minutosFinC;
 
             // Crear el elemento de texto con la hora de inicio y fin
             const horasText = `${horaInicioSplit} - ${horaFin}`;
@@ -463,13 +471,20 @@ function mostrarRuta() {
             selectInicio.on('change', function() {
                 const horaInicio = $(this).val();
                 const duracionSeleccionada = selectDuracion.val().split(':');
-                const horaFinCalculada = (parseInt(horaInicio.split(':')[0]) + parseInt(duracionSeleccionada[0])).toString().padStart(2, '0');
-                const minutosFinCalculado = (parseInt(horaInicio.split(':')[1]) + parseInt(duracionSeleccionada[1])).toString().padStart(2, '0');
-                const horaFin = horaFinCalculada + ':' + minutosFinCalculado;
+                let horaFinCalculada = (parseInt(horaInicio.split(':')[0]) + parseInt(duracionSeleccionada[0]))
+                let minutosFinCalculado = (parseInt(horaInicio.split(':')[1]) + parseInt(duracionSeleccionada[1]))
+                if(minutosFinCalculado == 60){
+                    minutosFinCalculado = 0;
+                    horaFinCalculada++;
+
+                }
+                const horaFinC = horaFinCalculada.toString().padStart(2,"0");
+                const minutosFinC = minutosFinCalculado.toString().padStart(2,"0");
+
+                const horaFin = horaFinC + ':' + minutosFinC;
 
                 // Obtener el índice del evento correspondiente
-                const index = $(this).closest('li').index();
-                alert(index);
+                const index = $(this).closest('li').data('index');
 
                 actualizarEventosMostrarRuta(index, horaInicio, horaFin);
 
@@ -480,14 +495,22 @@ function mostrarRuta() {
                 const duracion = $(this).val();
                 const horaInicio = selectInicio.val();
                 const duracionSeleccionada = duracion.split(':');
-                const horaFinCalculada = (parseInt(horaInicio.split(':')[0]) + parseInt(duracionSeleccionada[0])).toString().padStart(2, '0');
-                const minutosFinCalculado = (parseInt(horaInicio.split(':')[1]) + parseInt(duracionSeleccionada[1])).toString().padStart(2, '0');
-                const horaFin = horaFinCalculada + ':' + minutosFinCalculado;
+                let horaFinCalculada = (parseInt(horaInicio.split(':')[0]) + parseInt(duracionSeleccionada[0]));
+                let minutosFinCalculado = (parseInt(horaInicio.split(':')[1]) + parseInt(duracionSeleccionada[1]));
+                if(minutosFinCalculado == 60){
+                    minutosFinCalculado = 0;
+                    horaFinCalculada++;
+
+                }
+                const horaFinC = horaFinCalculada.toString().padStart(2,"0");
+                const minutosFinC = minutosFinCalculado.toString().padStart(2,"0");
+
+                const horaFin = horaFinC + ':' + minutosFinC;
 
                 // Obtener el índice del evento correspondiente
-                const index = $(this).closest('li').index();
+                const index = $(this).closest('li').data('index');
 
-                actualizarEventosMostrarRuta(index, horaInicio, horaFin);
+                actualizarEventosMostrarRuta(index, null, horaFin);
 
                 divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
             });
@@ -547,16 +570,18 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
     const visitas = recuperarVisitas();
 
     // Actualizar el evento correspondiente
-    visitas[index].horaInicio = visitas[index].horaInicio.split('T')[0] + "T" + horaInicio + ':00';
     visitas[index].horaFin = visitas[index].horaFin.split('T')[0] + "T" + horaFin + ':00';
-    //ordenar los eventos
-    visitas.sort((a, b) => {
-        const horaInicioA = new Date(a.horaInicio);
-        const horaInicioB = new Date(b.horaInicio);
-        return horaInicioA.getTime() - horaInicioB.getTime();
-    });
+    if(horaInicio != null){
+        visitas[index].horaInicio = visitas[index].horaInicio.split('T')[0] + "T" + horaInicio + ':00';
+        //ordenar los eventos
+        visitas.sort((a, b) => {
+            const horaInicioA = new Date(a.horaInicio);
+            const horaInicioB = new Date(b.horaInicio);
+            return horaInicioA.getTime() - horaInicioB.getTime();
+        });
+    }
     localStorage.setItem('visitas', JSON.stringify(visitas));
-    mostrarRuta();
+    if(horaInicio != null) mostrarRuta();
 }
 
 /**
