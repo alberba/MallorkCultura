@@ -449,6 +449,13 @@ nav {
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap:2rem;
+    align-items: center;
+}
+
+#buscarCercaDeMi {
+        height: auto;
+        font-size: 1.4rem;
+        padding: 15px 0px;
 }
 /* -- Filtros -- */
 
