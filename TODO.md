@@ -8,6 +8,7 @@
 - [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Diferenciar exposiciones activas con las proximas
 - [ ] Añadir gestión del mapa con la interacción de la ruta
+- [ ] Arreglar spech API (solo lee el título sin la info)
 ### JavaScript
 - [ ] Comentar el código
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
