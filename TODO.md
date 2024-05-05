@@ -20,7 +20,8 @@
 ### APIs
 - [ ] Google Maps API  
     - [ ] Actualizar el mapa al activar filtros de ubicaciones
-    
+- [ ] API Geolocalización
+    - [ ] Añadir solicitud de acceso a la ubicación del dispositivo
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
