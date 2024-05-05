@@ -215,7 +215,6 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
                         "href":lugar.areaServed.tourBookingPage ?? lugar.areaServed.url,    // Si tiene web de entradas, redirige allí, sinó, redirige a la web inicial
                         "target":"_blank"
                     })
-                    //TODO: Cambiar esto
                     .html("Comprar entrada")
                     .append(crearImg("img/svg/boton-añadir-carrito.svg","Icono de redireccion"))
                 )
@@ -274,10 +273,8 @@ function crearTuRuta(){
         .append($("<ul>").addClass("section-ruta"))    
     ).append(crearDiv("guardar-calendar"));
 
-    // TODO: Añadir el apartado de Carlos de WEBSTORAGE
     mostrarRuta();
 
-    // TODO: Añadir el mapa con la ruta
     let eventos = recuperarVisitas();
     let eventosGeo = eventos.map(evento => {
         let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
