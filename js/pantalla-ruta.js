@@ -1,5 +1,5 @@
 // Función para mostrar la ruta en la pantalla
-function mostrarRuta() {
+/*function mostrarRuta() {
     const eventos = recuperarVisitas();
     const contenedorRuta = document.querySelector('.section-ruta');
 
@@ -122,7 +122,7 @@ function mostrarRuta() {
             contenedorBoton.appendChild(botonGuardar);
         }
     }
-}
+}*/
 
 // Función para calcular la duración entre dos horas
 function calcularDuracion(horaInicio, horaFin) {

@@ -434,16 +434,28 @@ function mostrarRuta() {
             const selectDuracion = $('<select></select>').addClass("duracion"); // Crear el select para la duración
 
             // Llenar el select con las opciones de duración
+            
+            // Comprobar que la duración no sobrepase el día
+            const horaInicioSplitHoras = parseInt(horaInicioSplit.split(':')[0]); // Obtener las horas de la hora de inicio
+            const horaInicioSplitMinutos = parseInt(horaInicioSplit.split(':')[1]); // Obtener los minutos de la hora de inicio
             for (let i = 15; i <= 360; i += 15) {
                 const horas = Math.floor(i / 60);
                 const minutos = i % 60;
-                const duracionText = `${horas}h ${minutos}min`;
-                const duracionValue = horas.toString().padStart(2, '0') + ':' + minutos.toString().padStart(2, '0');
-                const optionDuracion = $('<option></option>').text(duracionText).attr('value', duracionValue);
-                if (duracionText === duracion) {
-                    optionDuracion.prop('selected', true);
+            
+                if (
+                    horaInicioSplitHoras + horas < 24 && // Verificar que la suma de las horas de inicio y las horas de duración no exceda las 24 horas
+                    (horaInicioSplitHoras + horas < 23 || horaInicioSplitMinutos + minutos < 60) // Verificar que la suma de las horas de inicio y las horas de duración no exceda las 23:59 (última hora del día
+                ) {
+                    const duracionText = `${horas}h ${minutos}min`;
+                    const duracionValue = horas.toString().padStart(2, '0') + ':' + minutos.toString().padStart(2, '0');
+                    const optionDuracion = $('<option></option>').text(duracionText).attr('value', duracionValue);
+                    if (duracionText === duracion) {
+                        optionDuracion.prop('selected', true);
+                    }
+                    selectDuracion.append(optionDuracion);
+                } else {
+                    break;
                 }
-                selectDuracion.append(optionDuracion);
             }
 
             // Agregar la etiqueta y el select al div de duración
@@ -485,8 +497,6 @@ function mostrarRuta() {
                 const index = $(this).closest('li').data('index');
 
                 actualizarEventosMostrarRuta(index, horaInicio, horaFin);
-
-                divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
             });
 
             selectDuracion.on('change', function() {
