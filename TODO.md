@@ -11,8 +11,7 @@
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
 ### APIs
-- [ ] API Geolocalización
-    - [ ] Añadir solicitud de acceso a la ubicación del dispositivo
+
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro

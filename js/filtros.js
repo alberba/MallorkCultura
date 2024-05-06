@@ -73,7 +73,10 @@ function crearFiltros() {
     return filtros;
 }
 
-// búsqueda por nombre
+/**
+ * Función que muestra aquellas ubicaciones cuyo nombre contenga coincidencias con el input de texto de los filtros
+ * @param {String} nombre Valor del input de texto de los filtros: nombre del museo a buscar
+ */
 function cambiarUbicacionesPorNombre(nombre) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
@@ -92,8 +95,11 @@ function cambiarUbicacionesPorNombre(nombre) {
 }
 
 
-// búsqueda por cercanía a una dirección
-// Revisar??
+/**
+ * Función que muestra aquellas ubicaciones que se encuentren en el radio especificado por **rango** alrededor de **direccion**
+ * @param {String} direccion Dirección sobre la cual se efectua la búsqueda de ubicaciones por cercanía
+ * @param {number} rango Radio del area de búsqueda alrededor de dirección en kms
+ */
 async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  // rango está en km
     // Esto sucederá en caso de cambiar el rango antes de poner una dirección
     if(direccion == "") {
@@ -125,6 +131,11 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
     
 }
 
+/**
+ * Función que recupera la latitud y longitud de la dirección introducida en el innput de dirección de los filtros
+ * @param {String} direccion Dirección introducida en el input de dirección de los filtros
+ * @returns Objeto que contiene la latitud y la longitud de la dirección
+ */
 function recuperarLatLng(direccion) {
     let geo;
     return fetch("https://geocode.maps.co/search?q="+direccion+"&api_key=662f95ede90a4385758387pkl2dc4fb")
@@ -136,6 +147,12 @@ function recuperarLatLng(direccion) {
         .catch(error => console.error(error));
 }
 
+/**
+ * Función que calcula la distancia en km entre la dirección introducida en los filtros y un museo
+ * @param {object} coordsDireccion Objeto que contiene la latitud y longitud de la ubicación de la dirección introducida en los filtros
+ * @param {object} coordsMuseo Objeto que contiene la latitud y longitud de la ubicación del museo
+ * @returns Number con la distancia en km entre la dirección introducida y la ubicación del museo
+ */
 function calcularDistancia(coordsDireccion, coordsMuseo) {
     const radioTierra = 6371; // Radio de la Tierra en kilómetros
     const dLat = toRadians(coordsMuseo.lat - coordsDireccion.lat);
@@ -155,7 +172,10 @@ function toRadians(grados) {
     return grados * Math.PI / 180;
 }
 
-// búsqueda por día
+/**
+ * Función que muestra aquellas ubicaciones a las que se puede acceder el día especificado en los filtros
+ * @param {String} fecha Fecha en formato String devuelto por el input de fecha de búsqueda de los filtros
+ */
 function cambiarUbicacionesPorDiaDeVisita(fecha) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
@@ -199,6 +219,12 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
     }
 }
 
+/**
+ * Función que comprueba si se puede acceder en el **día** pasado por parametro al museo **m**
+ * @param {String} dia Día de la semana en formato de 2 letras en inglés
+ * @param {object} m Objeto museo perteneciente al array de museos
+ * @returns Boolean indicando si la fecha indicada **dia** se puede acceder al museo **m**
+ */
 function contiene(dia, m) {
     let diasSemana = ["Mo","Tu","We","Th","Fr","Sa","Su"];
     let horarioApertura = m.areaServed.openingHours;
@@ -230,7 +256,11 @@ function contiene(dia, m) {
     return false;
 }
 
-/* Tipo de entrada */
+/**
+ * Función que muestra aquellas ubicaciones cuyo acceso coincida con el tipo indicado en los checkboxes de los filtros
+ * @param {boolean} gratuito Booleano indicando si la acceso es gratuito
+ * @param {boolean} entrada Booleano indicando si el acceso es mediante entrada
+ */
 function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     let contenedorUbicaciones = $(".contenedor-museos");
     let museosNuevos = [];
@@ -260,7 +290,9 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     }
 }
 
-/* Cercanía al usuario */
+/**
+ * Función que muestra aquellas ubicaciones en un rango de 10 km respecto al usuario usando la geolocalización del navegador
+ */
 function cambiarUbicacionesCercaUsuario() {
     let geoLocator = navigator.geolocation;
     geoLocator.getCurrentPosition(success);
