@@ -193,7 +193,11 @@ function generarAsideMuseo(lugar) {
 function crearFechasHorarioLugar(horario) {
     let rangoDias = normalizarFormatoHorarioMuseoJSON(horario);
     let horarioEspañol = rangoDias.map(rango => {
-        return `${rango.rangoDias.diaInicio.nombre} a ${rango.rangoDias.diaFin.nombre}: ${rango.rangoHoras.horaInicio} - ${rango.rangoHoras.horaFin}`;
+        if(rango.rangoDias.diaFin.nombre) {
+            return `${rango.rangoDias.diaInicio.nombre} a ${rango.rangoDias.diaFin.nombre}: ${rango.rangoHoras.horaInicio} - ${rango.rangoHoras.horaFin}`;
+        } else {
+            return `${rango.rangoDias.diaInicio.nombre}: ${rango.rangoHoras.horaInicio} - ${rango.rangoHoras.horaFin}`;
+        }
     });
     if(horarioEspañol.length > 1) {
         return horarioEspañol.join("<br>");

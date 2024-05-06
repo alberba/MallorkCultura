@@ -12,6 +12,9 @@ function crearPantallaUbicaciones() {
         .append(crearDiv("ubi-header").attr("id","map"))
     );
 
+    //Cuando Entramos en la pantalla de Museos ponemos que estamos en la primera pagina
+    paginaActual = 0;
+
     // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
     initMap({
         position: centroMallorca, 
@@ -25,14 +28,15 @@ function crearPantallaUbicaciones() {
         .append(crearFiltros());
 
     let contenedorMuseo = crearDiv("contenedor-museos");
-    // Añade las tarjetas de los museos
-    museos.forEach(museo => {
-        contenedorMuseo.append(crearTarjetaUbicacion(museo, crearPantallaUbicaciones)
+    // Añade las tarjetas de los museos de la primera pagina
+    for(let i=0; i < museos.length && i < museosPorPagina; i++){
+        contenedorMuseo.append(crearTarjetaUbicacion(museos[i], crearPantallaUbicaciones)
         )
-    });
+    }
 
     $("main").append(crearSection().append(contenedorMuseo));
     $("main").append(crearSelectorPagina());
+    modificarPaginacion();
 }
 
 
@@ -68,4 +72,38 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearSection().append(contenedorMuseos));
 
     $("main").append(crearSelectorPagina());
+}
+
+function modificarPaginacion() {
+    // Obtener el elemento paginacion
+    var paginacion = $(".paginacion");
+
+    if(Math.ceil(museos.length/museosPorPagina) < 2){
+        $("main").remove(".paginacion");
+        return;
+    }
+
+    paginacion.empty();
+
+    // Obtener los botones de página anterior y página siguiente
+    var prevButton = crearImg("img/svg/prev-page-arr.svg", "Página anterior");
+    var nextButton = crearImg("img/svg/next-page-arr.svg", "Página siguiente");
+
+    paginacion.add(prevButton);
+    if(Math.ceil(museos.length/museosPorPagina) <= 4){
+        for(let i = 1; i == Math.ceil(museos.length/museosPorPagina); i++){
+            var span = crearSpan("",i.toString()).click(function() {
+                paginaActual = i;
+            });
+            paginacion.append(span);
+
+        }
+    }
+
+    // Añadir evento onclick a los botones
+    prevButton.click(function() {
+    });
+
+    nextButton.click(function() {
+    });
 }

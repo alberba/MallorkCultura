@@ -147,7 +147,6 @@ function actualizarVisitas(evento) {
  * Función que se encarga de recuperar las visitas de web storage y devolverlas
  */
 function recuperarVisitas() {
-    console.log("RECUPERANDO VISITAS");
     const arrayJSONRecuperado = localStorage.getItem('visitas');
     if (arrayJSONRecuperado) {
         return JSON.parse(arrayJSONRecuperado);
@@ -178,9 +177,7 @@ function eliminarVisita(evento) {
  * Función que se encarga de crear todos los eventos de una ruta en el calendario de google
  */
 async function crearEventosCalendario() {
-    console.log("CREANDO EVENTOS");
     const eventos = recuperarVisitas();
-    console.log(eventos);
 
     // Bucle para recorrer todos los eventos y crearlos en el calendario
     for(let i = 0; i < eventos.length; i++) {

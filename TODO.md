@@ -2,29 +2,21 @@
 
 ## 2a Presentación
 - [ ] Filtro museos
-    - [x] Estandarizar para IOS
     - [ ] Ordenar por ascendente/descendente
-    - [ ] Acabar la funcionalidad de todos los filtros
 - [ ] Añadir comentarios/valoraciones a los museos
-- [ ] Añadir gestión del mapa con la interacción de la ruta
 ### JavaScript
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
-- [ ] En info museo, arreglar el slider
 ### APIs
-- [ ] Google Maps API  
-    - [ ] Actualizar el mapa al activar filtros de ubicaciones
 - [ ] API Geolocalización
     - [ ] Añadir solicitud de acceso a la ubicación del dispositivo
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
-### Errores de CSS
-- [ ] Añadir límite de overflow a los nombres de exposiciones --> ver en museo sa bassa blanca (alcúdia)
 
 # HECHO
 ## 06/05
@@ -32,6 +24,13 @@
 - [x] Añadir redirección Añadir Ruta desde pantalla-museo
 - [x] Crear llamadas APIs dinámicas con la primera ubicación de la ruta
 - [x] Añadir todas las imágenes de museo en nuestra página web
+- [x] Google Maps API
+    - [x] Añadir gestión del mapa con la interacción de la ruta
+    - [x] Actualizar el mapa al activar filtros de ubicaciones
+- [x] Filtro museos
+    - [x] Estandarizar para IOS
+    - [x] Acabar la funcionalidad de todos los filtros
+- [x] Añadir límite de overflow a los nombres de exposiciones
 
 ## 01/05
 - [x] Añadir filtro buscar cerca de mí (boton de ubicación)

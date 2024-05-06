@@ -184,7 +184,7 @@ function crearSelect(nombre, id, clases){
 /**
  * Función genérica para generar un option
  * @param {string} texto El texto del option
- * @param {number} valor El valor del option
+ * @param {number|string} valor El valor del option
  * @param {boolean=} seleccionado 
  * @returns {JQuery<HTMLElement>} Un elemento option
  */

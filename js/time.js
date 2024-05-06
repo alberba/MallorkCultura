@@ -53,7 +53,7 @@ function normalizarFormatoHorarioMuseoJSON(horario) {
         let [diasIngles, horas] = horario.split(" ");
         let [horaInicio, horaFin] = horas.split("-");
         let [diaInicio, diaFin] = diasIngles.split("-");
-        return { rango: {
+        return [{
             rangoDias: {
                 diaInicio: {
                     nombre: dias[diaInicio],
@@ -68,7 +68,7 @@ function normalizarFormatoHorarioMuseoJSON(horario) {
                 horaInicio: horaInicio,
                 horaFin: horaFin
             }
-        }};
+        }];
             
     } else {
         let rango =  horario.map(horario => {
@@ -92,7 +92,7 @@ function normalizarFormatoHorarioMuseoJSON(horario) {
             };
         });
 
-        return {rango: rango};
+        return rango;
             
     }
 }

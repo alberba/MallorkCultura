@@ -44,7 +44,7 @@ function crearFiltros() {
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
                 .append(crearLabel("dia-visita","Día de visita"))
                 .append(crearInput("date","","dia-visita")
-                    .on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia_visita").val())))
+                    .on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia-visita").val())))
         )
         .append(crearDiv("elemento-filtro-museo")
             .attr("id","tipo-entrada") // Pocos divs necesitan un id, no veo necesidad de tener que incluir el id en la función para crear div's
@@ -55,11 +55,11 @@ function crearFiltros() {
             .append(crearDiv("opciones-check")
                 .append(crearLabel("gratuito","Gratuito")
                     .prepend(crearInput("checkbox","tipo_entrada[]","gratuito")
-                        .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val())))
+                        .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").prop("checked"), $("#entrada").prop("checked"))))
                 )
                 .append(crearLabel("entrada","Entrada")
                     .prepend(crearInput("checkbox","tipo_entrada[]","entrada")
-                        .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").val(), $("#entrada").val())))
+                        .on("change", () => cambiarUbicacionesPorTipoDeEntrada($("#gratuito").prop("checked"), $("#entrada").prop("checked"))))
                 )
             )
         )
@@ -75,43 +75,52 @@ function crearFiltros() {
 
 // búsqueda por nombre
 function cambiarUbicacionesPorNombre(nombre) {
-    console.log("llamada cambiarUbicacionesPorNombre");
-
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { if (nombre === "" || museo.areaServed.name === nombre){
-            contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+    let museosNuevos = [];
+    museos.forEach(museo => { 
+        if (nombre === "" || museo.areaServed.name.toLowerCase().includes(nombre.toLowerCase())) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
         }
     });
+
+    if(museosNuevos.length >= 0) {
+        console.log(museosNuevos);
+        actualizarMarkerMaps(museosNuevos);
+    }
 }
 
 
 // búsqueda por cercanía a una dirección
 // Revisar??
 async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  // rango está en km
-    console.log("llamada cambiarUbicacionesPorCercania");
-    console.log(rango)
-    
     // Esto sucederá en caso de cambiar el rango antes de poner una dirección
     if(direccion == "") {
         return;
     }
 
     recuperarLatLng(direccion).then(coordsDireccion => {
-        console.log(coordsDireccion);
         let coordsMuseo;
         let contenedorUbicaciones = $(".contenedor-museos");
+        let museosNuevos = [];
         contenedorUbicaciones.empty();
         museos.forEach(museo => { 
             coordsMuseo = {
                 lat: museo.areaServed.geo.latitude,
                 lng: museo.areaServed.geo.longitude
             };
-            console.log("Distancia: " + calcularDistancia(coordsDireccion, coordsMuseo) + " km");
             if (calcularDistancia(coordsDireccion, coordsMuseo) <= rango) {
                 contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+                museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
             }
+            
         });
+
+        if(museosNuevos.length >= 0) {
+            console.log(museosNuevos);
+            actualizarMarkerMaps(museosNuevos);
+        }
     });
     
 }
@@ -122,7 +131,6 @@ function recuperarLatLng(direccion) {
         .then(response => response.json())
         .then(data => {
             geo = {lat: data[0].lat, lng: data[0].lon};
-            console.log(geo);
             return geo;
         })
         .catch(error => console.error(error));
@@ -149,11 +157,10 @@ function toRadians(grados) {
 
 // búsqueda por día
 function cambiarUbicacionesPorDiaDeVisita(fecha) {
-    console.log("llamada cambiarUbicacionesPorDiaDeVisita");
-
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     let dia;
+    let museosNuevos = [];
     switch((new Date(fecha)).getDay()){
         case 1:
             dia = "Mo";
@@ -178,9 +185,18 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
             break;
     }
 
-    museos.forEach(museo => { if (contiene(dia, museo))
-        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+    museos.forEach(museo => { 
+        if (contiene(dia, museo)) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+        }
+        
     });
+
+    if(museosNuevos.length >= 0) {
+        console.log(museosNuevos);
+        actualizarMarkerMaps(museosNuevos);
+    }
 }
 
 function contiene(dia, m) {
@@ -190,11 +206,15 @@ function contiene(dia, m) {
     let diaAbierto1;
     let diaAbierto2;
     let aux = [];
-    horarioApertura.forEach(x => {
-        aux.push(x.split(" ",1)[0]);
-    });
-    console.log("Primera pausa: " + aux)
-    aux.forEach(aux2 => {
+
+    if(Array.isArray(horarioApertura)) {
+        horarioApertura.forEach(x => {
+            aux.push(x.split(" ",1)[0]);
+        });
+    } else {
+        aux.push(horarioApertura.split(" ",1)[0]);
+    }
+    for (let aux2 of aux) {
         if (aux2.length == 2) {
             if (dia == aux2) {
                 return true;
@@ -205,27 +225,39 @@ function contiene(dia, m) {
             diasSemanaAbierto = diasSemana.slice(diasSemana.indexOf(diaAbierto1),diasSemana.indexOf(diaAbierto2)+1);
             return diasSemanaAbierto.includes(dia);
         }
-    });
+    }
 
     return false;
 }
 
-
-
-
-
-
-
-
 /* Tipo de entrada */
 function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
-    console.log("llamada cambiarUbicacionesPorTipoDeEntrada");
-
     let contenedorUbicaciones = $(".contenedor-museos");
+    let museosNuevos = [];
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada))
-        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+    if (!gratuito && !entrada) {
+        museos.forEach(museo => { 
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+        });
+
+        if(museosNuevos.length >= 0) {
+            actualizarMarkerMaps(museosNuevos);
+        }
+
+        return;
+    }
+
+    museos.forEach(museo => { 
+        if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada)) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+        }
     });
+
+    if(museosNuevos.length >= 0) {
+        actualizarMarkerMaps(museosNuevos);
+    }
 }
 
 /* Cercanía al usuario */
@@ -243,16 +275,22 @@ function success(pos) {
         lng: coordsAux.longitude
     };
     let coordsMuseo;
+    let museosNuevos = [];
     let contenedorUbicaciones = $(".contenedor-museos");
-        contenedorUbicaciones.empty();
-        museos.forEach(museo => { 
-            coordsMuseo = {
-                lat: museo.areaServed.geo.latitude,
-                lng: museo.areaServed.geo.longitude
-            };
-            console.log("Distancia: " + calcularDistancia(coords, coordsMuseo) + " km");
-            if (calcularDistancia(coords, coordsMuseo) <= 10) {
-                contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
-            }
-        });
+    contenedorUbicaciones.empty();
+    museos.forEach(museo => { 
+        coordsMuseo = {
+            lat: museo.areaServed.geo.latitude,
+            lng: museo.areaServed.geo.longitude
+        };
+        if (calcularDistancia(coords, coordsMuseo) <= 10) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+        }
+    });
+
+    if(museosNuevos.length >= 0) {
+        console.log(museosNuevos);
+        actualizarMarkerMaps(museosNuevos);
+    }
 }

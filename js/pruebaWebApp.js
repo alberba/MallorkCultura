@@ -2,10 +2,12 @@ const jsonUrlMuseos = "json/museosMallorkCultura.json";
 const jsonUrlPueblos = "json/pueblos.json";
 const jsonUrlComponentes = "json/componentes.json";
 const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
+const museosPorPagina = 9;
 let museos;
 let pueblos;
 let componentes;
 let speechSynthesisActivado = false;
+let paginaActual;
 
 // leer json de museos
 fetch(jsonUrlMuseos)
@@ -137,6 +139,7 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
     }
     localStorage.setItem('visitas', JSON.stringify(visitas));
     if(horaInicio != null) mostrarRuta();
+    return visitas;
 }
 
 //función específica - ¿Dónde visitar? --> Pensar en sustituirla
@@ -228,7 +231,7 @@ function crearTarjetaUbicacion(museo, funcionAnterior) {
 // función específica - Lista de ubicaciones
 // esta habrá que cambiarla
 function crearSelectorPagina() {
-    return crearDiv("paginas")
+    return crearDiv("paginas","paginacion")
         .append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
         .append(crearP({
                 clases:"",
@@ -244,11 +247,8 @@ function crearSelectorPagina() {
 
 // Función para almacenar la visita con los detalles del museo
 function almacenarVisita(lugar, direccion, tipo) {
-    console.log("ALMACENAR VISITA");
     const evento = { lugar, direccion, horaInicio: "2024-06-01T09:00:00", horaFin: "2024-06-01T10:00:00", tipo };
-    console.log("EVENTO CREADO:", evento);
     actualizarVisitas(evento);
-    console.log("VISITA AÑADIDA");
 }
 
 // Función para escapar las comillas simples en un texto
