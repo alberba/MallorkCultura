@@ -1,1 +1,0 @@
-$("#copy-text").html("CopyRight &copy; " + (new Date()).getFullYear().toString());

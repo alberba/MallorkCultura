@@ -1,54 +1,4 @@
-/**
- * Función que genera el contenido de la sección tiempo de la página ruta
- * @param {Object} geo Objeto geo con las coordenadas de la ubicación actual
- * @returns {JQuery<HTMLElement>} Elemento HTML con el contenido de la sección tiempo
- */
-function mostrarTiempo(geo) {
-    let section = crearSection().addClass("contenedor-tiempo");
-    //TODO: Cambiar la URL de la API para obtener el tiempo de un pueblo concreto
-    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=' + geo.latitude + '&lon=' + geo.longitude + '&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
-    "method": "GET",
-    "headers": {
-        "Content-Type": "application/json"
-    }
-})
-    .then(response => response.json())
-    .then(data => {
-        let dias = data.daily;
-
-        for(let i = 0; i < 5; i++) {
-            let dia = dias[i];
-            let temp;
-            let nombreDia;
-            if(i == 0) {
-                dia = data.current;
-                temp = Math.round(data.current.temp).toString()+ "°C";
-                nombreDia = "Hoy";
-            } else {
-                temp = Math.round(dia.temp.min).toString() + "-" + Math.round(dia.temp.max).toString() + "°C";
-                nombreDia = obtenerDiaSemana(dia.dt);
-            }
-            
-            let div = crearDiv("contenedor-tiempo-dia p-4");
-            let icon = dia.weather[0].icon;
-
-            if (icon.substring(0, 2) == "01" || icon.substring(0, 2) == "02") {
-                div.append(crearImg("img/weather/" + icon + ".svg", "", "imagen-tiempo"));
-            } else if (icon.substring(0, 2) == "09" || icon.substring(0, 2) == "10") {
-                div.append(crearImg("img/weather/09.svg", "", "imagen-tiempo"));
-            } else {
-                div.append(crearImg("img/weather/"+ icon.substring(0, 2) + ".svg", "", "imagen-tiempo"));
-            }
-            div.append(crearP({texto: nombreDia}))
-            .append(crearP({texto: temp}));
-            section.append(div);
-        }
-    })
-    .catch(err => {
-        console.error(err);
-    });
-    return section;
-}
+$("#copy-text").html("CopyRight &copy; " + (new Date()).getFullYear().toString());
 
 /**
  * Función que obtiene el nombre del día de la semana correspondiente a una fecha
@@ -66,4 +16,83 @@ function obtenerDiaSemana(fechaString) {
     // Obtener el día de la semana y devolverlo
     let diaSemana = fecha.getDay();
     return diasSemana[diaSemana];
+}
+
+// Función para calcular la duración entre dos horas
+function calcularDuracionRuta(horaInicio, horaFin) {
+    const inicio = new Date(horaInicio);
+    const fin = new Date(horaFin);
+    const duracionMinutos = Math.round((fin.getTime() - inicio.getTime()) / (1000 * 60)); // Convertir milisegundos a minutos y redondear
+    return `${Math.floor(duracionMinutos / 60)}h ${duracionMinutos % 60}min`; // Mostrar duración con horas y minutos
+}
+
+function convertirFormatoFechaExposicion(fecha) {
+    let fechaObj = new Date(fecha);
+    let dia = String(fechaObj.getDate()).padStart(2, '0');
+    let mes = String(fechaObj.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript empiezan desde 0
+    let año = fechaObj.getFullYear().toString().substr(-2); // Obtiene los últimos dos dígitos del año
+    return `${dia}/${mes}/${año}`;
+}
+
+/**
+ * Función genérica para poder transformar un horario de un museo en un objeto facil de manejar
+ * @param {Array<string>|string} horario Horario en formato "Tu-Su 10:00-18:00"
+ * @returns {Object} Objeto con el horario normalizado
+ */
+function normalizarFormatoHorarioMuseoJSON(horario) {
+    let dias = {
+        "Mo": "Lunes",
+        "Tu": "Martes",
+        "We": "Miércoles",
+        "Th": "Jueves",
+        "Fr": "Viernes",
+        "Sa": "Sábado",
+        "Su": "Domingo"
+    };
+    if (!Array.isArray(horario)) {
+        let [diasIngles, horas] = horario.split(" ");
+        let [horaInicio, horaFin] = horas.split("-");
+        let [diaInicio, diaFin] = diasIngles.split("-");
+        return { rango: {
+            rangoDias: {
+                diaInicio: {
+                    nombre: dias[diaInicio],
+                    día: diaInicio
+                },
+                diaFin: {
+                    nombre: dias[diaFin],
+                    día: diaFin
+                }
+            },
+            rangoHoras: {
+                horaInicio: horaInicio,
+                horaFin: horaFin
+            }
+        }};
+            
+    } else {
+        let rango =  horario.map(horario => {
+            let [diasIngles, horas] = horario.split(" ");
+            let [diaInicio, diaFin] = diasIngles.split("-");
+            return {
+                rangoDias: {
+                    diaInicio: {
+                        nombre: dias[diaInicio],
+                        día: diaInicio
+                    },
+                    diaFin: {
+                        nombre: dias[diaFin],
+                        día: diaFin
+                    }
+                },
+                rangoHoras: {
+                    horaInicio: horas.split("-")[0],
+                    horaFin: horas.split("-")[1]
+                }
+            };
+        });
+
+        return {rango: rango};
+            
+    }
 }
