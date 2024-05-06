@@ -150,6 +150,7 @@ section {
 /* Colores de los botones */
 .boton-verde {
     background-color: var(--verde-principal);
+    cursor: pointer;
 
     &:hover {
         background-color: var(--verde-hover);

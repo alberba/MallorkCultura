@@ -6,10 +6,7 @@
     - [ ] Ordenar por ascendente/descendente
     - [ ] Acabar la funcionalidad de todos los filtros
 - [ ] Añadir comentarios/valoraciones a los museos
-- [ ] Diferenciar exposiciones activas con las proximas
 - [ ] Añadir gestión del mapa con la interacción de la ruta
-- [ ] Añadir redirección Añadir Ruta desde pantalla-museo
-- [ ] Crear llamadas APIs dinámicas con la primera ubicación de la ruta
 ### JavaScript
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### JQuery
@@ -30,6 +27,12 @@
 - [ ] Añadir límite de overflow a los nombres de exposiciones --> ver en museo sa bassa blanca (alcúdia)
 
 # HECHO
+## 06/05
+- [x] Diferenciar exposiciones activas con las proximas
+- [x] Añadir redirección Añadir Ruta desde pantalla-museo
+- [x] Crear llamadas APIs dinámicas con la primera ubicación de la ruta
+- [x] Añadir todas las imágenes de museo en nuestra página web
+
 ## 01/05
 - [x] Añadir filtro buscar cerca de mí (boton de ubicación)
     - [x] Añadir botón

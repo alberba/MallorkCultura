@@ -345,27 +345,8 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://miromallorca.com/content/uploads/2024/03/pinturas-3-dep-15.jpg",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exposiciones/miro1983.webp",
                             "description": "Imagen de la exposición de 'Miró, 1983'."
-                        }
-                    },
-                    {
-                        "@type": "Event",
-                        "name": "«Joan Miró. Es cuando duermo que veo claro»",
-                        "description": "La exposición 'Joan Miró. Es cuando duermo que veo claro' que se podrá visitar a partir del 28 de abril en el Museo Archeologico Regionale della Valle de Aosta (Italia), nace de la voluntad de mostrar la vertiente más combativa del artista.\nJoan Miró muestra una gran sensibilidad con los tiempos convulsos que le toca vivir y es a partir de ahí que entabla una relación dialéctica con su contexto histórico y social. Una actitud contestataria, elaborada desde el trabajo, lejos de cámaras y afiliaciones políticas.",
-                        "eventSchedule": {
-                            "@type": "Schedule",
-                            "startDate": "2023-04-28",
-                            "endDate": "2023-10-01"
-                        },
-                        "organizer": {
-                            "@type": "Person",
-                            "name": ""
-                        },
-                        "image": {
-                            "@type": "ImageObject",
-                            "contentUrl": "https://miromallorca.com/content/uploads/2023/04/expo_aosta_paco_28abril23-11-1024x576.jpeg",
-                            "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
                         }
                     }
                 ],
@@ -383,17 +364,17 @@
                 "photo" : [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://miromallorca.com/content/uploads/2017/06/taller-ser-exterior-e1537355253732.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exterior.webp",
                         "description": "Imagen de la entrada de la fundación Miró"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://arquitecturaviva.com/assets/uploads/obras/45894/av_imagen.webp",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exterior_aereo.webp",
                         "description": "Imagen de vista aerea de la fundación Miró"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://img.remediosdigitales.com/490979/estudi/1366_2000.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/foto_expo.webp",
                         "description": "Imagen de una exposición de la fundación Miró"
                     }
                 ],
@@ -502,23 +483,18 @@
                 "photo" : [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.artgustavo.com/wp-content/uploads/2018/06/galeria-de-arte-espai-gustavo-b92-1024x840.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/espaiGustavo/entrada.webp",
                         "description": "Imagen de la entrada del espai GUSTAVO"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.artgustavo.com/wp-content/uploads/2022/06/5-1024x1024.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/espaiGustavo/interior.webp",
                         "description": "Imagen del interior"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://media-cdn.tripadvisor.com/media/photo-s/1b/60/4a/84/art.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/espaiGustavo/interior2.webp",
                         "description": "Imagen del interior"
-                    },
-                    {
-                        "@type": "ImageObject",
-                        "contentUrl": "https://www.artgustavo.com/wp-content/uploads/2021/12/d2ss0-sssssssssj4pg-1024x768.jpg",
-                        "description": "Imagen del mostrador del interior, una recepcionista y el artista"
                     }
                 ],
                 "publicAccess" : true,
@@ -562,7 +538,7 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/med-CCA2403_TheSoftness_001.JPG?etag=%2268bc4b-66150624%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=839,560",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/theSoftness.webp",
                             "description": "Imagen de la exposición THE SOFTNESS."
                         }
                     },
@@ -585,27 +561,8 @@
                         }],
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/med-CCA2403_Ignorance_10UWA.JPG?etag=%226a10fd-66150831%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=935,624",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/blissIgnorance.webp",
                             "description": "Imagen de la exposición THE BLISS OF IGNORANCE."
-                        }
-                    },
-                    {
-                        "@type": "Event",
-                        "name": "TRINE SØNDERGAARD",
-                        "description": "Selection of works from the photography exhibition 'WORKS'",
-                        "eventSchedule": {
-                            "@type": "Schedule",
-                            "startDate": "2023-07-14",
-                            "endDate": "2023-10-22"
-                        },
-                        "organizer": {
-                            "@type": "Person",
-                            "name": ""
-                        },
-                        "image": {
-                            "@type": "ImageObject",
-                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/_DSC9118.jpg?etag=%22459a1-6437c814%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=1412%2B943&extract=767%2B199%2B634%2B487&quality=85",
-                            "description": "Imagen de la exposición TRINE SØNDERGAARD"
                         }
                     },
                     {
@@ -627,7 +584,7 @@
                         }],
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://ccandratx.eu/____impro/1/onewebmedia/low_DSC3938.jpg?etag=%22757f9-65b4c8c2%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=1500,1049&quality=85",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/extrellation.webp",
                             "description": "Imagen de la exposición TRINE SØNDERGAARD"
                         }
                     }
@@ -646,22 +603,22 @@
                 "photo" : [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://ccandratx.eu/____impro/1/Residencies/01.%20View%20from%20Mountain.jpg?etag=%22123082-5d3c6802%22&sourceContentType=image%2Fjpeg&ignoreAspectRatio&resize=1180,787&extract=0,214,1180,359",
-                        "description": "Imagen de vista aerea de CCA Andratx"
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/principal.webp",
+                        "description": "Imagen del patio interior de CCA Andratx"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://xmallorca.com/mallorca-travel/uploads/2019/03/ccandratx.jpg",
-                        "description": "Imagen del jardín lateral"
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/escultura.webp",
+                        "description": "Imagen de una escultura del CCA Andratx"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.helencummins.es/wp-content/uploads/2019/07/CCA-03-1200x801.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposicion.webp",
                         "description": "Imagen de una exposición de CCA Andratx"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://tubodaenmallorca.es/wp-content/uploads/2018/03/CCCAndratx-12.jpeg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/eventoNocturno.webp",
                         "description": "Imagen nocturna de un evento en el patio interior"
                     }
                 ],
@@ -706,7 +663,7 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.msbb.org/images/exposiciones-temporales/Expo%20actual%201.jpg",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/exposiciones/marroquies.webp",
                             "description": "Imagen de una pintura de la exposición ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS, por Youssef Aït Tazarin."
                         }
                     }],
@@ -724,28 +681,23 @@
                 "photo" : [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://arquitecturaviva.com/assets/uploads/articulos/77976/av_thumb__av_imagen.webp",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/aerea.webp",
                         "description": "Imagen de vista aerea de la entrada del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://travelhiddenplaces.com/wp-content/uploads/2020/10/icono-hidden-museo-sa-bassa-blanca-msbb-fundacio-yannick-vu-ben-jakober-mallorca-1.png",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/aerea.webp",
                         "description": "Imagen de la entrada del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://phantom-expansion.unidadeditorial.es/68e3e4439e993fcdacd9c11eb5d9e9bf/crop/0x0/1300x866/resize/828/f/jpg/assets/multimedia/imagenes/2022/07/08/16572663274961.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/aerea.webp",
                         "description": "Imagen de una exposición del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://media-cdn.tripadvisor.com/media/photo-s/15/c9/ac/f0/escultura-de-granito.jpg",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/escultura-de-granito.webp",
                         "description": "Imagen de una escultura del parque de esculturas del Museo Sa Bassa Blanca"
-                    },
-                    {
-                        "@type": "ImageObject",
-                        "contentUrl": "https://www.msbb.org/media/k2/items/cache/077ab55046ce80eaf9a3ddea999597ca_Generic.jpg",
-                        "description": "Imagen de una exposición del Museo Sa Bassa Blanca"
                     }
                 ],
                 "publicAccess" : true,

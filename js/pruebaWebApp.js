@@ -206,8 +206,8 @@ function crearInfoUbi(nombreLugar, funcionAnterior){
             .append(crearDiv("contenedor-botones-museo")
                 .append($("<a>")
                     .addClass("boton boton-verde")
-                    //TODO: Cambiar esto
                     .html("Añadir a la ruta")
+                    .on("click", () => almacenarVisita(escaparComillas(lugar.areaServed.name), escaparComillas(lugar.areaServed.address.streetAddress), lugar.areaServed["@type"][1]))
                 )
                 .append($("<a>")
                     .addClass("boton boton-gris boton-comp-entrada")
@@ -266,7 +266,9 @@ function crearTuRuta(){
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
 
-    $("main").append(mostrarTiempo("Palma"));
+    let eventos = recuperarVisitas();
+    let museo = museos.find(museo => museo.areaServed.name === eventos[0].lugar);
+    $("main").append(mostrarTiempo(museo.areaServed.geo));
 
     $("main").append(crearDiv("contenedor-ruta-general mt-5", "ctdRuta")
         .append(crearDiv("vl"))
@@ -274,8 +276,7 @@ function crearTuRuta(){
     ).append(crearDiv("guardar-calendar"));
 
     mostrarRuta();
-
-    let eventos = recuperarVisitas();
+    
     let eventosGeo = eventos.map(evento => {
         let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
         console.log(museo);
@@ -638,10 +639,7 @@ function generarDivExposiciones(exposiciones) {
                     clases: "nombre",
                     texto: expo.name
                 }))
-                .append(crearP({
-                    clases: "fecha-exp",
-                    texto: expo.eventSchedule.startDate + " - " + expo.eventSchedule.endDate
-                }))
+                .append(comprobarExposicionActual(expo))
             );
         });
         let exposDiv = crearSection()
@@ -964,6 +962,26 @@ function almacenarVisita(lugar, direccion, tipo) {
 // Función para escapar las comillas simples en un texto
 function escaparComillas(texto) {
     return texto.replace(/'/g, "\\'");
+}
+
+function comprobarExposicionActual(expo) {
+    const p = $("<p>").addClass("fecha-exp");
+    
+    if(expo.eventSchedule.startDate <= new Date().toISOString() && expo.eventSchedule.endDate >= new Date().toISOString()) {
+        p.addClass("fecha-verde").text("Hasta el " + convertirFormatoFecha(expo.eventSchedule.endDate))
+    } else {
+        p.text(convertirFormatoFecha(expo.eventSchedule.startDate) + " - " + convertirFormatoFecha(expo.eventSchedule.endDate));
+    }
+
+    return p;
+}
+
+function convertirFormatoFecha(fecha) {
+    let fechaObj = new Date(fecha);
+    let dia = String(fechaObj.getDate()).padStart(2, '0');
+    let mes = String(fechaObj.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript empiezan desde 0
+    let año = fechaObj.getFullYear().toString().substr(-2); // Obtiene los últimos dos dígitos del año
+    return `${dia}/${mes}/${año}`;
 }
 
 /* --- FUNCIONES GENÉRICAS --- */

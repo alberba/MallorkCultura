@@ -1,12 +1,12 @@
 /**
  * Función que genera el contenido de la sección tiempo de la página ruta
- * @param {String} pueblo Pueblo del que se quiere obtener el tiempo
+ * @param {Object} geo Objeto geo con las coordenadas de la ubicación actual
  * @returns {JQuery<HTMLElement>} Elemento HTML con el contenido de la sección tiempo
  */
-function mostrarTiempo(pueblo) {
+function mostrarTiempo(geo) {
     let section = crearSection().addClass("contenedor-tiempo");
     //TODO: Cambiar la URL de la API para obtener el tiempo de un pueblo concreto
-    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=39.571625&lon=2.650544&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
+    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=' + geo.latitude + '&lon=' + geo.longitude + '&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
     "method": "GET",
     "headers": {
         "Content-Type": "application/json"
