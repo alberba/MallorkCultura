@@ -79,8 +79,9 @@ function cambiarUbicacionesPorNombre(nombre) {
 
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { if (nombre === "" || museo.areaServed.name === nombre)
-        contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+    museos.forEach(museo => { if (nombre === "" || museo.areaServed.name === nombre){
+            contenedorUbicaciones.append(crearTarjetaUbicacion(crearDondeVisitar,museo));
+        }
     });
 }
 
