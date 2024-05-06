@@ -6,7 +6,7 @@
 function mostrarTiempo(pueblo) {
     let section = crearSection().addClass("contenedor-tiempo");
     //TODO: Cambiar la URL de la API para obtener el tiempo de un pueblo concreto
-    fetch('https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/3.0/onecall?lat=39.571625&lon=2.650544&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
+    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=39.571625&lon=2.650544&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
     "method": "GET",
     "headers": {
         "Content-Type": "application/json"

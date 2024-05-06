@@ -8,9 +8,9 @@
 - [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Diferenciar exposiciones activas con las proximas
 - [ ] Añadir gestión del mapa con la interacción de la ruta
-- [ ] Arreglar spech API (solo lee el título sin la info)
+- [ ] Añadir redirección Añadir Ruta desde pantalla-museo
+- [ ] Crear llamadas APIs dinámicas con la primera ubicación de la ruta
 ### JavaScript
-- [ ] Comentar el código
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
@@ -20,7 +20,8 @@
 ### APIs
 - [ ] Google Maps API  
     - [ ] Actualizar el mapa al activar filtros de ubicaciones
-    
+- [ ] API Geolocalización
+    - [ ] Añadir solicitud de acceso a la ubicación del dispositivo
 ### Multimedia
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro

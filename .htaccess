@@ -7,6 +7,12 @@ RewriteRule ^ /%1 [NC,L,R]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^ %{REQUEST_URI}.html [NC,L]
 
+RewriteCond %{HTTP_HOST} ^mallorkcultura.com [NC]
+RewriteRule ^(.*)$ https://www.mallorkcultura.com/$1 [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^mallorkcultura.com/index [NC]
+RewriteRule ^(.*)$ https://www.mallorkcultura.com/ [L,R=301]
+
 #Redirection code starts
 
 RewriteEngine On
