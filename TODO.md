@@ -1,6 +1,18 @@
 # Todo List
+
+## 2a Presentación
+- [ ] Filtro museos
+    - [ ] Ordenar por ascendente/descendente
+- [ ] Añadir comentarios/valoraciones a los museos
+## 3a Presentación
+- [ ] Añadir multimedia propia
+- [ ] Añadir web semántica (tema de ld-json y no se qué)
+- [ ] Añadir google analytics
+- [ ] Añadir json externos
+- [ ] Acabar pantalla de contacto
 ### JavaScript
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
+- [ ] Mostrar solo los pueblos que tengan ubicaciones
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
@@ -20,6 +32,11 @@
 - [ ] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
 - [ ] Google Maps API
     - [ ] Cuando eliminas un museo de la ruta, que se elimine del mapa
+
+### Tu ruta
+- [ ] añadir selección de día para la ruta
+- [ ] bloquear solapamiento de horas
+- [ ] popups al eliminar/meter/guardar cosas/ruta
 
 # HECHO
 ## 06/05
