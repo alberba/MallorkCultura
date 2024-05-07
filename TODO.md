@@ -1,21 +1,25 @@
 # Todo List
-
-## 2a Presentación
-- [ ] Filtro museos
-    - [ ] Ordenar por ascendente/descendente
-- [ ] Añadir comentarios/valoraciones a los museos
 ### JavaScript
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
-### APIs
-
-### Multimedia
+## 3a Presentación
+- [ ] Meter google analytics
+- [ ] Meter popup añadir a ruta
+- [ ] Filtro museos
+    - [ ] Ordenar por ascendente/descendente
+    - [ ] Filtros independientes
+- [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
+- [ ] Añadir popup añadido Calendar
+- [ ] Al añadir al calendar, vaciar la ruta
+- [ ] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
+- [ ] Google Maps API
+    - [ ] Cuando eliminas un museo de la ruta, que se elimine del mapa
 
 # HECHO
 ## 06/05

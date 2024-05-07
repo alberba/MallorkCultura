@@ -1,4 +1,5 @@
-// TODO: Hacer que funcionen
+let tipoBusqueda;
+let posicionUsuario;
 /**
  *  Función que se encarga de crear el Filtro de la pantalla de búsqueda. También
  *  manejará los eventos de los filtros
@@ -18,18 +19,28 @@ function crearFiltros() {
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
             .append(crearLabel("busqueda-nombre","Búsqueda por nombre"))
             .append(crearInput("search","nombre","busqueda-nombre","","Buscar museo")
+                // @ts-ignore
                 .on("change", () => cambiarUbicacionesPorNombre($("#busqueda-nombre").val())))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input texto dirección
             .append(crearLabel("","Búsqueda por cercanía a"))
             .append(crearInput("search","","busqueda-cercania","","Dirección")
-                .on("change", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()))))
+                .on("change", () => {
+                    tipoBusqueda = 0;
+                    cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()))
+                }))
         )
         .append(crearDiv("elemento-filtro-museo")   // Input radio de búsqueda
             .append(crearLabel("","Radio de búsqueda"))
             .append(crearDiv("contenedor-range")
                 .append(crearInput("range","","busqueda-radio")
-                    .on("mouseup", () => cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val())))
+                    .on("mouseup", () => {
+                        if(tipoBusqueda == 0) {
+                            cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()));
+                        } else if(tipoBusqueda == 1) {
+                            success(posicionUsuario, Number($("#busqueda-radio").val()));
+                        }
+                    })
                     .on("input", function() {
                         let valor = $(this).val();
                         $(".texto-range").text(valor + "Km");
@@ -44,6 +55,7 @@ function crearFiltros() {
         .append(crearDiv("elemento-filtro-museo")   // Input texto nombre
                 .append(crearLabel("dia-visita","Día de visita"))
                 .append(crearInput("date","","dia-visita")
+                    // @ts-ignore
                     .on("change", () => cambiarUbicacionesPorDiaDeVisita($("#dia-visita").val())))
         )
         .append(crearDiv("elemento-filtro-museo")
@@ -65,7 +77,10 @@ function crearFiltros() {
         )
         .append(crearDiv("elemento-filtro-museo")
                     .append(crearBoton("Buscar cerca de mí","buscarCercaDeMi","boton boton-verde")
-                                .on("click",() => cambiarUbicacionesCercaUsuario())
+                                .on("click",() => {
+                                    tipoBusqueda = 1;
+                                    cambiarUbicacionesCercaUsuario(Number($("#busqueda-radio").val()))
+                                })
                             ) 
                 );
     filtros.append(camposFiltros);
@@ -124,7 +139,6 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
         });
 
         if(museosNuevos.length >= 0) {
-            console.log(museosNuevos);
             actualizarMarkerMaps(museosNuevos);
         }
     });
@@ -293,14 +307,16 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
 /**
  * Función que muestra aquellas ubicaciones en un rango de 10 km respecto al usuario usando la geolocalización del navegador
  */
-function cambiarUbicacionesCercaUsuario() {
+function cambiarUbicacionesCercaUsuario(rango) {
     let geoLocator = navigator.geolocation;
-    geoLocator.getCurrentPosition(success);
+    geoLocator.getCurrentPosition(function(position) {
+        posicionUsuario = position
+        success(position, rango);
+    });
 }
 
-function success(pos) {
-    $("#busqueda-radio").val(10);
-    $(".texto-range").html("10Km");
+function success(pos, rango) {
+    console.log(pos);
     let coordsAux = pos.coords;
     let coords = {
         lat: coordsAux.latitude,
@@ -315,14 +331,13 @@ function success(pos) {
             lat: museo.areaServed.geo.latitude,
             lng: museo.areaServed.geo.longitude
         };
-        if (calcularDistancia(coords, coordsMuseo) <= 10) {
+        if (calcularDistancia(coords, coordsMuseo) <= rango) {
             contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
         }
     });
 
     if(museosNuevos.length >= 0) {
-        console.log(museosNuevos);
         actualizarMarkerMaps(museosNuevos);
     }
 }
