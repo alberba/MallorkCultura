@@ -74,36 +74,78 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearSelectorPagina());
 }
 
+function crearTarjetasUbicacionesPaginaActual(){
+    let contenedorMuseo = $(".contenedor-museos");
+    contenedorMuseo.empty();
+    for(let i=paginaActual*museosPorPagina; i < museos.length && i < (paginaActual+1)*museosPorPagina; i++){
+        contenedorMuseo.append(crearTarjetaUbicacion(museos[i], crearPantallaUbicaciones));
+    }
+}
+
 function modificarPaginacion() {
     // Obtener el elemento paginacion
-    var paginacion = $(".paginacion");
+    var paginacion = $("#paginacion");
 
-    if(Math.ceil(museos.length/museosPorPagina) < 2){
-        $("main").remove(".paginacion");
+    if (Math.ceil(museos.length / museosPorPagina) < 2) {
+        paginacion.remove();
         return;
     }
 
     paginacion.empty();
 
     // Obtener los botones de página anterior y página siguiente
-    var prevButton = crearImg("img/svg/prev-page-arr.svg", "Página anterior");
-    var nextButton = crearImg("img/svg/next-page-arr.svg", "Página siguiente");
-
-    paginacion.add(prevButton);
-    if(Math.ceil(museos.length/museosPorPagina) <= 4){
-        for(let i = 1; i == Math.ceil(museos.length/museosPorPagina); i++){
-            var span = crearSpan("",i.toString()).click(function() {
-                paginaActual = i;
-            });
-            paginacion.append(span);
-
-        }
-    }
+    var prevButton = crearBoton("");
+    prevButton.append(crearImg("img/svg/prev-page-arr.svg", "Página anterior"));
+    var nextButton = crearBoton("");
+    nextButton.append(crearImg("img/svg/next-page-arr.svg", "Página siguiente"));
 
     // Añadir evento onclick a los botones
-    prevButton.click(function() {
+    prevButton.on('click', function () {
+        alert("Has clicado anterior");
+        if (paginaActual > 0) {
+            paginaActual--;
+            crearTarjetasUbicacionesPaginaActual();
+        }
     });
 
-    nextButton.click(function() {
+    nextButton.on('click', function () {
+        if (paginaActual < Math.ceil(museos.length / museosPorPagina) - 1) {
+            paginaActual++;
+            crearTarjetasUbicacionesPaginaActual();
+        }
     });
+
+    paginacion.append(prevButton);
+
+    var totalPaginas = Math.ceil(museos.length / museosPorPagina);
+
+    if (totalPaginas <= 4) {
+        for (let i = 1; i <= totalPaginas; i++) {
+            var span = crearSpan("", i.toString()).on('click', function () {
+                paginaActual = i - 1;
+                crearTarjetasUbicacionesPaginaActual();
+            });
+            paginacion.append(span);
+        }
+    } else {
+        for (let i = 1; i <= 3; i++) {
+            var span = crearSpan("", i.toString()).on('click', function () {
+                paginaActual = i - 1;
+                crearTarjetasUbicacionesPaginaActual();
+            });
+            paginacion.append(span);
+        }
+        paginacion.append(crearP({
+            clases: "",
+            texto: ".."
+        }));
+        var lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
+            paginaActual = totalPaginas - 1;
+            crearPantallaUbicaciones();
+        });
+        paginacion.append(lastPage);
+    }
+
+    paginacion.append(nextButton);
 }
+

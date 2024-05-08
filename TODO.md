@@ -4,19 +4,39 @@
 - [ ] Filtro museos
     - [ ] Ordenar por ascendente/descendente
 - [ ] Añadir comentarios/valoraciones a los museos
+## 3a Presentación
+- [ ] Añadir multimedia propia
+- [ ] Añadir web semántica (tema de ld-json y no se qué)
+- [ ] Añadir google analytics
+- [ ] Añadir json externos
+- [ ] Acabar pantalla de contacto
 ### JavaScript
 - [ ] Ordenar las funciones de "pruebaWebApp.js"
+- [ ] Mostrar solo los pueblos que tengan ubicaciones
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
     - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
-### APIs
-- [ ] API Geolocalización
-    - [ ] Añadir solicitud de acceso a la ubicación del dispositivo
-### Multimedia
+## 3a Presentación
+- [ ] Meter google analytics
+- [ ] Meter popup añadir a ruta
+- [ ] Filtro museos
+    - [ ] Ordenar por ascendente/descendente
+    - [ ] Filtros independientes
+- [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
+- [ ] Añadir popup añadido Calendar
+- [ ] Al añadir al calendar, vaciar la ruta
+- [ ] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
+- [ ] Google Maps API
+    - [ ] Cuando eliminas un museo de la ruta, que se elimine del mapa
+
+### Tu ruta
+- [ ] añadir selección de día para la ruta
+- [ ] bloquear solapamiento de horas
+- [ ] popups al eliminar/meter/guardar cosas/ruta
 
 # HECHO
 ## 06/05
