@@ -33,11 +33,11 @@ function mostrarTiempo(geo) {
             let icon = dia.weather[0].icon;
 
             if (icon.substring(0, 2) == "01" || icon.substring(0, 2) == "02") {
-                div.append(crearImg("img/weather/" + icon + ".svg", "", "imagen-tiempo"));
+                div.append(crearImg("img/svg/weather/" + icon + ".svg", "", "imagen-tiempo"));
             } else if (icon.substring(0, 2) == "09" || icon.substring(0, 2) == "10") {
-                div.append(crearImg("img/weather/09.svg", "", "imagen-tiempo"));
+                div.append(crearImg("img/svg/weather/09.svg", "", "imagen-tiempo"));
             } else {
-                div.append(crearImg("img/weather/"+ icon.substring(0, 2) + ".svg", "", "imagen-tiempo"));
+                div.append(crearImg("img/svg/weather/"+ icon.substring(0, 2) + ".svg", "", "imagen-tiempo"));
             }
             div.append(crearP({texto: nombreDia}))
             .append(crearP({texto: temp}));
