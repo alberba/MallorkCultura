@@ -469,6 +469,8 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 5rem;
+    margin: 3rem auto;
+    font-display: optional;
 }
 
 .pueblo {
@@ -1123,10 +1125,11 @@ input[type="radio"] {
     margin-right: auto;
     margin-bottom: 2rem;
     width: 45%;
+    font-display: optional;
 }
 
 .contenido-footer {
-    margin: 0 auto;
+    margin-bottom: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

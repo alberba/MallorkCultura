@@ -37,13 +37,12 @@ fetch(jsonUrlComponentes)
 
 /* --- Eventos de botones --- */
 // Rehacer la página principal
-$("#logo").on("click", crearDondeVisitar);
-
-$("#queVisitar").on("click", crearPantallaUbicaciones);
-
-$("#tuRuta").on("click", crearTuRuta);
-
-$("#Contacto").on("click", crearContacto);
+$(() => {
+    $("#logo").on("click", crearDondeVisitar);
+    $("#queVisitar").on("click", crearPantallaUbicaciones);
+    $("#tuRuta").on("click", crearTuRuta);
+    $("#Contacto").on("click", crearContacto);
+});
 
 /* --- --- */
 
@@ -59,7 +58,9 @@ function crearDondeVisitar() {
     // se elimine y no se quede en la página principal
     $("header > div").remove();
     $("header").append(crearDiv("overlay header-image")
-        .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay"))
+        .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay")
+            .attr("sizes", "100vw")
+            .attr("srcset", "img/main.webp 2560w, img/main-2290.webp 2290w, img/main-1990.webp 1990w, img/main-1640.webp 1640w, img/main-1180.webp 1180w, img/main-300.webp 300w"))
         .append(crearDiv("texto-main-page texto-overlay m-0")
             .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
             .append(crearP({texto: "Planifica tu ruta ya"}))
@@ -144,7 +145,7 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
 
 //función específica - ¿Dónde visitar? --> Pensar en sustituirla
 function crearContenedorPueblos() {
-    return $("<div>").attr("class", "contenedor-pueblos my-5");
+    return $("<div>").attr("class", "contenedor-pueblos");
 }
 
 /**
@@ -154,7 +155,7 @@ function crearContenedorPueblos() {
  */
 function crearBotonPueblo (pueblo) {
     let nuevoBotonPueblo = $("<button>")
-    .addClass("pueblo overlay col-lg-4")
+    .addClass("pueblo overlay")
     .on("click",() => crearUbicacionesPueblo(pueblo.name));
     $(nuevoBotonPueblo)
         .append(
