@@ -1,7 +1,16 @@
 /**
  * Función que se encarga de crear la pantalla de la ruta
  */
-function crearTuRuta(){
+function crearTuRuta(funcionAnterior){
+    if(funcionAnterior !== null){
+        // @ts-ignore
+        Swal.fire({
+            title: '¡Ruta guardada!',
+            text: 'Se han guardado los eventos en Google Calendar',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    }
     window.scrollTo(0, 0);
     // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
     // de portada de la pantalla principal, se elimine
@@ -111,7 +120,16 @@ function mostrarRuta() {
                         .append($('<h5>').text(evento.lugar))
                         .append(crearBoton("", "", "no-style-button cruz-ruta")
                             .append(crearImg("img/svg/cruz.svg", "Símbolo de cruz para tachar un museo de la ruta", ""))
-                            .on("click", () => eliminarMuseoRuta(index))
+                            .on("click", () => {
+                                eliminarMuseoRuta(index);
+                                let eventosActualizado = recuperarVisitas();
+                                let eventosGeo = eventosActualizado.map(evento => {
+                                    let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+                                    return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
+                                });
+                                console.log(eventosGeo);
+                                actualizarRouteMaps(eventosGeo);
+                            })
                         )
                 );
 
@@ -255,11 +273,4 @@ function eliminarMuseoRuta(index) {
 function recuperarVisitas() {
     const visitas = localStorage.getItem('visitas');
     return visitas ? JSON.parse(visitas) : [];
-}
-
-// Función para guardar la ruta en el calendario
-function guardarRuta(){
-    alert("CHECKPOINT 1, se ha autorizado el uso de Google Calendar");
-    crearEventosCalendario();
-    alert("CHECKPOINT 2, se han creado los eventos en Google Calendar");
 }

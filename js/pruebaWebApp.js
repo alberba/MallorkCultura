@@ -40,7 +40,7 @@ fetch(jsonUrlComponentes)
 $(() => {
     $("#logo").on("click", crearDondeVisitar);
     $("#queVisitar").on("click", crearPantallaUbicaciones);
-    $("#tuRuta").on("click", crearTuRuta);
+    $("#tuRuta").on("click", () => crearTuRuta(null));
     $("#Contacto").on("click", crearContacto);
 });
 
