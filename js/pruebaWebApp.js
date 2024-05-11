@@ -9,14 +9,6 @@ let componentes;
 let speechSynthesisActivado = false;
 let paginaActual;
 
-// leer json de museos
-fetch(jsonUrlMuseos)
-    .then(response => response.json())
-    .then(data => {
-        museos = data.servicios;
-    })
-    .catch(error => console.error("Error al cargar los datos del JSON:", error));
-
 // leer json de pueblos
 fetch(jsonUrlPueblos)
     .then(response => response.json())
@@ -24,6 +16,14 @@ fetch(jsonUrlPueblos)
         pueblos = data.cities;
         // Se llama a la función desde aquí para no tener que esperar a que se cargue el JSON
         crearDondeVisitar();
+    })
+    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+
+// leer json de museos
+fetch(jsonUrlMuseos)
+    .then(response => response.json())
+    .then(data => {
+        museos = data.servicios;
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
