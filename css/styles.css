@@ -799,8 +799,6 @@ nav {
     width: 100%;
     max-height: 380px;
     object-fit: cover;
-    object-position: top;
-    z-index: 0;
 }
 
 .boton-slide {
@@ -816,6 +814,16 @@ nav {
 
 .boton-slide.derecha {
     right: 0%;
+}
+
+aside {
+    & p {
+        margin: 0;
+    }
+
+    & div {
+        margin-bottom: 1rem;
+    }
 }
 /* -- Museo -- */
 

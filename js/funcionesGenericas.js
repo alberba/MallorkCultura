@@ -23,7 +23,11 @@ function crearArticle(clases = "") {
  * @returns {JQuery<HTMLElement>} Un elemento header
  */
 function crearHeader(clases = "") {
-    return $("<header>").addClass(clases);
+    if(clases === "") {
+        return $("<header>");
+    } else {
+        return $("<header>").addClass(clases);
+    }
 }
 
 /**
@@ -69,7 +73,11 @@ function crearHr() {
  * @returns {JQuery<HTMLElement>} Un elemento div
  */
 function crearDiv(clases = "", id="") {
-    return $("<div>").addClass(clases).attr("id",id);
+    if(id === "") {
+        return $("<div>").addClass(clases);
+    } else {
+        return $("<div>").addClass(clases).attr("id",id);
+    }
 }
 
 /**

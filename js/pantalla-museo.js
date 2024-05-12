@@ -13,7 +13,11 @@ function crearPantallaMuseo(nombreLugar, funcionAnterior){
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
         .append(crearDiv("contenedor-titulo-museo")
-            .append($("<h2>").addClass("m-0 titulo-museo").attr("id", "titulo-museo").html(lugar.areaServed.name))
+            .append($("<h2>")
+                .addClass("m-0 titulo-museo")
+                .attr("id", "titulo-museo")
+                .attr("property","name")
+                .html(lugar.areaServed.name))
         )
     );
 
@@ -28,6 +32,13 @@ function crearPantallaMuseo(nombreLugar, funcionAnterior){
     $("main").empty()
         .attr("class","contenedor-principal info-museo")
         .append(crearBotonAtras(funcionAnterior));
+    
+    $("body").prepend(crearDiv()
+        .attr("vocab","http://schema.org/")
+        .attr("typeof", lugar["@type"])
+        .append($("header"))
+        .append($("main"))
+    );
 
     // Creación del slider de imágenes
     $("main").append(crearDiv("swiper mySwiper slider-imagen-museo")
@@ -85,10 +96,12 @@ function crearPantallaMuseo(nombreLugar, funcionAnterior){
  * @returns {JQuery<HTMLElement>} Un elemento div con el swipper de imagenes
  */
 function generarCarrousselFotos(fotos) {
-    let carrousselFotos = crearDiv("swiper-wrapper");
+    let carrousselFotos = crearDiv("swiper-wrapper").attr("property","photos");
     fotos.forEach(foto => {
         carrousselFotos.append(crearDiv("swiper-slide")
-            .append(crearImg(foto.contentUrl, foto.description, "imagen-museo"))
+            .append(crearImg(foto.contentUrl, foto.description, "imagen-museo")
+                .attr("property","photo")
+                .attr("typeof","ImageObject"))
         );
     });
     return carrousselFotos;
@@ -100,7 +113,7 @@ function generarCarrousselFotos(fotos) {
  * @returns {JQuery<HTMLElement>} Un elemento article con la información del lugar
  */
 function crearArticuloMuseo(lugar) {
-    let articulo = crearArticle("main-museo");
+    let articulo = crearArticle("main-museo").attr("property", "description");
     lugar.areaServed.description.split("\n").forEach((parrafo, index) => {
         if(index === 0) {
             articulo.append(crearP({
@@ -132,11 +145,17 @@ function generarDivExposiciones(exposiciones) {
         exposiciones.forEach(expo => {
             expos.append($("<li>")
                 .addClass("exposicion swiper-slide")
-                .append(crearImg(expo.image.contentUrl, expo.image.description))
-                .append(crearP({
-                    clases: "nombre",
-                    texto: expo.name
-                }))
+                .attr("property", "event")
+                .attr("typeof", "Event")
+                .append(crearImg(expo.image.contentUrl, expo.image.description)
+                    .attr("property", "image"))
+                .append(
+                    crearP({
+                        clases: "nombre",
+                        texto: expo.name
+                    })
+                    .attr("property", "name")
+                )
                 .append(comprobarExposicionActual(expo))
             );
         });
@@ -161,26 +180,12 @@ function generarDivExposiciones(exposiciones) {
 function generarAsideMuseo(lugar) {
     let aside = $("<aside>");
     aside.append(crearDiv()
+        .attr("property", "openingHours")
         .append($("<h5>").html("Horario"))
-        .append(crearP({
-            clases: "",
-            texto: crearFechasHorarioLugar(lugar.areaServed.openingHours)
-        }))
+        .append(crearFechasHorarioLugar(lugar.areaServed.openingHours))
     )
-    .append(crearDiv()
-        .append($("<h5>").html("Dirección"))
-        .append(crearP({
-            clases: "",
-            texto: crearTextoDirecciónLugar(lugar)
-        }))
-    )
-    .append(crearDiv()
-        .append($("<h5>").html("Precios"))
-        .append(crearP({
-            clases: "",
-            texto: crearTextoPreciosLugar(lugar.hasOfferCatalog)
-        }))
-    );
+    .append(crearTextoDirecciónLugar(lugar))
+    .append(crearTextoPreciosLugar(lugar.hasOfferCatalog));
 
     return aside;
 }
@@ -188,9 +193,10 @@ function generarAsideMuseo(lugar) {
 /**
  * Función que formatea el horario de un lugar del JSON a un formato indicado para la página web
  * @param {Array<string>|string} horario 
- * @returns {string} El horario formateado
+ * @returns {JQuery<HTMLElement>} Un elemento div con el horario del lugar
  */
 function crearFechasHorarioLugar(horario) {
+    let contenedor = crearDiv();
     let rangoDias = normalizarFormatoHorarioMuseoJSON(horario);
     let horarioEspañol = rangoDias.map(rango => {
         if(rango.rangoDias.diaFin.nombre) {
@@ -199,10 +205,17 @@ function crearFechasHorarioLugar(horario) {
             return `${rango.rangoDias.diaInicio.nombre}: ${rango.rangoHoras.horaInicio} - ${rango.rangoHoras.horaFin}`;
         }
     });
+
     if(horarioEspañol.length > 1) {
-        return horarioEspañol.join("<br>");
+        for(let i = 0; i < horarioEspañol.length; i++) {
+            contenedor.append($("<p>").html(horarioEspañol[i])
+                .attr("content", horario[i]));
+        }
+        return contenedor;
     } else {
-        return horarioEspañol[0];
+        return $("<p>").html(horarioEspañol[0])
+            // @ts-ignore
+            .attr("content", horario);
     }
 }
 
@@ -213,10 +226,15 @@ function crearFechasHorarioLugar(horario) {
  */
 function crearTextoDirecciónLugar(lugar) {
     let direccion = lugar.areaServed.address;
-    return `${direccion.streetAddress} <br>
-            ${direccion.postalCode} ${direccion.addressLocality} <br>
-            ${lugar.areaServed.telephone.replace("+34", "").replace(/(\d{3})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")} <br>
-            ${direccion.email}`;
+    return crearDiv()
+        .attr("property", "address")
+        .attr("typeof", "PostalAddress")
+        .append($("<h5>").html("Dirección"))
+        .append($("<p>").html(direccion.streetAddress)).attr("property", "streetAddress")
+        .append(crearDiv().html(`${direccion.postalCode} ${direccion.addressLocality}`)
+            .attr("property", "addressLocality")
+            .append($("<meta>").attr("property", "postalCode").attr("content", direccion.postalCode))
+            .append($("<meta>").attr("property", "addressLocality").attr("content", direccion.addressLocality)));
 }
 
 /**
@@ -225,22 +243,32 @@ function crearTextoDirecciónLugar(lugar) {
  * @returns 
  */
 function crearTextoPreciosLugar(catalogoOfertas) {
+    const contenedor = $("<div>")
+        .append($("<h5>").html("Precios"));
     if (!catalogoOfertas) {
-        return "Entrada general: Gratuito"
+        contenedor.append($("<p>").html("Entrada general: Gratuito"));
+        return contenedor;
     }
-    let ofertas = catalogoOfertas.itemListElement.map(offer => {
+    contenedor.attr("property", "hasOfferCatalog").attr("typeof", "OfferCatalog");
+    contenedor.append($("<div>").attr("property", "itemListElement"));
+    let ofertas = catalogoOfertas.itemListElement.forEach(offer => {
         let precio = parseFloat(offer.price);
+        let contenedorPrecio = $("<p>").attr("typeof", "Offer");
         if (precio === 0) {
-            return `${offer.itemOffered.name}: Gratuito`;
+            contenedorPrecio.html(`${offer.itemOffered.name}: Gratuito`);
         } else if (Number.isInteger(precio)) {
-            return `${offer.itemOffered.name}: ${precio}€`;
+            contenedorPrecio.html(`${offer.itemOffered.name}: ${precio}€`);
         } else {
-            return `${offer.itemOffered.name}: ${precio.toFixed(2)}€`;
+            contenedorPrecio.html(`${offer.itemOffered.name}: ${precio.toFixed(2)}€`);
         }
-        
+        contenedorPrecio
+            .append($("<meta>").attr("property", "price").attr("content", offer.price))
+            .append($("<div>").attr("property", "itemOffered").attr("typeof", "Product")
+                .append($("<meta>").attr("property", "name").attr("content", offer.itemOffered.name)));
+        contenedor.append(contenedorPrecio);
     });
     // Une el array de String a un único String con saltos de línea
-    return ofertas.join("<br>");
+    return contenedor;
 }
 
 // Método para el funcionamiento del botón de leer más en pantalla-museo
@@ -262,4 +290,21 @@ function primerParrafoVisible() {
     const primerParrafo = $("#first-desc-museum");
     //@ts-ignore
     return primerParrafo.offset().top >= $(window).scrollTop();
+}
+
+function comprobarExposicionActual(expo) {
+    const contenedor = $("<div>").attr("property", "eventSchedule").attr("typeof", "Schedule");
+    const p = $("<p>").addClass("fecha-exp").attr("property", "eventSchedule");
+    
+    
+    if(expo.eventSchedule.startDate <= new Date().toISOString() && expo.eventSchedule.endDate >= new Date().toISOString()) {
+        p.addClass("fecha-verde").text("Hasta el " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate))
+    } else {
+        p.text(convertirFormatoFechaExposicion(expo.eventSchedule.startDate) + " - " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate));
+    }
+    contenedor.append(p)
+    .append($("<meta>").attr("property", "startDate").attr("content", expo.eventSchedule.startDate))
+    .append($("<meta>").attr("property", "endDate").attr("content", expo.eventSchedule.endDate));
+
+    return contenedor;
 }

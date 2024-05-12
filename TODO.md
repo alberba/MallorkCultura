@@ -1,7 +1,10 @@
 # Todo List
 
 ## 3a Presentación
-- [ ] Añadir web semántica (tema de ld-json y no se qué)
+- [ ] Web Semántica
+    - [x] Añadir microdatos a pantalla-museo
+    - [ ] Añadir microdatos a pantalla-museos
+    - [ ] Añadir microdatos a pantalla inicial
 - [ ] Añadir google analytics
 - [ ] Añadir json externos
 
