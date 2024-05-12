@@ -5,7 +5,6 @@
  */
 function mostrarTiempo(geo) {
     let section = crearSection().addClass("contenedor-tiempo");
-    //TODO: Cambiar la URL de la API para obtener el tiempo de un pueblo concreto
     fetch('https://api.openweathermap.org/data/3.0/onecall?lat=' + geo.latitude + '&lon=' + geo.longitude + '&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
     "method": "GET",
 })
