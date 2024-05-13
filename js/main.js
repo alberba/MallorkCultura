@@ -1,3 +1,6 @@
+const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
+const museosPorPagina = 9;
+
 let speechSynthesisActivado = false;
 let paginaActual;
 
@@ -6,8 +9,8 @@ let paginaActual;
  * dinámicamente de la web a partir de la URL
  */
 function cargarContenido() {
-    let url = window.location.pathname.split("?");
-    switch(url[0]) {
+    let url = window.location.pathname;
+    switch(url) {
         case "/":
             crearDondeVisitar();
             break;

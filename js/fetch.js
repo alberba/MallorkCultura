@@ -1,5 +1,4 @@
-const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
-const museosPorPagina = 9;
+
 const jsonUrlMuseos = "json/museosMallorkCultura.json";
 const jsonUrlPueblos = "json/pueblos.json";
 const jsonUrlComponentes = "json/componentes.json";

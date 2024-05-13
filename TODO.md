@@ -8,6 +8,10 @@
 - [ ] Añadir google analytics
 - [ ] Añadir json externos
 
+### SPA
+- [ ] Arreglar error de botón atrás(No cambia la url)
+- [ ] Arreglar error al ir a los museos de una ciudad
+
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
