@@ -1,53 +1,43 @@
-const jsonUrlMuseos = "json/museosMallorkCultura.json";
-const jsonUrlPueblos = "json/pueblos.json";
-const jsonUrlComponentes = "json/componentes.json";
-const centroMallorca = {lat: 39.61809784502291, lng: 2.9967532462301167};
-const museosPorPagina = 9;
-let museos;
-let pueblos;
-let componentes;
 let speechSynthesisActivado = false;
 let paginaActual;
 
-// leer json de pueblos
-fetch(jsonUrlPueblos)
-    .then(response => response.json())
-    .then(data => {
-        pueblos = data.cities;
-        // Se llama a la función desde aquí para no tener que esperar a que se cargue el JSON
-        crearDondeVisitar();
-    })
-    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+/**
+ * Función que se encarga de llamar a las funciones para generar el contenido 
+ * dinámicamente de la web a partir de la URL
+ */
+function cargarContenido() {
+    let url = window.location.pathname.split("?");
+    switch(url[0]) {
+        case "/":
+            crearDondeVisitar();
+            break;
+        case "/queVisitar":
+            let pueblo = window.location.search.substring(1);
+            if (pueblo) {
+                crearUbicacionesPueblo(pueblo);
+            } else {
+                crearPantallaUbicaciones();
+            }
+            break;
+        case "/tuRuta":
+            crearTuRuta(null);
+            break;
+        case "/contacto":
+            crearContacto();
+            break;
+        default:
+            crearDondeVisitar();
+            break;
+    }
 
-// leer json de museos
-fetch(jsonUrlMuseos)
-    .then(response => response.json())
-    .then(data => {
-        museos = data.servicios;
-    })
-    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+}
 
-// leer json de componentes
-fetch(jsonUrlComponentes)
-    .then(response => response.json())
-    .then(data => {
-        componentes = data.personas;
-    })
-    .catch(error => console.error("Error al cargar los datos del JSON:", error));
+cargarContenido();
+crearFooter();
 
-/* --- Eventos de botones --- */
-// Rehacer la página principal
-$(() => {
-    $("#logo").on("click", crearDondeVisitar);
-    $("#queVisitar").on("click", crearPantallaUbicaciones);
-    $("#tuRuta").on("click", () => crearTuRuta(null));
-    $("#Contacto").on("click", crearContacto);
-});
+// Manejar los enlaces en caso de que se de click a los botones de la barra de navegación
+window.addEventListener('popstate', cargarContenido);
 
-/* --- --- */
-
-
-/* --- Funciones "creadoras" --- */
 /**
  * Función que se encarga de crear la pantalla principal de la web
  */
@@ -73,13 +63,33 @@ function crearDondeVisitar() {
     $("main").append(crearHr());
     let section = crearSection ();
     let div = crearContenedorPueblos();
-    $(section).append(div);
     for(let i = 0; i < 9; i++) {
         div.append(crearBotonPueblo(pueblos[i]));
     }
+    $(section).append(div);
     $("main").append(section);
     $("main").append(crearBotonVerMas_Pueblos());
     $("main").append(crearHr());
+}
+
+/**
+ * Función que se encarga de crear el footer de la página
+ */
+function crearFooter() {
+    $("body").append(
+        $("<footer>")
+            .addClass("pie-pagina")
+            .append(crearHr())
+            .append(
+                $("<div>").addClass("contenido-footer")
+                    .append(
+                        $("<div>").addClass("texto-footer")
+                            .append($("<p>").attr("id","copy-text").html("Copyright"))
+                            .append($("<p>").html("Todos los derechos reservados"))
+                    )
+                    .append($("<a>").attr("href", "/contacto").attr("id","Contacto").html("Contacto"))
+            )
+        );
 }
 
 function speechDescription(titulo, descripcion) {
@@ -101,48 +111,6 @@ function speechDescription(titulo, descripcion) {
 
 /* --- Funciones específicas --- */
 
-/**
- * Funcion que elimina un evento de la ruta
- * @param index indice del evento a eliminar 
- */
-function eliminarMuseoRuta(index) {
-    const eventos = recuperarVisitas();
-    eventos.splice(index, 1); // Eliminar el evento correspondiente al índice
-    localStorage.setItem('visitas', JSON.stringify(eventos)); // Actualizar el localStorage
-    mostrarRuta(); // Mostrar la ruta actualizada
-}
-
-/**
- * Función que recupera el array de objetos evento si existe, sino devuelve un array vacío
- * @returns devuelve un array de objetos evento
- */
-function recuperarVisitas() {
-    const visitas = localStorage.getItem('visitas');
-    return visitas ? JSON.parse(visitas) : [];
-}
-
-/**
- * Función que ordena los eventos en función de la hora de inicio
- */
-function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
-    const visitas = recuperarVisitas();
-
-    // Actualizar el evento correspondiente
-    visitas[index].horaFin = visitas[index].horaFin.split('T')[0] + "T" + horaFin + ':00';
-    if(horaInicio != null){
-        visitas[index].horaInicio = visitas[index].horaInicio.split('T')[0] + "T" + horaInicio + ':00';
-        //ordenar los eventos
-        visitas.sort((a, b) => {
-            const horaInicioA = new Date(a.horaInicio);
-            const horaInicioB = new Date(b.horaInicio);
-            return horaInicioA.getTime() - horaInicioB.getTime();
-        });
-    }
-    localStorage.setItem('visitas', JSON.stringify(visitas));
-    if(horaInicio != null) mostrarRuta();
-    return visitas;
-}
-
 //función específica - ¿Dónde visitar? --> Pensar en sustituirla
 function crearContenedorPueblos() {
     return $("<div>").attr("class", "contenedor-pueblos");
@@ -154,9 +122,9 @@ function crearContenedorPueblos() {
  * @returns {JQuery<HTMLElement>} Un elemento button con la información del pueblo
  */
 function crearBotonPueblo (pueblo) {
-    let nuevoBotonPueblo = $("<button>")
+    let nuevoBotonPueblo = $("<a>")
     .addClass("pueblo overlay")
-    .on("click",() => crearUbicacionesPueblo(pueblo.name));
+    .attr("href", "/queVisitar?" + pueblo.name);
     $(nuevoBotonPueblo)
         .append(
             crearImg(pueblo.photo.contentUrl, pueblo.photo.description,"imagen-overlay")

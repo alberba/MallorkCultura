@@ -17,15 +17,20 @@
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     
-    
+    <script src="js/fetch.js"></script>
     <script src="js/time.js" defer></script>
     <script src="js/jquery.js"></script>
-    <script src="js/pruebaWebApp.js" defer></script>
     <script src="js/mapa.js" defer></script>
+    <script src="js/filtros.js" defer></script>
+    <script src="js/pantalla-ruta.js" defer></script>
+    <script src="js/pantalla-museo.js" defer></script>
+    <script src="js/pantalla-museos.js" defer></script>
+    <script src="js/pantalla-contacto.js" defer></script>
+    <script src="js/funcionesGenericas.js" defer></script>
+    <script src="js/main.js" defer></script>
     <script src="js/responsive.js" defer></script>
     <script src="js/calendar.js"></script>
     <script src="js/index.js" defer></script>
-    <script src="js/funcionesGenericas.js" defer></script>
 
     <!-- Habra que meter internamente el bootstrap-->
     
@@ -37,62 +42,26 @@
         <nav id="nav-header" class="my-1">
             <div>
                 <!-- Barra superior -->
-                <button class="no-style-button logo" id="logo">
+                <a href="/" class="no-style-button logo" id="logo">
                     <!-- Foto de nuestro logo -->
                     <img src="img/svg/logo.svg" alt="Logo de MallorkCultura" class="logo-imagen"/>
-                </button>
+                </a>
                 <button class="menu_icon no-style-button">
                     <img src="img/svg/menu.svg" alt="Botón de menú"/>
                 </button>
                 <div class="nav-links-header">
-                    <button id="queVisitar" class="no-style-button">¿Qué visitar?</button>
-                    <button id="tuRuta">Tu ruta</button>
+                    <a href="/queVisitar" id="queVisitar" class="no-style-button">¿Qué visitar?</a>
+                    <a href="/tuRuta" id="tuRuta">Tu ruta</a>
                 </div>
             </div>
         </nav>
-        <!-- Imagen principal -->
-        <div class="overlay header-image">
-            <img src="img/main.webp" alt="Fotografía de dos monumentos de Es Baluard" class="imagen-overlay"/>
-            <!-- Texto de la imagen principal -->
-            <div class="texto-main-page texto-overlay m-0">
-                <h1 class="mu-0 mb-4">MallorkCultura</h1>
-                <p>Planifica tu ruta ya</p>
-            </div>
-        </div>
     </header>
     <!-- Parte inferior de la pantalla -->
     <main class="contenedor-principal index">
-        <h2 class="mt-5">¿Dónde visitar?</h2>
-        <hr>
-        <section>
-            <!-- Esto es un ejemplo de un skeleton screen para una imagen -->
-            <div class="skeleton-screen">
-                <!-- Puedes ajustar el tamaño de este div para que coincida con el tamaño esperado de las imágenes -->
-                <div class="skeleton-screen-image"></div>
-            </div>
-        </section>
-        <button class="boton boton-vermas-index boton-verde" id = "verMasPueblos" onclick="añadirPueblosRestantes()">
-            Ver más
-        </button>
-        <hr>
+        
     </main>
-    <footer class="pie-pagina">
-        <hr>
-        <div class="contenido-footer">
-            <div class="texto-footer">
-                <p id="copy-text">Copyright</p>
-                <p>Todos los derechos reservados</p>
-            </div>
-            <button id="Contacto">Contacto</button>
-        </div>
-    </footer>
     <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
-    <script src="js/filtros.js" defer></script>
     <script async defer src="js/swiper.js"></script>
-    <script src="js/pantalla-ruta.js" defer></script>
-    <script src="js/pantalla-museo.js" defer></script>
-    <script src="js/pantalla-museos.js" defer></script>
-    <script src="js/pantalla-contacto.js" defer></script>
     <script src="js/weather.js" defer></script>
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

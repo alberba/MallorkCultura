@@ -261,6 +261,28 @@ function mostrarRuta() {
     }
 }
 
+/**
+ * Función que ordena los eventos en función de la hora de inicio
+ */
+function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
+    const visitas = recuperarVisitas();
+
+    // Actualizar el evento correspondiente
+    visitas[index].horaFin = visitas[index].horaFin.split('T')[0] + "T" + horaFin + ':00';
+    if(horaInicio != null){
+        visitas[index].horaInicio = visitas[index].horaInicio.split('T')[0] + "T" + horaInicio + ':00';
+        //ordenar los eventos
+        visitas.sort((a, b) => {
+            const horaInicioA = new Date(a.horaInicio);
+            const horaInicioB = new Date(b.horaInicio);
+            return horaInicioA.getTime() - horaInicioB.getTime();
+        });
+    }
+    localStorage.setItem('visitas', JSON.stringify(visitas));
+    if(horaInicio != null) mostrarRuta();
+    return visitas;
+}
+
 // Función para eliminar un museo de la ruta
 function eliminarMuseoRuta(index) {
     const eventos = recuperarVisitas();
