@@ -28,10 +28,11 @@ function crearPantallaUbicaciones() {
         .append(crearFiltros());
 
     let contenedorMuseo = crearDiv("contenedor-museos");
+    // leerJSONMallorcaRoute();
     // Añade las tarjetas de los museos de la primera pagina
     for(let i=0; i < museos.length && i < museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(museos[i], crearPantallaUbicaciones)
-        )
+        contenedorMuseo.append(crearTarjetaUbicacion(museos[i], crearPantallaUbicaciones));
+        // contenedorMuseo.append(crearTarjetaUbicacionMR(edificios[i], crearPantallaUbicaciones));
     }
 
     $("main").append(crearSection().append(contenedorMuseo));

@@ -225,16 +225,6 @@ function escaparComillas(texto) {
     return texto.replace(/'/g, "\\'");
 }
 
-function comprobarExposicionActual(expo) {
-    const p = $("<p>").addClass("fecha-exp");
-    
-    if(expo.eventSchedule.startDate <= new Date().toISOString() && expo.eventSchedule.endDate >= new Date().toISOString()) {
-        p.addClass("fecha-verde").text("Hasta el " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate))
-    } else {
-        p.text(convertirFormatoFechaExposicion(expo.eventSchedule.startDate) + " - " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate));
-    }
 
-    return p;
-}
 
 /* ----- */
