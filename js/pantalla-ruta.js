@@ -21,7 +21,7 @@ function crearTuRuta(funcionAnterior){
     
     $("main").empty();
     $("main").attr("class","contenedor-principal ruta");
-    $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
+    $("main").append(crearBotonAtras("/", "Inicio"));
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
 

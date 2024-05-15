@@ -15,12 +15,16 @@ function cargarContenido() {
             crearDondeVisitar();
             break;
         case "/queVisitar":
-            let pueblo = window.location.search.substring(1);
+            let pueblo = decodeURIComponent(window.location.search.substring(1));
             if (pueblo) {
                 crearUbicacionesPueblo(pueblo);
             } else {
                 crearPantallaUbicaciones();
             }
+            break;
+        case "/museo":
+            let museo = decodeURIComponent(window.location.search.substring(1));
+            crearPantallaMuseo(museo);
             break;
         case "/tuRuta":
             crearTuRuta(null);
@@ -66,11 +70,9 @@ function crearDondeVisitar() {
     $("main").append(crearHr());
     let section = crearSection ();
     let div = crearContenedorPueblos();
-    for(let i = 0; i < 9; i++) {
-        div.append(crearBotonPueblo(pueblos[i]));
-    }
     $(section).append(div);
     $("main").append(section);
+    cargarPueblos();
     $("main").append(crearBotonVerMas_Pueblos());
     $("main").append(crearHr());
 }
@@ -135,6 +137,7 @@ function crearBotonPueblo (pueblo) {
         .append(
             crearP({clases: "texto-overlay", texto: pueblo.name})
         );
+    añadirEventListenerSPA(nuevoBotonPueblo.get(0));
     return nuevoBotonPueblo;
 }
 
@@ -168,36 +171,14 @@ function crearBotonVerMas_Pueblos() {
  * @param {String=} texto Texto que se le quiere añadir al botón. Por defecto es "Atrás"
  * @returns {JQuery<HTMLElement>} Un elemento button con el botón de volver atrás
  */
-function crearBotonAtras(funcionADirigir, texto = "Atrás") {
-    return $("<button>")
+function crearBotonAtras(enlace, texto = "Atrás") {
+    let boton = $("<button>")
             .html(texto)
             .addClass("boton-atras")
-            .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás","back-arrow"))
-            .on("click", funcionADirigir);
-}
-
-/**
- * Función que se encarga de crear la tarjeta de los lugares de la lista de ubicaciones
- * @param {Object} museo Museo del que se quiere crear la tarjeta
- * @param funcionAnterior Función actual. Servirá para crear posteriormente el botón Atrás
- * @returns {JQuery<HTMLElement>} Un elemento article con la información del museo
- */
-function crearTarjetaUbicacion(museo, funcionAnterior) {
-    return crearArticle("museo")
-             .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
-             .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
-             .append(crearP({
-                 clases: "mb-4 descripcion-museo",
-                 texto: museo.areaServed.description        
-             }))
-             .append(crearDiv("botones-museo")
-                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
-                     .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
-                 )
-                 .append(crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
-                     .on("click", () => crearPantallaMuseo(museo.areaServed.name, funcionAnterior))
-                 )        
-             );
+            .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás", "back-arrow"))
+            .attr("href", enlace);
+    añadirEventListenerSPA(boton.get(0));
+    return boton;
 }
 
 // función específica - Lista de ubicaciones

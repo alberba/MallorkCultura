@@ -1,9 +1,8 @@
 /**
  * Función que se encarga de crear la pantalla de información de un lugar en concreto
  * @param {String} nombreLugar Nombre del lugar del que se quiere mostrar la información
- * @param {Function} funcionAnterior Función que se ejecutará al pulsar el botón de atrás
  */
-function crearPantallaMuseo(nombreLugar, funcionAnterior){
+function crearPantallaMuseo(nombreLugar){
     const lugar = museos.find(museo => museo.areaServed.name === nombreLugar);
     // Hacer que la página suba al principio
     window.scrollTo(0, 0);
@@ -31,7 +30,7 @@ function crearPantallaMuseo(nombreLugar, funcionAnterior){
 
     $("main").empty()
         .attr("class","contenedor-principal info-museo")
-        .append(crearBotonAtras(funcionAnterior));
+        .append(crearBotonAtras("/queVisitar"));
     
     $("body").prepend(crearDiv()
         .attr("vocab","http://schema.org/")

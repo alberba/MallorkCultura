@@ -8,10 +8,6 @@
 - [ ] Añadir google analytics
 - [ ] Añadir json externos
 
-### SPA
-- [ ] Arreglar error de botón atrás(No cambia la url)
-- [ ] Arreglar error al ir a los museos de una ciudad
-
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 - [ ] Actualizar función de crearSelectorPagina
@@ -35,6 +31,11 @@
 - [ ] popups al eliminar/meter cosas/ruta
 
 # HECHO
+## 15/05
+- [x] Arreglar error de botón atrás(No cambia la url)
+- [x] Arreglar error al ir a los museos de una ciudad
+- [x] Acabar la implementación de SPA
+
 ## 11/05
 - [x] Google Maps API
     - [x] Cuando eliminas un museo de la ruta, que se elimine del mapa

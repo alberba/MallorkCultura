@@ -24,15 +24,15 @@ function crearPantallaUbicaciones() {
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos")
-        .append(crearBotonAtras(crearDondeVisitar, "Inicio"))
+        .append(crearBotonAtras("/", "Inicio"))
         .append(crearFiltros());
 
     let contenedorMuseo = crearDiv("contenedor-museos");
     // leerJSONMallorcaRoute();
     // Añade las tarjetas de los museos de la primera pagina
     for(let i=0; i < museos.length && i < museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(museos[i], crearPantallaUbicaciones));
-        // contenedorMuseo.append(crearTarjetaUbicacionMR(edificios[i], crearPantallaUbicaciones));
+        contenedorMuseo.append(crearTarjetaUbicacion(museos[i]));
+        // contenedorMuseo.append(crearTarjetaUbicacionMR(edificios[i]));
     }
 
     $("main").append(crearSection().append(contenedorMuseo));
@@ -61,14 +61,14 @@ function crearUbicacionesPueblo(pueblo) {
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
-    $("main").append(crearBotonAtras(crearDondeVisitar, "Inicio"));
+    $("main").append(crearBotonAtras("/", "Inicio"));
     $("main").append(crearH2(pueblo));
     $("main").append(crearHr());
     $("main").append(crearFiltros());
 
     let contenedorMuseos = crearDiv("contenedor-museos");
     museosPueblo.forEach(museo => {
-        contenedorMuseos.append(crearTarjetaUbicacion(museo, () => crearUbicacionesPueblo(pueblo)));
+        contenedorMuseos.append(crearTarjetaUbicacion(museo));
     });
     $("main").append(crearSection().append(contenedorMuseos));
 
@@ -79,8 +79,34 @@ function crearTarjetasUbicacionesPaginaActual(){
     let contenedorMuseo = $(".contenedor-museos");
     contenedorMuseo.empty();
     for(let i=paginaActual*museosPorPagina; i < museos.length && i < (paginaActual+1)*museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(museos[i], crearPantallaUbicaciones));
+        contenedorMuseo.append(crearTarjetaUbicacion(museos[i]));
     }
+}
+
+/**
+ * Función que se encarga de crear la tarjeta de los lugares de la lista de ubicaciones
+ * @param {Object} museo Museo del que se quiere crear la tarjeta
+ * @returns {JQuery<HTMLElement>} Un elemento article con la información del museo
+ */
+function crearTarjetaUbicacion(museo) {
+    let botonVerMas = crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
+        .attr("href", "/museo?" + museo.areaServed.name);
+
+    añadirEventListenerSPA(botonVerMas.get(0));
+
+    return crearArticle("museo")
+            .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
+            .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
+            .append(crearP({
+                clases: "mb-4 descripcion-museo",
+                texto: museo.areaServed.description        
+            }))
+            .append(crearDiv("botones-museo")
+                .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
+                    .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
+                )
+                .append(botonVerMas)
+            );
 }
 
 function modificarPaginacion() {

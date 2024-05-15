@@ -232,16 +232,20 @@ function crearA(direccionamiento, clases, texto) {
             .html(texto)
 }
 
-// Manejar los enlaces haciendo que carguen el contenido dinámicamente
-document.addEventListener('DOMContentLoaded', function() {
-    var enlaces = document.querySelectorAll('a');
-    enlaces.forEach(function(enlace) {
-      enlace.addEventListener('click', function(event) {
+function añadirEventListenerSPA(anchor) {
+    anchor.addEventListener('click', function(event) {
         event.preventDefault(); // Evitar que el enlace funcione normalmente
-        var url = this.getAttribute('href'); // Obtener la URL del enlace // Cargar el contenido de la subpágina
+        let url = this.getAttribute('href'); // Obtener la URL del enlace // Cargar el contenido de la subpágina
         history.pushState(null, document.title, url); // Cambiar la URL en la barra de direcciones del navegador
         cargarContenido();
-      });
     });
-  });
+}
+
+// Manejar los enlaces haciendo que carguen el contenido dinámicamente
+document.addEventListener('DOMContentLoaded', function() {
+    let enlaces = document.querySelectorAll('a');
+    enlaces.forEach(function(enlace) {
+        añadirEventListenerSPA(enlace);
+    });
+});
 /* --- --- */

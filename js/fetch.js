@@ -12,6 +12,7 @@ fetch(jsonUrlPueblos)
     .then(response => response.json())
     .then(data => {
         pueblos = data.cities;
+        cargarPueblos();
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
@@ -30,3 +31,12 @@ fetch(jsonUrlComponentes)
         componentes = data.personas;
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
+
+function cargarPueblos() {
+    let div = $(".contenedor-pueblos");
+    if(div && pueblos) {
+        for(let i = 0; i < 9; i++) {
+            div.append(crearBotonPueblo(pueblos[i]));
+        }
+    }
+}

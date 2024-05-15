@@ -52,7 +52,7 @@ function crearPantallaMuseoMR(nombreLugar, funcionAnterior){
 
     $("main").empty()
         .attr("class","contenedor-principal info-museo")
-        .append(crearBotonAtras(funcionAnterior));
+        .append(crearBotonAtras("/queVisitar"));
 
     // Creación del slider de imágenes
     $("main").append(crearDiv("swiper mySwiper slider-imagen-museo")
