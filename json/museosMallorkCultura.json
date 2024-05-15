@@ -834,6 +834,83 @@
                     }
                 ]
             }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "areaServed": {
+                "@type": "Museum",
+                "openingHours" : "Tu-Sa 10:30-18:00",
+                "address" : {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Carrer Sa Lluna, 86",
+                    "addressLocality": "Sóller",
+                    "postalCode": "07100",
+                    "addressCountry": "Spain",
+                    "email": "museu@canprunera.net"
+                },
+                "aggregateRating" : "",
+                "geo" : {
+                    "@type": "GeoCoordinates",
+                    "latitude": "39.767867139918586",
+                    "longitude": "2.718032642328135"
+                },
+                "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
+                "isAccessibleForFree" : false,
+                "keywords" : "",
+                "latitude": "39.767867139918586",
+                "longitude": "2.718032642328135",
+                "photo" : [
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/canPrunera/entrada.webp",
+                        "description": "Imagen de la entrada del museo Can Prunera"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/canPrunera/imagenArte.webp",
+                        "description": "Imagen de una zona del museo Can Prunera"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/canPrunera/salon.webp",
+                        "description": "Imagen de una de las salas del museo Can Prunera"
+                    }
+                ],
+                "publicAccess" : true,
+                "smokingAllowed" : false,
+                "telephone" : "+34971638973",
+                "tourBookingPage" : null,
+                "description" : "Can Prunera, junto con otros ejemplos como el Gran Hotel, Can Forteza Rey y Can Casasayes, los tres de Palma, forman parte del amplio conjunto de edificios modernistas que se construyeron, a comienzos del siglo XX, bajo la directriz de los modelos catalanes o del arte nouveau francés. \nEn el año 1865, una plaga terrible echó a perder los naranjos y limoneros de gran parte del valle de Sóller, lo cual causó una fuerte crisis económica y provocó que numerosas familias que se dedicaban a la recolección y al comercio de los cítricos se vieran obligadas a emigrar. Los principales destinos fueron, por un lado, América del Sur y, por el otro, Europa. Países como Puerto Rico, Venezuela, Francia, Alemania y Bélgica serían los precursores en el recibimiento de emigrantes sollerenses. Aun así, fue sobre todo en Francia donde la mayoría fueron a buscar fortuna; con este fin, se establecieron en localidades como Nancy, Lyon, Marsella y Belfort. Fue en esta ciudad donde Joan Magraner y Margalida Vicens, conocidos en Sóller con el mote de els Pruneres debido a su trabajo con el mercadeo de la fruta, se enriquecieron gracias al negocio dedicado a la importación, exportación y distribución de frutas, verduras y licores. Conseguida la fortuna, decidieron regresar a Sóller y construir un casal con el estilo imperante entonces en Francia: el arte nouveau. En aquel país, dejaron el negocio en manos de los hijos. \nCan Prunera se construyó entre 1904 y 1911. Del artífice no se sabe nada, a pesar de que hay dos hipótesis: una atribuye la obra a Joan Rubió y Bellver (1870-1952), el arquitecto catalán que en aquellos años construía la fachada de la iglesia parroquial de San Bartolomé y el Banco de Sóller. Con todo, no hay ningún documento que confirme esta teoría. La otra hipótesis plantea la posibilidad que el casal de Can Prunera fuera construido por albañiles locales.\nEl edificio es un exponente del gusto de los emigrantes que, al volver de Francia y de Puerto Rico, principalmente, compitieron para levantar la casa más bella y que pusiera de manifiesto la riqueza que habían conseguido.",
+                "name" : "Can Prunera",
+                "url" : "https://canprunera.com/es/"
+            },
+            "hasOfferCatalog" : {
+                "@type": "OfferCatalog",
+                "name": "Tipo de entradas",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada general",
+                            "description": "Entrada general al museo"
+                        },
+                        "price": "6.00",
+                        "priceCurrency": "EUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": "Entrada reducida",
+                            "description": "Entrada reducida al museo para estudiantes, jubilados, personas mayores de 65 años y grupos de más de 12 personas"
+                        },
+                        "price": "3.00",
+                        "priceCurrency": "EUR"
+                    }
+                ]
+            }
         }
     ]
 }
