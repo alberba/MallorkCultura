@@ -73,7 +73,9 @@ function crearDondeVisitar() {
     $(section).append(div);
     $("main").append(section);
     cargarPueblos();
-    $("main").append(crearBotonVerMas_Pueblos());
+    if(pueblosConUbicaciones.length > 9) {
+        $("main").append(crearBotonVerMas_Pueblos());
+    }
     $("main").append(crearHr());
 }
 
@@ -145,8 +147,8 @@ function crearBotonPueblo (pueblo) {
  * Función que se encarga de añadir los pueblos restantes a la página principal ¿Dónde visitar?
  */
 function añadirPueblosRestantes() {
-    for(let i = 9; i < pueblos.length; i++) {
-        $("main .contenedor-pueblos").append(crearBotonPueblo(pueblos[i]));
+    for(let i = 9; i < pueblosConUbicaciones.length; i++) {
+        $("main .contenedor-pueblos").append(crearBotonPueblo(pueblosConUbicaciones[i]));
     } 
     $("#verMasPueblos").remove();
 }

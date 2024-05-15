@@ -5,6 +5,7 @@ const jsonUrlComponentes = "json/componentes.json";
 
 let museos;
 let pueblos;
+let pueblosConUbicaciones;
 let componentes;
 
 // leer json de pueblos
@@ -12,7 +13,6 @@ fetch(jsonUrlPueblos)
     .then(response => response.json())
     .then(data => {
         pueblos = data.cities;
-        cargarPueblos();
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
@@ -21,6 +21,8 @@ fetch(jsonUrlMuseos)
     .then(response => response.json())
     .then(data => {
         museos = data.servicios;
+        filtrarPueblos();
+        cargarPueblos();
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
@@ -35,8 +37,12 @@ fetch(jsonUrlComponentes)
 function cargarPueblos() {
     let div = $(".contenedor-pueblos");
     if(div && pueblos) {
-        for(let i = 0; i < 9; i++) {
-            div.append(crearBotonPueblo(pueblos[i]));
+        for(let i = 0; i < 9 && pueblosConUbicaciones[i]; i++) {
+            div.append(crearBotonPueblo(pueblosConUbicaciones[i]));
         }
     }
+}
+
+function filtrarPueblos() {
+    pueblosConUbicaciones = pueblos.filter(pueblo => museos.some(museo => museo.areaServed.address.addressLocality === pueblo.name));
 }

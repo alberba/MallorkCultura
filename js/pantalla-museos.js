@@ -57,7 +57,7 @@ function crearUbicacionesPueblo(pueblo) {
 
     // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
     let museosPueblo = museos.filter(museo => museo.areaServed.address.addressLocality === pueblo);
-    iniciarMapaPueblo(pueblos.find(p => p.name === pueblo), museosPueblo);
+    iniciarMapaPueblo(pueblosConUbicaciones.find(p => p.name === pueblo), museosPueblo);
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
