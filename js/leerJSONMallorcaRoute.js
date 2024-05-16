@@ -1,10 +1,11 @@
-const jsonUrlMallorcaRoute = "https://mallorcaroute.com/edificios.json";
+const jsonUrlMallorcaRoute = "https://cors-anywhere.herokuapp.com/https://mallorcaroute.com/edificios.json";
 let edificios;
 
 function leerJSONMallorcaRoute(){
-    fetch(jsonUrlMallorcaRoute, { mode: 'no-cors'})
+    fetch(jsonUrlMallorcaRoute)
         .then(response => response.json())
         .then(data => {
+            alert("EL MATI ES GAY");
             edificios = data.edificios;
         })
         .catch(error => console.error("Error al cargar los datos del JSON:", error));
