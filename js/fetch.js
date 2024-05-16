@@ -36,7 +36,7 @@ fetch(jsonUrlComponentes)
 
 function cargarPueblos() {
     let div = $(".contenedor-pueblos");
-    if(div && pueblos) {
+    if(div.length > 0 && pueblos) {
         for(let i = 0; i < 9 && pueblosConUbicaciones[i]; i++) {
             div.append(crearBotonPueblo(pueblosConUbicaciones[i]));
         }

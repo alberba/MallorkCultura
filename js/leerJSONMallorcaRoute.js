@@ -1,11 +1,11 @@
-const jsonUrlMallorcaRoute = "proxy.php";
+const jsonUrlMallorcaRoute = "https://mallorcaroute.com/edificios.json";
 let edificios;
 
 function leerJSONMallorcaRoute(){
     fetch(jsonUrlMallorcaRoute)
         .then(response => response.text())
         .then(data => {
-            console.log(data); // Imprimir el JSON en la consola
+            //console.log(data); // Imprimir el JSON en la consola
         })
         .catch(error => console.error("Error al cargar los datos del JSON:", error));
 }

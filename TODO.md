@@ -18,7 +18,6 @@
 - [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
-- [ ] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
 
 ### Tu ruta
 - [ ] añadir selección de día para la ruta
@@ -28,6 +27,7 @@
 ## 16/05
 - [x] popups al eliminar/meter cosas/ruta
 - [x] Añadir google analytics
+- [x] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
 
 ## 15/05
 - [x] Arreglar error de botón atrás(No cambia la url)
