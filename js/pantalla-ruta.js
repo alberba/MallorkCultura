@@ -63,7 +63,7 @@ function mostrarRuta() {
     if (eventos.length === 0) {
         // Si no hay eventos, mostrar un mensaje
         contenedorRuta.html('<p>Todavía no has empezado a diseñar tu ruta</p>');
-        var botonGuardar = $('.guardar-calendar button');
+        let botonGuardar = $('.guardar-calendar button');
         if(botonGuardar.length !== 0){
             botonGuardar.remove();
         }
@@ -121,14 +121,34 @@ function mostrarRuta() {
                         .append(crearBoton("", "", "no-style-button cruz-ruta")
                             .append(crearImg("img/svg/cruz.svg", "Símbolo de cruz para tachar un museo de la ruta", ""))
                             .on("click", () => {
-                                eliminarMuseoRuta(index);
-                                let eventosActualizado = recuperarVisitas();
-                                let eventosGeo = eventosActualizado.map(evento => {
-                                    let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
-                                    return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
+                                // @ts-ignore
+                                Swal.fire({
+                                    title: "¿Estás seguro?",
+                                    text: "No podrás recuperar revertir esta acción",
+                                    icon: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#00B532",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "Sí"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        eliminarMuseoRuta(index);
+                                        let eventosActualizado = recuperarVisitas();
+                                        let eventosGeo = eventosActualizado.map(evento => {
+                                            let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+                                            return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
+                                        });
+                                        console.log(eventosGeo);
+                                        actualizarRouteMaps(eventosGeo);
+                                        // @ts-ignore
+                                        Swal.fire({
+                                            title: "¡Eliminado!",
+                                            text: "",
+                                            icon: "success"
+                                        });
+                                    }
                                 });
-                                console.log(eventosGeo);
-                                actualizarRouteMaps(eventosGeo);
+                                
                             })
                         )
                 );

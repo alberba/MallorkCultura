@@ -103,7 +103,15 @@ function crearTarjetaUbicacion(museo) {
             }))
             .append(crearDiv("botones-museo")
                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
-                    .on("click", () => almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]))   // Aquí hay que añadir la función para añadir a la ruta
+                    .on("click", () => {
+                        almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]);
+                        // @ts-ignore
+                        Swal.fire({
+                            title: "Añadido a la ruta",
+                            text: "",
+                            icon: "success"
+                        });
+                    })
                 )
                 .append(botonVerMas)
             );

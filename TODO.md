@@ -22,19 +22,19 @@
 - [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
 - [ ] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
 
-### JavaScript
-- [ ] Mostrar solo los pueblos que tengan ubicaciones
-
 ### Tu ruta
 - [ ] añadir selección de día para la ruta
 - [ ] bloquear solapamiento de horas
-- [ ] popups al eliminar/meter cosas/ruta
 
 # HECHO
+## 16/05
+- [x] popups al eliminar/meter cosas/ruta
+
 ## 15/05
 - [x] Arreglar error de botón atrás(No cambia la url)
 - [x] Arreglar error al ir a los museos de una ciudad
 - [x] Acabar la implementación de SPA
+- [x] Mostrar solo los pueblos que tengan ubicaciones
 
 ## 11/05
 - [x] Google Maps API

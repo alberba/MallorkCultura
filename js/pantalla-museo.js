@@ -63,7 +63,15 @@ function crearPantallaMuseo(nombreLugar){
                 .append($("<a>")
                     .addClass("boton boton-verde")
                     .html("Añadir a la ruta")
-                    .on("click", () => almacenarVisita(lugar.areaServed.name, lugar.areaServed.address.streetAddress, lugar.areaServed["@type"][1]))
+                    .on("click", () => {
+                        almacenarVisita(lugar.areaServed.name, lugar.areaServed.address.streetAddress, lugar.areaServed["@type"][1]);
+                        // @ts-ignore
+                        Swal.fire({
+                            title: "Añadido a la ruta",
+                            text: "",
+                            icon: "success"
+                        });
+                    })
                 )
                 .append($("<a>")
                     .addClass("boton boton-gris boton-comp-entrada")
