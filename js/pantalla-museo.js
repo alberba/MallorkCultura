@@ -83,6 +83,7 @@ function crearPantallaMuseo(nombreLugar){
                     .append(crearImg("img/svg/boton-añadir-carrito.svg","Icono de redireccion"))
                 )
             )
+            .append(crearDivValoracion(""))
         )
         .append(crearDiv("vl").attr("id","separador-vertical-museo"))
         .append(crearHr().attr("id","separador-horizontal-museo"))
@@ -95,6 +96,23 @@ function crearPantallaMuseo(nombreLugar){
         activarExposicionSwiper();
     }
     
+}
+
+function crearDivValoracion(valoracion) {
+    let div = crearDiv("valoracion-museo");
+    let divEstrellas = crearDiv("rating");
+    for(let i = 5; i > 0; i--) {
+        let estrella = $("<input>").attr("type", "radio").attr("name", "rating").attr("id", "star" + i);
+        estrella.attr("value", i);
+        estrella.on('change', function() {
+            let rating = estrella.val();
+            // Aquí puedes enviar 'rating' al servidor mediante una solicitud AJAX
+            console.log("Valoración seleccionada: " + rating);
+        });
+        divEstrellas.append(estrella);
+        divEstrellas.append(crearLabel("star" + i, ""));
+    }
+    return div.append(divEstrellas);
 }
 
 /**
