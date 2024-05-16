@@ -1,4 +1,4 @@
-const jsonUrlMallorcaRoute = "https://mallorcaroute.com/edificios.json";
+const jsonUrlMallorcaRoute = "proxy.php";
 let edificios;
 
 function leerJSONMallorcaRoute(){
