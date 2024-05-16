@@ -1,4 +1,4 @@
-const jsonUrlMallorcaRoute = "https://cors-anywhere.herokuapp.com/https://mallorcaroute.com/edificios.json";
+const jsonUrlMallorcaRoute = "https://mallorcaroute.com/edificios.json";
 let edificios;
 
 function leerJSONMallorcaRoute(){
