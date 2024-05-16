@@ -202,7 +202,8 @@ function crearSelectorPagina() {
 
 // Función para almacenar la visita con los detalles del museo
 function almacenarVisita(lugar, direccion, tipo) {
-    const evento = { lugar, direccion, horaInicio: "2024-06-01T09:00:00", horaFin: "2024-06-01T10:00:00", tipo };
+    const fechaActual = new Date().toISOString().split('T')[0];
+    const evento = { lugar, direccion, horaInicio: fechaActual+"T09:00:00", horaFin: fechaActual+"T10:00:00", tipo };
     actualizarVisitas(evento);
 }
 

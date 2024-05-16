@@ -199,15 +199,25 @@ function mostrarRuta() {
                 }
             }
 
+            // Crear el input para la fecha de la visita
+            const divFecha = crearDiv();
+            const labelFecha = crearLabel("", "Fecha");
+            const inputFecha = crearInput("date", "fecha-visita", "fecha-visita");
+
+            // Obtener la fecha del evento y ponerla como predeterminada
+            inputFecha.val(evento.horaInicio.split('T')[0]);
+
             contenedorRuta.append(li.append(
-                    divRight.append(
-                        formulario.append(
-                            divDuracion.append(labelDuracion)
-                            .append(selectDuracion)
-                        )
+                divRight.append(
+                    formulario.append(
+                        divDuracion.append(labelDuracion)
+                            .append(selectDuracion),
+                        divFecha.append(labelFecha)
+                            .append(inputFecha)
                     )
                 )
-            ).append(descanso);
+            )
+            );
 
             // Evento change para los selects de inicio y duración
             inputInicio.on('blur', () => {
@@ -265,6 +275,18 @@ function mostrarRuta() {
 
                 divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
             });
+            inputFecha.on('change', () => {
+                // Obtener el índice del evento correspondiente
+                const index = inputFecha.closest('li').data('index');
+                const fecha = inputFecha.val();
+            
+                let eventosActualizado = actualizarEventosMostrarRutaFecha(index, fecha);
+                let eventosGeo = eventosActualizado.map(evento => {
+                    let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+                    return { lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude) };
+                });
+                actualizarRouteMaps(eventosGeo);
+            });
         });
 
         // Verificar si el botón de guardar no está presente y añadirlo si no lo está
@@ -302,6 +324,25 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
     if(horaInicio != null) mostrarRuta();
     return visitas;
 }
+
+// Función para actualizar la fecha de la visita en la ruta
+function actualizarEventosMostrarRutaFecha(index, fecha) {
+    const visitas = recuperarVisitas();
+
+    // Obtener la fecha actual
+    const fechaActual = new Date(fecha);
+
+    // Actualizar la fecha del evento correspondiente
+    visitas[index].horaInicio = fechaActual.toISOString().slice(0, 10) + visitas[index].horaInicio.slice(10);
+    visitas[index].horaFin = fechaActual.toISOString().slice(0, 10) + visitas[index].horaFin.slice(10);
+
+    localStorage.setItem('visitas', JSON.stringify(visitas));
+
+    mostrarRuta(); // Mostrar la ruta actualizada
+
+    return visitas;
+}
+
 
 // Función para eliminar un museo de la ruta
 function eliminarMuseoRuta(index) {
