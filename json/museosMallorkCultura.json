@@ -170,14 +170,14 @@
                 "longitude": "2.623437",
                 "photo" : [
                     {
-                        "@type" : "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/vista-aerea.webp",
-                        "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
-                    },
-                    {
                         "@type": "ImageObject",
                         "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/img-principal.webp",
                         "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
+                    },
+                    {
+                        "@type": "ImageObject",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/exposicion.webp",
+                        "description": "Imagen de una de las salas del museo Historico Militar de San Carlos"
                     }
                 ],
                 "publicAccess" : true,
