@@ -5,7 +5,6 @@
     - [x] Añadir microdatos a pantalla-museo
     - [ ] Añadir microdatos a pantalla-museos
     - [ ] Añadir microdatos a pantalla inicial
-- [ ] Añadir google analytics
 - [ ] Añadir json externos
 
 ### JQuery
@@ -19,7 +18,6 @@
 - [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
-- [ ] Deberíamos hacer un grafíco dinámico (tal vez con las valoraciones?)
 - [ ] La primera vez que le das a añadir a calendar, te lleva a la pantalla de inicio. Arreglar
 
 ### Tu ruta
@@ -29,6 +27,7 @@
 # HECHO
 ## 16/05
 - [x] popups al eliminar/meter cosas/ruta
+- [x] Añadir google analytics
 
 ## 15/05
 - [x] Arreglar error de botón atrás(No cambia la url)
