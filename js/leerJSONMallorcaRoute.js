@@ -3,10 +3,9 @@ let edificios;
 
 function leerJSONMallorcaRoute(){
     fetch(jsonUrlMallorcaRoute)
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => {
-            alert("EL MATI ES GAY");
-            edificios = data.edificios;
+            console.log(data); // Imprimir el JSON en la consola
         })
         .catch(error => console.error("Error al cargar los datos del JSON:", error));
 }
