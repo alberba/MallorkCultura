@@ -26,6 +26,19 @@ function crearTuRuta(funcionAnterior){
         .append(crearHr);
 
     let eventos = recuperarVisitas();
+    if(eventos.length > 0){
+        // Obtener la fecha más futura entre todos los eventos
+        let fechaMasFutura = obtenerFechaMasFutura(eventos);
+
+        // Crear input de fecha
+        const divFecha = crearDiv("contenedor-fecha");
+        const labelFecha = crearLabel("", "Fecha");
+        const inputFecha = crearInput("date", "fecha-visita", "fecha-visita");
+        inputFecha.val(fechaMasFutura);
+
+        divFecha.append(labelFecha).append(inputFecha);
+        $("main").append(divFecha);
+    }
     if(eventos.length !== 0){
         let museo = museos.find(museo => museo.areaServed.name === eventos[0].lugar);
         $("main").append(mostrarTiempo(museo.areaServed.geo));
@@ -67,7 +80,14 @@ function mostrarRuta() {
         if(botonGuardar.length !== 0){
             botonGuardar.remove();
         }
+        $("#fecha-visita").remove();
     } else {
+        // Obtener la fecha más futura entre todos los eventos
+        let fechaMasFutura = obtenerFechaMasFutura(eventos).toISOString().split('T')[0];
+
+        // Actualizar la fecha en el input de fecha
+        $("#fecha-visita").val(fechaMasFutura);
+
         // Si hay eventos, mostrar cada uno en la lista
         eventos.forEach((evento, index) => {
             const duracion = calcularDuracionRuta(evento.horaInicio, evento.horaFin); // Calcular la duración del evento
@@ -199,21 +219,11 @@ function mostrarRuta() {
                 }
             }
 
-            // Crear el input para la fecha de la visita
-            const divFecha = crearDiv();
-            const labelFecha = crearLabel("", "Fecha");
-            const inputFecha = crearInput("date", "fecha-visita", "fecha-visita");
-
-            // Obtener la fecha del evento y ponerla como predeterminada
-            inputFecha.val(evento.horaInicio.split('T')[0]);
-
             contenedorRuta.append(li.append(
                 divRight.append(
                     formulario.append(
                         divDuracion.append(labelDuracion)
-                            .append(selectDuracion),
-                        divFecha.append(labelFecha)
-                            .append(inputFecha)
+                            .append(selectDuracion)
                     )
                 )
             )
@@ -246,6 +256,7 @@ function mostrarRuta() {
                     return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
                 });
                 actualizarRouteMaps(eventosGeo);
+                mostrarRuta();
                 
             });
 
@@ -275,17 +286,15 @@ function mostrarRuta() {
 
                 divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
             });
-            inputFecha.on('change', () => {
-                // Obtener el índice del evento correspondiente
-                const index = inputFecha.closest('li').data('index');
-                const fecha = inputFecha.val();
-            
-                let eventosActualizado = actualizarEventosMostrarRutaFecha(index, fecha);
-                let eventosGeo = eventosActualizado.map(evento => {
+            $("#fecha-visita").on('change', () => {
+                const nuevaFecha = $("#fecha-visita").val();
+                let eventosActualizados = actualizarEventosConFecha(nuevaFecha);
+                let eventosGeoActualizados = eventosActualizados.map(evento => {
                     let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
                     return { lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude) };
                 });
-                actualizarRouteMaps(eventosGeo);
+                actualizarRouteMaps(eventosGeoActualizados);
+                mostrarRuta();
             });
         });
 
@@ -321,28 +330,48 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
         });
     }
     localStorage.setItem('visitas', JSON.stringify(visitas));
-    if(horaInicio != null) mostrarRuta();
     return visitas;
 }
 
 // Función para actualizar la fecha de la visita en la ruta
-function actualizarEventosMostrarRutaFecha(index, fecha) {
+function actualizarEventosConFecha(nuevaFecha) {
     const visitas = recuperarVisitas();
-
-    // Obtener la fecha actual
-    const fechaActual = new Date(fecha);
-
-    // Actualizar la fecha del evento correspondiente
-    visitas[index].horaInicio = fechaActual.toISOString().slice(0, 10) + visitas[index].horaInicio.slice(10);
-    visitas[index].horaFin = fechaActual.toISOString().slice(0, 10) + visitas[index].horaFin.slice(10);
+    visitas.forEach(visita => {
+        visita.horaInicio = nuevaFecha + "T" + visita.horaInicio.split('T')[1];
+        visita.horaFin = nuevaFecha + "T" + visita.horaFin.split('T')[1];
+    });
 
     localStorage.setItem('visitas', JSON.stringify(visitas));
-
-    mostrarRuta(); // Mostrar la ruta actualizada
 
     return visitas;
 }
 
+function obtenerFechaMasFutura(eventos){
+    let j=0;
+    let fechaMasFutura = new Date(eventos[0].horaInicio.split('T')[0]);
+
+    // Si la fecha más futura es anterior a la fecha actual, establecer la fecha actual como la fecha más futura
+    const fechaActual = new Date(new Date().toISOString().split('T')[0]);
+    if (fechaMasFutura < fechaActual) {
+        fechaMasFutura = fechaActual;
+    }
+
+    for(let i=0; i<eventos.length; i++){
+        let fechaEvento = new Date(eventos[i].horaInicio.split('T')[0]);
+
+        if(fechaEvento.getTime() > fechaMasFutura.getTime()){
+            fechaMasFutura = fechaEvento;
+            let x = i;
+            i = j;
+            j = i;
+        }else if(fechaEvento.getTime() < fechaMasFutura.getTime()){
+            eventos[i].horaInicio = eventos[j].horaInicio.split('T')[0]+"T"+eventos[i].horaInicio.split('T')[1];
+            eventos[i].horaFin = eventos[j].horaFin.split('T')[0]+"T"+eventos[i].horaFin.split('T')[1];
+        }
+    }
+    localStorage.setItem('visitas', JSON.stringify(eventos));
+    return fechaMasFutura;
+}
 
 // Función para eliminar un museo de la ruta
 function eliminarMuseoRuta(index) {
