@@ -1,19 +1,20 @@
 const jsonUrlMallorcaRoute = "https://mallorcaroute.com/edificios.json";
 let edificios;
 
-function leerJSONMallorcaRoute(){
-    fetch(jsonUrlMallorcaRoute)
-        .then(response => response.json())
-        .then(data => {
-            edificios = data.edificios;
-            //console.log("edificios: ",edificios); // Imprimir el JSON en la consola
-            edificios.forEach(edificio => {
-                edificio.origen = "MR";
-                ubicaciones = ubicaciones.concat(edificio);
-            });
-            //console.log("ubicaciones: ",ubicaciones);
-        })
-        .catch(error => console.error("Error al cargar los datos del JSON:", error));
+async function leerJSONMallorcaRoute() {
+    try {
+        let response = await fetch(jsonUrlMallorcaRoute);
+        let data = await response.json();
+        edificios = data.edificios;
+        //console.log("edificios: ", edificios); // Imprimir el JSON en la consola
+        edificios.forEach(edificio => {
+            edificio.origen = "MR";
+            ubicaciones.push(edificio);
+        });
+        console.log("ubicaciones: ", ubicaciones);
+    } catch (error) {
+        console.error("Error al cargar los datos del JSON:", error);
+    }
 }
 
 function crearTarjetaUbicacionMR(edificio, funcionAnterior) {
