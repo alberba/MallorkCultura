@@ -19,7 +19,7 @@ function crearPantallaUbicaciones() {
     initMap({
         position: centroMallorca, 
         zoom: 9,
-        arrPositionMarkers: museos.map(museo => ({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)}))
+        arrPositionMarkers: ubicaciones.map(museo => ({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)}))
     });
 
     $("main").empty()
@@ -30,11 +30,13 @@ function crearPantallaUbicaciones() {
     let contenedorMuseo = crearDiv("contenedor-museos");
     leerJSONMallorcaRoute();
     // Añade las tarjetas de los museos de la primera pagina
-    for(let i=0; i < museos.length && i < museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(museos[i]));
+    for(let i=0; i < ubicaciones.length && i < museosPorPagina; i++){
+        contenedorMuseo.append(crearTarjetaUbicacion(ubicaciones[i]));
     }
-    //contenedorMuseo.append(crearTarjetaUbicacionMR(edificios[0]));
-    console.log(edificios);
+    //for(let i=0; i < edificios.length; i++){
+        //contenedorMuseo.append(crearTarjetaUbicacionMR(edificios[1],crearDondeVisitar));
+    //}
+    
 
     $("main").append(crearSection().append(contenedorMuseo));
     $("main").append(crearSelectorPagina());
@@ -57,7 +59,7 @@ function crearUbicacionesPueblo(pueblo) {
     );
 
     // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
-    let museosPueblo = museos.filter(museo => museo.areaServed.address.addressLocality === pueblo);
+    let museosPueblo = ubicaciones.filter(museo => museo.areaServed.address.addressLocality === pueblo);
     iniciarMapaPueblo(pueblosConUbicaciones.find(p => p.name === pueblo), museosPueblo);
 
     $("main").empty()
@@ -79,8 +81,8 @@ function crearUbicacionesPueblo(pueblo) {
 function crearTarjetasUbicacionesPaginaActual(){
     let contenedorMuseo = $(".contenedor-museos");
     contenedorMuseo.empty();
-    for(let i=paginaActual*museosPorPagina; i < museos.length && i < (paginaActual+1)*museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(museos[i]));
+    for(let i=paginaActual*museosPorPagina; i < ubicaciones.length && i < (paginaActual+1)*museosPorPagina; i++){
+        contenedorMuseo.append(crearTarjetaUbicacion(ubicaciones[i]));
     }
 }
 
@@ -122,7 +124,7 @@ function modificarPaginacion() {
     // Obtener el elemento paginacion
     var paginacion = $("#paginacion");
 
-    if (Math.ceil(museos.length / museosPorPagina) < 2) {
+    if (Math.ceil(ubicaciones.length / museosPorPagina) < 2) {
         paginacion.remove();
         return;
     }
@@ -145,7 +147,7 @@ function modificarPaginacion() {
     });
 
     nextButton.on('click', function () {
-        if (paginaActual < Math.ceil(museos.length / museosPorPagina) - 1) {
+        if (paginaActual < Math.ceil(ubicaciones.length / museosPorPagina) - 1) {
             paginaActual++;
             crearTarjetasUbicacionesPaginaActual();
         }
@@ -153,7 +155,7 @@ function modificarPaginacion() {
 
     paginacion.append(prevButton);
 
-    var totalPaginas = Math.ceil(museos.length / museosPorPagina);
+    var totalPaginas = Math.ceil(ubicaciones.length / museosPorPagina);
 
     if (totalPaginas <= 4) {
         for (let i = 1; i <= totalPaginas; i++) {

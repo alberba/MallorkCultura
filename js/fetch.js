@@ -3,7 +3,7 @@ const jsonUrlMuseos = "json/museosMallorkCultura.json";
 const jsonUrlPueblos = "json/pueblos.json";
 const jsonUrlComponentes = "json/componentes.json";
 
-let museos;
+let ubicaciones;
 let pueblos;
 let pueblosConUbicaciones;
 let componentes;
@@ -20,7 +20,7 @@ fetch(jsonUrlPueblos)
 fetch(jsonUrlMuseos)
     .then(response => response.json())
     .then(data => {
-        museos = data.servicios;
+        ubicaciones = data.servicios;
         filtrarPueblos();
         cargarPueblos();
     })
@@ -44,5 +44,5 @@ function cargarPueblos() {
 }
 
 function filtrarPueblos() {
-    pueblosConUbicaciones = pueblos.filter(pueblo => museos.some(museo => museo.areaServed.address.addressLocality === pueblo.name));
+    pueblosConUbicaciones = pueblos.filter(pueblo => ubicaciones.some(museo => museo.areaServed.address.addressLocality === pueblo.name));
 }

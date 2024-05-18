@@ -40,7 +40,7 @@ function crearTuRuta(funcionAnterior){
         $("main").append(divFecha);
     }
     if(eventos.length !== 0){
-        let museo = museos.find(museo => museo.areaServed.name === eventos[0].lugar);
+        let museo = ubicaciones.find(museo => museo.areaServed.name === eventos[0].lugar);
         $("main").append(mostrarTiempo(museo.areaServed.geo));
     }
 
@@ -52,7 +52,7 @@ function crearTuRuta(funcionAnterior){
     mostrarRuta();
     
     let eventosGeo = eventos.map(evento => {
-        let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+        let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
         return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
     });
     initMap({position: centroMallorca,
@@ -155,7 +155,7 @@ function mostrarRuta() {
                                         eliminarMuseoRuta(index);
                                         let eventosActualizado = recuperarVisitas();
                                         let eventosGeo = eventosActualizado.map(evento => {
-                                            let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+                                            let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
                                             return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
                                         });
                                         console.log(eventosGeo);
@@ -252,7 +252,7 @@ function mostrarRuta() {
 
                 let eventosActualizado = actualizarEventosMostrarRuta(index, horaInicio, horaFin);
                 let eventosGeo = eventosActualizado.map(evento => {
-                    let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+                    let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
                     return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
                 });
                 actualizarRouteMaps(eventosGeo);
@@ -290,7 +290,7 @@ function mostrarRuta() {
                 const nuevaFecha = $("#fecha-visita").val();
                 let eventosActualizados = actualizarEventosConFecha(nuevaFecha);
                 let eventosGeoActualizados = eventosActualizados.map(evento => {
-                    let museo = museos.find(museo => museo.areaServed.name === evento.lugar);
+                    let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
                     return { lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude) };
                 });
                 actualizarRouteMaps(eventosGeoActualizados);

@@ -6,7 +6,7 @@ function leerJSONMallorcaRoute(){
         .then(response => response.json())
         .then(data => {
             edificios = data.edificios;
-            console.log(edificios); // Imprimir el JSON en la consola
+            console.log("edificios: ",edificios); // Imprimir el JSON en la consola
         })
         .catch(error => console.error("Error al cargar los datos del JSON:", error));
 }

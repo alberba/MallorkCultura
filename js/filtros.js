@@ -96,7 +96,7 @@ function cambiarUbicacionesPorNombre(nombre) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     let museosNuevos = [];
-    museos.forEach(museo => { 
+    ubicaciones.forEach(museo => { 
         if (nombre === "" || museo.areaServed.name.toLowerCase().includes(nombre.toLowerCase())) {
             contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
@@ -126,7 +126,7 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
         let contenedorUbicaciones = $(".contenedor-museos");
         let museosNuevos = [];
         contenedorUbicaciones.empty();
-        museos.forEach(museo => { 
+        ubicaciones.forEach(museo => { 
             coordsMuseo = {
                 lat: museo.areaServed.geo.latitude,
                 lng: museo.areaServed.geo.longitude
@@ -219,7 +219,7 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
             break;
     }
 
-    museos.forEach(museo => { 
+    ubicaciones.forEach(museo => { 
         if (contiene(dia, museo)) {
             contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
@@ -280,7 +280,7 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     let museosNuevos = [];
     contenedorUbicaciones.empty();
     if (!gratuito && !entrada) {
-        museos.forEach(museo => { 
+        ubicaciones.forEach(museo => { 
             contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
         });
@@ -292,7 +292,7 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
         return;
     }
 
-    museos.forEach(museo => { 
+    ubicaciones.forEach(museo => { 
         if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada)) {
             contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
@@ -326,7 +326,7 @@ function success(pos, rango) {
     let museosNuevos = [];
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    museos.forEach(museo => { 
+    ubicaciones.forEach(museo => { 
         coordsMuseo = {
             lat: museo.areaServed.geo.latitude,
             lng: museo.areaServed.geo.longitude

@@ -3,7 +3,7 @@
  * @param {String} nombreLugar Nombre del lugar del que se quiere mostrar la información
  */
 function crearPantallaMuseo(nombreLugar){
-    const lugar = museos.find(museo => museo.areaServed.name === nombreLugar);
+    const lugar = ubicaciones.find(museo => museo.areaServed.name === nombreLugar);
     // Hacer que la página suba al principio
     window.scrollTo(0, 0);
     // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
