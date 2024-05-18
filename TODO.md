@@ -20,8 +20,8 @@
 - [ ] Al menos un video nuestro
 
 ### Tu ruta
-- [ ] añadir selección de día para la ruta
-- [ ] bloquear solapamiento de horas
+- [x] añadir selección de día para la ruta
+- [x] bloquear solapamiento de horas
 
 # HECHO
 ## 16/05
