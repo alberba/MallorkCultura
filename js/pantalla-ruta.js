@@ -28,7 +28,7 @@ function crearTuRuta(funcionAnterior){
     let eventos = recuperarVisitas();
     if(eventos.length > 0){
         // Obtener la fecha más futura entre todos los eventos
-        let fechaMasFutura = obtenerFechaMasFutura(eventos);
+        let fechaMasFutura = obtenerFechaMasFutura(eventos).toISOString().split('T')[0];
 
         // Crear input de fecha
         const divFecha = crearDiv("contenedor-fecha");
@@ -87,6 +87,17 @@ function mostrarRuta() {
 
         // Actualizar la fecha en el input de fecha
         $("#fecha-visita").val(fechaMasFutura);
+
+        if(eventos.length > 1){
+            if(comprobarSolapamiento(eventos))
+                // @ts-ignore
+                Swal.fire({
+                    title: '¡Atención!',
+                    text: 'Hay eventos que se solapan, por favor, modifica la duración de los eventos para que no se solapen',
+                    icon: 'warning',
+                    confirmButtonText: 'Aceptar'
+                });
+        }
 
         // Si hay eventos, mostrar cada uno en la lista
         eventos.forEach((evento, index) => {
@@ -371,6 +382,26 @@ function obtenerFechaMasFutura(eventos){
     }
     localStorage.setItem('visitas', JSON.stringify(eventos));
     return fechaMasFutura;
+}
+
+function comprobarSolapamiento(eventos){
+    let eventosOrdenados = eventos.sort((a, b) => {
+        const horaInicioA = new Date(a.horaInicio);
+        const horaInicioB = new Date(b.horaInicio);
+        return horaInicioA.getTime() - horaInicioB.getTime();
+    });
+
+    localStorage.setItem('visitas', JSON.stringify(eventosOrdenados));
+
+    for(let i=1; i<eventosOrdenados.length; i++){
+        let horaFinAnterior = new Date(eventosOrdenados[i-1].horaFin);
+        let horaInicioActual = new Date(eventosOrdenados[i].horaInicio);
+
+        if(horaFinAnterior.getTime() < horaInicioActual.getTime()){
+            return true;
+        }
+    }
+
 }
 
 // Función para eliminar un museo de la ruta
