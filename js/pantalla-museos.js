@@ -31,16 +31,32 @@ function crearPantallaUbicaciones() {
     leerJSONMallorcaRoute();
     // Añade las tarjetas de los museos de la primera pagina
     for(let i=0; i < ubicaciones.length && i < museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(ubicaciones[i]));
-    }
-    //for(let i=0; i < edificios.length; i++){
-        //contenedorMuseo.append(crearTarjetaUbicacionMR(edificios[1],crearDondeVisitar));
-    //}
-    
+        contenedorMuseo.append(anadirUbicacion(ubicaciones[i]));
+    }    
 
     $("main").append(crearSection().append(contenedorMuseo));
     $("main").append(crearSelectorPagina());
     modificarPaginacion();
+}
+
+/**
+ * Función que llama a la función correspondiente para generar las tarjetas de ubicación con la función correcta
+ * @param {Object} ubi Ubicación individual del array de ubicaciones: la que se va a añadir a la lista de ubicaciones 
+ * @returns 
+ */
+function anadirUbicacion(ubi) {
+    if (!ubi.hasOwnProperty()) {
+        return crearTarjetaUbicacion(ubi);
+    } else {
+        switch(ubi.origen) {
+            case "MR":
+                console.log("ubi de MR")
+                return crearTarjetaUbicacionMR(ubi);
+            default:
+                console.error("La ubicación",ubi,"tiene un origen incorrecto, no se puede procesar")
+                return;
+        }
+    }
 }
 
 
@@ -59,8 +75,8 @@ function crearUbicacionesPueblo(pueblo) {
     );
 
     // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
-    let museosPueblo = ubicaciones.filter(museo => museo.areaServed.address.addressLocality === pueblo);
-    iniciarMapaPueblo(pueblosConUbicaciones.find(p => p.name === pueblo), museosPueblo);
+    let ubicacionesPueblo = ubicaciones.filter(museo => museo.areaServed.address.addressLocality === pueblo);
+    iniciarMapaPueblo(pueblosConUbicaciones.find(p => p.name === pueblo), ubicacionesPueblo);
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
@@ -70,8 +86,8 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearFiltros());
 
     let contenedorMuseos = crearDiv("contenedor-museos");
-    museosPueblo.forEach(museo => {
-        contenedorMuseos.append(crearTarjetaUbicacion(museo));
+    ubicacionesPueblo.forEach(ubi => {
+        contenedorMuseos.append(anadirUbicacion(ubi));
     });
     $("main").append(crearSection().append(contenedorMuseos));
 
@@ -84,6 +100,23 @@ function crearTarjetasUbicacionesPaginaActual(){
     for(let i=paginaActual*museosPorPagina; i < ubicaciones.length && i < (paginaActual+1)*museosPorPagina; i++){
         contenedorMuseo.append(crearTarjetaUbicacion(ubicaciones[i]));
     }
+}
+
+function filtrarUbicacionesPueblo(pueblo) {
+    let arrayFiltrado = [];
+    ubicaciones.forEach(ubi => {
+        if (!ubi.hasOwnProperty()) {
+            if (ubi.areaServed.address.addressLocality === pueblo)
+        } else {
+            switch(ubi.origen) {
+                case "MR":
+                    
+                default:
+                    console.error("La ubicación",ubi,"tiene un origen incorrecto, no se puede procesar")
+                    return;
+            }
+        }
+    });
 }
 
 /**
