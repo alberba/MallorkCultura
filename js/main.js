@@ -24,7 +24,7 @@ function cargarContenido() {
             break;
         case "/museo":
             let museo = decodeURIComponent(window.location.search.substring(1));
-            crearPantallaMuseo(museo);
+            crearPantallaUbicacion(museo);
             break;
         case "/tuRuta":
             crearTuRuta(null);
@@ -73,9 +73,6 @@ function crearDondeVisitar() {
     $(section).append(div);
     $("main").append(section);
     cargarPueblos();
-    if(pueblosConUbicaciones.length > 9) {
-        $("main").append(crearBotonVerMas_Pueblos());
-    }
     $("main").append(crearHr());
 }
 
@@ -135,9 +132,14 @@ function crearBotonPueblo (pueblo) {
     $(nuevoBotonPueblo)
         .append(
             crearImg(pueblo.photo.contentUrl, pueblo.photo.description,"imagen-overlay")
+            .attr({
+                "property":"photo",
+                "typeof":"ImageObject"
+            })
         )
         .append(
             crearP({clases: "texto-overlay", texto: pueblo.name})
+            .attr("property","name")
         );
     añadirEventListenerSPA(nuevoBotonPueblo.get(0));
     return nuevoBotonPueblo;
@@ -211,7 +213,5 @@ function almacenarVisita(lugar, direccion, tipo) {
 function escaparComillas(texto) {
     return texto.replace(/'/g, "\\'");
 }
-
-
 
 /* ----- */

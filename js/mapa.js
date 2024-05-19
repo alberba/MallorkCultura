@@ -105,9 +105,9 @@ async function initMap({position, zoom=12, arrPositionMarkers=[], arrPositionRou
 /**
  * Función encargada de iniciar el mapa en la localización de un pueblo junto con sus museos
  * @param {Object} dataPueblo Objeto con la información del pueblo sacada del JSON
- * @param {Array<Object>} museosPueblo Array con la información de los museos del pueblo
+ * @param {Array<Object>} ubicacionesPueblo Array con la información de los museos del pueblo
  */
-function iniciarMapaPueblo(dataPueblo, museosPueblo) {
+function iniciarMapaPueblo(dataPueblo, ubicacionesPueblo) {
     // Ofrece una experiencia personalizada para los pueblos
     let zoomMapa = 12;
     if (dataPueblo.name !== "Palma") {
@@ -115,11 +115,11 @@ function iniciarMapaPueblo(dataPueblo, museosPueblo) {
     }
 
     // Filtra y prepara la geolocalización de los museos del pueblo con el formato adecuado
-    let museosPuebloGeo = museosPueblo.map(museo => ({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)}));
+    let ubicacionesPuebloGeo = ubicacionesPueblo.map(museo => normalizarGeoUbicaciones(museo));
     initMap({ 
         position: {lat: parseFloat(dataPueblo.latitude), lng: parseFloat(dataPueblo.longitude)},
         zoom: zoomMapa,
-        arrPositionMarkers: museosPuebloGeo
+        arrPositionMarkers: ubicacionesPuebloGeo
     });
 }
 
@@ -194,4 +194,13 @@ function setMapOnAll(map) {
     markers.forEach(marker => {
         marker.setMap(map);
     });
+}
+
+function normalizarGeoUbicaciones(ubicacion) {
+    switch(ubicacion["@type"]) {
+        case "Service":
+            return ({lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)});
+        case "CivicStructure":
+            return ({lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)});
+    }
 }

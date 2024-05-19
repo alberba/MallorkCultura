@@ -40,8 +40,22 @@ function crearTuRuta(funcionAnterior){
         $("main").append(divFecha);
     }
     if(eventos.length !== 0){
-        let museo = ubicaciones.find(museo => museo.areaServed.name === eventos[0].lugar);
-        $("main").append(mostrarTiempo(museo.areaServed.geo));
+        let ubicacion = ubicaciones.find(ubicacion => {
+            switch(eventos[0].tipo) {
+                case "CivicStructure":
+                    return ubicacion.name === eventos[0].lugar;
+                case "Service":
+                    return ubicacion.areaServed.name === eventos[0].lugar;
+            }
+        });
+        switch(eventos[0].tipo){
+            case "CivicStructure":
+                $("main").append(mostrarTiempo(ubicacion.geo));
+                break;
+            case "Service":
+                $("main").append(mostrarTiempo(ubicacion.areaServed.geo));
+                break;
+        }
     }
 
     $("main").append(crearDiv("contenedor-ruta-general mt-5", "ctdRuta")
@@ -50,10 +64,18 @@ function crearTuRuta(funcionAnterior){
     ).append(crearDiv("guardar-calendar"));
 
     mostrarRuta();
-    
+
     let eventosGeo = eventos.map(evento => {
-        let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
-        return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
+        let ubicacion;
+        switch(evento["tipo"]){
+            case "CivicStructure":
+                ubicacion = ubicaciones.find(museo => museo.name === evento.lugar);
+                break;
+            case "Service":
+                ubicacion = ubicaciones.find(museo => museo.areaServed.name === evento.lugar).areaServed;
+                break;
+        }
+        return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
     });
     initMap({position: centroMallorca,
         zoom: 9,

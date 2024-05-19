@@ -1,37 +1,27 @@
-/**
- * Función que llama a la función correspondiente para generar las tarjetas de ubicación con la función correcta
- * @param {Object} ubi Ubicación individual del array de ubicaciones: la que se va a añadir a la lista de ubicaciones 
- * @returns 
- */
-function anadirUbicacion(ubi) {
-    if (!ubi.hasOwnProperty("origen")) {
-        return crearTarjetaUbicacion(ubi);
-    } else {
-        switch(ubi.origen) {
-            case "MR":
-                console.log("ubi de MR")
-                return crearTarjetaUbicacionMR(ubi);
-            default:
-                console.error("La ubicación",ubi,"tiene un origen incorrecto, no se puede procesar")
-                return;
-        }
-    }
-}
+let responseStatusMRoute = false;
 
 /* Función para filtrar ubis por pueblo --> documentar luego */
 function filtrarUbicacionesPueblo(pueblo) {
     let arrayFiltrado = [];
     ubicaciones.forEach(ubi => {
-        if (!ubi.hasOwnProperty()) {
+        console.log("ubi",ubi);
+        if (!ubi.hasOwnProperty("origen")) {
             if (ubi.areaServed.address.addressLocality === pueblo) {
                 arrayFiltrado.push(ubi);
             }
         } else {
+            console.log("ubi.origen",ubi.origen);
             switch(ubi.origen) {
                 case "MR":
-                    if (ubi.address.addressLocality === pueblo) {
+                    if (ubi.address && ubi.address.addressLocality === pueblo) {
                         arrayFiltrado.push(ubi);
                     }
+                    break;
+                case "DT":
+                    if (ubi.address && ubi.address.addressLocality === pueblo) {
+                        arrayFiltrado.push(ubi);
+                    }
+                    break;
                 default:
                     console.error("La ubicación",ubi,"tiene un origen incorrecto, no se puede procesar")
                     return;
@@ -58,11 +48,15 @@ function crearPantallaUbicaciones() {
     //Cuando Entramos en la pantalla de Museos ponemos que estamos en la primera pagina
     paginaActual = 0;
 
+    while(!responseStatusMRoute);
+    let ubicacionesGeo = ubicaciones.map(ubicacion => normalizarGeoUbicaciones(ubicacion));
+
+
     // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
     initMap({
         position: centroMallorca, 
         zoom: 9,
-        arrPositionMarkers: ubicaciones.map(museo => ({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)}))
+        arrPositionMarkers: ubicacionesGeo
     });
 
     $("main").empty()
@@ -71,20 +65,11 @@ function crearPantallaUbicaciones() {
         .append(crearFiltros());
 
     let contenedorMuseos = crearDiv("contenedor-museos");
-    leerJSONMallorcaRoute();
-    // Añade las tarjetas de los museos de la primera pagina
-    for(let i=0; i < ubicaciones.length && i < museosPorPagina; i++){
-        let aux = anadirUbicacion(ubicaciones[i]);
-        if (aux == null) {
-            console.error("La tarjeta devuelta está vacía");
-        } else {
-            contenedorMuseos.append(aux);
-        }
-    }    
-
+    console.log("ubicaciones",ubicaciones);
     $("main").append(crearSection().append(contenedorMuseos));
+    crearTarjetasUbicacionesPaginaActual();
     $("main").append(crearSelectorPagina());
-    modificarPaginacion();
+    modificarPaginacion(ubicaciones);
 }
 
 
@@ -101,7 +86,7 @@ function crearUbicacionesPueblo(pueblo) {
     $("header").append(crearDiv("mapa-museo map-container")
         .append(crearDiv("ubi-header").attr("id","map"))
     );
-
+    paginaActual = 0;
     // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
     //let ubicacionesPueblo = ubicaciones.filter(museo => museo.areaServed.address.addressLocality === pueblo);
     let ubicacionesPueblo = filtrarUbicacionesPueblo(pueblo);
@@ -115,50 +100,99 @@ function crearUbicacionesPueblo(pueblo) {
     $("main").append(crearFiltros());
 
     let contenedorMuseos = crearDiv("contenedor-museos");
-    ubicacionesPueblo.forEach(ubi => {
-        let aux = anadirUbicacion(ubi);
-        if (aux == null) {
-            console.error("La tarjeta devuelta está vacía");
-        } else {
-            contenedorMuseos.append(aux);
-        }
-    });
     $("main").append(crearSection().append(contenedorMuseos));
-
+    crearTarjetasUbicacionesPaginaActualPueblo(ubicacionesPueblo);
+    
     $("main").append(crearSelectorPagina());
+    modificarPaginacion(ubicacionesPueblo);
 }
 
 function crearTarjetasUbicacionesPaginaActual(){
     let contenedorMuseo = $(".contenedor-museos");
     contenedorMuseo.empty();
     for(let i=paginaActual*museosPorPagina; i < ubicaciones.length && i < (paginaActual+1)*museosPorPagina; i++){
-        contenedorMuseo.append(crearTarjetaUbicacion(ubicaciones[i])); // Esto hay que cambiarlo por añadirUbicacion()
+        console.log("ubicaciones[i]",ubicaciones[i]);
+        let aux = crearTarjetaUbicacion(ubicaciones[i]);
+        if (aux == null) {
+            console.error("La tarjeta devuelta está vacía");
+        } else {
+            contenedorMuseo.append(aux);
+        }
     }
-    modificarPaginacion();
+    modificarPaginacion(ubicaciones);
+}
+
+function crearTarjetasUbicacionesPaginaActualPueblo(ubicacionesPueblo){
+    let contenedorMuseo = $(".contenedor-museos");
+    contenedorMuseo.empty();
+    for(let i=paginaActual*museosPorPagina; i < ubicacionesPueblo.length && i < (paginaActual+1)*museosPorPagina; i++){
+        let aux = crearTarjetaUbicacion(ubicacionesPueblo[i]);
+        if (aux == null) {
+            console.error("La tarjeta devuelta está vacía");
+        } else {
+            contenedorMuseo.append(aux);
+        }
+    }
+    modificarPaginacion(ubicacionesPueblo);
 }
 
 /**
  * Función que se encarga de crear la tarjeta de los lugares de la lista de ubicaciones que pertenecen al json local
- * @param {Object} museo Museo del que se quiere crear la tarjeta
+ * @param {Object} ubicacion Ubicacion del que se quiere crear la tarjeta
  * @returns {JQuery<HTMLElement>} Un elemento article con la información del museo
  */
-function crearTarjetaUbicacion(museo) {
+function crearTarjetaUbicacion(ubicacion) {
+    let photo = {
+        contentUrl : "",
+        description: ""
+    };
+    let ubicacionCopia = Object.assign({}, ubicacion);
+    switch(ubicacion["@type"]) {
+        case "CivicStructure":
+            ubicacionCopia.description = ubicacion.description.description;
+            photo = {
+                contentUrl: ubicacion.image,
+                description: "Foto de " + ubicacion.name
+            };
+            console.log("photo",photo);
+            break;
+        case "Service":
+            photo = {
+                contentUrl: ubicacion.areaServed.photo[0].contentUrl,
+                description: ubicacion.areaServed.photo[0].description
+            };
+            ubicacionCopia = ubicacionCopia.areaServed;
+            break;
+        case "MovieTheater":
+            photo = {
+                contentUrl: "https://www.descobreixteatre.com/" + ubicacion.image.contentUrl,
+                description:"Foto de " + ubicacion.name
+            }
+            break;
+    }
     let botonVerMas = crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
-        .attr("href", "/museo?" + museo.areaServed.name);
+        .attr("href", "/museo?" + ubicacionCopia.name);
 
     añadirEventListenerSPA(botonVerMas.get(0));
 
     return crearArticle("museo")
-            .append(crearImg(museo.areaServed.photo[0].contentUrl, museo.areaServed.photo[0].description))
-            .append(crearHeader("titulo-museo-card").append(crearH4(museo.areaServed.name)))
+            .append(crearImg(photo.contentUrl, photo.description)
+                    .attr({
+                        "property":"photo",
+                        "typeof":"ImageObject"
+                    })
+            )
+            .append(crearHeader("titulo-museo-card").append(crearH4(ubicacionCopia.name).attr("property","name")))
             .append(crearP({
-                clases: "mb-4 descripcion-museo",
-                texto: museo.areaServed.description        
-            }))
+                        clases: "mb-4 descripcion-museo",
+                        texto: ubicacionCopia.description        
+                    })
+                    .attr("property","description")
+            )
             .append(crearDiv("botones-museo")
                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
                     .on("click", () => {
-                        almacenarVisita(escaparComillas(museo.areaServed.name), escaparComillas(museo.areaServed.address.streetAddress), museo.areaServed["@type"][1]);
+                        almacenarVisita(escaparComillas(ubicacionCopia.name), escaparComillas(ubicacionCopia.address.streetAddress), ubicacion["@type"]);
                         // @ts-ignore
                         Swal.fire({
                             title: "Añadido a la ruta",
@@ -171,12 +205,12 @@ function crearTarjetaUbicacion(museo) {
             );
 }
 
-function modificarPaginacion() {
+function modificarPaginacion(tarjetas) {
     // Obtener el elemento paginacion
     var paginacion = $("#paginacion");
 
     //Si no hay más que una pagina quitamos la paginación
-    if (Math.ceil(ubicaciones.length / museosPorPagina) < 2) {
+    if (Math.ceil(tarjetas.length / museosPorPagina) < 2) {
         paginacion.remove();
         return;
     }
@@ -191,7 +225,6 @@ function modificarPaginacion() {
 
     // Añadir evento onclick a los botones
     prevButton.on('click', function () {
-        alert("Has clicado anterior");
         if (paginaActual > 0) {
             paginaActual--;
             crearTarjetasUbicacionesPaginaActual();
@@ -199,7 +232,7 @@ function modificarPaginacion() {
     });
 
     nextButton.on('click', function () {
-        if (paginaActual < Math.ceil(ubicaciones.length / museosPorPagina) - 1) {
+        if (paginaActual < Math.ceil(tarjetas.length / museosPorPagina) - 1) {
             paginaActual++;
             crearTarjetasUbicacionesPaginaActual();
         }
@@ -207,15 +240,19 @@ function modificarPaginacion() {
 
     paginacion.append(prevButton);
 
-    var totalPaginas = Math.ceil(ubicaciones.length / museosPorPagina);
+    var totalPaginas = Math.ceil(tarjetas.length / museosPorPagina);
 
     // Si hay menos de 4 paginas, se muestran todas
+    let clasePaginaActual="pagina-actual";
     if (totalPaginas <= 4) {
         for (let i = 1; i <= totalPaginas; i++) {
             var span = crearSpan("", i.toString()).on('click', function () {
                 paginaActual = i - 1;
                 crearTarjetasUbicacionesPaginaActual();
             });
+            if(paginaActual == i - 1){
+                span.addClass(clasePaginaActual);
+            }
             paginacion.append(span);
         }
     } else {
@@ -226,6 +263,9 @@ function modificarPaginacion() {
                     paginaActual = i - 1;
                     crearTarjetasUbicacionesPaginaActual();
                 });
+                if(paginaActual == i - 1){
+                    span.addClass(clasePaginaActual);
+                }
                 paginacion.append(span);
             }
             paginacion.append(crearP({
@@ -253,6 +293,9 @@ function modificarPaginacion() {
                     paginaActual = i - 1;
                     crearTarjetasUbicacionesPaginaActual();
                 });
+                if(paginaActual == i - 1){
+                    span.addClass(clasePaginaActual);
+                }
                 paginacion.append(span);
             }
             paginacion.append(crearP({
@@ -280,6 +323,9 @@ function modificarPaginacion() {
                     paginaActual = i - 1;
                     crearTarjetasUbicacionesPaginaActual();
                 });
+                if(paginaActual == i - 1){
+                    span.addClass(clasePaginaActual);
+                }
                 paginacion.append(span);
             }
         }

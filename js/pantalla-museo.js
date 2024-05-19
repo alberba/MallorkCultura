@@ -2,10 +2,38 @@
  * Función que se encarga de crear la pantalla de información de un lugar en concreto
  * @param {String} nombreLugar Nombre del lugar del que se quiere mostrar la información
  */
-function crearPantallaMuseo(nombreLugar){
-    const lugar = ubicaciones.find(museo => museo.areaServed.name === nombreLugar);
+function crearPantallaUbicacion(nombreLugar){
+    const auxLugar = ubicaciones.find(ubicacion => {
+        switch(ubicacion["@type"]) {
+            case "CivicStructure":
+            case "MovieTheater":
+                return ubicacion.name === nombreLugar;
+            case "Service":
+                return ubicacion.areaServed.name === nombreLugar;
+        }
+    });
     // Hacer que la página suba al principio
     window.scrollTo(0, 0);
+    let lugar;
+    let photo;
+    let description;
+    switch(auxLugar["@type"]) {
+        case "CivicStructure":
+            description = auxLugar.description.description;
+            lugar = auxLugar;
+            photo = auxLugar.image;
+            break;
+        case "MovieTheater":
+            description = auxLugar.description;
+            lugar = auxLugar;
+            photo = "https://www.descobreixteatre.com/" + auxLugar.image.contentUrl;
+            break;
+        case "Service":
+            description = auxLugar.areaServed.description;
+            lugar = auxLugar.areaServed;
+            photo = auxLugar.areaServed.photo;
+            break;
+    }
     // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
     // de portada de la pantalla principal, se elimine
     $("header > div").remove();
@@ -16,12 +44,12 @@ function crearPantallaMuseo(nombreLugar){
                 .addClass("m-0 titulo-museo")
                 .attr("id", "titulo-museo")
                 .attr("property","name")
-                .html(lugar.areaServed.name))
+                .html(lugar.name))
         )
     );
 
     // Inicializa el mapa con la posición del lugar
-    let posicion = {lat: parseFloat(lugar.areaServed.geo.latitude), lng: parseFloat(lugar.areaServed.geo.longitude)};
+    let posicion = {lat: parseFloat(lugar.geo.latitude), lng: parseFloat(lugar.geo.longitude)};
     initMap({
         position: posicion, 
         zoom: 14,
@@ -41,7 +69,7 @@ function crearPantallaMuseo(nombreLugar){
 
     // Creación del slider de imágenes
     $("main").append(crearDiv("swiper mySwiper slider-imagen-museo")
-        .append(generarCarrousselFotos(lugar.areaServed.photo))
+        .append(generarCarrousselFotos(photo, auxLugar["@type"]))
         .append(crearDiv("swiper-button-next"))
         .append(crearDiv("swiper-button-prev"))
         .append(crearDiv("swiper-pagination"))
@@ -49,22 +77,19 @@ function crearPantallaMuseo(nombreLugar){
 
     // Creación de la información del museo
     $("main").append(crearDiv("section-museo")
-        .append(crearArticuloMuseo(lugar)
+        .append(crearArticuloMuseo(lugar, description)
             .append(crearDiv("botones-descripcion")
-                .append(crearBoton("Leer más", "leer-mas-btn", "boton boton-verde")
-                    .on("click", leerMas)
-                )
                 .append(crearBoton("", "escuchar-btn", "boton-verde btn-volume")
-                    .on("click", () => speechDescription(lugar.areaServed.name, lugar.areaServed.description))
+                    .on("click", () => speechDescription(lugar.name, description))
                     .append(crearImg("img/svg/volume.svg","Icono de volumen para escuchar el titulo y la descripcion","volume-icon")))
             )
-            .append((generarDivExposiciones(lugar.areaServed.event)))
+            .append((generarDivExposiciones(lugar.event, auxLugar["@type"])))
             .append(crearDiv("contenedor-botones-museo")
                 .append($("<a>")
                     .addClass("boton boton-verde")
                     .html("Añadir a la ruta")
                     .on("click", () => {
-                        almacenarVisita(lugar.areaServed.name, lugar.areaServed.address.streetAddress, lugar.areaServed["@type"][1]);
+                        almacenarVisita(lugar.name, lugar.address.streetAddress, auxLugar["@type"]);
                         // @ts-ignore
                         Swal.fire({
                             title: "Añadido a la ruta",
@@ -76,59 +101,64 @@ function crearPantallaMuseo(nombreLugar){
                 .append($("<a>")
                     .addClass("boton boton-gris boton-comp-entrada")
                     .attr({
-                        "href":lugar.areaServed.tourBookingPage ?? lugar.areaServed.url,    // Si tiene web de entradas, redirige allí, sinó, redirige a la web inicial
+                        "href":lugar.tourBookingPage ?? lugar.url,    // Si tiene web de entradas, redirige allí, sinó, redirige a la web inicial
                         "target":"_blank"
                     })
                     .html("Comprar entrada")
                     .append(crearImg("img/svg/boton-añadir-carrito.svg","Icono de redireccion"))
                 )
             )
-            .append(crearDivValoracion(""))
         )
-        .append(crearDiv("vl").attr("id","separador-vertical-museo"))
-        .append(crearHr().attr("id","separador-horizontal-museo"))
-        .append(generarAsideMuseo(lugar))
     );
+    if(auxLugar["@type"] !== "MovieTheater") {
+        $(".section-museo")
+            .append(crearDiv("vl").attr("id","separador-vertical-museo"))
+            .append(crearHr().attr("id","separador-horizontal-museo"))
+            .append(generarAsideMuseo(auxLugar));
+    }
     activarSwipersImagenes();
 
+    if(description.split("\n").length > 1) {
+        $(".botones-descripcion").
+            append(crearBoton("Leer más", "leer-mas-btn", "boton boton-verde")
+                .on("click", leerMas));
+    }
     // Activar el swiper de exposiciones si hay exposiciones
-    if (lugar.areaServed.event.length > 0) {
+    console.log(lugar.event);
+    if (lugar.event && lugar.event.length > 0) {
+        console.log("Activar exposiciones");
         activarExposicionSwiper();
     }
     
 }
 
-function crearDivValoracion(valoracion) {
-    let div = crearDiv("valoracion-museo");
-    let divEstrellas = crearDiv("rating");
-    for(let i = 5; i > 0; i--) {
-        let estrella = $("<input>").attr("type", "radio").attr("name", "rating").attr("id", "star" + i);
-        estrella.attr("value", i);
-        estrella.on('change', function() {
-            let rating = estrella.val();
-            // Aquí puedes enviar 'rating' al servidor mediante una solicitud AJAX
-            console.log("Valoración seleccionada: " + rating);
-        });
-        divEstrellas.append(estrella);
-        divEstrellas.append(crearLabel("star" + i, ""));
-    }
-    return div.append(divEstrellas);
-}
-
 /**
  * Función que se encarga de crear una tarjeta de componente
- * @param {Array<Object>} fotos Array de objetos con las fotos del componente
+ * @param {Array<Object> | Object} fotos Array de objetos con las fotos del componente
+ * @param {String} type tipo de ubicación
  * @returns {JQuery<HTMLElement>} Un elemento div con el swipper de imagenes
  */
-function generarCarrousselFotos(fotos) {
+function generarCarrousselFotos(fotos, type) {
     let carrousselFotos = crearDiv("swiper-wrapper").attr("property","photos");
-    fotos.forEach(foto => {
-        carrousselFotos.append(crearDiv("swiper-slide")
-            .append(crearImg(foto.contentUrl, foto.description, "imagen-museo")
-                .attr("property","photo")
-                .attr("typeof","ImageObject"))
-        );
-    });
+    if(Array.isArray(fotos)) {
+        fotos.forEach(foto => {
+            carrousselFotos.append(crearDiv("swiper-slide")
+                .append(crearImg(foto.contentUrl, foto.description, "imagen-museo")
+                    .attr("property","photo")
+                    .attr("typeof","ImageObject"))
+            );
+        });
+    } else {
+        if(type === "CivicStructure" || type === "MovieTheater") {
+            carrousselFotos.append(crearDiv("swiper-slide")
+                .append(crearImg(fotos, "", "imagen-museo")
+                    .attr("property","photo")
+                    .attr("typeof","ImageObject"))
+            );
+        }
+    }
+
+    
     return carrousselFotos;
 }
 
@@ -137,22 +167,36 @@ function generarCarrousselFotos(fotos) {
  * @param {Object} lugar Lugar del que se quiere mostrar la información
  * @returns {JQuery<HTMLElement>} Un elemento article con la información del lugar
  */
-function crearArticuloMuseo(lugar) {
+function crearArticuloMuseo(lugar, descripcion) {
     let articulo = crearArticle("main-museo").attr("property", "description");
-    lugar.areaServed.description.split("\n").forEach((parrafo, index) => {
-        if(index === 0) {
+    switch(lugar["@type"]) {
+        case "CivicStructure":
+        case "MovieTheater":
             articulo.append(crearP({
                 clases: "desc-museum first-desc-museum-mobile",
                 id: "first-desc-museum",
-                texto: parrafo
+                texto: descripcion
             }));
-        } else {
-            articulo.append(crearP({
-                clases: "desc-museum leer-mas",
-                texto: parrafo
-            }));
-        }
-    });
+            break;
+        case "Museum":
+            descripcion.split("\n").forEach((parrafo, index) => {
+                console.log(parrafo);
+                if(index === 0) {
+                    articulo.append(crearP({
+                        clases: "desc-museum first-desc-museum-mobile",
+                        id: "first-desc-museum",
+                        texto: parrafo
+                    }));
+                } else {
+                    articulo.append(crearP({
+                        clases: "desc-museum leer-mas",
+                        texto: parrafo
+                    }));
+                }
+            });
+            break;
+    }
+    
     return articulo;
 }
 
@@ -160,19 +204,29 @@ function crearArticuloMuseo(lugar) {
 /**
  * Función que se encarga de crear el swipper de exposiciones
  * @param {Object} exposiciones Exposiciones del museo
+ * @param {String} typeUbi Tipo de ubicación
  * @returns {JQuery<HTMLElement>|string} Un elemento section con el swipper de exposiciones
  */
-function generarDivExposiciones(exposiciones) {
+function generarDivExposiciones(exposiciones, typeUbi) {
     
-    if (exposiciones !== "") {
+    if (exposiciones && exposiciones !== "") {
         
         let expos = crearDiv("swiper-wrapper");
         exposiciones.forEach(expo => {
+            let expoFoto = "";
+            switch(typeUbi) {
+                case "MovieTheater":
+                    expoFoto = "https://www.descobreixteatre.com/" + expo.image.contentUrl;
+                    break;
+                case "Service":
+                    expoFoto = expo.image.contentUrl;
+                    break;
+            }
             expos.append($("<li>")
                 .addClass("exposicion swiper-slide")
                 .attr("property", "event")
                 .attr("typeof", "Event")
-                .append(crearImg(expo.image.contentUrl, expo.image.description)
+                .append(crearImg(expoFoto, expo.image.description)
                     .attr("property", "image"))
                 .append(
                     crearP({
@@ -181,7 +235,7 @@ function generarDivExposiciones(exposiciones) {
                     })
                     .attr("property", "name")
                 )
-                .append(comprobarExposicionActual(expo))
+                .append(comprobarExposicionActual(expo, typeUbi))
             );
         });
         let exposDiv = crearSection()
@@ -204,10 +258,19 @@ function generarDivExposiciones(exposiciones) {
  */
 function generarAsideMuseo(lugar) {
     let aside = $("<aside>");
+    let openingHours;
+    switch(lugar["@type"]) {
+        case "CivicStructure":
+            openingHours = lugar.openingHours;
+            break;
+        case "Service":
+            openingHours = lugar.areaServed.openingHours;
+            break;
+    }
     aside.append(crearDiv()
         .attr("property", "openingHours")
         .append($("<h5>").html("Horario"))
-        .append(crearFechasHorarioLugar(lugar.areaServed.openingHours))
+        .append(crearFechasHorarioLugar(openingHours))
     )
     .append(crearTextoDirecciónLugar(lugar))
     .append(crearTextoPreciosLugar(lugar.hasOfferCatalog));
@@ -250,7 +313,15 @@ function crearFechasHorarioLugar(horario) {
  * @returns 
  */
 function crearTextoDirecciónLugar(lugar) {
-    let direccion = lugar.areaServed.address;
+    let direccion;
+    switch(lugar["@type"]) {
+        case "CivicStructure":
+            direccion = lugar.address;
+            break;
+        case "Service":
+            direccion = lugar.areaServed.address;
+            break;
+    }
     return crearDiv()
         .attr("property", "address")
         .attr("typeof", "PostalAddress")
@@ -317,19 +388,30 @@ function primerParrafoVisible() {
     return primerParrafo.offset().top >= $(window).scrollTop();
 }
 
-function comprobarExposicionActual(expo) {
+function comprobarExposicionActual(expo, typeUbi) {
     const contenedor = $("<div>").attr("property", "eventSchedule").attr("typeof", "Schedule");
     const p = $("<p>").addClass("fecha-exp").attr("property", "eventSchedule");
     
     
-    if(expo.eventSchedule.startDate <= new Date().toISOString() && expo.eventSchedule.endDate >= new Date().toISOString()) {
-        p.addClass("fecha-verde").text("Hasta el " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate))
-    } else {
-        p.text(convertirFormatoFechaExposicion(expo.eventSchedule.startDate) + " - " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate));
+    switch(typeUbi) {
+        case "MovieTheater":
+            p.text(convertirFormatoFechaExposicion(expo.startDate));
+            contenedor.append(p)
+                .append($("<meta>").attr("property", "startDate").attr("content", expo.startDate));
+            break;
+        case "Service":
+            if(expo.eventSchedule.startDate <= new Date().toISOString() && expo.eventSchedule.endDate >= new Date().toISOString()) {
+                p.addClass("fecha-verde").text("Hasta el " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate))
+            } else {
+                p.text(convertirFormatoFechaExposicion(expo.eventSchedule.startDate) + " - " + convertirFormatoFechaExposicion(expo.eventSchedule.endDate));
+            }
+            contenedor.append(p)
+                .append($("<meta>").attr("property", "startDate").attr("content", expo.eventSchedule.startDate))
+                .append($("<meta>").attr("property", "endDate").attr("content", expo.eventSchedule.endDate));
+            break;
     }
-    contenedor.append(p)
-    .append($("<meta>").attr("property", "startDate").attr("content", expo.eventSchedule.startDate))
-    .append($("<meta>").attr("property", "endDate").attr("content", expo.eventSchedule.endDate));
+    
+    
 
     return contenedor;
 }

@@ -2,20 +2,25 @@
 
 ## 3a Presentación
 - [ ] Web Semántica
-    - [x] Añadir microdatos a pantalla-museo
-    - [ ] Añadir microdatos a pantalla-museos
-    - [ ] Añadir microdatos a pantalla inicial
+    - [ ] Añadir microdatos a pantalla-museo
+        - [x] Añadir microdatos a museos propios
+        - [x] Añadir microdatos a edificios Mallorca Routes
+        - [ ] Añadir microdatos a descobrei teatre
+    - [x] Añadir microdatos a pantalla-museos
+    - [x] Añadir microdatos a pantalla inicial
 - [ ] Añadir json externos
+    - [x] MallorcaRoutes
+    - [x] DescobreixTeatre
+- [x] En main.js, revisar la función de la línea 190: crearSelectorPagina() --> CARLOS
+- [ ] Al cambiar de página, actualizar los puntos en el mapa
+- [ ] Al recargar la página en pantalla-museo, salta error
 
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
-- [ ] Actualizar función de crearSelectorPagina
-    - [ ] Habrá que añadir id's para poder coger los botones y cambiar la pag
+
 ## 3a Presentación
 - [ ] Filtro museos
-    - [ ] Ordenar por ascendente/descendente
     - [ ] Filtros independientes
-- [ ] Añadir comentarios/valoraciones a los museos
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 
@@ -89,3 +94,5 @@
     - [x] Pantalla-usuario
     - [x] Contacto
 - [X] Añadir que los filtros se plieguen y desplieguen con jquery
+- [x] Actualizar función de crearSelectorPagina
+    - [x] Habrá que añadir id's para poder coger los botones y cambiar la pag

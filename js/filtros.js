@@ -96,10 +96,20 @@ function cambiarUbicacionesPorNombre(nombre) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     let museosNuevos = [];
-    ubicaciones.forEach(museo => { 
-        if (nombre === "" || museo.areaServed.name.toLowerCase().includes(nombre.toLowerCase())) {
-            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
-            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+    ubicaciones.forEach(ubicacion => { 
+        switch(ubicacion["@type"]) {
+            case "CivicStructure":
+                if (nombre === "" || ubicacion.name.toLowerCase().includes(nombre.toLowerCase())) {
+                    contenedorUbicaciones.append(crearTarjetaUbicacion(ubicacion));
+                    museosNuevos.push({lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)});
+                }
+                break;
+            case "Service":
+                if (nombre === "" || ubicacion.areaServed.name.toLowerCase().includes(nombre.toLowerCase())) {
+                    contenedorUbicaciones.append(crearTarjetaUbicacion(ubicacion));
+                    museosNuevos.push({lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)});
+                }
+                break;
         }
     });
 
@@ -125,15 +135,28 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
         let coordsMuseo;
         let contenedorUbicaciones = $(".contenedor-museos");
         let museosNuevos = [];
+        let ubiGeo
         contenedorUbicaciones.empty();
-        ubicaciones.forEach(museo => { 
-            coordsMuseo = {
-                lat: museo.areaServed.geo.latitude,
-                lng: museo.areaServed.geo.longitude
-            };
+        ubicaciones.forEach(ubicacion => { 
+            switch(ubicacion["@type"]) {
+                case "CivicStructure":
+                    ubiGeo = ubicacion.geo;
+                    coordsMuseo = {
+                        lat: ubicacion.geo.latitude,
+                        lng: ubicacion.geo.longitude
+                    };
+                    break;
+                case "Service":
+                    ubiGeo = ubicacion.areaServed.geo;
+                    coordsMuseo = {
+                        lat: ubicacion.areaServed.geo.latitude,
+                        lng: ubicacion.areaServed.geo.longitude
+                    };
+                    break;
+            }
             if (calcularDistancia(coordsDireccion, coordsMuseo) <= rango) {
-                contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
-                museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+                contenedorUbicaciones.append(crearTarjetaUbicacion(ubicacion));
+                museosNuevos.push({lat: parseFloat(ubiGeo.latitude), lng: parseFloat(ubiGeo.longitude)});
             }
             
         });
@@ -194,7 +217,7 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
     let dia;
-    let museosNuevos = [];
+    let ubiNuevos = [];
     switch((new Date(fecha)).getDay()){
         case 1:
             dia = "Mo";
@@ -219,29 +242,44 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
             break;
     }
 
-    ubicaciones.forEach(museo => { 
-        if (contiene(dia, museo)) {
-            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
-            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+    ubicaciones.forEach(ubicacion => { 
+        if (contiene(dia, ubicacion)) {
+            contenedorUbicaciones.append(crearTarjetaUbicacion(ubicacion));
+            switch(ubicacion["@type"]) {
+                case "CivicStructure":
+                    ubiNuevos.push({lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)});
+                    break;
+                case "Service":
+                    ubiNuevos.push({lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)});
+                    break;
+            }
         }
         
     });
 
-    if(museosNuevos.length >= 0) {
-        console.log(museosNuevos);
-        actualizarMarkerMaps(museosNuevos);
+    if(ubiNuevos.length >= 0) {
+        console.log(ubiNuevos);
+        actualizarMarkerMaps(ubiNuevos);
     }
 }
 
 /**
  * Función que comprueba si se puede acceder en el **día** pasado por parametro al museo **m**
  * @param {String} dia Día de la semana en formato de 2 letras en inglés
- * @param {object} m Objeto museo perteneciente al array de museos
+ * @param {object} ubicacion Objeto ubicacion perteneciente al array de museos
  * @returns Boolean indicando si la fecha indicada **dia** se puede acceder al museo **m**
  */
-function contiene(dia, m) {
+function contiene(dia, ubicacion) {
     let diasSemana = ["Mo","Tu","We","Th","Fr","Sa","Su"];
-    let horarioApertura = m.areaServed.openingHours;
+    let horarioApertura;
+    switch(ubicacion["@type"]) {
+        case "CivicStructure":
+            horarioApertura = ubicacion.openingHours;
+            break;
+        case "Service":
+            horarioApertura = ubicacion.areaServed.openingHours;
+            break;
+    }
     let diasSemanaAbierto;
     let diaAbierto1;
     let diaAbierto2;
@@ -281,7 +319,7 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     contenedorUbicaciones.empty();
     if (!gratuito && !entrada) {
         ubicaciones.forEach(museo => { 
-            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
         });
 
@@ -294,7 +332,7 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
 
     ubicaciones.forEach(museo => { 
         if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada)) {
-            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
         }
     });
@@ -332,7 +370,7 @@ function success(pos, rango) {
             lng: museo.areaServed.geo.longitude
         };
         if (calcularDistancia(coords, coordsMuseo) <= rango) {
-            contenedorUbicaciones.append(crearTarjetaUbicacion(museo, crearDondeVisitar));
+            contenedorUbicaciones.append(crearTarjetaUbicacion(museo));
             museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
         }
     });
