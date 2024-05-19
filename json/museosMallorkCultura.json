@@ -326,7 +326,7 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://miromallorca.com/content/uploads/2024/04/expo_biblioteca_pilar_juncosa-9-1024x768.jpeg",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exposiciones/miro1983.webp",
                             "description": "Imagen de la exposición «Pilar Juncosa, l’estel fulgurant»."
                         }
                     },
@@ -584,7 +584,7 @@
                         }],
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/extrellation.webp",
+                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/estrellation.webp",
                             "description": "Imagen de la exposición TRINE SØNDERGAARD"
                         }
                     }
@@ -686,12 +686,12 @@
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/aerea.webp",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/entrada.webp",
                         "description": "Imagen de la entrada del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/aerea.webp",
+                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/exposicion.webp",
                         "description": "Imagen de una exposición del Museo Sa Bassa Blanca"
                     },
                     {
@@ -850,6 +850,7 @@
                     "email": "museu@canprunera.net"
                 },
                 "aggregateRating" : "",
+                "event": "",
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.767867139918586",
