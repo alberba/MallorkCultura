@@ -32,6 +32,7 @@ RewriteEngine on
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_URI} !/privacy
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
