@@ -4,13 +4,11 @@ let responseStatusMRoute = false;
 function filtrarUbicacionesPueblo(pueblo) {
     let arrayFiltrado = [];
     ubicaciones.forEach(ubi => {
-        console.log("ubi",ubi);
         if (!ubi.hasOwnProperty("origen")) {
             if (ubi.areaServed.address.addressLocality === pueblo) {
                 arrayFiltrado.push(ubi);
             }
         } else {
-            console.log("ubi.origen",ubi.origen);
             switch(ubi.origen) {
                 case "MR":
                     if (ubi.address && ubi.address.addressLocality === pueblo) {
@@ -64,7 +62,6 @@ function crearPantallaUbicaciones() {
         .append(crearFiltros());
 
     let contenedorMuseos = crearDiv("contenedor-museos");
-    console.log("ubicaciones",ubicaciones);
     $("main").append(crearSection().append(contenedorMuseos));
     crearTarjetasUbicacionesPaginaActual();
     $("main").append(crearSelectorPagina());
@@ -110,7 +107,6 @@ function crearTarjetasUbicacionesPaginaActual(){
     let contenedorMuseo = $(".contenedor-museos");
     contenedorMuseo.empty();
     for(let i=paginaActual*museosPorPagina; i < ubicaciones.length && i < (paginaActual+1)*museosPorPagina; i++){
-        console.log("ubicaciones[i]",ubicaciones[i]);
         let aux = crearTarjetaUbicacion(ubicaciones[i]);
         if (aux == null) {
             console.error("La tarjeta devuelta está vacía");
@@ -153,7 +149,6 @@ function crearTarjetaUbicacion(ubicacion) {
                 contentUrl: ubicacion.image,
                 description: "Foto de " + ubicacion.name
             };
-            console.log("photo",photo);
             break;
         case "Service":
             photo = {
@@ -191,7 +186,11 @@ function crearTarjetaUbicacion(ubicacion) {
             .append(crearDiv("botones-museo")
                 .append(crearBoton("Añadir", "", "boton boton-card-museo boton-verde")
                     .on("click", () => {
-                        almacenarVisita(escaparComillas(ubicacionCopia.name), escaparComillas(ubicacionCopia.address.streetAddress), ubicacion["@type"]);
+                        if (ubicacion["@type"] === "MovieTheater") {
+                            almacenarVisita(escaparComillas(ubicacionCopia.name), escaparComillas(ubicacionCopia.address.addressLocality), ubicacion["@type"]);
+                        } else {
+                            almacenarVisita(escaparComillas(ubicacionCopia.name), escaparComillas(ubicacionCopia.address.streetAddress), ubicacion["@type"]);
+                        }
                         // @ts-ignore
                         Swal.fire({
                             title: "Añadido a la ruta",

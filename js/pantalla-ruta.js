@@ -43,6 +43,7 @@ function crearTuRuta(funcionAnterior){
         let ubicacion = ubicaciones.find(ubicacion => {
             switch(eventos[0].tipo) {
                 case "CivicStructure":
+                case "MovieTheater":
                     return ubicacion.name === eventos[0].lugar;
                 case "Service":
                     return ubicacion.areaServed.name === eventos[0].lugar;
@@ -50,6 +51,7 @@ function crearTuRuta(funcionAnterior){
         });
         switch(eventos[0].tipo){
             case "CivicStructure":
+            case "MovieTheater":
                 $("main").append(mostrarTiempo(ubicacion.geo));
                 break;
             case "Service":
@@ -67,12 +69,16 @@ function crearTuRuta(funcionAnterior){
 
     let eventosGeo = eventos.map(evento => {
         let ubicacion;
+        console.log(evento);
+        
         switch(evento["tipo"]){
             case "CivicStructure":
-                ubicacion = ubicaciones.find(museo => museo.name === evento.lugar);
+            case "MovieTheater":
+                ubicacion = ubicaciones.find(ubicacion => ubicacion.name === evento.lugar);
+                console.log(ubicacion);
                 break;
             case "Service":
-                ubicacion = ubicaciones.find(museo => museo.areaServed.name === evento.lugar).areaServed;
+                ubicacion = ubicaciones.find(ubicacion => ubicacion.areaServed.name === evento.lugar).areaServed;
                 break;
         }
         return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
@@ -188,10 +194,17 @@ function mostrarRuta() {
                                         eliminarMuseoRuta(index);
                                         let eventosActualizado = recuperarVisitas();
                                         let eventosGeo = eventosActualizado.map(evento => {
-                                            let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
-                                            return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
+                                            let ubicacion;
+                                            switch(evento["tipo"]){
+                                                case "CivicStructure":
+                                                case "MovieTheater":
+                                                    ubicacion = ubicaciones.find(ubiAux => ubiAux.name === evento.lugar);
+                                                    return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
+                                                case "Service":
+                                                    ubicacion = ubicaciones.find(ubiAux => ubiAux.areaServed.name === evento.lugar);
+                                                    return {lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)};
+                                            }
                                         });
-                                        console.log(eventosGeo);
                                         actualizarRouteMaps(eventosGeo);
                                         // @ts-ignore
                                         Swal.fire({

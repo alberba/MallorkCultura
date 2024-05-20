@@ -114,7 +114,6 @@ function cambiarUbicacionesPorNombre(nombre) {
     });
 
     if(museosNuevos.length >= 0) {
-        console.log(museosNuevos);
         actualizarMarkerMaps(museosNuevos);
     }
 }
@@ -258,7 +257,6 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
     });
 
     if(ubiNuevos.length >= 0) {
-        console.log(ubiNuevos);
         actualizarMarkerMaps(ubiNuevos);
     }
 }
@@ -354,7 +352,6 @@ function cambiarUbicacionesCercaUsuario(rango) {
 }
 
 function success(pos, rango) {
-    console.log(pos);
     let coordsAux = pos.coords;
     let coords = {
         lat: coordsAux.latitude,

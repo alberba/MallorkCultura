@@ -27,6 +27,7 @@ fetch(jsonUrlPueblos)
                 filtrarPueblos();
                 cargarPueblos();
                 cargarContenido();
+                crearFooter();
             })
             .catch(error => console.error("Error al cargar los datos del JSON:", error));
     })
@@ -68,7 +69,6 @@ let leerJSONMallorcaRoute = () => {
     fetch(jsonUrlMallorcaRoute)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             edificios = data.itemListElement;
             edificios.forEach(edificio => {
                 edificio.origen = "MR"; // Esto sobra??
@@ -84,7 +84,6 @@ let leerJSONDescobreixTeatre = () => {
     fetch(jsonUrlDescobreixTeatre)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             teatros = data.itemListElement;
             teatros.forEach(teatro => {
                 teatro.origen = "DT"; // Esto sobra ??

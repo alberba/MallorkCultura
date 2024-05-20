@@ -110,12 +110,10 @@ function crearPantallaUbicacion(nombreLugar){
             )
         )
     );
-    if(auxLugar["@type"] !== "MovieTheater") {
-        $(".section-museo")
-            .append(crearDiv("vl").attr("id","separador-vertical-museo"))
-            .append(crearHr().attr("id","separador-horizontal-museo"))
-            .append(generarAsideMuseo(auxLugar));
-    }
+    $(".section-museo")
+        .append(crearDiv("vl").attr("id","separador-vertical-museo"))
+        .append(crearHr().attr("id","separador-horizontal-museo"))
+        .append(generarAsideMuseo(auxLugar));
     activarSwipersImagenes();
 
     if(description.split("\n").length > 1) {
@@ -124,9 +122,7 @@ function crearPantallaUbicacion(nombreLugar){
                 .on("click", leerMas));
     }
     // Activar el swiper de exposiciones si hay exposiciones
-    console.log(lugar.event);
     if (lugar.event && lugar.event.length > 0) {
-        console.log("Activar exposiciones");
         activarExposicionSwiper();
     }
     
@@ -180,7 +176,6 @@ function crearArticuloMuseo(lugar, descripcion) {
             break;
         case "Museum":
             descripcion.split("\n").forEach((parrafo, index) => {
-                console.log(parrafo);
                 if(index === 0) {
                     articulo.append(crearP({
                         clases: "desc-museum first-desc-museum-mobile",
@@ -267,13 +262,15 @@ function generarAsideMuseo(lugar) {
             openingHours = lugar.areaServed.openingHours;
             break;
     }
-    aside.append(crearDiv()
-        .attr("property", "openingHours")
-        .append($("<h5>").html("Horario"))
-        .append(crearFechasHorarioLugar(openingHours))
-    )
-    .append(crearTextoDirecciónLugar(lugar))
-    .append(crearTextoPreciosLugar(lugar.hasOfferCatalog));
+    aside.append(crearTextoDirecciónLugar(lugar))
+    if(lugar["@type"] !== "MovieTheater") {
+        aside.append(crearDiv()
+            .attr("property", "openingHours")
+            .append($("<h5>").html("Horario"))
+            .append(crearFechasHorarioLugar(openingHours))
+        )
+        .append(crearTextoPreciosLugar(lugar.hasOfferCatalog));
+    }
 
     return aside;
 }
@@ -316,6 +313,7 @@ function crearTextoDirecciónLugar(lugar) {
     let direccion;
     switch(lugar["@type"]) {
         case "CivicStructure":
+        case "MovieTheater":
             direccion = lugar.address;
             break;
         case "Service":

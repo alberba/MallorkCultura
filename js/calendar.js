@@ -225,8 +225,8 @@ async function crearEventosCalendario() {
             eliminarVisita(eventos[i]);
         }catch(error){
             // Control de errores
-            console.log(error);
-            console.log("Error al crear el evento: "+event.summary+"\n"+
+            console.error(error);
+            console.error("Error al crear el evento: "+event.summary+"\n"+
                         "La api devolvevió: "+response+"\n");
             return;
         }
