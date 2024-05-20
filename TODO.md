@@ -11,24 +11,28 @@
 - [ ] Añadir json externos
     - [x] MallorcaRoutes
     - [x] DescobreixTeatre
-- [x] En main.js, revisar la función de la línea 190: crearSelectorPagina() --> CARLOS
 - [ ] Al cambiar de página, actualizar los puntos en el mapa
-- [ ] Al recargar la página en pantalla-museo, salta error
 
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
 
 ## 3a Presentación
 - [ ] Filtro museos
-    - [ ] Filtros independientes
+    - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 
-### Tu ruta
+# HECHO
+## 20/05
+- [x] Al recargar la página en pantalla-museo, salta error
+
+## 19/05
+- [x] En main.js, revisar la función de la línea 190: crearSelectorPagina() --> CARLOS
+
+## 18/05
 - [x] añadir selección de día para la ruta
 - [x] bloquear solapamiento de horas
 
-# HECHO
 ## 16/05
 - [x] popups al eliminar/meter cosas/ruta
 - [x] Añadir google analytics

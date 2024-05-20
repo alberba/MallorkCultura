@@ -26,6 +26,7 @@ fetch(jsonUrlPueblos)
                 leerJSONDescobreixTeatre();
                 filtrarPueblos();
                 cargarPueblos();
+                cargarContenido();
             })
             .catch(error => console.error("Error al cargar los datos del JSON:", error));
     })

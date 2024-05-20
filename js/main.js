@@ -36,11 +36,8 @@ function cargarContenido() {
             crearDondeVisitar();
             break;
     }
-
+    crearFooter();
 }
-
-cargarContenido();
-crearFooter();
 
 // Manejar los enlaces en caso de que se de click a los botones de la barra de navegación
 window.addEventListener('popstate', cargarContenido);

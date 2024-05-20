@@ -48,7 +48,6 @@ function crearPantallaUbicaciones() {
     //Cuando Entramos en la pantalla de Museos ponemos que estamos en la primera pagina
     paginaActual = 0;
 
-    while(!responseStatusMRoute);
     let ubicacionesGeo = ubicaciones.map(ubicacion => normalizarGeoUbicaciones(ubicacion));
 
 
