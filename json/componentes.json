@@ -32,7 +32,7 @@
             "givenName" : "Albert",
             "image": {
                 "@type": "ImageObject",
-                "contentUrl": "/img/componentes/morio.png",
+                "contentUrl": "/img/componentes/albert.webp",
                 "description": "Retrato de Albert Salom Vanrell"
             }
         }

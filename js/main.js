@@ -90,6 +90,7 @@ function crearFooter() {
                     .append($("<a>").attr("href", "/contacto").attr("id","Contacto").html("Contacto"))
             )
         );
+    añadirEventListenerSPA($("#Contacto").get(0));
 }
 
 function speechDescription(titulo, descripcion) {

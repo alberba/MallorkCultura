@@ -46,16 +46,6 @@ function crearPantallaUbicaciones() {
     //Cuando Entramos en la pantalla de Museos ponemos que estamos en la primera pagina
     paginaActual = 0;
 
-    let ubicacionesGeo = ubicaciones.map(ubicacion => normalizarGeoUbicaciones(ubicacion));
-
-
-    // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
-    initMap({
-        position: centroMallorca, 
-        zoom: 9,
-        arrPositionMarkers: ubicacionesGeo
-    });
-
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos")
         .append(crearBotonAtras("/", "Inicio"))
@@ -114,6 +104,20 @@ function crearTarjetasUbicacionesPaginaActual(){
             contenedorMuseo.append(aux);
         }
     }
+
+    // Selecciona las ubicaciones de la página actual
+    let inicio = paginaActual * museosPorPagina;
+    let fin = inicio + 9;
+    let ubicacionesGeo = ubicaciones.slice(inicio, fin).map(ubicacion => normalizarGeoUbicaciones(ubicacion));
+
+
+    // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
+    initMap({
+        position: centroMallorca, 
+        zoom: 9,
+        arrPositionMarkers: ubicacionesGeo
+    });
+
     modificarPaginacion(ubicaciones);
 }
 
