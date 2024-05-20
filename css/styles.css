@@ -53,7 +53,8 @@ body {
 
 /* Titulo de index.html */
 h1 {
-    font-weight: var(--fuente-bold);
+    font-weight: 800;
+    font-size: 3em;
 }
 
 /* Titulos de apartado (los verdes) */
@@ -312,6 +313,11 @@ nav {
     /* esto tal vez haya que cambiarlo */
     margin-bottom: 15rem !important;
     width: 100%;
+}
+
+.subtitulo-main{
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 .contenedor-principal hr {

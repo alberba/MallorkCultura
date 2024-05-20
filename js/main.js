@@ -56,7 +56,7 @@ function crearDondeVisitar() {
             .attr("srcset", "img/main.webp 2560w, img/main-2290.webp 2290w, img/main-1990.webp 1990w, img/main-1640.webp 1640w, img/main-1180.webp 1180w, img/main-300.webp 300w"))
         .append(crearDiv("texto-main-page texto-overlay m-0")
             .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
-            .append(crearP({texto: "Planifica tu ruta ya"}))
+            .append(crearP({texto: "Planifica tu ruta ya", clases: "subtitulo-main"}))
         )
     );
 
