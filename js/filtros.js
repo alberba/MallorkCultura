@@ -355,7 +355,7 @@ function cambiarUbicacionesCercaUsuario(rango) {
 /**
  * función que se llama en caso de éxito al recuperar la ubicación del usuario. Actualiza las ubicaciones que se muestran.
  * @param {Object} pos parámetro generado por la función ``getCurrentPosition()`` que contiene la latitud y la longitud de la ubicación del navegador
- * @param {Number} rango valor numérico que indica la distancia del rango de búsqueda
+ * @param {umber} rango valor numérico que indica la distancia del rango de búsqueda
  */
 function success(pos, rango) {
     let coordsAux = pos.coords;
