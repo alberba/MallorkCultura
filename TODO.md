@@ -31,6 +31,9 @@
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
+- [ ] Normalizar la cruz en la pantalla tu ruta
+- [ ] Generar la foto de la pagina principal cuando accedes desde otro lado de la pagina
+- [ ] Mostrar mapa pantalla tu ruta
 
 # HECHO
 ## 20/05
