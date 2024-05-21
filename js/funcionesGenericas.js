@@ -232,6 +232,10 @@ function crearA(direccionamiento, clases, texto) {
             .html(texto)
 }
 
+/**
+ * COMENTAR QUIEN LA HAYA CREADO, NI IDEA QUE HACE
+ * @param {} anchor 
+ */
 function añadirEventListenerSPA(anchor) {
     anchor.addEventListener('click', function(event) {
         event.preventDefault(); // Evitar que el enlace funcione normalmente

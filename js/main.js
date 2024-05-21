@@ -93,6 +93,11 @@ function crearFooter() {
     añadirEventListenerSPA($("#Contacto").get(0));
 }
 
+/**
+ * función de la api de speech que lee el ``titulo`` y la ``descripción`` de una ubicación
+ * @param {String} titulo nombre de la ubicación a leer
+ * @param {String} descripcion descripción de la ubicación a leer
+ */
 function speechDescription(titulo, descripcion) {
     if (speechSynthesisActivado) {
         window.speechSynthesis.cancel();
@@ -112,7 +117,10 @@ function speechDescription(titulo, descripcion) {
 
 /* --- Funciones específicas --- */
 
-//función específica - ¿Dónde visitar? --> Pensar en sustituirla
+/**
+ * función que devuelve un elemento div con las clases concretas para crear el contenedor de pueblos
+ * @returns {JQuery<HTMLElement>} contenedor de pueblos
+ */
 function crearContenedorPueblos() {
     return $("<div>").attr("class", "contenedor-pueblos");
 }

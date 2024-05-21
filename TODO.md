@@ -15,9 +15,11 @@
 
 ### JQuery
 - [ ] Revisar de "optimizar" los returns de las funciones
+- [ ] Añadir archivo minimizado en vez del actual
 
 ## 3a Presentación
 - [ ] Revisar los console.log y comentarios de todo
+    - [ ] funcionesGenericas.js --> añadirEventListenerSPA() comentar
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtros en conjunto
