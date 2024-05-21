@@ -58,7 +58,7 @@ function crearPantallaUbicaciones() {
 
     let contenedorMuseos = crearDiv("contenedor-museos");
     $("main").append(crearSection().append(contenedorMuseos));
-    crearTarjetasUbicacionesPaginaActual();
+    crearTarjetasUbicacionesPaginaActual(ubicaciones);
     $("main").append(crearSelectorPagina());
     modificarPaginacion(ubicaciones);
 }
@@ -92,28 +92,41 @@ function crearUbicacionesPueblo(pueblo) {
 
     let contenedorMuseos = crearDiv("contenedor-museos");
     $("main").append(crearSection().append(contenedorMuseos));
-    crearTarjetasUbicacionesPaginaActualPueblo(ubicacionesPueblo);
+    crearTarjetasUbicacionesPaginaActual(ubicacionesPueblo);
     
     $("main").append(crearSelectorPagina());
     modificarPaginacion(ubicacionesPueblo);
 }
 
-function crearTarjetasUbicacionesPaginaActual(){
+/**
+ * Función que se encarga de generar las tarjetas de los museos y otros
+ * edificios del array por parametro, además de cambiar la paginación
+ *  en función de la pagina actual.
+ */
+function crearTarjetasUbicacionesPaginaActual(ubicacionesLocal){
+    // Obtenemos el contenedor de las tarjetas
     let contenedorMuseo = $(".contenedor-museos");
+    // Lo vaciamos
     contenedorMuseo.empty();
-    for(let i=paginaActual*museosPorPagina; i < ubicaciones.length && i < (paginaActual+1)*museosPorPagina; i++){
-        let aux = crearTarjetaUbicacion(ubicaciones[i]);
+    // Añadimos tarjetas una a una desde la primera de la pagina actual,
+    // hasta que ya no queden tarjetas o ponga la cantidad museos por pagina
+    for(let i=paginaActual*museosPorPagina; i < ubicacionesLocal.length && i < (paginaActual+1)*museosPorPagina; i++){
+        // Intentamos crear la tarjeta
+        let aux = crearTarjetaUbicacion(ubicacionesLocal[i]);
         if (aux == null) {
+            // Revisamos si ha habido un error a la hora de crear tarjetas
             console.error("La tarjeta devuelta está vacía");
         } else {
+            // Si todo va bien se une al contendor de museos
             contenedorMuseo.append(aux);
         }
     }
 
+    //NO VAN LOS JSON DEL RESTO
     // Selecciona las ubicaciones de la página actual
     let inicio = paginaActual * museosPorPagina;
     let fin = inicio + 9;
-    let ubicacionesGeo = ubicaciones.slice(inicio, fin).map(ubicacion => normalizarGeoUbicaciones(ubicacion));
+    let ubicacionesGeo = ubicacionesLocal.slice(inicio, fin).map(ubicacion => normalizarGeoUbicaciones(ubicacion));
 
 
     // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
@@ -122,22 +135,7 @@ function crearTarjetasUbicacionesPaginaActual(){
         zoom: 9,
         arrPositionMarkers: ubicacionesGeo
     });
-
-    modificarPaginacion(ubicaciones);
-}
-
-function crearTarjetasUbicacionesPaginaActualPueblo(ubicacionesPueblo){
-    let contenedorMuseo = $(".contenedor-museos");
-    contenedorMuseo.empty();
-    for(let i=paginaActual*museosPorPagina; i < ubicacionesPueblo.length && i < (paginaActual+1)*museosPorPagina; i++){
-        let aux = crearTarjetaUbicacion(ubicacionesPueblo[i]);
-        if (aux == null) {
-            console.error("La tarjeta devuelta está vacía");
-        } else {
-            contenedorMuseo.append(aux);
-        }
-    }
-    modificarPaginacion(ubicacionesPueblo);
+    modificarPaginacion(ubicacionesLocal);
 }
 
 /**
@@ -211,6 +209,11 @@ function crearTarjetaUbicacion(ubicacion) {
                 .append(botonVerMas)
             );
 }
+/**
+ * Función que se encarga de que la paginación sea correcta en función de la
+ * de ubicaciones que tenemos y la pagina en que nos encontramos.
+ * @param tarjetas array que contiene las ubicaciones sobre las que se pagina
+ */
 
 function modificarPaginacion(tarjetas) {
     // Obtener el elemento paginacion
@@ -218,7 +221,7 @@ function modificarPaginacion(tarjetas) {
 
     //Si no hay más que una pagina quitamos la paginación
     if (Math.ceil(tarjetas.length / museosPorPagina) < 2) {
-        paginacion.remove();
+        paginacion.empty();
         return;
     }
 
@@ -234,28 +237,29 @@ function modificarPaginacion(tarjetas) {
     prevButton.on('click', function () {
         if (paginaActual > 0) {
             paginaActual--;
-            crearTarjetasUbicacionesPaginaActual();
+            crearTarjetasUbicacionesPaginaActual(tarjetas);
         }
     });
 
     nextButton.on('click', function () {
         if (paginaActual < Math.ceil(tarjetas.length / museosPorPagina) - 1) {
             paginaActual++;
-            crearTarjetasUbicacionesPaginaActual();
+            crearTarjetasUbicacionesPaginaActual(tarjetas);
         }
     });
 
     paginacion.append(prevButton);
-
+    // Calculamos cuantas paginas habrá
     var totalPaginas = Math.ceil(tarjetas.length / museosPorPagina);
 
     // Si hay menos de 4 paginas, se muestran todas
-    let clasePaginaActual="pagina-actual";
+    const clasePaginaActual="pagina-actual";
+    //Comprobamos si hay menos de 4 páginas para solo generar esa cantidad
     if (totalPaginas <= 4) {
         for (let i = 1; i <= totalPaginas; i++) {
             var span = crearSpan("", i.toString()).on('click', function () {
                 paginaActual = i - 1;
-                crearTarjetasUbicacionesPaginaActual();
+                crearTarjetasUbicacionesPaginaActual(tarjetas);
             });
             if(paginaActual == i - 1){
                 span.addClass(clasePaginaActual);
@@ -268,7 +272,7 @@ function modificarPaginacion(tarjetas) {
             for (let i = 1; i <= 3; i++) {
                 var span = crearSpan("", i.toString()).on('click', function () {
                     paginaActual = i - 1;
-                    crearTarjetasUbicacionesPaginaActual();
+                    crearTarjetasUbicacionesPaginaActual(tarjetas);
                 });
                 if(paginaActual == i - 1){
                     span.addClass(clasePaginaActual);
@@ -281,14 +285,14 @@ function modificarPaginacion(tarjetas) {
             }));
             var lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
                 paginaActual = totalPaginas - 1;
-                crearPantallaUbicaciones();
+                crearTarjetasUbicacionesPaginaActual(tarjetas);
             });
             paginacion.append(lastPage);
         // Si estamos en paginas intermedias tendremos el formato 1 .. paginaActual-1 paginaActual paginaActual+1 .. totalPaginas
         }else if(paginaActual > 3 && paginaActual < totalPaginas - 3){
             var firstPage = crearSpan("", "1").on('click', function () {
                 paginaActual = 0;
-                crearTarjetasUbicacionesPaginaActual();
+                crearTarjetasUbicacionesPaginaActual(tarjetas);
             });
             paginacion.append(firstPage);
             paginacion.append(crearP({
@@ -298,7 +302,7 @@ function modificarPaginacion(tarjetas) {
             for (let i = paginaActual; i <= paginaActual + 1; i++) {
                 var span = crearSpan("", i.toString()).on('click', function () {
                     paginaActual = i - 1;
-                    crearTarjetasUbicacionesPaginaActual();
+                    crearTarjetasUbicacionesPaginaActual(tarjetas);
                 });
                 if(paginaActual == i - 1){
                     span.addClass(clasePaginaActual);
@@ -311,14 +315,14 @@ function modificarPaginacion(tarjetas) {
             }));
             var lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
                 paginaActual = totalPaginas - 1;
-                crearTarjetasUbicacionesPaginaActual();
+                crearTarjetasUbicacionesPaginaActual(tarjetas);
             });
             paginacion.append(lastPage);
         // Si estamos en las ultimas 3 paginas tendremos el formato 1 .. totalPaginas-2 totalPaginas-1 totalPaginas
         }else{
             var firstPage = crearSpan("", "1").on('click', function () {
                 paginaActual = 0;
-                crearTarjetasUbicacionesPaginaActual();
+                crearTarjetasUbicacionesPaginaActual(tarjetas);
             });
             paginacion.append(firstPage);
             paginacion.append(crearP({
@@ -328,7 +332,7 @@ function modificarPaginacion(tarjetas) {
             for (let i = totalPaginas - 2; i <= totalPaginas; i++) {
                 var span = crearSpan("", i.toString()).on('click', function () {
                     paginaActual = i - 1;
-                    crearTarjetasUbicacionesPaginaActual();
+                    crearTarjetasUbicacionesPaginaActual(tarjetas);
                 });
                 if(paginaActual == i - 1){
                     span.addClass(clasePaginaActual);
