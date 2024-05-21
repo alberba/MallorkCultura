@@ -201,10 +201,10 @@ function crearSelectorPagina() {
 
 
 /**
- * 
+ * función que guarda una ubicación como parada de ruta
  * @param {String} lugar nombre de la ubicación
  * @param {String} direccion dirección de la ubicación
- * @param {*} tipo 
+ * @param {String} tipo tipo de ubicación
  */
 function almacenarVisita(lugar, direccion, tipo) {
     const fechaActual = new Date().toISOString().split('T')[0];
