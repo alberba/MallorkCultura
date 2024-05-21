@@ -19,6 +19,7 @@
 ## 3a Presentación
 - [ ] Revisar los console.log y comentarios de todo
 - [ ] Filtro museos
+    - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
