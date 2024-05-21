@@ -20,7 +20,7 @@
             "givenName" : "Matías",
             "image": {
                 "@type": "ImageObject",
-                "contentUrl": "/img/componentes/morio.png",
+                "contentUrl": "/img/componentes/matias.webp",
                 "description": "Retrato de Matías Ponseti Martorell"
             }
         },
