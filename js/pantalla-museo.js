@@ -365,7 +365,9 @@ function crearTextoPreciosLugar(catalogoOfertas) {
     return contenedor;
 }
 
-// Método para el funcionamiento del botón de leer más en pantalla-museo
+/**
+ * método para el funcionamiento del botón de leer más de la información de una ubicación
+ */
 function leerMas() {
     const parrafosAdicionales = $(".leer-mas").toggle();
     $("#first-desc-museum").toggleClass("first-desc-museum-mobile");
@@ -380,12 +382,22 @@ function leerMas() {
     }
 }
 
+/**
+ * función que devuelve el primer párrafo de la descripción de una ubicación 
+ * @returns {String} primer párrafo de la descripción de una ubicación
+ */
 function primerParrafoVisible() {
     const primerParrafo = $("#first-desc-museum");
     //@ts-ignore
     return primerParrafo.offset().top >= $(window).scrollTop();
 }
 
+/**
+ * función que devuelve el objeto de una exposición de una ubicación
+ * @param {JQuery<HTMLElement>} expo exposición a comprobar
+ * @param {String} typeUbi tipo de ubicación (JSON \@type) de la ubicación
+ * @returns {JQuery<HTMLElement>} exposición de una ubicación
+ */
 function comprobarExposicionActual(expo, typeUbi) {
     const contenedor = $("<div>").attr("property", "eventSchedule").attr("typeof", "Schedule");
     const p = $("<p>").addClass("fecha-exp").attr("property", "eventSchedule");

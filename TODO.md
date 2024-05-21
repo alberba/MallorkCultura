@@ -20,6 +20,11 @@
 ## 3a Presentación
 - [ ] Revisar los console.log y comentarios de todo
     - [ ] funcionesGenericas.js --> añadirEventListenerSPA() comentar
+    - [ ] Comentar funciones de mapa.js
+    - [ ] pantalla-museos.js --> crearTarjetasUbicacionesPaginaActual(), crearTarjetasUbicacionesPaginaActualPueblo(), modificarPaginacion() comentar
+    - [ ] revisar comentarios de pantalla-ruta.js
+    - [ ] revisar comentarios de responsive.js
+    - [ ] revisar comentarios de time.js
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtros en conjunto

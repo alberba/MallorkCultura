@@ -1,6 +1,11 @@
 let responseStatusMRoute = false;
 
 /* Función para filtrar ubis por pueblo --> documentar luego */
+/**
+ * función que filtra las ubicaciones que pertenecen a un ``pueblo`` concreto
+ * @param {String} pueblo pueblo por el que se filtran las ubicaciones
+ * @returns {Array} array de objetos ubicaciones que contiene las ubicaciones que pertenecen al ``pueblo``
+ */
 function filtrarUbicacionesPueblo(pueblo) {
     let arrayFiltrado = [];
     ubicaciones.forEach(ubi => {
@@ -30,8 +35,8 @@ function filtrarUbicacionesPueblo(pueblo) {
 }
 
 /**
- * Función que se encarga de crear la pantalla de los museos de todos los pueblos.
- *  A esta se accede a partir del botón del header "¿Qué visitar?"
+ * Función que se encarga de crear la pantalla de las ubicaciones de todos los pueblos.
+ * A esta se accede a partir del botón del header "¿Qué visitar?"
  */
 function crearPantallaUbicaciones() {
     // Hacer que la página suba al principio
