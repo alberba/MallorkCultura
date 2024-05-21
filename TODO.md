@@ -17,6 +17,7 @@
 - [ ] Revisar de "optimizar" los returns de las funciones
 
 ## 3a Presentación
+- [ ] Revisar los console.log y comentarios de todo
 - [ ] Filtro museos
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
