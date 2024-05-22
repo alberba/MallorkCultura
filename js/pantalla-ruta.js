@@ -401,18 +401,18 @@ function obtenerFechaMasFutura(eventos){
 
 function comprobarSolapamiento(eventos){
     let eventosOrdenados = eventos.sort((a, b) => {
-        const horaInicioA = new Date(a.horaInicio);
-        const horaInicioB = new Date(b.horaInicio);
+        const horaInicioA = new Date("1970-01-01T"+a.horaInicio);
+        const horaInicioB = new Date("1970-01-01T"+b.horaInicio);
         return horaInicioA.getTime() - horaInicioB.getTime();
     });
 
     localStorage.setItem('visitas', JSON.stringify(eventosOrdenados));
 
     for(let i=1; i<eventosOrdenados.length; i++){
-        let horaFinAnterior = new Date(eventosOrdenados[i-1].horaFin);
-        let horaInicioActual = new Date(eventosOrdenados[i].horaInicio);
+        let horaFinAnterior = new Date("1970-01-01T"+eventosOrdenados[i-1].horaFin);
+        let horaInicioActual = new Date("1970-01-01T"+eventosOrdenados[i].horaInicio);
 
-        if(horaFinAnterior.getTime() < horaInicioActual.getTime()){
+        if(horaFinAnterior.getTime() > horaInicioActual.getTime()){
             return true;
         }
     }
