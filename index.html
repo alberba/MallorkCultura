@@ -8,6 +8,8 @@
     <meta name="description" content="Plataforma web para encontrar las mejores rutas para explorar los mejores
     museos de Mallorca">
     <!-- Css -->
+    <link rel="preload" fetch-priority="high" href="/img/main-1180.webp" as="image" type="image/webp">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/normalize.css">
@@ -15,29 +17,10 @@
 
     <link href="img/svg/light-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: light)">
     <link href="img/svg/dark-mode-favicon.svg" rel="icon" media="(prefers-color-scheme: dark)">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    
-    <script defer src="js/swiper.js"></script>  
-    <script src="js/time.js" defer></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/mapa.js" defer></script>
-    <script src="js/filtros.js" defer></script>
-    <script src="js/weather.js" defer></script>
-    <script src="js/pantalla-ruta.js" defer></script>
-    <script src="js/pantalla-museo.js" defer></script>
-    <script src="js/pantalla-museos.js" defer></script>
-    <script src="js/pantalla-contacto.js" defer></script>
-    <script src="js/funcionesGenericas.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/fetch.js"></script>
-    <script src="js/responsive.js" defer></script>
-    <script src="js/calendar.js"></script>
-    <script src="js/index.js" defer></script>
-
-    <!-- Habra que meter internamente el bootstrap-->
-    
 
     <title>MallorkCultura | Cultura de Mallorca</title>
+
+    
 </head>
 <body>
     <header>
@@ -57,19 +40,46 @@
                 </div>
             </div>
         </nav>
+        <div class="overlay header-image">
+            <img src="img/main-1180.webp" alt="Fotografía de dos monumentos de Es Baluard" class="imagen-overlay" fetchpriority="high" srcset="img/main.webp 2560w, img/main-2290.webp 2290w, img/main-1990.webp 1990w, img/main-1640.webp 1640w, img/main-1180.webp 1180w, img/main-300.webp 300w">
+            <div style="margin-top: 0;" class="texto-main-page texto-overlay">
+                <h1 style="margin-top: 0; margin-bottom: 2rem;">MallorkCultura</h1>
+                <p class="subtitulo-main">Planifica tu ruta ya</p>
+            </div>
+        </div>
     </header>
     <!-- Parte inferior de la pantalla -->
     <main class="contenedor-principal index">
         
     </main>
-    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
+
     
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+</body>
+    <script src="js/jquery.js"></script>
+    <script src="js/funcionesGenericas.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/fetch.js"></script>
+    <script defer src="js/swiper.js"></script>  
+    <script src="js/time.js" defer></script>
+    
+    <script src="js/mapa.js" defer></script>
+    <script src="js/filtros.js" defer></script>
+    <script src="js/weather.js" defer></script>
+    <script src="js/pantalla-ruta.js" defer></script>
+    <script src="js/pantalla-museo.js" defer></script>
+    <script src="js/pantalla-museos.js" defer></script>
+    <script src="js/pantalla-contacto.js" defer></script>
+    <script src="js/responsive.js" defer></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" defer></script>
+    
+    <script  defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/leerJSONMallorcaRoute.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X362DL5SQ0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-X362DL5SQ0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -77,5 +87,4 @@
 
         gtag('config', 'G-X362DL5SQ0');
     </script>
-</body>
 </html>

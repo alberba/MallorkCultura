@@ -49,16 +49,20 @@ function crearDondeVisitar() {
     window.scrollTo(0, 0);
     // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar el mapa de otra página,
     // se elimine y no se quede en la página principal
-    $("header > div").remove();
-    $("header").append(crearDiv("overlay header-image")
-        .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay")
-            .attr("sizes", "100vw")
-            .attr("srcset", "img/main.webp 2560w, img/main-2290.webp 2290w, img/main-1990.webp 1990w, img/main-1640.webp 1640w, img/main-1180.webp 1180w, img/main-300.webp 300w"))
-        .append(crearDiv("texto-main-page texto-overlay m-0")
-            .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
-            .append(crearP({texto: "Planifica tu ruta ya", clases: "subtitulo-main"}))
-        )
-    );
+    /*if ($(".overlay").length === 0) {
+        console.log("No hay overlay");
+        $("header > div").remove();
+        $("header").append(crearDiv("overlay header-image")
+            .append(crearImg("img/main.webp","Fotografía de dos monumentos de Es Baluard","imagen-overlay")
+                .attr("sizes", "100vw")
+                .attr("fetchpriority", "high")
+                .attr("srcset", "img/main.webp 2560w, img/main-2290.webp 2290w, img/main-1990.webp 1990w, img/main-1640.webp 1640w, img/main-1180.webp 1180w, img/main-300.webp 300w"))
+            .append(crearDiv("texto-main-page texto-overlay m-0")
+                .append($("<h1>").addClass("mu-0 mb-4").html("MallorkCultura"))
+                .append(crearP({texto: "Planifica tu ruta ya", clases: "subtitulo-main"}))
+            )
+        );
+    }*/
 
     $("main").empty();
     $("main").attr("class","contenedor-principal index");

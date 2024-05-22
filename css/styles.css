@@ -123,10 +123,6 @@ section {
     margin-bottom: 3.5rem;
 }
 
-.ml-4{
-    margin-left: 2rem !important;
-}
-
 /* -------- Botones -------- */
 /* Diseño del boton */
 .boton {
@@ -494,6 +490,12 @@ nav {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 5rem;
     margin: 3rem auto;
+}
+
+.contenedor-pueblos > *:nth-last-child(1):nth-child(odd) {
+    justify-self: center;
+    grid-column: 1 / -1;
+    width: 25rem;
 }
 
 .pueblo {
@@ -1264,6 +1266,11 @@ input[type="radio"] {
         aspect-ratio: 4/3;
     }
 
+    .subtitulo-main
+    {
+        font-size: inherit;
+    }
+
     .imagen-overlay{
         height:100%;
     }
@@ -1396,6 +1403,22 @@ input[type="radio"] {
         }
     }
 
+    .contenedor-pueblos > *:nth-last-child(1):nth-child(odd) {
+        width: 32.5rem;
+    }
+
+}
+
+@media (max-width: 910px) {
+    .contenedor-pueblos > *:nth-last-child(1):nth-child(odd) {
+        width: 40rem;
+    }
+}
+
+@media (max-width: 610px) {
+    .contenedor-pueblos > *:nth-last-child(1):nth-child(odd) {
+        width: 100%;
+    }
 }
 
 @media (max-width: 380px) {

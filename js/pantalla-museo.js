@@ -3,10 +3,12 @@
  * @param {String} nombreLugar Nombre del lugar del que se quiere mostrar la información
  */
 function crearPantallaUbicacion(nombreLugar){
+    console.log(ubicaciones);
     const auxLugar = ubicaciones.find(ubicacion => {
         switch(ubicacion["@type"]) {
             case "CivicStructure":
             case "MovieTheater":
+                console.log(ubicacion.name);
                 return ubicacion.name === nombreLugar;
             case "Service":
                 return ubicacion.areaServed.name === nombreLugar;

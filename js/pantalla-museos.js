@@ -1,5 +1,3 @@
-let responseStatusMRoute = false;
-
 /* Función para filtrar ubis por pueblo --> documentar luego */
 function filtrarUbicacionesPueblo(pueblo) {
     let arrayFiltrado = [];
