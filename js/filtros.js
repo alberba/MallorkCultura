@@ -138,28 +138,11 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
         let coordsUbicacion;
         let ubicacionesNuevas = [];
         let ubicacionesNuevasMapa = [];
-        let ubiGeo;
         ubicaciones.forEach(ubicacion => { 
-            switch(ubicacion["@type"]) {
-                case "CivicStructure":
-                case "MovieTheater":
-                    ubiGeo = ubicacion.geo;
-                    coordsUbicacion = {
-                        lat: ubicacion.geo.latitude,
-                        lng: ubicacion.geo.longitude
-                    };
-                    break;
-                case "Service":
-                    ubiGeo = ubicacion.areaServed.geo;
-                    coordsUbicacion = {
-                        lat: ubicacion.areaServed.geo.latitude,
-                        lng: ubicacion.areaServed.geo.longitude
-                    };
-                    break;
-            }
+            coordsUbicacion = recuperarLatLongUbicacion(ubicacion);
             if (calcularDistancia(coordsDireccion, coordsUbicacion) <= rango) {
                 ubicacionesNuevas.push(ubicacion);
-                ubicacionesNuevasMapa.push({lat: parseFloat(ubiGeo.latitude), lng: parseFloat(ubiGeo.longitude)});
+                ubicacionesNuevasMapa.push(coordsUbicacion);
             }
             
         });
@@ -259,6 +242,7 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
         }
         
     });
+    console.log(ubicacionesNuevas);
 
     paginaActual = 0;
     crearTarjetasUbicacionesPaginaActual(ubicacionesNuevas);
@@ -278,8 +262,9 @@ function contiene(dia, ubicacion) {
     let diasSemana = ["Mo","Tu","We","Th","Fr","Sa","Su"];
     let horarioApertura;
     switch(ubicacion["@type"]) {
-        case "CivicStructure":
         case "MovieTheater":
+            return false;
+        case "CivicStructure":
             horarioApertura = ubicacion.openingHours;
             break;
         case "Service":
@@ -296,6 +281,9 @@ function contiene(dia, ubicacion) {
             aux.push(x.split(" ",1)[0]);
         });
     } else {
+        if (!horarioApertura) {
+            return true;
+        }
         aux.push(horarioApertura.split(" ",1)[0]);
     }
     for (let aux2 of aux) {
@@ -424,16 +412,20 @@ function success(pos, rango) {
 function recuperarLatLongUbicacion(ubicacion) {
     if(!ubicacion.hasOwnProperty("origen")) {
         return {
-            lat: ubicacion.areaServed.geo.latitude,
-            lng: ubicacion.areaServed.geo.longitude
+            lat: parseFloat(ubicacion.areaServed.geo.latitude),
+            lng: parseFloat(ubicacion.areaServed.geo.longitude)
         };
     } else {
         switch(ubicacion.origen) {
             case "MR":
-            case "DT":
                 return {
                     lat: ubicacion.geo.latitude,
                     lng: ubicacion.geo.longitude
+                };
+            case "DT":
+                return {
+                    lat: parseFloat(ubicacion.geo.latitude),
+                    lng: parseFloat(ubicacion.geo.longitude)
                 };
         }
     }

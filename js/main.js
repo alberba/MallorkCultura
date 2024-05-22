@@ -88,12 +88,13 @@ function crearFooter() {
                 $("<div>").addClass("contenido-footer")
                     .append(
                         $("<div>").addClass("texto-footer")
-                            .append($("<p>").attr("id","copy-text").html("Copyright"))
+                            .append(crearA("/privacy", "", "Privacidad"))
                             .append($("<p>").html("Todos los derechos reservados"))
                     )
                     .append($("<a>").attr("href", "/contacto").attr("id","Contacto").html("Contacto"))
             )
         );
+    // @ts-ignore
     añadirEventListenerSPA($("#Contacto").get(0));
 }
 
@@ -150,6 +151,7 @@ function crearBotonPueblo (pueblo) {
             crearP({clases: "texto-overlay", texto: pueblo.name})
             .attr("property","name")
         );
+    // @ts-ignore
     añadirEventListenerSPA(nuevoBotonPueblo.get(0));
     return nuevoBotonPueblo;
 }
@@ -190,6 +192,7 @@ function crearBotonAtras(enlace, texto = "Atrás") {
             .addClass("boton-atras")
             .prepend(crearImg("img/svg/flecha-atras.svg","Botón de volver atrás", "back-arrow"))
             .attr("href", enlace);
+    // @ts-ignore
     añadirEventListenerSPA(boton.get(0));
     return boton;
 }

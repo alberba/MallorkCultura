@@ -210,7 +210,9 @@ async function actualizarMarkerMaps(arrPositionMarkers) {
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
     // Añadimos los marcadores al mapa, en caso de que sean pasados por parámetro
     if (arrPositionMarkers.length > 0) {
+        console.log(arrPositionMarkers);
         arrPositionMarkers.forEach(positionMarker => {
+            console.log(positionMarker);
             let marker = new AdvancedMarkerElement({
                 map: map,
                 position: positionMarker

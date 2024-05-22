@@ -1,12 +1,5 @@
 # Todo List
 
-## 3a Presentación
-- [ ] Filtro museos
-    - [ ] Los filtros funcionen con todos los tipos de ubicaciones
-    - [ ] Filtro cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) linea 131--> arreglar
-    - [ ] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> arreglar
-- [ ] Al menos un video nuestro
-
 # HECHO
 ## 22/05
 - [x] Web Semántica
@@ -23,6 +16,11 @@
     - [x] revisar comentarios de pantalla-ruta.js
     - [x] revisar comentarios de responsive.js
     - [x] revisar comentarios de time.js
+- [x] Al menos un video nuestro
+- [x] Filtro museos
+    - [x] Los filtros funcionen con todos los tipos de ubicaciones
+    - [x] Filtro cambiarUbicacionesPorCercania() linea 131--> arreglar
+    - [x] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> arreglar
 
 ## 20/05
 - [x] Al recargar la página en pantalla-museo, salta error

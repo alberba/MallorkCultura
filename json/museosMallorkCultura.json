@@ -14,7 +14,6 @@
                     "addressCountry": "Spain",
                     "email": "museu@esbaluard.org"
                 },
-                "aggregateRating" : "",
                 "event" : [
                     {
                         "@type": "Event",
@@ -63,7 +62,6 @@
                 },
                 "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
                 "isAccessibleForFree" : false,
-                "keywords" : "",
                 "latitude" : "39.5702375",
                 "longitude" : "2.64114266",
                 "photo" : [
@@ -137,7 +135,6 @@
                     "addressCountry": "Spain",
                     "email": "museomilitarsancarlos@et.mde.es"
                 },
-                "aggregateRating" : "",
                 "event" : [
                     {
                         "@type": "Event",
@@ -157,7 +154,6 @@
                         }
                     }
                 ],
-                "faxNumber" : "",
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.546563",
@@ -165,7 +161,6 @@
                 },
                 "hasMap" : "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
                 "isAccessibleForFree" : true,
-                "keywords" : "",
                 "latitude": "39.546563",
                 "longitude": "2.623437",
                 "photo" : [
@@ -203,9 +198,7 @@
                     "addressCountry": "Spain",
                     "email": "box.office@rafanadalacademy.com"
                 },
-                "aggregateRating" : "",
                 "event" : "",
-                "faxNumber" : "",
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.55913",
@@ -214,7 +207,6 @@
                 "hasMap" : "https://maps.app.goo.gl/BcNizXMVEXc5CBBi6",
                 
                 "isAccessibleForFree" : false,
-                "keywords" : "",
                 "latitude" : "39.55913",
                 "longitude" : "3.21612",
                 "photo" : [
@@ -231,7 +223,6 @@
                 ],
                 "publicAccess" : true,
                 "smokingAllowed" : false,
-                "specialOpeningHoursSpecification" : "",
                 "telephone" : "+34971171683",
                 "tourBookingPage" : "https://www.rafanadalmuseum.com/producto/entrada-museo/",
                 "description" : "Rafa Nadal Museum te invita a vivir una aventura inolvidable en un espacio único, dotado con las últimas tecnologías en medios audiovisuales y en pantallas interactivas, que te permitirá ser el protagonista de tu propia experiencia deportiva. Podrás recorrer la historia del deporte y conocer en primera persona cuáles son sus Aptitudes y Valores a través de impresionantes simuladores y atracciones de última generación.\nRafa Nadal Museum te ofrece dos plantas llenas de emoción, aprendizaje, experiencia, diversión y deporte en estado puro contado por los mejores deportistas del mundo.\nTodos sus espacios expositivos ofrecen un importante componente educativo y didáctico mientras que sus espacios experienciales representan aptitudes y valores presentes tanto en el mundo del deporte como en la vida. Valores como el esfuerzo, la superación personal, el compañerismo, el compromiso o la deportividad son los pilares del Museo de Rafa Nadal.",
@@ -309,7 +300,6 @@
                     "addressCountry": "Spain",
                     "email": "info@miromallorca.com"
                 },
-                "aggregateRating" : "",
                 "event" : [
                     {
                         "@type": "Event",
@@ -350,7 +340,6 @@
                         }
                     }
                 ],
-                "faxNumber" : "" ,
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.55494",
@@ -358,7 +347,6 @@
                 },
                 "hasMap" : "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
                 "isAccessibleForFree" : false,
-                "keywords" : "",
                 "latitude" : "39.55494",
                 "longitude" : "2.60966",
                 "photo" : [
@@ -467,9 +455,7 @@
                     "addressCountry": "Spain",
                     "email": "espai@artgustavo.com"
                 },
-                "aggregateRating" : "",
                 "event" : "",
-                "faxNumber" : "" ,
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.70248815860186",
@@ -477,7 +463,6 @@
                 },
                 "hasMap" : "https://maps.app.goo.gl/AXkQHU9EM1BUbkX88",
                 "isAccessibleForFree" : true,
-                "keywords" : "",
                 "latitude" : "39.70248815860186",
                 "longitude" : "3.432684499647989",
                 "photo" : [
@@ -521,7 +506,6 @@
                     "addressCountry": "Spain",
                     "email": "info@ccandratx.com"
                 },
-                "aggregateRating" : "",
                 "event" : [
                     {
                         "@type": "Event",
@@ -589,7 +573,6 @@
                         }
                     }
                 ],
-                "faxNumber" : "" ,
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.58108389927165",
@@ -643,10 +626,8 @@
                     "streetAddress": "Camí del Coll Baix",
                     "addressLocality": "Alcúdia",
                     "postalCode": "07400",
-                    "addressCountry": "Spain",
-                    "email": ""
+                    "addressCountry": "Spain"
                 },
-                "aggregateRating" : "",
                 "event" : 
                     [{
                         "@type": "Event",
@@ -675,7 +656,6 @@
                 },
                 "hasMap" : "https://maps.app.goo.gl/RAv7WBHsp63nspVYA",
                 "isAccessibleForFree" : false,
-                "keywords" : "",
                 "latitude" : "39.84324074674918",
                 "longitude" : "3.1788397969037017",
                 "photo" : [
@@ -849,8 +829,6 @@
                     "addressCountry": "Spain",
                     "email": "museu@canprunera.net"
                 },
-                "aggregateRating" : "",
-                "event": "",
                 "geo" : {
                     "@type": "GeoCoordinates",
                     "latitude": "39.767867139918586",
@@ -858,7 +836,6 @@
                 },
                 "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
                 "isAccessibleForFree" : false,
-                "keywords" : "",
                 "latitude": "39.767867139918586",
                 "longitude": "2.718032642328135",
                 "photo" : [
