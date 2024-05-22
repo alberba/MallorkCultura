@@ -90,7 +90,7 @@ function crearFiltros() {
 
 /**
  * Función que muestra aquellas ubicaciones cuyo nombre contenga coincidencias con el input de texto de los filtros
- * @param {String} nombre Valor del input de texto de los filtros: nombre del museo a buscar
+ * @param {String} nombre Valor del input de texto de los filtros: nombre de la ubicación a buscar
  */
 function cambiarUbicacionesPorNombre(nombre) {
     $(".contenedor-museos").empty();
@@ -102,13 +102,13 @@ function cambiarUbicacionesPorNombre(nombre) {
             case "MovieTheater":
                 if (nombre === "" || ubicacion.name.toLowerCase().includes(nombre.toLowerCase())) {
                     ubicacionesNuevas.push(ubicacion);
-                    ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubicacion));
+                    ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubicacion));
                 }
                 break;
             case "Service":
                 if (nombre === "" || ubicacion.areaServed.name.toLowerCase().includes(nombre.toLowerCase())) {
                     ubicacionesNuevas.push(ubicacion);
-                    ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubicacion));
+                    ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubicacion));
                 }
                 break;
         }
@@ -174,9 +174,9 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
 }
 
 /**
- * Función que recupera la latitud y longitud de la dirección introducida en el input de dirección de los filtros
+ * Función que recupera la latitud y longitud de la dirección introducida en el input de ``direccion`` de los filtros
  * @param {String} direccion Dirección introducida en el input de dirección de los filtros
- * @returns {Object} Objeto que contiene la latitud y la longitud de la dirección
+ * @returns {Object} Objeto que contiene la latitud y la longitud de la ``direccion``
  */
 function recuperarLatLng(direccion) {
     let geo;
@@ -190,18 +190,18 @@ function recuperarLatLng(direccion) {
 }
 
 /**
- * Función que calcula la distancia en km entre la dirección introducida en los filtros y un museo
+ * Función que calcula la distancia en km entre la dirección introducida en los filtros y una ubicación
  * @param {object} coordsDireccion Objeto que contiene la latitud y longitud de la ubicación de la dirección introducida en los filtros
- * @param {object} coordsMuseo Objeto que contiene la latitud y longitud de la ubicación del museo
- * @returns Number con la distancia en km entre la dirección introducida y la ubicación del museo
+ * @param {object} coordsUbicacion Objeto que contiene la latitud y longitud de la ubicación
+ * @returns Number con la distancia en km entre la dirección introducida y la ubicación
  */
-function calcularDistancia(coordsDireccion, coordsMuseo) {
+function calcularDistancia(coordsDireccion, coordsUbicacion) {
     const radioTierra = 6371; // Radio de la Tierra en kilómetros
-    const dLat = toRadians(coordsMuseo.lat - coordsDireccion.lat);
-    const dLon = toRadians(coordsMuseo.lng - coordsDireccion.lng);
+    const dLat = toRadians(coordsUbicacion.lat - coordsDireccion.lat);
+    const dLon = toRadians(coordsUbicacion.lng - coordsDireccion.lng);
 
     const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-              Math.cos(toRadians(coordsDireccion.lat)) * Math.cos(toRadians(coordsMuseo.lat)) *
+              Math.cos(toRadians(coordsDireccion.lat)) * Math.cos(toRadians(coordsUbicacion.lat)) *
               Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -255,7 +255,7 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
     ubicaciones.forEach(ubi => { 
         if (contiene(dia, ubi)) {
             ubicacionesNuevas.push(ubi);
-            ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubi));
+            ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubi));
         }
         
     });
@@ -271,7 +271,7 @@ function cambiarUbicacionesPorDiaDeVisita(fecha) {
 /**
  * Función que comprueba si se puede acceder en el ``día`` pasado por parametro a la ``ubicacion`` pasada
  * @param {String} dia Día de la semana en formato de 2 letras en inglés
- * @param {object} ubicacion Objeto ubicacion perteneciente al array de museos
+ * @param {object} ubicacion Objeto ubicacion perteneciente al array de ubicaciones
  * @returns Boolean indicando si la fecha indicada ``dia`` se puede acceder a la ``ubicacion``
  */
 function contiene(dia, ubicacion) {
@@ -327,7 +327,7 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     if (!gratuito && !entrada) {
         ubicaciones.forEach(ubi => {
             ubicacionesNuevas.push(ubi);
-            ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubi));
+            ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubi));
         });
 
         paginaActual = 0;
@@ -344,20 +344,20 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
         if(!ubi.hasOwnProperty("origen")) {
             if ((ubi.areaServed.isAccessibleForFree && gratuito) || (!ubi.areaServed.isAccessibleForFree && entrada)) {
                 ubicacionesNuevas.push(ubi);
-                ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubi));
+                ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubi));
             }
         } else {
             switch(ubi.origen) {
                 case "MR":
                     if ((ubi.isAccessibleForFree && gratuito) || (!ubi.isAccessibleForFree && entrada)) {
                         ubicacionesNuevas.push(ubi);
-                        ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubi));
+                        ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubi));
                     }
                     break;
                 case "DT":
                     if(entrada) {
                         ubicacionesNuevas.push(ubi);
-                        ubicacionesNuevasMapa.push(recuperarLatLongMuseo(ubi));
+                        ubicacionesNuevasMapa.push(recuperarLatLongUbicacion(ubi));
                     }
                     break;
             }
@@ -396,23 +396,23 @@ function success(pos, rango) {
         lat: coordsAux.latitude,
         lng: coordsAux.longitude
     };
-    let coordsMuseo;
-    let ubicacionesCercanas = [];
-    let museosNuevos = [];
+    let coordsUbicacion;
+    let ubicacionesNuevas = [];
+    let ubicacionesNuevasMapa = [];
     let contenedorUbicaciones = $(".contenedor-museos");
     contenedorUbicaciones.empty();
-    ubicaciones.forEach(museo => { 
-        coordsMuseo = recuperarLatLongMuseo(museo);
-        if (calcularDistancia(coords, coordsMuseo) <= rango) {
-            ubicacionesCercanas.push(museo);
-            museosNuevos.push(coordsMuseo);
+    ubicaciones.forEach(ubi => { 
+        coordsUbicacion = recuperarLatLongUbicacion(ubi);
+        if (calcularDistancia(coords, coordsUbicacion) <= rango) {
+            ubicacionesNuevas.push(ubi);
+            ubicacionesNuevasMapa.push(coordsUbicacion);
         }
     });
     paginaActual = 0;
-    crearTarjetasUbicacionesPaginaActual(ubicacionesCercanas);
+    crearTarjetasUbicacionesPaginaActual(ubicacionesNuevas);
 
-    if(museosNuevos.length >= 0) {
-        actualizarMarkerMaps(museosNuevos);
+    if(ubicacionesNuevasMapa.length >= 0) {
+        actualizarMarkerMaps(ubicacionesNuevasMapa);
     }
 }
 
@@ -421,7 +421,7 @@ function success(pos, rango) {
  * @param {jQuery<HTMLElement>} ubicacion ubicación de la que recuperar las coords
  * @returns {Object} objeto con lat y lng de la ubicación
  */
-function recuperarLatLongMuseo(ubicacion) {
+function recuperarLatLongUbicacion(ubicacion) {
     if(!ubicacion.hasOwnProperty("origen")) {
         return {
             lat: ubicacion.areaServed.geo.latitude,
