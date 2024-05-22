@@ -97,6 +97,11 @@ function crearFooter() {
     añadirEventListenerSPA($("#Contacto").get(0));
 }
 
+/**
+ * función de la api de speech que lee el ``titulo`` y la ``descripción`` de una ubicación
+ * @param {String} titulo nombre de la ubicación a leer
+ * @param {String} descripcion descripción de la ubicación a leer
+ */
 function speechDescription(titulo, descripcion) {
     if (speechSynthesisActivado) {
         window.speechSynthesis.cancel();
@@ -116,7 +121,10 @@ function speechDescription(titulo, descripcion) {
 
 /* --- Funciones específicas --- */
 
-//función específica - ¿Dónde visitar? --> Pensar en sustituirla
+/**
+ * función que devuelve un elemento div con las clases concretas para crear el contenedor de pueblos
+ * @returns {JQuery<HTMLElement>} contenedor de pueblos
+ */
 function crearContenedorPueblos() {
     return $("<div>").attr("class", "contenedor-pueblos");
 }
@@ -186,31 +194,33 @@ function crearBotonAtras(enlace, texto = "Atrás") {
     return boton;
 }
 
-// función específica - Lista de ubicaciones
-// esta habrá que cambiarla
+/**
+ * función que devuelve un div para contener el selector de páginas
+ * @returns {JQuery<HTMLElement>} contenedor con las clases especificas para contener la paginación
+ */
 function crearSelectorPagina() {
-    return crearDiv("paginas","paginacion")
-        .append(crearImg("img/svg/prev-page-arr.svg","Página anterior"))
-        .append(crearP({
-                clases:"",
-                texto:".."
-            })
-            .prepend(crearSpan("pagina-actual","1"))
-            .append(crearSpan("","2"))
-        )
-        .append(crearImg("img/svg/next-page-arr.svg","Página siguiente"));
+    return crearDiv("paginas","paginacion");
 }
 
 
 
-// Función para almacenar la visita con los detalles del museo
+/**
+ * función que guarda una ubicación como parada de ruta
+ * @param {String} lugar nombre de la ubicación
+ * @param {String} direccion dirección de la ubicación
+ * @param {String} tipo tipo de ubicación
+ */
 function almacenarVisita(lugar, direccion, tipo) {
     const fechaActual = new Date().toISOString().split('T')[0];
     const evento = { lugar, direccion, horaInicio: fechaActual+"T09:00:00", horaFin: fechaActual+"T10:00:00", tipo };
     actualizarVisitas(evento);
 }
 
-// Función para escapar las comillas simples en un texto
+/**
+ * función que reemplaza las comillas simples en un texto por \' para que el texto no contenga errores
+ * @param {String} texto texto a cambair las comillas
+ * @returns {String} texto con las comillas reemplazadas
+ */
 function escaparComillas(texto) {
     return texto.replace(/'/g, "\\'");
 }

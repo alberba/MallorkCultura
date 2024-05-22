@@ -47,7 +47,10 @@ function leerJSONDescobreixTeatre() {
         .catch(error => console.error("Error al cargar los datos del JSON Descobreix Teatre:", error));
 }
 
-// leer json de pueblos
+/**
+ * fetch que lee el JSON local con la información de los pueblos
+ * @param {String} jsonUrlPueblos Ubicación del fichero de los pueblos
+ */
 fetch(jsonUrlPueblos)
     .then(response => response.json())
     .then(data => {
@@ -67,7 +70,10 @@ fetch(jsonUrlPueblos)
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
-// leer json de componentes
+/**
+ * fetch que lee el JSON local con la información de los componentes del equipo de desarrollo
+ * @param {String} jsonUrlComponentes Ubicación del fichero de los componentes
+ */
 fetch(jsonUrlComponentes)
     .then(response => response.json())
     .then(data => {
@@ -75,6 +81,10 @@ fetch(jsonUrlComponentes)
     })
     .catch(error => console.error("Error al cargar los datos del JSON:", error));
 
+/**
+ * función que añade los pueblos a la página inicial que contienen alguna ubicación
+ * si hay más de nueve pueblos, añade los 9 primeros y un botón de "ver más" que muestra los demás pueblos
+ */
 function cargarPueblos() {
     let div = $(".contenedor-pueblos");
     if(div.length > 0 && pueblosConUbicaciones) {
@@ -87,6 +97,9 @@ function cargarPueblos() {
     }
 }
 
+/**
+ * función que genera actualiza el array ``pueblosConUbicaciones`` para que contenga aquellos pueblos que tengan alguna ubicación
+ */
 function filtrarPueblos() {
     console.log(ubicaciones);
     pueblosConUbicaciones = pueblos.filter(pueblo => ubicaciones.some(ubicacion => {
