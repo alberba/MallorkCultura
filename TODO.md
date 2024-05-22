@@ -1,9 +1,6 @@
 # Todo List
 
 ## 3a Presentación
-- [ ] Al cambiar de página, actualizar los puntos en el mapa
-
-## 3a Presentación
 - [ ] Revisar los console.log y comentarios de todo
     - [ ] funcionesGenericas.js --> añadirEventListenerSPA() comentar
     - [ ] Comentar funciones de mapa.js
@@ -15,8 +12,6 @@
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtro cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) linea 131--> arreglar
     - [ ] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> arreglar
-    - [ ] Filtros en conjunto
-- [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 
 # HECHO
