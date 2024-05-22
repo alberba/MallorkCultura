@@ -25,7 +25,7 @@
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtro cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) linea 131--> arreglar
-    - [ ] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> añadir paginación
+    - [ ] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> arreglar
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
