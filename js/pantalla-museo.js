@@ -146,6 +146,14 @@ function generarCarrousselFotos(fotos, type) {
                     .attr("typeof","ImageObject"))
             );
         });
+        if(decodeURIComponent(window.location.search.substring(1)) == "Es Baluard") {
+            carrousselFotos.append(crearDiv("swiper-slide")
+                .append($("<video controls muted>")
+                    .addClass("imagen-museo")
+                    .append($("<source>").attr("src","img/museos/esBaluard/esBaluard.mp4").attr("type","video/mp4"))
+                    .append($("<source>").attr("src","img/museos/esBaluard/esBaluard.webm").attr("type","video/webm"))
+                    .append("Tu navegador no soporta la reproducción de videos")));
+        }
     } else {
         if(type === "CivicStructure" || type === "MovieTheater") {
             carrousselFotos.append(crearDiv("swiper-slide")
