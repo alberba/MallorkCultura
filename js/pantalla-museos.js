@@ -59,6 +59,7 @@ function crearPantallaUbicaciones() {
     crearTarjetasUbicacionesPaginaActual(ubicaciones);
     $("main").append(crearSelectorPagina());
     modificarPaginacion(ubicaciones);
+    crearPopUpGrafico();
 }
 
 
@@ -344,5 +345,140 @@ function modificarPaginacion(tarjetas) {
     }
 
     paginacion.append(nextButton);
+}
+
+/**
+ * Función que calcula cuántos edificios hay por pueblo y prepara los datos para el gráfico.
+ * @returns {Object} Datos para el gráfico con los cinco pueblos con más ubicaciones y "Otros".
+ */
+function calcularDatosPueblos() {
+    let cantidadMuseosPorPueblo = {};
+    let otros = 0;
+
+    // Contar cantidad de museos por pueblo
+    ubicaciones.forEach(ubi => {
+        let pueblo = "";
+        if (!ubi.hasOwnProperty("origen")) {
+            if (ubi.areaServed.address && ubi.areaServed.address.addressLocality) {
+                pueblo = ubi.areaServed.address.addressLocality;
+            }
+        } else {
+            if (ubi.address && ubi.address.addressLocality) {
+                pueblo = ubi.address.addressLocality;
+            }
+        }
+
+        if (pueblo) {
+            if (!cantidadMuseosPorPueblo[pueblo]) {
+                cantidadMuseosPorPueblo[pueblo] = 0;
+            }
+            cantidadMuseosPorPueblo[pueblo]++;
+        }
+    });
+
+    // Convertir a array y ordenar por cantidad de museos
+    let pueblosOrdenados = Object.entries(cantidadMuseosPorPueblo).sort((a, b) => b[1] - a[1]);
+
+    // Separar los cinco primeros pueblos y sumar el resto
+    let top5Pueblos = pueblosOrdenados.slice(0, 5);
+    let restoPueblos = pueblosOrdenados.slice(5);
+
+    restoPueblos.forEach(pueblo => {
+        otros += pueblo[1];
+    });
+
+    // Preparar datos para el gráfico
+    let arrayCantidadMuseosPueblo = top5Pueblos.map(pueblo => pueblo[1]);
+    let arrayNombrePueblos = top5Pueblos.map(pueblo => pueblo[0]);
+
+    if (otros > 0) {
+        arrayCantidadMuseosPueblo.push(otros);
+        arrayNombrePueblos.push("Otros");
+    }
+
+    return { arrayCantidadMuseosPueblo, arrayNombrePueblos };
+}
+
+/**
+ * Función que se encarga de crear un botón en el footer con un pop-up que muestra un gráfico de barras.
+ * El gráfico tiene 6 barras con la información proporcionada.
+ */
+function crearPopUpGrafico() {
+    // Crear botón con imagen en el footer
+    let footer = $("footer");
+    let enlacePrivacidad = footer.find("a[href='/privacy']");
+    let botonGrafico = crearBoton("", "boton-grafico");
+    let imgGrafico = crearImg("img/iconobarras.webp", "Gráfico de barras").addClass("icono-grafico");
+    botonGrafico.append(imgGrafico);
+    enlacePrivacidad.before(botonGrafico);
+
+    // Mostrar el pop-up modal al hacer clic en el botón
+    botonGrafico.on("click", () => {
+        let { arrayCantidadMuseosPueblo, arrayNombrePueblos } = calcularDatosPueblos();
+        
+        // @ts-ignore
+        // Crear el pop-up que muestra el gráfico de barras
+        Swal.fire({
+            // Título del grafico
+            title: 'Gráfico de barras',
+            // HTML con el canvas del gráfico
+            html: '<canvas id="graficoBarras"></canvas>',
+            // Tamaño del pop-up
+            width: 800,
+            // Botón de cerrar
+            showCloseButton: true,
+            // No mostrar botón de confirmar
+            showConfirmButton: false,
+            // Función que se ejecuta al abrir el pop-up
+            didOpen: () => {
+                let canvasElement = document.getElementById('graficoBarras');
+                if (canvasElement instanceof HTMLCanvasElement) {
+                    let ctx = canvasElement.getContext('2d');
+                    if (ctx) {
+                        // Crear gráfico de barras
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: arrayNombrePueblos,
+                                datasets: [{
+                                    label: 'Cantidad de Edificios',
+                                    data: arrayCantidadMuseosPueblo,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    // @ts-ignore
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        console.error("No se pudo obtener el contexto 2D del canvas");
+                    }
+                } else {
+                    console.error("El elemento no es un canvas");
+                }
+            }
+        });
+    });
 }
 

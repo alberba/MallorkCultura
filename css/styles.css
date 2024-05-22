@@ -1305,6 +1305,21 @@ input[type="radio"] {
         }
     }
 
+    /* Estilos para el botón y el ícono del gráfico */
+    .boton-grafico {
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+
+    .icono-grafico {
+        width: 5px;
+        height: 5px;
+        vertical-align: middle; /* Asegura que el icono esté alineado verticalmente con el texto */
+    }
+
     /* Pantalla museo */
 
     .info-museo {
