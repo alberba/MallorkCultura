@@ -396,7 +396,7 @@ function primerParrafoVisible() {
 
 /**
  * función que devuelve el objeto de una exposición de una ubicación
- * @param {JQuery<HTMLElement>} expo exposición a comprobar
+ * @param {Object} expo exposición a comprobar
  * @param {String} typeUbi tipo de ubicación (JSON \@type) de la ubicación
  * @returns {JQuery<HTMLElement>} exposición de una ubicación
  */

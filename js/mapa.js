@@ -201,6 +201,7 @@ function normalizarGeoUbicaciones(ubicacion) {
         case "Service":
             return ({lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)});
         case "CivicStructure":
+        case "MovieTheater":
             return ({lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)});
     }
 }

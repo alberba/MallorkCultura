@@ -77,9 +77,7 @@ function crearUbicacionesPueblo(pueblo) {
     );
     paginaActual = 0;
     // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
-    //let ubicacionesPueblo = ubicaciones.filter(museo => museo.areaServed.address.addressLocality === pueblo);
     let ubicacionesPueblo = filtrarUbicacionesPueblo(pueblo);
-    iniciarMapaPueblo(pueblosConUbicaciones.find(p => p.name === pueblo), ubicacionesPueblo);
 
     $("main").empty()
     $("main").attr("class","contenedor-principal lista-museos");
@@ -90,7 +88,7 @@ function crearUbicacionesPueblo(pueblo) {
 
     let contenedorMuseos = crearDiv("contenedor-museos");
     $("main").append(crearSection().append(contenedorMuseos));
-    crearTarjetasUbicacionesPaginaActual(ubicacionesPueblo);
+    crearTarjetasUbicacionesPaginaActual(ubicacionesPueblo, pueblo);
     
     $("main").append(crearSelectorPagina());
     modificarPaginacion(ubicacionesPueblo);
@@ -101,7 +99,7 @@ function crearUbicacionesPueblo(pueblo) {
  * edificios del array por parametro, además de cambiar la paginación
  *  en función de la pagina actual.
  */
-function crearTarjetasUbicacionesPaginaActual(ubicacionesLocal){
+function crearTarjetasUbicacionesPaginaActual(ubicacionesLocal, pueblo = ""){
     // Obtenemos el contenedor de las tarjetas
     let contenedorMuseo = $(".contenedor-museos");
     // Lo vaciamos
@@ -120,7 +118,6 @@ function crearTarjetasUbicacionesPaginaActual(ubicacionesLocal){
         }
     }
 
-    //NO VAN LOS JSON DEL RESTO
     // Selecciona las ubicaciones de la página actual
     let inicio = paginaActual * museosPorPagina;
     let fin = inicio + 9;
@@ -128,11 +125,16 @@ function crearTarjetasUbicacionesPaginaActual(ubicacionesLocal){
 
 
     // Inicializa el mapa con el centro de Mallorca y los marcadores de todos los museos
-    initMap({
-        position: centroMallorca, 
-        zoom: 9,
-        arrPositionMarkers: ubicacionesGeo
-    });
+    if(pueblo === "") {
+        initMap({
+            position: centroMallorca, 
+            zoom: 9,
+            arrPositionMarkers: ubicacionesGeo
+        });
+    } else {
+        // Inicializa el mapa con el centro del pueblo y los marcadores de los museos de ese pueblo
+        iniciarMapaPueblo(pueblosConUbicaciones.find(p => p.name === pueblo), ubicacionesLocal);
+    }
     modificarPaginacion(ubicacionesLocal);
 }
 

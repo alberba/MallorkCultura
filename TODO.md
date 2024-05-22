@@ -13,10 +13,6 @@
     - [x] DescobreixTeatre
 - [ ] Al cambiar de página, actualizar los puntos en el mapa
 
-### JQuery
-- [ ] Revisar de "optimizar" los returns de las funciones
-- [ ] Añadir archivo minimizado en vez del actual
-
 ## 3a Presentación
 - [ ] Revisar los console.log y comentarios de todo
     - [ ] funcionesGenericas.js --> añadirEventListenerSPA() comentar
@@ -32,8 +28,6 @@
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 - [ ] Normalizar la cruz en la pantalla tu ruta
-- [ ] Generar la foto de la pagina principal cuando accedes desde otro lado de la pagina
-- [ ] Mostrar mapa pantalla tu ruta
 
 # HECHO
 ## 20/05

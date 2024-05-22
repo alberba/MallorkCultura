@@ -49,7 +49,7 @@ function crearDondeVisitar() {
     window.scrollTo(0, 0);
     // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar el mapa de otra página,
     // se elimine y no se quede en la página principal
-    /*if ($(".overlay").length === 0) {
+    if ($(".overlay").length === 0) {
         console.log("No hay overlay");
         $("header > div").remove();
         $("header").append(crearDiv("overlay header-image")
@@ -62,7 +62,7 @@ function crearDondeVisitar() {
                 .append(crearP({texto: "Planifica tu ruta ya", clases: "subtitulo-main"}))
             )
         );
-    }*/
+    }
 
     $("main").empty();
     $("main").attr("class","contenedor-principal index");
