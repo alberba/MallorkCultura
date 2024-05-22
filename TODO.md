@@ -1,16 +1,6 @@
 # Todo List
 
 ## 3a Presentación
-- [ ] Web Semántica
-    - [ ] Añadir microdatos a pantalla-museo
-        - [x] Añadir microdatos a museos propios
-        - [x] Añadir microdatos a edificios Mallorca Routes
-        - [ ] Añadir microdatos a descobrei teatre
-    - [x] Añadir microdatos a pantalla-museos
-    - [x] Añadir microdatos a pantalla inicial
-- [ ] Añadir json externos
-    - [x] MallorcaRoutes
-    - [x] DescobreixTeatre
 - [ ] Al cambiar de página, actualizar los puntos en el mapa
 
 ## 3a Presentación
@@ -23,11 +13,22 @@
     - [ ] revisar comentarios de time.js
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
+    - [ ] Filtro cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) linea 131--> arreglar
+    - [ ] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> arreglar
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
 
 # HECHO
+## 22/05
+- [x] Web Semántica
+    - [x] Añadir microdatos a pantalla-museo
+    - [x] Añadir microdatos a pantalla-museos
+    - [x] Añadir microdatos a pantalla inicial
+- [X] Añadir json externos
+    - [x] MallorcaRoutes
+    - [x] DescobreixTeatre
+
 ## 20/05
 - [x] Al recargar la página en pantalla-museo, salta error
 
