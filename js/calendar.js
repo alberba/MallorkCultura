@@ -178,7 +178,7 @@ function eliminarVisita(evento) {
  */
 async function crearEventosCalendario() {
     const eventos = recuperarVisitas();
-    const dia = $("#fecha-visita").val();
+    const dia = localStorage.getItem('fechaVisita');
 
     // Bucle para recorrer todos los eventos y crearlos en el calendario
     for(let i = 0; i < eventos.length; i++) {

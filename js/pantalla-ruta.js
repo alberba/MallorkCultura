@@ -27,15 +27,27 @@ function crearTuRuta(funcionAnterior){
 
     let eventos = recuperarVisitas();
     if(eventos.length > 0){
-        /// Obtener la fecha del día siguiente
-        let fechaActual = new Date();
-        fechaActual.setDate(fechaActual.getDate() + 1);
-        let fechaMasFutura = fechaActual.toISOString().split('T')[0];
+        let fechaMasFutura;
+        let mañana = new Date();
+        mañana.setDate(mañana.getDate() + 1);
+        let fechaVisita = localStorage.getItem('fechaVisita');
+        if(fechaVisita === null || new Date(fechaVisita).getTime() < new Date().getTime()){
+            // Obtener la fecha del día siguiente
+            fechaMasFutura = mañana.toISOString().split('T')[0];
+            localStorage.setItem('fechaVisita', mañana.toISOString().split('T')[0]);
+        } else {
+            fechaMasFutura = fechaVisita;
+        }
 
         // Crear input de fecha
         const divFecha = crearDiv("contenedor-fecha");
         const inputFecha = crearInput("date", "fecha-visita", "fecha-visita", "input-fecha");
-        inputFecha.val(fechaMasFutura);
+        inputFecha.val(fechaMasFutura)
+            .on('change', () => {
+                const fecha = inputFecha.val()?.toString(); // Convert the value to a string
+                // @ts-ignore
+                localStorage.setItem('fechaVisita', fecha);
+            });
 
         divFecha.append(inputFecha);
         $("main").append(divFecha);
