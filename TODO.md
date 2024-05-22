@@ -24,6 +24,7 @@
 - [ ] Revisar Albert línea 125 para las ubicaciones de forma general
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
+    - [ ] Filtro cambiarUbicacionesPorDiaDeVisita() linea 220--> añadir paginación
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
