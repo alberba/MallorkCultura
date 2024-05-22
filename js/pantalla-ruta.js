@@ -2,6 +2,7 @@
  * Función que se encarga de crear la pantalla de la ruta
  */
 function crearTuRuta(funcionAnterior){
+    // funcionAnterior será null si se ha querido guardar la ruta en Google Calendar
     if(funcionAnterior !== null){
         // @ts-ignore
         Swal.fire({
@@ -11,6 +12,7 @@ function crearTuRuta(funcionAnterior){
             confirmButtonText: 'Aceptar'
         });
     }
+    // Desplaza la vista al inicio
     window.scrollTo(0, 0);
     // Elimina el contenido del header y añade el nuevo. Esto se hace para que, en caso de estar la imagen 
     // de portada de la pantalla principal, se elimine
@@ -25,8 +27,12 @@ function crearTuRuta(funcionAnterior){
     $("main").append(crearH2("Tu ruta"))
         .append(crearHr);
 
+    // Recoge los eventos guardados en el localStorage
     let eventos = recuperarVisitas();
+    // Comprueba si hay eventos guardados
     if(eventos.length > 0){
+        // Si hay eventos, se obtiene la fecha más futura. 
+        // En caso de que no haya ninguna guardada, se pondrá la fecha de mañana
         let fechaMasFutura;
         let mañana = new Date();
         mañana.setDate(mañana.getDate() + 1);
@@ -73,6 +79,7 @@ function crearTuRuta(funcionAnterior){
         }
     }
 
+    // Crear el contenedor de la ruta
     $("main").append(crearDiv("contenedor-ruta-general mt-5", "ctdRuta")
         .append(crearDiv("vl"))
         .append($("<ul>").addClass("section-ruta"))    
@@ -80,26 +87,8 @@ function crearTuRuta(funcionAnterior){
 
     mostrarRuta();
 
-    let eventosGeo = eventos.map(evento => {
-        let ubicacion;
-        console.log(evento);
-        
-        switch(evento["tipo"]){
-            case "CivicStructure":
-            case "MovieTheater":
-                ubicacion = ubicaciones.find(ubicacion => ubicacion.name === evento.lugar);
-                console.log(ubicacion);
-                break;
-            case "Service":
-                ubicacion = ubicaciones.find(ubicacion => ubicacion.areaServed.name === evento.lugar).areaServed;
-                break;
-        }
-        return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
-    });
-    initMap({position: centroMallorca,
-        zoom: 9,
-        arrPositionRoutes: eventosGeo
-    })
+    // Prepara el mapa con los eventos de la ruta
+    prepararMapaRuta(eventos);
 }
 
 /**
@@ -138,7 +127,6 @@ function mostrarRuta() {
         // Si hay eventos, mostrar cada uno en la lista
         eventos.forEach((evento, index) => {
             const duracion = calcularDuracionRuta(evento.horaInicio, evento.horaFin); // Calcular la duración del evento
-            console.log(duracion);
 
             const li = $('<li>').addClass('parada-ruta').attr('data-index', index); // Crear un nuevo elemento de lista y establecer el índice del evento como atributo de datos
 
@@ -146,31 +134,7 @@ function mostrarRuta() {
 
             const horaInicioSplit = evento.horaInicio.slice(0, 5); // Obtener la hora de inicio
 
-            // Calcular la hora de fin en función de la hora de inicio y la duración
-            const horasSeleccionadas = horaInicioSplit.split(':');
-            const duracionSeleccionada = duracion.split(' ');
-            let horaFinCalculada = (parseInt(horasSeleccionadas[0]) + parseInt(duracionSeleccionada[0]))
-            let minutosFinCalculado = (parseInt(horasSeleccionadas[1]) + parseInt(duracionSeleccionada[1]))
-            if(minutosFinCalculado >= 60){
-                minutosFinCalculado %= 60;
-                horaFinCalculada++;
-
-            }
-            const horaFinC = horaFinCalculada.toString().padStart(2,"0");
-            const minutosFinC = minutosFinCalculado.toString().padStart(2,"0");
-
-            const horaFin = horaFinC + ':' + minutosFinC;
-
-            // Crear el elemento de texto con la hora de inicio y fin
-            const horasText = `${horaInicioSplit} - ${horaFin}`;
-
-            // Agregar el texto y el círculo al div izquierdo
-            divLeft.append(
-                crearP({
-                    clases: "horas",
-                    texto: horasText
-                }))
-                .append(crearSpan("circ", ""));
+            insertarRangoHorasTexto(divLeft, horaInicioSplit, duracion); // Insertar el rango de horas en el div izquierdo
 
             // Agregar el div izquierdo al elemento de lista
             li.append(divLeft);
@@ -195,20 +159,6 @@ function mostrarRuta() {
                                 }).then((result) => {
                                     if (result.isConfirmed) {
                                         eliminarMuseoRuta(index);
-                                        let eventosActualizado = recuperarVisitas();
-                                        let eventosGeo = eventosActualizado.map(evento => {
-                                            let ubicacion;
-                                            switch(evento["tipo"]){
-                                                case "CivicStructure":
-                                                case "MovieTheater":
-                                                    ubicacion = ubicaciones.find(ubiAux => ubiAux.name === evento.lugar);
-                                                    return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
-                                                case "Service":
-                                                    ubicacion = ubicaciones.find(ubiAux => ubiAux.areaServed.name === evento.lugar);
-                                                    return {lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)};
-                                            }
-                                        });
-                                        actualizarRouteMaps(eventosGeo);
                                         // @ts-ignore
                                         Swal.fire({
                                             title: "¡Eliminado!",
@@ -225,22 +175,16 @@ function mostrarRuta() {
             // Crear el formulario para la duración
             const formulario = crearForm("", "formulario-ruta");
 
-            // Crear el div para la hora de inicio
-            const divInicio = crearDiv().addClass("input-ubi-ruta");
-            const labelInicio = crearLabel("", "Inicio");
+            
             const inputInicio = crearInput("time", "hora-inicio", "hora-inicio", "input-fecha")
             .val(horaInicioSplit);
 
-            // Agregar la etiqueta y el select al div de inicio
-            divInicio.append(labelInicio);
-            divInicio.append(inputInicio);
-
             // Agregar el div de inicio al formulario
-            formulario.append(divInicio);
+            formulario.append(crearDiv()
+                .addClass("input-ubi-ruta")
+                .append(crearLabel("", "Inicio"))
+                .append(inputInicio));
 
-            // Crear el div para la duración
-            const divDuracion = crearDiv().addClass("input-ubi-ruta");
-            const labelDuracion = crearLabel("", "Duración"); // Crear la etiqueta para la duración
             const selectDuracion = crearSelect("", "", "duracion");
             
             // Comprobar que la duración no sobrepase el día
@@ -270,16 +214,18 @@ function mostrarRuta() {
 
             contenedorRuta.append(li.append(
                 divRight.append(
-                    formulario.append(
-                        divDuracion.append(labelDuracion)
-                            .append(selectDuracion)
+                    formulario.append(crearDiv()
+                        .addClass("input-ubi-ruta")
+                        .append(crearLabel("", "Duración"))
+                        .append(selectDuracion)
                     )
                 )
-            )
-            );
+            ));
 
             // Evento change para los selects de inicio y duración
             inputInicio.on('blur', () => {
+                //Ha cambiado la hora de inicio
+
                 const horaInicio = inputInicio.val();
                 // @ts-ignore
                 const duracionSeleccionada = selectDuracion.val().split(':');
@@ -304,11 +250,13 @@ function mostrarRuta() {
                     let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
                     return {lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)};
                 });
+                // Actualiza la ruta en caso de que sea necesario
                 actualizarRouteMaps(eventosGeo);
                 mostrarRuta();
                 
             });
 
+            // El valor de la duración ha cambiado, habrá que actualizar la hora de fin y la ruta en caso de que sea necesario
             selectDuracion.on('change', () => {
                 const duracion = selectDuracion.val();
                 const horaInicio = inputInicio.val();
@@ -372,33 +320,11 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
     return visitas;
 }
 
-function obtenerFechaMasFutura(eventos){
-    let j=0;
-    let fechaMasFutura = new Date(eventos[0].horaInicio.split('T')[0]);
-
-    // Si la fecha más futura es anterior a la fecha actual, establecer la fecha actual como la fecha más futura
-    const fechaActual = new Date(new Date().toISOString().split('T')[0]);
-    if (fechaMasFutura < fechaActual) {
-        fechaMasFutura = fechaActual;
-    }
-
-    for(let i=0; i<eventos.length; i++){
-        let fechaEvento = new Date(eventos[i].horaInicio.split('T')[0]);
-
-        if(fechaEvento.getTime() > fechaMasFutura.getTime()){
-            fechaMasFutura = fechaEvento;
-            let x = i;
-            i = j;
-            j = i;
-        }else if(fechaEvento.getTime() < fechaMasFutura.getTime()){
-            eventos[i].horaInicio = eventos[j].horaInicio.split('T')[0]+"T"+eventos[i].horaInicio.split('T')[1];
-            eventos[i].horaFin = eventos[j].horaFin.split('T')[0]+"T"+eventos[i].horaFin.split('T')[1];
-        }
-    }
-    localStorage.setItem('visitas', JSON.stringify(eventos));
-    return fechaMasFutura;
-}
-
+/**
+ * Función encargada de comprobar que no exista un solapamiento entre 2 eventos de la ruta. En tal caso, muestra un mensaje de advertencia
+ * @param {Array<Object>} eventos Array de eventos de la ruta
+ * @returns {Boolean} Devuelve true si hay solapamiento, false en caso contrario
+ */
 function comprobarSolapamiento(eventos){
     let eventosOrdenados = eventos.sort((a, b) => {
         const horaInicioA = new Date("1970-01-01T"+a.horaInicio);
@@ -417,18 +343,74 @@ function comprobarSolapamiento(eventos){
         }
     }
 
+    return false;
+
 }
 
-// Función para eliminar un museo de la ruta
+/**
+ * Función que se encarga de eliminar un museo de la ruta
+ * @param {number} index 
+ */
 function eliminarMuseoRuta(index) {
     const eventos = recuperarVisitas();
     eventos.splice(index, 1); // Eliminar el evento correspondiente al índice
     localStorage.setItem('visitas', JSON.stringify(eventos)); // Actualizar el localStorage
+
+    // Actualizar la ruta
+    let eventosGeo = eventos.map(evento => {
+        let ubicacion;
+        switch(evento["tipo"]){
+            case "CivicStructure":
+            case "MovieTheater":
+                ubicacion = ubicaciones.find(ubiAux => ubiAux.name === evento.lugar);
+                return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
+            case "Service":
+                ubicacion = ubicaciones.find(ubiAux => ubiAux.areaServed.name === evento.lugar);
+                return {lat: parseFloat(ubicacion.areaServed.geo.latitude), lng: parseFloat(ubicacion.areaServed.geo.longitude)};
+        }
+    });
+    actualizarRouteMaps(eventosGeo);
     mostrarRuta(); // Mostrar la ruta actualizada
 }
 
-// Función para recuperar las visitas guardadas en el localStorage
+/**
+ *  Función para recuperar las visitas guardadas en el localStorage
+ */ 
 function recuperarVisitas() {
     const visitas = localStorage.getItem('visitas');
     return visitas ? JSON.parse(visitas) : [];
+}
+
+/**
+ * Función encargada de calcular la hora inicio y la hora fin de un evento a partir de la hora de inicio y la duración
+ * @param {JQuery<HTMLElement>} divLeft Contenedor donde se insertará el rango de horas
+ * @param {String} horaInicioSplit Hora de inicio del evento
+ * @param {String} duracion Duración del evento
+ */
+function insertarRangoHorasTexto(divLeft, horaInicioSplit, duracion) {
+    // Calcular la hora de fin en función de la hora de inicio y la duración
+    const horasSeleccionadas = horaInicioSplit.split(':');
+    const duracionSeleccionada = duracion.split(' ');
+    let horaFinCalculada = (parseInt(horasSeleccionadas[0]) + parseInt(duracionSeleccionada[0]))
+    let minutosFinCalculado = (parseInt(horasSeleccionadas[1]) + parseInt(duracionSeleccionada[1]))
+    if(minutosFinCalculado >= 60){
+        minutosFinCalculado %= 60;
+        horaFinCalculada++;
+
+    }
+    const horaFinC = horaFinCalculada.toString().padStart(2,"0");
+    const minutosFinC = minutosFinCalculado.toString().padStart(2,"0");
+
+    const horaFin = horaFinC + ':' + minutosFinC;
+
+    // Crear el elemento de texto con la hora de inicio y fin
+    const horasText = `${horaInicioSplit} - ${horaFin}`;
+
+    // Agregar el texto y el círculo al div izquierdo
+    divLeft.append(
+        crearP({
+            clases: "horas",
+            texto: horasText
+        }))
+        .append(crearSpan("circ", ""));
 }

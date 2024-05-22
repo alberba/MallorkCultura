@@ -1,13 +1,6 @@
 # Todo List
 
 ## 3a Presentación
-- [ ] Revisar los console.log y comentarios de todo
-    - [ ] funcionesGenericas.js --> añadirEventListenerSPA() comentar
-    - [ ] Comentar funciones de mapa.js
-    - [x] pantalla-museos.js
-    - [ ] revisar comentarios de pantalla-ruta.js
-    - [ ] revisar comentarios de responsive.js
-    - [ ] revisar comentarios de time.js
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtro cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) linea 131--> arreglar
@@ -23,6 +16,13 @@
 - [X] Añadir json externos
     - [x] MallorcaRoutes
     - [x] DescobreixTeatre
+- [x] Revisar los console.log y comentarios de todo
+    - [x] funcionesGenericas.js --> añadirEventListenerSPA() comentar
+    - [x] Comentar funciones de mapa.js
+    - [x] pantalla-museos.js
+    - [x] revisar comentarios de pantalla-ruta.js
+    - [x] revisar comentarios de responsive.js
+    - [x] revisar comentarios de time.js
 
 ## 20/05
 - [x] Al recargar la página en pantalla-museo, salta error

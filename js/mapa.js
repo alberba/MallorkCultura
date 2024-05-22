@@ -11,7 +11,7 @@ let markers = [];
  * Función encargada para inicializar el mapa y mostrarlo por pantalla
  * @param position Posición central del mapa
  * @param zoom Zoom del mapa. Cuanto mayor sea el número, la vista del mapa será más cercana. 
- *             Por defecto, el valor del zoom será 12.
+ *             Por defecto, el valor del zoom será 10.
  * @param arrPositionMarkers Optional. Array de posiciones de los marcadores que se quieren añadir al mapa.
  * @param arrPositionRoutes Optional. Array de posiciones de la ruta que se quiere añadir al mapa.
  */
@@ -123,6 +123,32 @@ function iniciarMapaPueblo(dataPueblo, ubicacionesPueblo) {
     });
 }
 
+function prepararMapaRuta(eventos) {
+    let eventosGeo = eventos.map(evento => {
+        let ubicacion;
+        
+        switch(evento["tipo"]){
+            case "CivicStructure":
+            case "MovieTheater":
+                ubicacion = ubicaciones.find(ubicacion => ubicacion.name === evento.lugar);
+                console.log(ubicacion);
+                break;
+            case "Service":
+                ubicacion = ubicaciones.find(ubicacion => ubicacion.areaServed.name === evento.lugar).areaServed;
+                break;
+        }
+        return {lat: parseFloat(ubicacion.geo.latitude), lng: parseFloat(ubicacion.geo.longitude)};
+    });
+    initMap({position: centroMallorca,
+        zoom: 9,
+        arrPositionRoutes: eventosGeo
+    });
+}
+
+/**
+ * Función encargada de actualizar la ruta del mapa
+ * @param {Array<Object>} arrPositionRoutes 
+ */
 async function actualizarRouteMaps(arrPositionRoutes) {
     directionsRenderer.setMap(null);
     // @ts-ignore
@@ -173,6 +199,10 @@ async function actualizarRouteMaps(arrPositionRoutes) {
     }
 }
 
+/**
+ * Función encargada de actualizar los marcadores del mapa
+ * @param {Array<Object>} arrPositionMarkers 
+ */
 async function actualizarMarkerMaps(arrPositionMarkers) {
     setMapOnAll(null);
     markers = [];
@@ -190,12 +220,21 @@ async function actualizarMarkerMaps(arrPositionMarkers) {
     }
 }
 
+/**
+ * Función encargada de asignar un mapa a todos los marcadores
+ * @param {Object} map 
+ */
 function setMapOnAll(map) {
     markers.forEach(marker => {
         marker.setMap(map);
     });
 }
 
+/**
+ * Normaliza a partir de un objeto de ubicación, las coordenadas de un museo
+ * @param {*} ubicacion 
+ * @returns 
+ */
 function normalizarGeoUbicaciones(ubicacion) {
     switch(ubicacion["@type"]) {
         case "Service":

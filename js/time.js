@@ -18,7 +18,9 @@ function obtenerDiaSemana(fechaString) {
     return diasSemana[diaSemana];
 }
 
-// Función para calcular la duración entre dos horas
+/** 
+ * Función para calcular la duración entre dos horas
+ */ 
 function calcularDuracionRuta(horaInicio, horaFin) {
     const inicio = new Date("1970-01-01T"+horaInicio);
     const fin = new Date("1970-01-01T"+horaFin);
@@ -26,6 +28,11 @@ function calcularDuracionRuta(horaInicio, horaFin) {
     return `${Math.floor(duracionMinutos / 60)}h ${duracionMinutos % 60}min`; // Mostrar duración con horas y minutos
 }
 
+/**
+ * Función encargada de convertir una fecha en formato "YYYY-MM-DD" a un formato "DD/MM/YY"
+ * @param {String} fecha Fecha en formato "YYYY-MM-DD"
+ * @returns {String} Fecha en formato "DD/MM/YY"
+ */
 function convertirFormatoFechaExposicion(fecha) {
     let fechaObj = new Date(fecha);
     let dia = String(fechaObj.getDate()).padStart(2, '0');
@@ -49,6 +56,7 @@ function normalizarFormatoHorarioMuseoJSON(horario) {
         "Sa": "Sábado",
         "Su": "Domingo"
     };
+    // Comprueba si tiene varios horarios
     if (!Array.isArray(horario)) {
         let [diasIngles, horas] = horario.split(" ");
         let [horaInicio, horaFin] = horas.split("-");

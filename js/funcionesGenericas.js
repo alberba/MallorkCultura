@@ -233,8 +233,8 @@ function crearA(direccionamiento, clases, texto) {
 }
 
 /**
- * COMENTAR QUIEN LA HAYA CREADO, NI IDEA QUE HACE
- * @param {} anchor 
+ * Función encargada de cambiar el evento de los botones necesarios para un SPA
+ * @param {HTMLElement} anchor Anchor al que se le quiere añadir el evento
  */
 function añadirEventListenerSPA(anchor) {
     anchor.addEventListener('click', function(event) {

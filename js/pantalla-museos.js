@@ -174,6 +174,7 @@ function crearTarjetaUbicacion(ubicacion) {
     let botonVerMas = crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
         .attr("href", "/museo?" + ubicacionCopia.name);
 
+    // @ts-ignore
     añadirEventListenerSPA(botonVerMas.get(0));
 
     return crearArticle("museo")

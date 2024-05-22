@@ -33,7 +33,7 @@ function crearFiltros() {
         .append(crearDiv("elemento-filtro-museo")   // Input radio de búsqueda
             .append(crearLabel("","Radio de búsqueda"))
             .append(crearDiv("contenedor-range")
-                .append(crearInput("range","","busqueda-radio")
+                .append(crearInput("range","","busqueda-radio").val(15)
                     .on("mouseup", () => {
                         if(tipoBusqueda == 0) {
                             cambiarUbicacionesPorCercania(String($("#busqueda-cercania").val()), Number($("#busqueda-radio").val()));
@@ -48,7 +48,7 @@ function crearFiltros() {
                 )
                 .append(crearP({
                     clases: "texto-range",
-                    texto: "50Km"
+                    texto: "15Km"
                 })) // Esto me imagino que tendrá que cambiar a medida que se mueve el range
             )
         )
@@ -418,7 +418,7 @@ function success(pos, rango) {
 
 /**
  * función que devuelve las coordenadas de la ubicación pasada por parámetro
- * @param {jQuery<HTMLElement>} ubicacion ubicación de la que recuperar las coords
+ * @param {Object} ubicacion ubicación de la que recuperar las coords
  * @returns {Object} objeto con lat y lng de la ubicación
  */
 function recuperarLatLongUbicacion(ubicacion) {

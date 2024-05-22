@@ -13,16 +13,16 @@ menu_button.on('click', (event) => {
 
     // Si el menú está desplegado, añade el controlador de eventos al documento
     if (navLinksHeader.hasClass('nav-links-header-mobile')) {
-        $(document).on('click', hideMenu);
+        $('click', hideMenu);
     } else {
         // Si el menú no está desplegado, elimina el controlador de eventos del documento
+        // @ts-ignore
         $(document).off('click', hideMenu);
     }
 });
 
 /**
  * Función que esconde el menú 
- * @param {Event} event evento del Event listener
  */
 const hideMenu = function(event) {
     // Comprueba si se ha hecho clic fuera del menú
