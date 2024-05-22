@@ -178,6 +178,7 @@ function eliminarVisita(evento) {
  */
 async function crearEventosCalendario() {
     const eventos = recuperarVisitas();
+    const dia = $("#fecha-visita").val();
 
     // Bucle para recorrer todos los eventos y crearlos en el calendario
     for(let i = 0; i < eventos.length; i++) {
@@ -191,22 +192,22 @@ async function crearEventosCalendario() {
             'description': 'Visita a ' + eventos[i].tipo,
             // Fecha de inicio del evento
             'start': {
-            'dateTime': eventos[i].horaInicio,
-            'timeZone': 'Europe/Zurich'
+                'dateTime': dia + "T" + eventos[i].horaInicio,
+                'timeZone': 'Europe/Zurich'
             },
             // Fecha de fin del evento
             'end': {
-            'dateTime': eventos[i].horaFin,
-            'timeZone': 'Europe/Zurich'
+                'dateTime': dia + "T" + eventos[i].horaFin,
+                'timeZone': 'Europe/Zurich'
             },
             // Recordatorios del evento
             // He elegido 24 horas antes un email y 30 minutos antes una notificación del móvil
             'reminders': {
-            'useDefault': false,
-            'overrides': [
-                {'method': 'email', 'minutes': 24 * 60},
-                {'method': 'popup', 'minutes': 30}
-            ]
+                'useDefault': false,
+                'overrides': [
+                    {'method': 'email', 'minutes': 24 * 60},
+                    {'method': 'popup', 'minutes': 30}
+                ]
             }
         };
         // Creamos una solicitud de api

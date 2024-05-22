@@ -211,8 +211,7 @@ function crearSelectorPagina() {
  * @param {String} tipo tipo de ubicación
  */
 function almacenarVisita(lugar, direccion, tipo) {
-    const fechaActual = new Date().toISOString().split('T')[0];
-    const evento = { lugar, direccion, horaInicio: fechaActual+"T09:00:00", horaFin: fechaActual+"T10:00:00", tipo };
+    const evento = { lugar, direccion, horaInicio: "09:00:00", horaFin: "10:00:00", tipo };
     actualizarVisitas(evento);
 }
 

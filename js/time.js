@@ -20,8 +20,8 @@ function obtenerDiaSemana(fechaString) {
 
 // Función para calcular la duración entre dos horas
 function calcularDuracionRuta(horaInicio, horaFin) {
-    const inicio = new Date(horaInicio);
-    const fin = new Date(horaFin);
+    const inicio = new Date("1970-01-01T"+horaInicio);
+    const fin = new Date("1970-01-01T"+horaFin);
     const duracionMinutos = Math.round((fin.getTime() - inicio.getTime()) / (1000 * 60)); // Convertir milisegundos a minutos y redondear
     return `${Math.floor(duracionMinutos / 60)}h ${duracionMinutos % 60}min`; // Mostrar duración con horas y minutos
 }

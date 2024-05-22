@@ -21,13 +21,11 @@
     - [ ] revisar comentarios de pantalla-ruta.js
     - [ ] revisar comentarios de responsive.js
     - [ ] revisar comentarios de time.js
-- [ ] Revisar Albert línea 125 para las ubicaciones de forma general
 - [ ] Filtro museos
     - [ ] Los filtros funcionen con todos los tipos de ubicaciones
     - [ ] Filtros en conjunto
 - [ ] Al menos una foto nuestra
 - [ ] Al menos un video nuestro
-- [ ] Normalizar la cruz en la pantalla tu ruta
 
 # HECHO
 ## 20/05

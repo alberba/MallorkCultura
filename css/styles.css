@@ -955,6 +955,23 @@ input[type="radio"] {
     width: 100%;
 }
 
+#fecha-visita {
+    font-size: 2rem;
+    padding: .5rem;
+}
+
+.input-fecha {
+    background: var(--gris-desplegable);
+    border: 1px solid rgb(128 128 128 / 32%);
+    border-radius: 5px;
+}
+
+.input-ubi-ruta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
 .cruz-ruta {
     width:4rem;
     height:auto;
@@ -984,8 +1001,15 @@ input[type="radio"] {
     padding-left:13rem;
 }
 
+.contenedor-fecha{
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    gap: 1rem;
+}
+
 .contenedor-tiempo {
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     background-color: rgba(0, 255, 26, 0.338);
@@ -1049,7 +1073,7 @@ input[type="radio"] {
 
 .formulario-ruta {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
 
     & select {
         background-color: var(--gris-claro);
@@ -1377,7 +1401,7 @@ input[type="radio"] {
         padding: 1rem !important;
 
         & p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
         }
     }
 

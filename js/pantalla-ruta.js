@@ -27,19 +27,20 @@ function crearTuRuta(funcionAnterior){
 
     let eventos = recuperarVisitas();
     if(eventos.length > 0){
-        // Obtener la fecha más futura entre todos los eventos
-        let fechaMasFutura = obtenerFechaMasFutura(eventos).toISOString().split('T')[0];
+        /// Obtener la fecha del día siguiente
+        let fechaActual = new Date();
+        fechaActual.setDate(fechaActual.getDate() + 1);
+        let fechaMasFutura = fechaActual.toISOString().split('T')[0];
 
         // Crear input de fecha
         const divFecha = crearDiv("contenedor-fecha");
-        const labelFecha = crearLabel("", "Fecha");
-        const inputFecha = crearInput("date", "fecha-visita", "fecha-visita");
+        const inputFecha = crearInput("date", "fecha-visita", "fecha-visita", "input-fecha");
         inputFecha.val(fechaMasFutura);
 
-        divFecha.append(labelFecha).append(inputFecha);
+        divFecha.append(inputFecha);
         $("main").append(divFecha);
-    }
-    if(eventos.length !== 0){
+
+        // Mostrar el tiempo en la ubicación de la primera visita
         let ubicacion = ubicaciones.find(ubicacion => {
             switch(eventos[0].tipo) {
                 case "CivicStructure":
@@ -110,11 +111,6 @@ function mostrarRuta() {
         }
         $("#fecha-visita").remove();
     } else {
-        // Obtener la fecha más futura entre todos los eventos
-        let fechaMasFutura = obtenerFechaMasFutura(eventos).toISOString().split('T')[0];
-
-        // Actualizar la fecha en el input de fecha
-        $("#fecha-visita").val(fechaMasFutura);
 
         if(eventos.length > 1){
             if(comprobarSolapamiento(eventos))
@@ -130,13 +126,13 @@ function mostrarRuta() {
         // Si hay eventos, mostrar cada uno en la lista
         eventos.forEach((evento, index) => {
             const duracion = calcularDuracionRuta(evento.horaInicio, evento.horaFin); // Calcular la duración del evento
-            const descanso = index === eventos.length - 1 ? '' : '<div><p class="descanso">Descanso: 1h</p></div>'; // Añadir un descanso si no es el último evento
+            console.log(duracion);
 
             const li = $('<li>').addClass('parada-ruta').attr('data-index', index); // Crear un nuevo elemento de lista y establecer el índice del evento como atributo de datos
 
             const divLeft = $('<div>').addClass("left-museo-ruta"); // Crear un div para la parte izquierda
 
-            const horaInicioSplit = evento.horaInicio.split('T')[1].slice(0, 5); // Obtener la hora de inicio
+            const horaInicioSplit = evento.horaInicio.slice(0, 5); // Obtener la hora de inicio
 
             // Calcular la hora de fin en función de la hora de inicio y la duración
             const horasSeleccionadas = horaInicioSplit.split(':');
@@ -155,11 +151,6 @@ function mostrarRuta() {
 
             // Crear el elemento de texto con la hora de inicio y fin
             const horasText = `${horaInicioSplit} - ${horaFin}`;
-            // @ts-ignore
-            const horasElement = crearP({
-                clases: "horas",
-                texto: horasText
-            });
 
             // Agregar el texto y el círculo al div izquierdo
             divLeft.append(
@@ -223,9 +214,9 @@ function mostrarRuta() {
             const formulario = crearForm("", "formulario-ruta");
 
             // Crear el div para la hora de inicio
-            const divInicio = crearDiv();
+            const divInicio = crearDiv().addClass("input-ubi-ruta");
             const labelInicio = crearLabel("", "Inicio");
-            const inputInicio = crearInput("time", "hora-inicio", "hora-inicio", horaInicioSplit, "hidden")
+            const inputInicio = crearInput("time", "hora-inicio", "hora-inicio", "input-fecha")
             .val(horaInicioSplit);
 
             // Agregar la etiqueta y el select al div de inicio
@@ -236,7 +227,7 @@ function mostrarRuta() {
             formulario.append(divInicio);
 
             // Crear el div para la duración
-            const divDuracion = crearDiv();
+            const divDuracion = crearDiv().addClass("input-ubi-ruta");
             const labelDuracion = crearLabel("", "Duración"); // Crear la etiqueta para la duración
             const selectDuracion = crearSelect("", "", "duracion");
             
@@ -332,16 +323,6 @@ function mostrarRuta() {
 
                 divLeft.find('.horas').text(`${horaInicio} - ${horaFin}`);
             });
-            $("#fecha-visita").on('change', () => {
-                const nuevaFecha = $("#fecha-visita").val();
-                let eventosActualizados = actualizarEventosConFecha(nuevaFecha);
-                let eventosGeoActualizados = eventosActualizados.map(evento => {
-                    let museo = ubicaciones.find(museo => museo.areaServed.name === evento.lugar);
-                    return { lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude) };
-                });
-                actualizarRouteMaps(eventosGeoActualizados);
-                mostrarRuta();
-            });
         });
 
         // Verificar si el botón de guardar no está presente y añadirlo si no lo está
@@ -365,30 +346,17 @@ function actualizarEventosMostrarRuta(index, horaInicio, horaFin){
     const visitas = recuperarVisitas();
 
     // Actualizar el evento correspondiente
-    visitas[index].horaFin = visitas[index].horaFin.split('T')[0] + "T" + horaFin + ':00';
+    visitas[index].horaFin = horaFin + ':00';
     if(horaInicio != null){
-        visitas[index].horaInicio = visitas[index].horaInicio.split('T')[0] + "T" + horaInicio + ':00';
+        visitas[index].horaInicio = horaInicio + ':00';
         //ordenar los eventos
         visitas.sort((a, b) => {
-            const horaInicioA = new Date(a.horaInicio);
-            const horaInicioB = new Date(b.horaInicio);
+            const horaInicioA = new Date(`1970-01-01T${a.horaInicio}`);
+            const horaInicioB = new Date(`1970-01-01T${b.horaInicio}`);
             return horaInicioA.getTime() - horaInicioB.getTime();
         });
     }
     localStorage.setItem('visitas', JSON.stringify(visitas));
-    return visitas;
-}
-
-// Función para actualizar la fecha de la visita en la ruta
-function actualizarEventosConFecha(nuevaFecha) {
-    const visitas = recuperarVisitas();
-    visitas.forEach(visita => {
-        visita.horaInicio = nuevaFecha + "T" + visita.horaInicio.split('T')[1];
-        visita.horaFin = nuevaFecha + "T" + visita.horaFin.split('T')[1];
-    });
-
-    localStorage.setItem('visitas', JSON.stringify(visitas));
-
     return visitas;
 }
 
