@@ -4,7 +4,9 @@ const navLinksHeader = $('.nav-links-header');
 const menu_button = $('.menu_icon');
 const nav = $("#nav-header");
 
-// Gestión de eventos para mostrar el menú en dispositivos móviles cuando el usuario presione el botón
+/**
+ * Función que realiza la gestión de eventos para mostrar el menú en dispositivos móviles cuando el usuario presione el botón
+ */
 menu_button.on('click', (event) => {
     event.stopPropagation();
     navLinksHeader.toggleClass('nav-links-header-mobile');
@@ -18,6 +20,10 @@ menu_button.on('click', (event) => {
     }
 });
 
+/**
+ * Función que esconde el menú 
+ * @param {Event} event evento del Event listener
+ */
 const hideMenu = function(event) {
     // Comprueba si se ha hecho clic fuera del menú
     if (!$(event.target).closest('.nav-links-header-mobile').length) {
@@ -28,6 +34,9 @@ const hideMenu = function(event) {
     }
 };
 
+/**
+ * Función que genera el menú desplegable si la pantalla mide 768px o menos, y genera el menú original si la pantalla mide más de 768px 
+ */
 const max768px = () => {
     
     const div = nav.find("div").first();
@@ -45,5 +54,6 @@ const max768px = () => {
     }
 }
 
+// Añadir eventos de carga de página y modificación de tamaño
 window.addEventListener('resize', max768px);
 window.addEventListener('load', max768px);
