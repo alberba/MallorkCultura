@@ -193,7 +193,7 @@
             "@context": "https://schema.org",
             "@type": "Service",
             "areaServed": {
-                "@type": ["TouristAttraction","Museum"],
+                "@type": "Museum",
                 "openingHours" : "Mo-Su 10:00-15:00",
                 "address" : {
                     "@type": "PostalAddress",
