@@ -325,11 +325,12 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     contenedorUbicaciones.empty();
     if (!gratuito && !entrada) {
         ubicaciones.forEach(museo => {
-            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+            ubicacionesNuevas.push(museo);
+            museosNuevos.push(recuperarLatLongMuseo(museo));
         });
 
         paginaActual = 0;
-        crearTarjetasUbicacionesPaginaActual(ubicaciones);
+        crearTarjetasUbicacionesPaginaActual(ubicacionesNuevas);
         
         if(museosNuevos.length >= 0) {
             actualizarMarkerMaps(museosNuevos);
@@ -339,10 +340,28 @@ function cambiarUbicacionesPorTipoDeEntrada(gratuito, entrada) {
     }
 
     ubicaciones.forEach(museo => { 
-        if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada)) {
-            ubicacionesNuevas.push(museo);
-            museosNuevos.push({lat: parseFloat(museo.areaServed.geo.latitude), lng: parseFloat(museo.areaServed.geo.longitude)});
+        if(!museo.hasOwnProperty("origen")) {
+            if ((museo.areaServed.isAccessibleForFree && gratuito) || (!museo.areaServed.isAccessibleForFree && entrada)) {
+                ubicacionesNuevas.push(museo);
+                museosNuevos.push(recuperarLatLongMuseo(museo));
+            }
+        } else {
+            switch(museo.origen) {
+                case "MR":
+                    if ((museo.isAccessibleForFree && gratuito) || (!museo.isAccessibleForFree && entrada)) {
+                        ubicacionesNuevas.push(museo);
+                        museosNuevos.push(recuperarLatLongMuseo(museo));
+                    }
+                    break;
+                case "DT":
+                    if(entrada) {
+                        ubicacionesNuevas.push(museo);
+                        museosNuevos.push(recuperarLatLongMuseo(museo));
+                    }
+                    break;
+            }
         }
+        
     });
 
     paginaActual = 0;
