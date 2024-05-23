@@ -219,7 +219,7 @@ function crearTarjetaUbicacion(ubicacion) {
 
 function modificarPaginacion(tarjetas) {
     // Obtener el elemento paginacion
-    var paginacion = $("#paginacion");
+    let paginacion = $("#paginacion");
 
     //Si no hay más que una pagina quitamos la paginación
     if (Math.ceil(tarjetas.length / museosPorPagina) < 2) {
@@ -230,9 +230,9 @@ function modificarPaginacion(tarjetas) {
     paginacion.empty();
 
     // Obtener los botones de página anterior y página siguiente
-    var prevButton = crearBoton("");
+    let prevButton = crearBoton("");
     prevButton.append(crearImg("img/svg/prev-page-arr.svg", "Página anterior"));
-    var nextButton = crearBoton("");
+    let nextButton = crearBoton("");
     nextButton.append(crearImg("img/svg/next-page-arr.svg", "Página siguiente"));
 
     // Añadir evento onclick a los botones
@@ -240,6 +240,7 @@ function modificarPaginacion(tarjetas) {
         if (paginaActual > 0) {
             paginaActual--;
             crearTarjetasUbicacionesPaginaActual(tarjetas);
+            $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
         }
     });
 
@@ -247,21 +248,23 @@ function modificarPaginacion(tarjetas) {
         if (paginaActual < Math.ceil(tarjetas.length / museosPorPagina) - 1) {
             paginaActual++;
             crearTarjetasUbicacionesPaginaActual(tarjetas);
+            $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
         }
     });
 
     paginacion.append(prevButton);
     // Calculamos cuantas paginas habrá
-    var totalPaginas = Math.ceil(tarjetas.length / museosPorPagina);
+    let totalPaginas = Math.ceil(tarjetas.length / museosPorPagina);
 
     // Si hay menos de 4 paginas, se muestran todas
     const clasePaginaActual="pagina-actual";
     //Comprobamos si hay menos de 4 páginas para solo generar esa cantidad
     if (totalPaginas <= 4) {
         for (let i = 1; i <= totalPaginas; i++) {
-            var span = crearSpan("", i.toString()).on('click', function () {
+            let span = crearSpan("", i.toString()).on('click', function () {
                 paginaActual = i - 1;
                 crearTarjetasUbicacionesPaginaActual(tarjetas);
+                $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
             });
             if(paginaActual == i - 1){
                 span.addClass(clasePaginaActual);
@@ -272,9 +275,10 @@ function modificarPaginacion(tarjetas) {
         // Si estamos en las primeras 3 paginas tendremos el formato 1 2 3 .. totalPaginas
         if(paginaActual > 0 && paginaActual <= 3) {
             for (let i = 1; i <= 3; i++) {
-                var span = crearSpan("", i.toString()).on('click', function () {
+                let span = crearSpan("", i.toString()).on('click', function () {
                     paginaActual = i - 1;
                     crearTarjetasUbicacionesPaginaActual(tarjetas);
+                    $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
                 });
                 if(paginaActual == i - 1){
                     span.addClass(clasePaginaActual);
@@ -285,14 +289,15 @@ function modificarPaginacion(tarjetas) {
                 clases: "",
                 texto: ".."
             }));
-            var lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
+            let lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
                 paginaActual = totalPaginas - 1;
                 crearTarjetasUbicacionesPaginaActual(tarjetas);
+                $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
             });
             paginacion.append(lastPage);
         // Si estamos en paginas intermedias tendremos el formato 1 .. paginaActual-1 paginaActual paginaActual+1 .. totalPaginas
         }else if(paginaActual > 3 && paginaActual < totalPaginas - 3){
-            var firstPage = crearSpan("", "1").on('click', function () {
+            let firstPage = crearSpan("", "1").on('click', function () {
                 paginaActual = 0;
                 crearTarjetasUbicacionesPaginaActual(tarjetas);
             });
@@ -302,9 +307,10 @@ function modificarPaginacion(tarjetas) {
                 texto: ".."
             }));
             for (let i = paginaActual; i <= paginaActual + 1; i++) {
-                var span = crearSpan("", i.toString()).on('click', function () {
+                let span = crearSpan("", i.toString()).on('click', function () {
                     paginaActual = i - 1;
                     crearTarjetasUbicacionesPaginaActual(tarjetas);
+                    $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
                 });
                 if(paginaActual == i - 1){
                     span.addClass(clasePaginaActual);
@@ -315,16 +321,18 @@ function modificarPaginacion(tarjetas) {
                 clases: "",
                 texto: ".."
             }));
-            var lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
+            let lastPage = crearSpan("", totalPaginas.toString()).on('click', function () {
                 paginaActual = totalPaginas - 1;
                 crearTarjetasUbicacionesPaginaActual(tarjetas);
+                $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
             });
             paginacion.append(lastPage);
         // Si estamos en las ultimas 3 paginas tendremos el formato 1 .. totalPaginas-2 totalPaginas-1 totalPaginas
         }else{
-            var firstPage = crearSpan("", "1").on('click', function () {
+            let firstPage = crearSpan("", "1").on('click', function () {
                 paginaActual = 0;
                 crearTarjetasUbicacionesPaginaActual(tarjetas);
+                $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
             });
             paginacion.append(firstPage);
             paginacion.append(crearP({
@@ -332,9 +340,10 @@ function modificarPaginacion(tarjetas) {
                 texto: ".."
             }));
             for (let i = totalPaginas - 2; i <= totalPaginas; i++) {
-                var span = crearSpan("", i.toString()).on('click', function () {
+                let span = crearSpan("", i.toString()).on('click', function () {
                     paginaActual = i - 1;
                     crearTarjetasUbicacionesPaginaActual(tarjetas);
+                    $(".contenedor-museos").get(0)?.scrollIntoView({behavior: "smooth"});
                 });
                 if(paginaActual == i - 1){
                     span.addClass(clasePaginaActual);
