@@ -172,7 +172,7 @@ function crearTarjetaUbicacion(ubicacion) {
             }
             break;
     }
-    let botonVerMas = crearBoton("Ver más", "Y", "boton boton-card-museo boton-gris")
+    let botonVerMas = crearBoton("Ver más", "", "boton boton-card-museo boton-gris")
         .attr("href", "/museo?" + ubicacionCopia.name);
 
     // @ts-ignore
@@ -436,6 +436,7 @@ function crearPopUpGrafico() {
                     let ctx = canvasElement.getContext('2d');
                     if (ctx) {
                         // Crear gráfico de barras
+                        // @ts-ignore
                         new Chart(ctx, {
                             type: 'bar',
                             data: {

@@ -12,6 +12,7 @@ function cargarContenido() {
     let url = window.location.pathname;
     switch(url) {
         case "/":
+        case "/index":
             crearDondeVisitar();
             break;
         case "/queVisitar":
@@ -33,9 +34,21 @@ function cargarContenido() {
             crearContacto();
             break;
         default:
-            crearDondeVisitar();
-            break;
+            crearPagina404();
     }
+}
+
+function crearPagina404() {
+    // Hacer que la página suba al principio
+    window.scrollTo(0, 0);
+    // Elimina el contenido del header y añade el nuevo
+    $("header").remove();
+    // Añade el contenido de la página 404
+    $("main").empty().append(
+        crearDiv("error-404")
+            .append($("<h1>").text("Página no encontrada"))
+            .append(crearP({texto: "Lo sentimos, la página que estás buscando no existe."}))
+    );
 }
 
 // Manejar los enlaces en caso de que se de click a los botones de la barra de navegación
