@@ -21,7 +21,7 @@ function leerJSONMallorcaRoute() {
         .then(data => {
             edificios = data.itemListElement;
             edificios.forEach(edificio => {
-                edificio.origen = "MR"; // Esto sobra??
+                edificio.origen = "MR";
                 ubicaciones.push(edificio);
                 console.log("MR");
             });
@@ -37,7 +37,7 @@ function leerJSONDescobreixTeatre() {
         .then(data => {
             teatros = data.itemListElement;
             teatros.forEach(teatro => {
-                teatro.origen = "DT"; // Esto sobra??
+                teatro.origen = "DT";
                 ubicaciones.push(teatro);
             });
             console.log("Teatre");
