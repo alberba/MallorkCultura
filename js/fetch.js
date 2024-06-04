@@ -98,7 +98,7 @@ function cargarPueblos() {
 }
 
 /**
- * función que genera actualiza el array ``pueblosConUbicaciones`` para que contenga aquellos pueblos que tengan alguna ubicación
+ * función que actualiza el array ``pueblosConUbicaciones`` para que contenga aquellos pueblos que tengan alguna ubicación
  */
 function filtrarPueblos() {
     console.log(ubicaciones);
