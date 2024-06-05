@@ -8,7 +8,6 @@ function crearPantallaUbicacion(nombreLugar){
         switch(ubicacion["@type"]) {
             case "CivicStructure":
             case "MovieTheater":
-                console.log(ubicacion.name);
                 return ubicacion.name === nombreLugar;
             case "Service":
                 return ubicacion.areaServed.name === nombreLugar;
@@ -354,7 +353,6 @@ function crearTextoPreciosLugar(catalogoOfertas) {
         return contenedor;
     }
     contenedor.attr("property", "hasOfferCatalog").attr("typeof", "OfferCatalog");
-    contenedor.append($("<div>").attr("property", "itemListElement"));
     let ofertas = catalogoOfertas.itemListElement.forEach(offer => {
         let precio = parseFloat(offer.price);
         let contenedorPrecio = $("<p>").attr("typeof", "Offer");
