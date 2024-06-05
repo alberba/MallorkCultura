@@ -353,7 +353,7 @@ function crearTextoPreciosLugar(catalogoOfertas) {
         return contenedor;
     }
     contenedor.attr("property", "hasOfferCatalog").attr("typeof", "OfferCatalog");
-    let ofertas = catalogoOfertas.itemListElement.forEach(offer => {
+    catalogoOfertas.itemListElement.forEach(offer => {
         let precio = parseFloat(offer.price);
         let contenedorPrecio = $("<p>").attr("typeof", "Offer");
         if (precio === 0) {
