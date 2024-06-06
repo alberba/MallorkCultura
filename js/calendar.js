@@ -2,7 +2,6 @@
  * FUNCIONES PARA EL BUEN FUNCIONAMIENTO DE LA API DE GOOGLE CALENDAR
  **********************************************************************************************************************************************************/
 const CLIENT_ID = '669018232457-tolv7hmbpgrd2ns604dcmm5dsnligtp0';
-const API_KEY = 'AIzaSyDYRvgHLEuiLChioE6uR_4rpRNRN7yVJME';
 
 // Discovery doc URL for APIs used by the quickstart
 const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
@@ -32,7 +31,7 @@ function gapiLoaded() {
 async function initializeGapiClient() {
     // @ts-ignore
     await gapi.client.init({
-        apiKey: API_KEY,
+        apiKey: config.CALENDAR_API_KEY,
         discoveryDocs: [DISCOVERY_DOC],
     });
     gapiInited = true;
