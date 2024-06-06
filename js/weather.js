@@ -5,7 +5,7 @@
  */
 function mostrarTiempo(geo) {
     let section = crearSection().addClass("contenedor-tiempo");
-    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=' + geo.latitude + '&lon=' + geo.longitude + '&appid=d00526824e078f1f8c17eb9b337f1dab&exclude=minutely,hourly,alerts&units=metric', {
+    fetch('https://api.openweathermap.org/data/3.0/onecall?lat=' + geo.latitude + '&lon=' + geo.longitude + '&appid=' + config.WEATHER_API_KEY + '&exclude=minutely,hourly,alerts&units=metric', {
     "method": "GET",
 })
     .then(response => response.json())

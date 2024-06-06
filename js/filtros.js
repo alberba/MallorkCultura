@@ -163,7 +163,7 @@ async function cambiarUbicacionesPorCercania(direccion = "Palma", rango = 0) {  
  */
 function recuperarLatLng(direccion) {
     let geo;
-    return fetch("https://geocode.maps.co/search?q="+direccion+"&api_key=662f95ede90a4385758387pkl2dc4fb")
+    return fetch("https://geocode.maps.co/search?q=" + direccion + "&api_key=" + config.GEOCODE_API_KEY)
         .then(response => response.json())
         .then(data => {
             geo = {lat: data[0].lat, lng: data[0].lon};
