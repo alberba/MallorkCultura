@@ -40,7 +40,7 @@ function crearPantallaUbicacion(nombreLugar) {
   $("header > div").remove();
   $("header").append(
     crearDiv("mapa-museo map-container")
-      .append(crearImg("/img/mapa-preview.webp"))
+      .append(crearImg("/img/mapa-preview.webp", "", "ubi-header"))
       .append(
         crearDiv("contenedor-titulo-museo").append(
           $("<h2>")
