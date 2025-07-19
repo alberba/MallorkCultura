@@ -5,8 +5,11 @@
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : ["Tu-Sa 10:00-20:00", "Su 10:00-15:00"],
-                "address" : {
+                "openingHours": [
+                    "Tu-Sa 10:00-20:00",
+                    "Su 10:00-15:00"
+                ],
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Plaza Porta de Santa Catalina, 10",
                     "addressLocality": "Palma",
@@ -14,7 +17,7 @@
                     "addressCountry": "Spain",
                     "email": "museu@esbaluard.org"
                 },
-                "event" : [
+                "event": [
                     {
                         "@type": "Event",
                         "name": "Bel Fullana. Tractor Buddy",
@@ -30,7 +33,7 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposiciones/tractor-buddy.webp",
+                            "contentUrl": "/img/museos/esBaluard/exposiciones/tractor-buddy.webp",
                             "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
                         }
                     },
@@ -49,42 +52,42 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposiciones/enDialogoMuseoYColeccion.webp",
+                            "contentUrl": "/img/museos/esBaluard/exposiciones/enDialogoMuseoYColeccion.webp",
                             "description": "Imagen de la exposición de Bel Fullana. Tractor Buddy"
                         }
                     }
                 ],
-                "faxNumber" : "+34971908203" ,
-                "geo" : {
+                "faxNumber": "+34971908203",
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.5702375",
                     "longitude": "2.64114266"
                 },
-                "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
-                "isAccessibleForFree" : false,
-                "latitude" : "39.5702375",
-                "longitude" : "2.64114266",
-                "photo" : [
+                "hasMap": "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
+                "isAccessibleForFree": false,
+                "latitude": "39.5702375",
+                "longitude": "2.64114266",
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/img-principal.webp",
+                        "contentUrl": "/img/museos/esBaluard/img-principal.webp",
                         "description": "Imagen de la entrada del museo Es Baluard"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/esBaluard/exposicion1.webp",
+                        "contentUrl": "/img/museos/esBaluard/exposicion1.webp",
                         "description": "Imagen de una zona del museo Es Baluard"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971908200",
-                "tourBookingPage" : null,
-                "description" : "Convertido en sus diferentes fases desde 2004 en el mayor espacio para la conservación y difusión del arte contemporáneo en las Islas Baleares, los diferentes espacios del museo han ido adquiriendo sentido y función de una manera orgánica acorde con su función patrimonial y las necesidades de los públicos.\nEl edificio principal fue diseñado en 2003 por Lluís García-Ruiz, Jaume García-Ruiz, Vicente Tomás y Angel Sánchez Cantalejo, tiene una superficie total de 5.027 m², de los que 2.500 se destinan a espacios expositivos. Está dividido en tres plantas que se relacionan con el exterior, con las murallas y entre sí mediante rampas, claraboyas y grandes balcones interiores, buscando la idea de calle interior.\nDefinido por líneas simples y limpias, el edificio del Museo es del todo respetuoso con el entorno patrimonial e histórico que le rodea y aloja; se integra perfectamente dentro del perfil del baluarte renacentista. El diálogo entre la arquitectura contemporánea del nuevo edificio y la antigua muralla está presente en todo momento y es constante, y uno se da cuenta a medida que recorre los diferentes espacios del museo. El proyecto pretende ser integrador de la construcción moderna y respetar el patrimonio antiguo de las murallas; a la vez que diferenciador. Por este motivo se han utilizado materiales como el hormigón y el vidrio, que permiten distinguir perfectamente las dos tipologías constructivas.\nLos espacios exteriores son concebidos como lugares de exposición y paseo, trazando un recorrido por el perímetro de la muralla. El gran aljibe se mantiene también como espacio expositivo, a la vez que acoge actos diversos en función de la programación del museo.",
-                "name" : "Es Baluard",
-                "url" : "https://www.esbaluard.org/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971908200",
+                "tourBookingPage": null,
+                "description": "Convertido en sus diferentes fases desde 2004 en el mayor espacio para la conservación y difusión del arte contemporáneo en las Islas Baleares, los diferentes espacios del museo han ido adquiriendo sentido y función de una manera orgánica acorde con su función patrimonial y las necesidades de los públicos.\nEl edificio principal fue diseñado en 2003 por Lluís García-Ruiz, Jaume García-Ruiz, Vicente Tomás y Angel Sánchez Cantalejo, tiene una superficie total de 5.027 m², de los que 2.500 se destinan a espacios expositivos. Está dividido en tres plantas que se relacionan con el exterior, con las murallas y entre sí mediante rampas, claraboyas y grandes balcones interiores, buscando la idea de calle interior.\nDefinido por líneas simples y limpias, el edificio del Museo es del todo respetuoso con el entorno patrimonial e histórico que le rodea y aloja; se integra perfectamente dentro del perfil del baluarte renacentista. El diálogo entre la arquitectura contemporánea del nuevo edificio y la antigua muralla está presente en todo momento y es constante, y uno se da cuenta a medida que recorre los diferentes espacios del museo. El proyecto pretende ser integrador de la construcción moderna y respetar el patrimonio antiguo de las murallas; a la vez que diferenciador. Por este motivo se han utilizado materiales como el hormigón y el vidrio, que permiten distinguir perfectamente las dos tipologías constructivas.\nLos espacios exteriores son concebidos como lugares de exposición y paseo, trazando un recorrido por el perímetro de la muralla. El gran aljibe se mantiene también como espacio expositivo, a la vez que acoge actos diversos en función de la programación del museo.",
+                "name": "Es Baluard",
+                "url": "https://www.esbaluard.org/"
             },
-            "hasOfferCatalog" : {
+            "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
                 "itemListElement": [
@@ -125,9 +128,12 @@
             "@context": "https://schema.org",
             "@type": "Service",
             "areaServed": {
-                "@type": ["TouristAttraction","Museum"],
-                "openingHours" : "Tu-Su 10:00-14:00",
-                "address" : {
+                "@type": [
+                    "TouristAttraction",
+                    "Museum"
+                ],
+                "openingHours": "Tu-Su 10:00-14:00",
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Dique del Oest s/n",
                     "addressLocality": "Palma",
@@ -135,7 +141,7 @@
                     "addressCountry": "Spain",
                     "email": "museomilitarsancarlos@et.mde.es"
                 },
-                "event" : [
+                "event": [
                     {
                         "@type": "Event",
                         "name": "Día de las Islas Baleares",
@@ -143,45 +149,45 @@
                         "eventSchedule": {
                             "@type": "Schedule",
                             "startDate": "2024-03-09",
-                            "startTime" : "2024-03-09 10:00",
+                            "startTime": "2024-03-09 10:00",
                             "endDate": "2024-03-09",
-                            "endTime" : "2024-03-09 17:00"
+                            "endTime": "2024-03-09 17:00"
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/exposiciones/diaIslasBaleares.webp",
+                            "contentUrl": "/img/museos/museoHistoricoMilitarDeSanCarlos/exposiciones/diaIslasBaleares.webp",
                             "description": "Imagen del evento del Día de las Islas Baleares en el Museo Historico Militar de San Carlos"
                         }
                     }
                 ],
-                "geo" : {
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.546563",
                     "longitude": "2.623437"
                 },
-                "hasMap" : "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
-                "isAccessibleForFree" : true,
+                "hasMap": "https://maps.app.goo.gl/QEEs98cdn9q47BL1A",
+                "isAccessibleForFree": true,
                 "latitude": "39.546563",
                 "longitude": "2.623437",
-                "photo" : [
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/img-principal.webp",
+                        "contentUrl": "/img/museos/museoHistoricoMilitarDeSanCarlos/img-principal.webp",
                         "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoHistoricoMilitarDeSanCarlos/exposicion.webp",
+                        "contentUrl": "/img/museos/museoHistoricoMilitarDeSanCarlos/exposicion.webp",
                         "description": "Imagen de una de las salas del museo Historico Militar de San Carlos"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971402145",
-                "tourBookingPage" : null,
-                "description" : "A principios del año 1600 comienza a plantearse entre los miembros del Colegio de Mercaderes la necesidad de construir un fuerte que resguarde el puerto de Palma por el oeste, en las inmediaciones de lo que fue un antiguo puerto romano llamado Porto Pi. La nueva fortificación se construyó en el emplazamiento de una torre de vigía, cuya existencia se conoce por cuadros (como el de Pere Nissart y grabados de la época). La torre quedó embutida dentro de la nueva construcción manteniendo la función de faro o farol. Posteriormente, de 1662 a 1663, el castillo se amplió a partir del núcleo rectangular inicial, conservándolo. Se construyó así una circunvalación con otros cuatro grandes baluartes y adquiriendo su forma peculiar de polígono irregular de apariencia estrellada. Durante la Guerra de Sucesión, se añadieron algunas construcciones defensivas en el exterior, frente al mar. \nEn 1981 se comenzó su rehabilitación para convertirlo en un museo que albergara los fondos procedentes del recién cerrado Parque de Artillería. Con otros fondos procedentes del Museo del Ejército, de las unidades de la Zona Militar de Baleares y de donaciones particulares, se inauguró finalmente el Museo del Castillo de San Carlos el 26 de septiembre de 1991. En 1994, con la ayuda varias entidades públicas y privadas, entre ellas la Asociación de Amigos del Castillo de San Carlos, el museo fue dotado de dos nuevas salas y se mejoró la entrada y la iluminación del edificio. En 1997 se creó el Consorcio Castillo de San Carlos, que gestiona el museo y del que forman parte el Ministerio de Defensa, el Govern de les Illes Balears, el Consell Insular de Mallorca y el Ayuntamiento de Palma.",
-                "name" : "Museo Histórico Militar de San Carlos",
-                "url" : "http://www.castillomuseosancarlos.com/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971402145",
+                "tourBookingPage": null,
+                "description": "A principios del año 1600 comienza a plantearse entre los miembros del Colegio de Mercaderes la necesidad de construir un fuerte que resguarde el puerto de Palma por el oeste, en las inmediaciones de lo que fue un antiguo puerto romano llamado Porto Pi. La nueva fortificación se construyó en el emplazamiento de una torre de vigía, cuya existencia se conoce por cuadros (como el de Pere Nissart y grabados de la época). La torre quedó embutida dentro de la nueva construcción manteniendo la función de faro o farol. Posteriormente, de 1662 a 1663, el castillo se amplió a partir del núcleo rectangular inicial, conservándolo. Se construyó así una circunvalación con otros cuatro grandes baluartes y adquiriendo su forma peculiar de polígono irregular de apariencia estrellada. Durante la Guerra de Sucesión, se añadieron algunas construcciones defensivas en el exterior, frente al mar. \nEn 1981 se comenzó su rehabilitación para convertirlo en un museo que albergara los fondos procedentes del recién cerrado Parque de Artillería. Con otros fondos procedentes del Museo del Ejército, de las unidades de la Zona Militar de Baleares y de donaciones particulares, se inauguró finalmente el Museo del Castillo de San Carlos el 26 de septiembre de 1991. En 1994, con la ayuda varias entidades públicas y privadas, entre ellas la Asociación de Amigos del Castillo de San Carlos, el museo fue dotado de dos nuevas salas y se mejoró la entrada y la iluminación del edificio. En 1997 se creó el Consorcio Castillo de San Carlos, que gestiona el museo y del que forman parte el Ministerio de Defensa, el Govern de les Illes Balears, el Consell Insular de Mallorca y el Ayuntamiento de Palma.",
+                "name": "Museo Histórico Militar de San Carlos",
+                "url": "http://www.castillomuseosancarlos.com/"
             }
         },
         {
@@ -189,8 +195,8 @@
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : "Mo-Su 10:00-15:00",
-                "address" : {
+                "openingHours": "Mo-Su 10:00-15:00",
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Crta. Cales de Mallorca s/n",
                     "addressLocality": "Manacor",
@@ -198,38 +204,37 @@
                     "addressCountry": "Spain",
                     "email": "box.office@rafanadalacademy.com"
                 },
-                "event" : "",
-                "geo" : {
+                "event": "",
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.55913",
                     "longitude": "3.21612"
                 },
-                "hasMap" : "https://maps.app.goo.gl/BcNizXMVEXc5CBBi6",
-                
-                "isAccessibleForFree" : false,
-                "latitude" : "39.55913",
-                "longitude" : "3.21612",
-                "photo" : [
+                "hasMap": "https://maps.app.goo.gl/BcNizXMVEXc5CBBi6",
+                "isAccessibleForFree": false,
+                "latitude": "39.55913",
+                "longitude": "3.21612",
+                "photo": [
                     {
-                        "@type" : "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/img-principal.webp",
+                        "@type": "ImageObject",
+                        "contentUrl": "/img/museos/museoRafaNadal/img-principal.webp",
                         "description": "Imagen de vista aerea del Museo Historico Militar de San Carlos"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/museoRafaNadal/interior.webp",
+                        "contentUrl": "/img/museos/museoRafaNadal/interior.webp",
                         "description": "Imagen de la entrada del museo Historico Militar de San Carlos"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971171683",
-                "tourBookingPage" : "https://www.rafanadalmuseum.com/producto/entrada-museo/",
-                "description" : "Rafa Nadal Museum te invita a vivir una aventura inolvidable en un espacio único, dotado con las últimas tecnologías en medios audiovisuales y en pantallas interactivas, que te permitirá ser el protagonista de tu propia experiencia deportiva. Podrás recorrer la historia del deporte y conocer en primera persona cuáles son sus Aptitudes y Valores a través de impresionantes simuladores y atracciones de última generación.\nRafa Nadal Museum te ofrece dos plantas llenas de emoción, aprendizaje, experiencia, diversión y deporte en estado puro contado por los mejores deportistas del mundo.\nTodos sus espacios expositivos ofrecen un importante componente educativo y didáctico mientras que sus espacios experienciales representan aptitudes y valores presentes tanto en el mundo del deporte como en la vida. Valores como el esfuerzo, la superación personal, el compañerismo, el compromiso o la deportividad son los pilares del Museo de Rafa Nadal.",
-                "name" : "Rafa Nadal Museum",
-                "url" : "https://www.rafanadalmuseum.com/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971171683",
+                "tourBookingPage": "https://www.rafanadalmuseum.com/producto/entrada-museo/",
+                "description": "Rafa Nadal Museum te invita a vivir una aventura inolvidable en un espacio único, dotado con las últimas tecnologías en medios audiovisuales y en pantallas interactivas, que te permitirá ser el protagonista de tu propia experiencia deportiva. Podrás recorrer la historia del deporte y conocer en primera persona cuáles son sus Aptitudes y Valores a través de impresionantes simuladores y atracciones de última generación.\nRafa Nadal Museum te ofrece dos plantas llenas de emoción, aprendizaje, experiencia, diversión y deporte en estado puro contado por los mejores deportistas del mundo.\nTodos sus espacios expositivos ofrecen un importante componente educativo y didáctico mientras que sus espacios experienciales representan aptitudes y valores presentes tanto en el mundo del deporte como en la vida. Valores como el esfuerzo, la superación personal, el compañerismo, el compromiso o la deportividad son los pilares del Museo de Rafa Nadal.",
+                "name": "Rafa Nadal Museum",
+                "url": "https://www.rafanadalmuseum.com/"
             },
-            "hasOfferCatalog" : {
+            "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
                 "itemListElement": [
@@ -291,8 +296,11 @@
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : ["Tu-Sa 10:00-18:00", "Su 10:00-15:00"],
-                "address" : {
+                "openingHours": [
+                    "Tu-Sa 10:00-18:00",
+                    "Su 10:00-15:00"
+                ],
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Calle de Saridakis, 29",
                     "addressLocality": "Palma",
@@ -300,7 +308,7 @@
                     "addressCountry": "Spain",
                     "email": "info@miromallorca.com"
                 },
-                "event" : [
+                "event": [
                     {
                         "@type": "Event",
                         "name": "«Pilar Juncosa, l’estel fulgurant»",
@@ -316,7 +324,7 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exposiciones/miro1983.webp",
+                            "contentUrl": "/img/museos/fundacioPilarMiro/exposiciones/miro1983.webp",
                             "description": "Imagen de la exposición «Pilar Juncosa, l’estel fulgurant»."
                         }
                     },
@@ -335,46 +343,46 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exposiciones/miro1983.webp",
+                            "contentUrl": "/img/museos/fundacioPilarMiro/exposiciones/miro1983.webp",
                             "description": "Imagen de la exposición de 'Miró, 1983'."
                         }
                     }
                 ],
-                "geo" : {
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.55494",
                     "longitude": "2.60966"
                 },
-                "hasMap" : "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
-                "isAccessibleForFree" : false,
-                "latitude" : "39.55494",
-                "longitude" : "2.60966",
-                "photo" : [
+                "hasMap": "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
+                "isAccessibleForFree": false,
+                "latitude": "39.55494",
+                "longitude": "2.60966",
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exterior.webp",
+                        "contentUrl": "/img/museos/fundacioPilarMiro/exterior.webp",
                         "description": "Imagen de la entrada de la fundación Miró"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/exterior_aereo.webp",
+                        "contentUrl": "/img/museos/fundacioPilarMiro/exterior_aereo.webp",
                         "description": "Imagen de vista aerea de la fundación Miró"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/fundacioPilarMiro/foto_expo.webp",
+                        "contentUrl": "/img/museos/fundacioPilarMiro/foto_expo.webp",
                         "description": "Imagen de una exposición de la fundación Miró"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971701420",
-                "tourBookingPage" : "https://miromallorca.com/es/visitanos/#visitTimeFees",
-                "description" : "La Fundació Pilar i Joan Miró a Mallorca es una institución cultural fundamentada en los talleres que el artista  legó a los ciudadanos. Permite descubrir el arte de Joan Miró y estudiar el proceso creativo en el lugar en el que residió y trabajó durante casi 30 años.\nCon vocación de servicio público y un enfoque interdisciplinario, desea convertirse en un espacio de conocimiento, vínculo social y participación, tanto a nivel local como internacional. La Fundació es un centro apropiado para la creación artística contemporánea y para reflexionar en torno a diversidad de temas vinculados a la obra de Joan Miró.",
-                "name" : "Fundació Pilar i Joan Miró",
-                "url" : "https://miromallorca.com/es/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971701420",
+                "tourBookingPage": "https://miromallorca.com/es/visitanos/#visitTimeFees",
+                "description": "La Fundació Pilar i Joan Miró a Mallorca es una institución cultural fundamentada en los talleres que el artista  legó a los ciudadanos. Permite descubrir el arte de Joan Miró y estudiar el proceso creativo en el lugar en el que residió y trabajó durante casi 30 años.\nCon vocación de servicio público y un enfoque interdisciplinario, desea convertirse en un espacio de conocimiento, vínculo social y participación, tanto a nivel local como internacional. La Fundació es un centro apropiado para la creación artística contemporánea y para reflexionar en torno a diversidad de temas vinculados a la obra de Joan Miró.",
+                "name": "Fundació Pilar i Joan Miró",
+                "url": "https://miromallorca.com/es/"
             },
-            "hasOfferCatalog" : {
+            "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
                 "itemListElement": [
@@ -446,8 +454,13 @@
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : ["Mo 10:00-19:00","Tu-Th 10:00-13:30","Fr 10:00-19:00","Sa 11:00-13:00"],
-                "address" : {
+                "openingHours": [
+                    "Mo 10:00-19:00",
+                    "Tu-Th 10:00-13:30",
+                    "Fr 10:00-19:00",
+                    "Sa 11:00-13:00"
+                ],
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Carrer Major 10",
                     "addressLocality": "Capdepera",
@@ -455,50 +468,50 @@
                     "addressCountry": "Spain",
                     "email": "espai@artgustavo.com"
                 },
-                "event" : "",
-                "geo" : {
+                "event": "",
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.70248815860186",
                     "longitude": "3.432684499647989"
                 },
-                "hasMap" : "https://maps.app.goo.gl/AXkQHU9EM1BUbkX88",
-                "isAccessibleForFree" : true,
-                "latitude" : "39.70248815860186",
-                "longitude" : "3.432684499647989",
-                "photo" : [
+                "hasMap": "https://maps.app.goo.gl/AXkQHU9EM1BUbkX88",
+                "isAccessibleForFree": true,
+                "latitude": "39.70248815860186",
+                "longitude": "3.432684499647989",
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/espaiGustavo/entrada.webp",
+                        "contentUrl": "/img/museos/espaiGustavo/entrada.webp",
                         "description": "Imagen de la entrada del espai GUSTAVO"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/espaiGustavo/interior.webp",
+                        "contentUrl": "/img/museos/espaiGustavo/interior.webp",
                         "description": "Imagen del interior"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/espaiGustavo/interior2.webp",
+                        "contentUrl": "/img/museos/espaiGustavo/interior2.webp",
                         "description": "Imagen del interior"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971677993",
-                "tourBookingPage" : null,
-                "description" : "Entre verdes colinas, palmeras, almendros e higueras en el noreste de Mallorca, a medio camino entre Capdepera y Cala Ratjada, el artista español Gustavo (Peñalver Vico) vive en su Casa Estudio Son Turó, que es sin duda uno de los más bellos de la isla. En 1995, el Estudio fue diseñado por el arquitecto José García Ruiz con la colaboración de Gustavo, 250 metros cuadrados en el estilo Bauhaus.\nGustavo ofrece ahora a sus fans y coleccionistas de todo el mundo un nuevo destino para admirar y comprar sus obras, su galería privada ESPAI GUSTAVO. En enero de 2020, el entonces ya octogenario transformó la antigua panadería «Ca n’Angel», en el corazón de Capdepera, en una espaciosa y moderna galería y espacio cultural para hacer accesible su arte a un público aún más amplio: desde pinturas al óleo, serigrafías y esculturas hasta catálogos, baldosas, tazas, botellas de vino, imanes, puzles… los amantes del arte encontrarán una amplia gama de arte, objetos y productos de merchandising.\nEl ESPAI GUSTAVO transmite la actitud ante la vida del artista de renombre internacional: incansablemente creativo, pinta en varios lienzos a la vez, hace bocetos y se embriaga con los colores y las formas. Mientras lo hace, escucha música de Jacques Brel, Udo Lindenberg, Maria Callas o Mozart, bebe su café con leche y desarrolla constantemente nuevas ideas. Desde su finca Son Turó Gustavo admira al mar y en los días claro puede divisar Menorca.\nSu finca idílica, el verde paisaje, las siluetas de las palmeras, las suaves montañas de fondo, el sol mediterráneo, el cielo azul con nubes blancas, el canto de los pájaros, toda esta belleza y alegría de la vida encuentra su camino en sus coloridas obras.\n¡Descubra las inconfundibles “figuras grotescas en situaciones absurdas” de Gustavo y sumérjase en este cosmos artísticamente tan valioso y significativo!",
-                "name" : "Espai Gustavo",
-                "url" : "https://www.artgustavo.com/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971677993",
+                "tourBookingPage": null,
+                "description": "Entre verdes colinas, palmeras, almendros e higueras en el noreste de Mallorca, a medio camino entre Capdepera y Cala Ratjada, el artista español Gustavo (Peñalver Vico) vive en su Casa Estudio Son Turó, que es sin duda uno de los más bellos de la isla. En 1995, el Estudio fue diseñado por el arquitecto José García Ruiz con la colaboración de Gustavo, 250 metros cuadrados en el estilo Bauhaus.\nGustavo ofrece ahora a sus fans y coleccionistas de todo el mundo un nuevo destino para admirar y comprar sus obras, su galería privada ESPAI GUSTAVO. En enero de 2020, el entonces ya octogenario transformó la antigua panadería «Ca n’Angel», en el corazón de Capdepera, en una espaciosa y moderna galería y espacio cultural para hacer accesible su arte a un público aún más amplio: desde pinturas al óleo, serigrafías y esculturas hasta catálogos, baldosas, tazas, botellas de vino, imanes, puzles… los amantes del arte encontrarán una amplia gama de arte, objetos y productos de merchandising.\nEl ESPAI GUSTAVO transmite la actitud ante la vida del artista de renombre internacional: incansablemente creativo, pinta en varios lienzos a la vez, hace bocetos y se embriaga con los colores y las formas. Mientras lo hace, escucha música de Jacques Brel, Udo Lindenberg, Maria Callas o Mozart, bebe su café con leche y desarrolla constantemente nuevas ideas. Desde su finca Son Turó Gustavo admira al mar y en los días claro puede divisar Menorca.\nSu finca idílica, el verde paisaje, las siluetas de las palmeras, las suaves montañas de fondo, el sol mediterráneo, el cielo azul con nubes blancas, el canto de los pájaros, toda esta belleza y alegría de la vida encuentra su camino en sus coloridas obras.\n¡Descubra las inconfundibles “figuras grotescas en situaciones absurdas” de Gustavo y sumérjase en este cosmos artísticamente tan valioso y significativo!",
+                "name": "Espai Gustavo",
+                "url": "https://www.artgustavo.com/"
             },
-            "hasOfferCatalog" : null
+            "hasOfferCatalog": null
         },
         {
             "@context": "https://schema.org",
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : "Tu-Sa 11:00-18:00",
-                "address" : {
+                "openingHours": "Tu-Sa 11:00-18:00",
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Estanyera 2",
                     "addressLocality": "Andratx",
@@ -506,7 +519,7 @@
                     "addressCountry": "Spain",
                     "email": "info@ccandratx.com"
                 },
-                "event" : [
+                "event": [
                     {
                         "@type": "Event",
                         "name": "THE SOFTNESS",
@@ -522,7 +535,7 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/theSoftness.webp",
+                            "contentUrl": "/img/museos/ccaAndratx/exposiciones/theSoftness.webp",
                             "description": "Imagen de la exposición THE SOFTNESS."
                         }
                     },
@@ -535,17 +548,19 @@
                             "startDate": "2024-03-23",
                             "endDate": "2025-09-01"
                         },
-                        "organizer": [{
-                            "@type": "Person",
-                            "name": "Stefan Rinck"
-                        },
-                        {
-                            "@type": "Person",
-                            "name": "Philip Grözinger"
-                        }],
+                        "organizer": [
+                            {
+                                "@type": "Person",
+                                "name": "Stefan Rinck"
+                            },
+                            {
+                                "@type": "Person",
+                                "name": "Philip Grözinger"
+                            }
+                        ],
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/blissIgnorance.webp",
+                            "contentUrl": "/img/museos/ccaAndratx/exposiciones/blissIgnorance.webp",
                             "description": "Imagen de la exposición THE BLISS OF IGNORANCE."
                         }
                     },
@@ -558,78 +573,83 @@
                             "startDate": "2024-01-20",
                             "endDate": "2024-06-01"
                         },
-                        "organizer": [{
-                            "@type": "Person",
-                            "name": "Kalin Lindena"
-                        },
-                        {
-                            "@type": "Person",
-                            "name": "Christof John"
-                        }],
+                        "organizer": [
+                            {
+                                "@type": "Person",
+                                "name": "Kalin Lindena"
+                            },
+                            {
+                                "@type": "Person",
+                                "name": "Christof John"
+                            }
+                        ],
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposiciones/estrellation.webp",
+                            "contentUrl": "/img/museos/ccaAndratx/exposiciones/estrellation.webp",
                             "description": "Imagen de la exposición TRINE SØNDERGAARD"
                         }
                     }
                 ],
-                "geo" : {
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.58108389927165",
                     "longitude": "2.4328001968939583"
                 },
-                "hasMap" : "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
-                "isAccessibleForFree" : false,
-                "keywords" : "",
-                "latitude" : "39.58108389927165",
-                "longitude" : "2.4328001968939583",
-                "photo" : [
+                "hasMap": "https://maps.app.goo.gl/tq6b3skT4oCdRyGE6",
+                "isAccessibleForFree": false,
+                "keywords": "",
+                "latitude": "39.58108389927165",
+                "longitude": "2.4328001968939583",
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/principal.webp",
+                        "contentUrl": "/img/museos/ccaAndratx/principal.webp",
                         "description": "Imagen del patio interior de CCA Andratx"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/escultura.webp",
+                        "contentUrl": "/img/museos/ccaAndratx/escultura.webp",
                         "description": "Imagen de una escultura del CCA Andratx"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/exposicion.webp",
+                        "contentUrl": "/img/museos/ccaAndratx/exposicion.webp",
                         "description": "Imagen de una exposición de CCA Andratx"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/ccaAndratx/eventoNocturno.webp",
+                        "contentUrl": "/img/museos/ccaAndratx/eventoNocturno.webp",
                         "description": "Imagen nocturna de un evento en el patio interior"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971701420",
-                "tourBookingPage" : null,
-                "description" : "CCA is located in a beautiful natural surrounding in the town of Sa Coma (Andratx), 30 minutes drive north of Palma. Here we share a landscape that is spread across to the small village of Sa Coma, through the valley and into the innate landscape of the fertile terraces and the tall pine-covered mountains. These landscapes lead directly to the sign-posted 'nature walks' that Mallorca is internationally known for. There you can walk for hours with breathtaking beautiful scenery as your sole companion.\nThe soil is fertile and has been cultivated for millenniums. The Centre is self-suffcient in oranges, lemons, almonds, figs and olives. The property also has its own spring - a great rarity on this sundrenched island. It provides sufficient water to cover the needs of the whole centre and is an important contribution to the paradisiac quality of the place.\nAndratx is a small town situated in a beautiful valley with terraced crops stretching up the mountainside. A few kilometres away lies Port Andratx, a charming harbour town situated between steep mountain slopes.\nThe exhibition spaces are large and high to the ceiling but flexible with concrete flooring and simple white walls. With limited window room and tailored lighting, these exhibition spaces give specific emphasis on the art displayed. Howebver, the patio's large glass doors open into the exhibition halls, the gift shop and the restaurant, with the light being beautifully filtered through the colonnade.",
-                "name" : "CCA Andratx",
-                "url" : "https://ccandratx.eu/about"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971701420",
+                "tourBookingPage": null,
+                "description": "CCA is located in a beautiful natural surrounding in the town of Sa Coma (Andratx), 30 minutes drive north of Palma. Here we share a landscape that is spread across to the small village of Sa Coma, through the valley and into the innate landscape of the fertile terraces and the tall pine-covered mountains. These landscapes lead directly to the sign-posted 'nature walks' that Mallorca is internationally known for. There you can walk for hours with breathtaking beautiful scenery as your sole companion.\nThe soil is fertile and has been cultivated for millenniums. The Centre is self-suffcient in oranges, lemons, almonds, figs and olives. The property also has its own spring - a great rarity on this sundrenched island. It provides sufficient water to cover the needs of the whole centre and is an important contribution to the paradisiac quality of the place.\nAndratx is a small town situated in a beautiful valley with terraced crops stretching up the mountainside. A few kilometres away lies Port Andratx, a charming harbour town situated between steep mountain slopes.\nThe exhibition spaces are large and high to the ceiling but flexible with concrete flooring and simple white walls. With limited window room and tailored lighting, these exhibition spaces give specific emphasis on the art displayed. Howebver, the patio's large glass doors open into the exhibition halls, the gift shop and the restaurant, with the light being beautifully filtered through the colonnade.",
+                "name": "CCA Andratx",
+                "url": "https://ccandratx.eu/about"
             },
-            "hasOfferCatalog" : null
+            "hasOfferCatalog": null
         },
         {
             "@context": "https://schema.org",
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : ["We-Sa 10:00-18:00", "Su 10:00-15:00"],
-                "address" : {
+                "openingHours": [
+                    "We-Sa 10:00-18:00",
+                    "Su 10:00-15:00"
+                ],
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Camí del Coll Baix",
                     "addressLocality": "Alcúdia",
                     "postalCode": "07400",
                     "addressCountry": "Spain"
                 },
-                "event" : 
-                    [{
+                "event": [
+                    {
                         "@type": "Event",
                         "name": "ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS",
                         "description": "En las pinturas de ambas “escuelas” se perciben rasgos comunes, señas de identidad de unos y otros que, si bien definen a cada grupo particularmente, permiten establecer entre ellos paralelismos y similitudes: tanto unos como otros han crecido al margen de cualquier formación académica; crean desde su interior, con una mirada puesta especialmente en la tradición, las raíces y las creencias del lugar al que pertenecen. Plasman su cotidianidad y sus vivencias en pinturas de gran belleza formal y vibrante colorido, cargadas de simbolismo, dotando de gran unidad al conjunto.",
@@ -644,51 +664,52 @@
                         },
                         "image": {
                             "@type": "ImageObject",
-                            "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/exposiciones/marroquies.webp",
+                            "contentUrl": "/img/museos/saBassaBlanca/exposiciones/marroquies.webp",
                             "description": "Imagen de una pintura de la exposición ARTISTAS MARROQUÍES DIALOGAN CON ARTISTAS ABORÍGENES AUSTRALIANOS, por Youssef Aït Tazarin."
                         }
-                    }],
-                "faxNumber" : "+34971897163" ,
-                "geo" : {
+                    }
+                ],
+                "faxNumber": "+34971897163",
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.84324074674918",
                     "longitude": "3.1788397969037017"
                 },
-                "hasMap" : "https://maps.app.goo.gl/RAv7WBHsp63nspVYA",
-                "isAccessibleForFree" : false,
-                "latitude" : "39.84324074674918",
-                "longitude" : "3.1788397969037017",
-                "photo" : [
+                "hasMap": "https://maps.app.goo.gl/RAv7WBHsp63nspVYA",
+                "isAccessibleForFree": false,
+                "latitude": "39.84324074674918",
+                "longitude": "3.1788397969037017",
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/aerea.webp",
+                        "contentUrl": "/img/museos/saBassaBlanca/aerea.webp",
                         "description": "Imagen de vista aerea de la entrada del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/entrada.webp",
+                        "contentUrl": "/img/museos/saBassaBlanca/entrada.webp",
                         "description": "Imagen de la entrada del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/exposicion.webp",
+                        "contentUrl": "/img/museos/saBassaBlanca/exposicion.webp",
                         "description": "Imagen de una exposición del Museo Sa Bassa Blanca"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/saBassaBlanca/escultura-de-granito.webp",
+                        "contentUrl": "/img/museos/saBassaBlanca/escultura-de-granito.webp",
                         "description": "Imagen de una escultura del parque de esculturas del Museo Sa Bassa Blanca"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971701420",
-                "tourBookingPage" : "https://www.msbb.org/informacion-general/horarios-y-tarifas",
-                "description" : "En el edificio principal del Museo Sa Bassa Blanca (msbb) realizado por el arquitecto egipcio Hassan Fathy, el visitante podrá encontrarse con una colección de arte moderno y contemporáneo.\nEn la primera sala del primer piso del edificio Hassan Fathy, se exponen obras de artistas contemporáneos africanos bajo el título Ex Africa semper aliquid novi. Los artistas son: Sara Ouhaddou (Marruecos, 1986),  Soly Cissé (Senegal,1969), Gresham Tapiwa Nyaude (Zimbabwe, 1988), Thierry Oussou (Benin, 1988), Serge Attukwei Clottey (Ghana, 1985), El Anatsui (Ghana, 1944), Houston Maludi  (República democrática del Congo, 1978), Kane Kwei / Eric Adjerty Anag, (Ghana). Se presenta también una túnica de cazador de Nigeria del siglo XX.\nSe exhibe también, una selección de dibujos e ilustraciones de Domenico Gnoli, realizados en Mallorca y Roma entre 1964-69, entre lo que cabe señalar la serie “Los Monstruos”, para la cual Robert Graves escribió un texto y que en 2013 ha sido expuesta en el pabellón central la Bienal de Venecia.\nDesde enero de 2014, en el primer piso se puede ver también una selección de más de 50 retratos fotográficos de artistas fundamentales de los siglos XX y XXI, realizados en blanco y negro y en color, por el reconocido crítico de arte alemán Werner Kruger, que amablemente ha querido regalar a la Fundación parte de su archivo personal. Son creadores como De Chirico, Kounellis, Moore, Tàpies, Tinguely, Beuys, Baselitz, Oldenburg, Ando, Newton, Schnabel, Vostell, Johns, Kiefer, Barceló, Serra, o Hartung.\nEsta ala contiene a su vez una sala de esculturas, con algunas obras de Meret Oppenheim, Miralda, Takis y Alan Rath, entre otros.\nLa planta baja, primer piso (sala grande, altillo) y parte de la segunda planta acoge la exposición temporal Artistas Singulares Marroquíes.\nEn el segundo piso, se encuentran la sala de pinturas y la sala de esculturas de Vu Cao Dam (1908-2000), padre de Yannick Vu, considerado uno de los mejores artistas vietnamitas del siglo XX.\nLa sutileza oriental de la muestra contrasta con la belleza del artesonado mudéjar que cubre la última sala, fechado en 1498 y declarado “Bien de Interés Cultural del Patrimonio de las Islas Baleares”, una experiencia única y que hará las delicias de aquellas personas interesadas en el arte de ese período.",
-                "name" : "Museo Sa Bassa Blanca",
-                "url" : "https://www.msbb.org/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971701420",
+                "tourBookingPage": "https://www.msbb.org/informacion-general/horarios-y-tarifas",
+                "description": "En el edificio principal del Museo Sa Bassa Blanca (msbb) realizado por el arquitecto egipcio Hassan Fathy, el visitante podrá encontrarse con una colección de arte moderno y contemporáneo.\nEn la primera sala del primer piso del edificio Hassan Fathy, se exponen obras de artistas contemporáneos africanos bajo el título Ex Africa semper aliquid novi. Los artistas son: Sara Ouhaddou (Marruecos, 1986),  Soly Cissé (Senegal,1969), Gresham Tapiwa Nyaude (Zimbabwe, 1988), Thierry Oussou (Benin, 1988), Serge Attukwei Clottey (Ghana, 1985), El Anatsui (Ghana, 1944), Houston Maludi  (República democrática del Congo, 1978), Kane Kwei / Eric Adjerty Anag, (Ghana). Se presenta también una túnica de cazador de Nigeria del siglo XX.\nSe exhibe también, una selección de dibujos e ilustraciones de Domenico Gnoli, realizados en Mallorca y Roma entre 1964-69, entre lo que cabe señalar la serie “Los Monstruos”, para la cual Robert Graves escribió un texto y que en 2013 ha sido expuesta en el pabellón central la Bienal de Venecia.\nDesde enero de 2014, en el primer piso se puede ver también una selección de más de 50 retratos fotográficos de artistas fundamentales de los siglos XX y XXI, realizados en blanco y negro y en color, por el reconocido crítico de arte alemán Werner Kruger, que amablemente ha querido regalar a la Fundación parte de su archivo personal. Son creadores como De Chirico, Kounellis, Moore, Tàpies, Tinguely, Beuys, Baselitz, Oldenburg, Ando, Newton, Schnabel, Vostell, Johns, Kiefer, Barceló, Serra, o Hartung.\nEsta ala contiene a su vez una sala de esculturas, con algunas obras de Meret Oppenheim, Miralda, Takis y Alan Rath, entre otros.\nLa planta baja, primer piso (sala grande, altillo) y parte de la segunda planta acoge la exposición temporal Artistas Singulares Marroquíes.\nEn el segundo piso, se encuentran la sala de pinturas y la sala de esculturas de Vu Cao Dam (1908-2000), padre de Yannick Vu, considerado uno de los mejores artistas vietnamitas del siglo XX.\nLa sutileza oriental de la muestra contrasta con la belleza del artesonado mudéjar que cubre la última sala, fechado en 1498 y declarado “Bien de Interés Cultural del Patrimonio de las Islas Baleares”, una experiencia única y que hará las delicias de aquellas personas interesadas en el arte de ese período.",
+                "name": "Museo Sa Bassa Blanca",
+                "url": "https://www.msbb.org/"
             },
-            "hasOfferCatalog" : {
+            "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
                 "itemListElement": [
@@ -820,8 +841,8 @@
             "@type": "Service",
             "areaServed": {
                 "@type": "Museum",
-                "openingHours" : "Tu-Sa 10:30-18:00",
-                "address" : {
+                "openingHours": "Tu-Sa 10:30-18:00",
+                "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Carrer Sa Lluna, 86",
                     "addressLocality": "Sóller",
@@ -829,41 +850,41 @@
                     "addressCountry": "Spain",
                     "email": "museu@canprunera.net"
                 },
-                "geo" : {
+                "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "39.767867139918586",
                     "longitude": "2.718032642328135"
                 },
-                "hasMap" : "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
-                "isAccessibleForFree" : false,
+                "hasMap": "https://maps.app.goo.gl/RC5ea3YKQ32qXYVL9",
+                "isAccessibleForFree": false,
                 "latitude": "39.767867139918586",
                 "longitude": "2.718032642328135",
-                "photo" : [
+                "photo": [
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/canPrunera/entrada.webp",
+                        "contentUrl": "/img/museos/canPrunera/entrada.webp",
                         "description": "Imagen de la entrada del museo Can Prunera"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/canPrunera/imagenArte.webp",
+                        "contentUrl": "/img/museos/canPrunera/imagenArte.webp",
                         "description": "Imagen de una zona del museo Can Prunera"
                     },
                     {
                         "@type": "ImageObject",
-                        "contentUrl": "https://www.mallorkcultura.com/img/museos/canPrunera/salon.webp",
+                        "contentUrl": "/img/museos/canPrunera/salon.webp",
                         "description": "Imagen de una de las salas del museo Can Prunera"
                     }
                 ],
-                "publicAccess" : true,
-                "smokingAllowed" : false,
-                "telephone" : "+34971638973",
-                "tourBookingPage" : null,
-                "description" : "Can Prunera, junto con otros ejemplos como el Gran Hotel, Can Forteza Rey y Can Casasayes, los tres de Palma, forman parte del amplio conjunto de edificios modernistas que se construyeron, a comienzos del siglo XX, bajo la directriz de los modelos catalanes o del arte nouveau francés. \nEn el año 1865, una plaga terrible echó a perder los naranjos y limoneros de gran parte del valle de Sóller, lo cual causó una fuerte crisis económica y provocó que numerosas familias que se dedicaban a la recolección y al comercio de los cítricos se vieran obligadas a emigrar. Los principales destinos fueron, por un lado, América del Sur y, por el otro, Europa. Países como Puerto Rico, Venezuela, Francia, Alemania y Bélgica serían los precursores en el recibimiento de emigrantes sollerenses. Aun así, fue sobre todo en Francia donde la mayoría fueron a buscar fortuna; con este fin, se establecieron en localidades como Nancy, Lyon, Marsella y Belfort. Fue en esta ciudad donde Joan Magraner y Margalida Vicens, conocidos en Sóller con el mote de els Pruneres debido a su trabajo con el mercadeo de la fruta, se enriquecieron gracias al negocio dedicado a la importación, exportación y distribución de frutas, verduras y licores. Conseguida la fortuna, decidieron regresar a Sóller y construir un casal con el estilo imperante entonces en Francia: el arte nouveau. En aquel país, dejaron el negocio en manos de los hijos. \nCan Prunera se construyó entre 1904 y 1911. Del artífice no se sabe nada, a pesar de que hay dos hipótesis: una atribuye la obra a Joan Rubió y Bellver (1870-1952), el arquitecto catalán que en aquellos años construía la fachada de la iglesia parroquial de San Bartolomé y el Banco de Sóller. Con todo, no hay ningún documento que confirme esta teoría. La otra hipótesis plantea la posibilidad que el casal de Can Prunera fuera construido por albañiles locales.\nEl edificio es un exponente del gusto de los emigrantes que, al volver de Francia y de Puerto Rico, principalmente, compitieron para levantar la casa más bella y que pusiera de manifiesto la riqueza que habían conseguido.",
-                "name" : "Can Prunera",
-                "url" : "https://canprunera.com/es/"
+                "publicAccess": true,
+                "smokingAllowed": false,
+                "telephone": "+34971638973",
+                "tourBookingPage": null,
+                "description": "Can Prunera, junto con otros ejemplos como el Gran Hotel, Can Forteza Rey y Can Casasayes, los tres de Palma, forman parte del amplio conjunto de edificios modernistas que se construyeron, a comienzos del siglo XX, bajo la directriz de los modelos catalanes o del arte nouveau francés. \nEn el año 1865, una plaga terrible echó a perder los naranjos y limoneros de gran parte del valle de Sóller, lo cual causó una fuerte crisis económica y provocó que numerosas familias que se dedicaban a la recolección y al comercio de los cítricos se vieran obligadas a emigrar. Los principales destinos fueron, por un lado, América del Sur y, por el otro, Europa. Países como Puerto Rico, Venezuela, Francia, Alemania y Bélgica serían los precursores en el recibimiento de emigrantes sollerenses. Aun así, fue sobre todo en Francia donde la mayoría fueron a buscar fortuna; con este fin, se establecieron en localidades como Nancy, Lyon, Marsella y Belfort. Fue en esta ciudad donde Joan Magraner y Margalida Vicens, conocidos en Sóller con el mote de els Pruneres debido a su trabajo con el mercadeo de la fruta, se enriquecieron gracias al negocio dedicado a la importación, exportación y distribución de frutas, verduras y licores. Conseguida la fortuna, decidieron regresar a Sóller y construir un casal con el estilo imperante entonces en Francia: el arte nouveau. En aquel país, dejaron el negocio en manos de los hijos. \nCan Prunera se construyó entre 1904 y 1911. Del artífice no se sabe nada, a pesar de que hay dos hipótesis: una atribuye la obra a Joan Rubió y Bellver (1870-1952), el arquitecto catalán que en aquellos años construía la fachada de la iglesia parroquial de San Bartolomé y el Banco de Sóller. Con todo, no hay ningún documento que confirme esta teoría. La otra hipótesis plantea la posibilidad que el casal de Can Prunera fuera construido por albañiles locales.\nEl edificio es un exponente del gusto de los emigrantes que, al volver de Francia y de Puerto Rico, principalmente, compitieron para levantar la casa más bella y que pusiera de manifiesto la riqueza que habían conseguido.",
+                "name": "Can Prunera",
+                "url": "https://canprunera.com/es/"
             },
-            "hasOfferCatalog" : {
+            "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Tipo de entradas",
                 "itemListElement": [
