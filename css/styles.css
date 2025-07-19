@@ -219,7 +219,8 @@ section {
 /* Header */
 
 .ubi-header {
-    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
     height: 50rem;
     border:0;
 }
